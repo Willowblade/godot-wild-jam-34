@@ -1,0 +1,129 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "KinematicBody2D",
+"class": "Enemy",
+"language": "GDScript",
+"path": "res://src/game/Enemy.gd"
+}, {
+"base": "Control",
+"class": "GamePopup",
+"language": "GDScript",
+"path": "res://src/UI/popups/Popup.gd"
+}, {
+"base": "Reference",
+"class": "JSONBeautifier",
+"language": "GDScript",
+"path": "res://addons/json_beautifier/json_beautifier.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Player",
+"language": "GDScript",
+"path": "res://src/game/Player.gd"
+}, {
+"base": "MarginContainer",
+"class": "class_menu_tab",
+"language": "GDScript",
+"path": "res://src/menu/MenuTab.gd"
+}, {
+"base": "MarginContainer",
+"class": "class_pause_tab",
+"language": "GDScript",
+"path": "res://src/UI/pause/PauseTab.gd"
+}, {
+"base": "Reference",
+"class": "class_player",
+"language": "GDScript",
+"path": "res://src/autoload/state/Player.gd"
+}, {
+"base": "Reference",
+"class": "class_upgrade",
+"language": "GDScript",
+"path": "res://src/autoload/state/Upgrade.gd"
+} ]
+_global_script_class_icons={
+"Enemy": "",
+"GamePopup": "",
+"JSONBeautifier": "",
+"Player": "",
+"class_menu_tab": "",
+"class_pause_tab": "",
+"class_player": "",
+"class_upgrade": ""
+}
+
+[application]
+
+config/name="Godot Wild Jam 29"
+run/main_scene="res://src/Menu.tscn"
+boot_splash/image="res://assets/graphics/ui/background.png"
+boot_splash/bg_color=Color( 0.141176, 0.141176, 0.141176, 1 )
+config/icon="res://icon.png"
+
+[audio]
+
+output_latency.web=15
+
+[autoload]
+
+ConfigData="*res://src/autoload/ConfigData.tscn"
+Flow="*res://src/autoload/Flow.tscn"
+State="*res://src/autoload/State.tscn"
+AudioEngine="*res://src/audio/AudioEngine.tscn"
+GameFlow="*res://src/autoload/GameFlow.tscn"
+
+[display]
+
+window/size/width=960
+window/size/height=540
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
+
+[importer_defaults]
+
+texture={
+"compress/bptc_ldr": 0,
+"compress/hdr_mode": 0,
+"compress/lossy_quality": 0.7,
+"compress/mode": 0,
+"compress/normal_map": 0,
+"detect_3d": false,
+"flags/anisotropic": false,
+"flags/filter": false,
+"flags/mipmaps": false,
+"flags/repeat": 0,
+"flags/srgb": 2,
+"process/HDR_as_SRGB": false,
+"process/fix_alpha_border": true,
+"process/invert_color": false,
+"process/premult_alpha": false,
+"size_limit": 0,
+"stream": false,
+"svg/scale": 1.0
+}
+
+[input]
+
+ui_update={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":86,"unicode":0,"echo":false,"script":null)
+ ]
+}
+
+[locale]
+
+translations=PoolStringArray( "res://assets/locale/en.po", "res://assets/locale/pt.po", "res://assets/locale/fr.po" )
+
+[rendering]
+
+quality/driver/driver_name="GLES2"
+environment/default_clear_color=Color( 0.113725, 0.105882, 0.243137, 1 )
+environment/default_environment="res://default_env.tres"

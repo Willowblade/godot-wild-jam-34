@@ -1,0 +1,90 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://src/audio/audio_engine.gd" type="Script" id=1]
+[ext_resource path="res://assets/audio/sfx/desert_ambiance_loop.ogg" type="AudioStream" id=2]
+[ext_resource path="res://src/audio/effects.gd" type="Script" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "switch_1"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("BackgroundPlayer:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -80.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SecondBackgroundPlayer:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -80.0 ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("BackgroundPlayer:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -80.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SecondBackgroundPlayer:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -80.0, 0.0 ]
+}
+
+[node name="AudioEngine" type="Node"]
+pause_mode = 2
+script = ExtResource( 1 )
+MAX_SIMULTANEOUS_EFFECTS = 20
+
+[node name="BackgroundPlayer" type="AudioStreamPlayer" parent="."]
+autoplay = true
+bus = "Music"
+
+[node name="AmbiancePlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+autoplay = true
+bus = "Music"
+
+[node name="DialoguePlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -6.0
+bus = "SFX"
+
+[node name="SecondBackgroundPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -80.0
+autoplay = true
+bus = "Music"
+
+[node name="Effects" type="Node" parent="."]
+script = ExtResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/switch_1 = SubResource( 1 )
+anims/switch_2 = SubResource( 2 )
