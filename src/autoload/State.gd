@@ -40,7 +40,7 @@ func save_state_to_context() -> Dictionary:
 	return context
 
 ## PLAYERS ####################################################################
-var player: class_player = null
+var player: PlayerState = null
 
 func add_player_from_context(player_context : Dictionary) -> void:
 	player = _player_resource.new()

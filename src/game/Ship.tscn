@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/game/Ship.gd" type="Script" id=1]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 0.865484
+height = 4.30858
+
+[node name="Ship" type="KinematicBody2D" groups=[
+"player",
+]]
+position = Vector2( 0, 0.132435 )
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.57079
+shape = SubResource( 1 )
+
+[node name="Visual" type="Node2D" parent="."]
+
+[node name="Hull" type="Sprite" parent="Visual"]

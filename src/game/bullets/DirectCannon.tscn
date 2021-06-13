@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/game/bullets/Cannon.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/game/bullets/DirectCannon.gd" type="Script" id=2]
+
+[node name="DirectCannon" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="RayCast" type="RayCast2D" parent="." index="0"]
+enabled = true
+cast_to = Vector2( 0, -200 )
+
+[node name="ShootTimeout" type="Timer" parent="." index="1"]
+wait_time = 0.3

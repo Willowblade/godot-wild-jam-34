@@ -1,287 +1,73 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://assets/graphics/characters/Player.tres" type="SpriteFrames" id=1]
+[ext_resource path="res://src/game/Ship.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/game/Player.gd" type="Script" id=2]
+[ext_resource path="res://assets/graphics/ships/player.png" type="Texture" id=3]
+[ext_resource path="res://assets/graphics/ships/trail/particle.png" type="Texture" id=4]
+[ext_resource path="res://src/game/bullets/DirectCannon.tscn" type="PackedScene" id=5]
 
-[sub_resource type="CapsuleShape2D" id=1]
-radius = 0.865484
-height = 4.30858
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 9.20217
+height = 6.61467
 
-[sub_resource type="Animation" id=2]
-resource_name = "death"
-length = 1.5
-tracks/0/type = "value"
-tracks/0/path = NodePath("Visual:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0.992119, -8.53225 ), Vector2( 7.04406, -4.56376 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Visual:rotation_degrees")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ 0.0, 73.1613, 99.3184 ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Visual:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 0.8, 1 ), Vector2( 0.6, 1.2 ), Vector2( 0.9, 1 ) ]
-}
-tracks/3/type = "method"
-tracks/3/path = NodePath(".")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray(  ),
-"transitions": PoolRealArray(  ),
-"values": [  ]
-}
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0, 0.52349, 1 )
+colors = PoolColorArray( 0.976074, 0.527978, 0.16395, 1, 0.987793, 0.977065, 0.142767, 0.596078, 0.968262, 0.962419, 0.510607, 0.305882 )
 
-[sub_resource type="Animation" id=3]
-length = 3.0
-tracks/0/type = "value"
-tracks/0/path = NodePath("Visual:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Visual:rotation_degrees")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ 0.0, 18.1795, -13.4225, 9.92653, -16.0485, 23.002, -23.5927, 27.0461, 0.0 ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Visual:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 1.6, 2.8, 2.9 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1, 0.2 ), Vector2( 1, 1 ) ]
-}
-tracks/3/type = "method"
-tracks/3/path = NodePath(".")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 2.8 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "trigger_damage_taken"
-} ]
-}
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0, 0.52349, 1 )
+colors = PoolColorArray( 0.0914116, 0.754883, 0.35058, 1, 0.419608, 0.894118, 0.611765, 0.596078, 0.487976, 0.960938, 0.895344, 0.254902 )
 
-[sub_resource type="Animation" id=4]
-length = 1.5
-tracks/0/type = "value"
-tracks/0/path = NodePath("Visual:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.101, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, -22 ), Vector2( 0, -24.9077 ), Vector2( 0, -23.1219 ), Vector2( 0, -22.229 ), Vector2( 0, -20.0463 ), Vector2( 0, -17.1692 ), Vector2( 0, -12.2085 ), Vector2( 0, -5.75972 ), Vector2( 1.24739e-09, -8.43846 ), Vector2( 0, 0 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Visual:rotation_degrees")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.101, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 1, 1.1, 1.2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.00170029, 1 ),
-"update": 0,
-"values": [ 0.0, 0.0, 0.0, 22.2256, 118.115, 229.335, 381.977, 451.315, 539.449, 539.449, 466.841, 360.0, 0.0 ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Visual:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 0.7, 0.8, 0.9, 1, 1.1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1, 0.480409 ), Vector2( 1, 0.7 ), Vector2( 1, 1 ), Vector2( 1, 1 ) ]
-}
-tracks/3/type = "method"
-tracks/3/path = NodePath(".")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0.9 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "trigger_damage_taken"
-} ]
-}
-
-[sub_resource type="Animation" id=5]
-tracks/0/type = "value"
-tracks/0/path = NodePath("Visual:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 0.8 ),
-"transitions": PoolRealArray( 0.101532, 1, 1.62451, 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, 12 ), Vector2( 0, 5 ), Vector2( 0, 0 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Visual:rotation_degrees")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ 0.0, 15.0, 0.0 ]
-}
-tracks/2/type = "method"
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0.1 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "trigger_damage_taken"
-} ]
-}
-
-[sub_resource type="Animation" id=6]
-tracks/0/type = "value"
-tracks/0/path = NodePath("Visual:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.5, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, -9 ), Vector2( -0.148651, -14.5744 ), Vector2( 7.20956, -4.09452 ), Vector2( 0, 0 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Visual:rotation_degrees")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.5, 0.6, 0.9, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ 0.0, 0.0, 11.0279, 79.222, 89.9838, 48.5622, 0.0 ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Visual:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 0.5, 0.6, 0.9, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 0.518667, 1.16465 ), Vector2( 1, 1 ), Vector2( 1, 1 ) ]
-}
-tracks/3/type = "method"
-tracks/3/path = NodePath(".")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0.6 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "trigger_damage_taken"
-} ]
-}
-
-[node name="Player" type="KinematicBody2D" groups=[
-"player",
-]]
+[node name="Player" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-rotation = 1.57079
-shape = SubResource( 1 )
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2( 0, 0.353951 )
+rotation = 0.0
+shape = SubResource( 3 )
 
-[node name="Visual" type="Node2D" parent="."]
+[node name="NormalEmission" type="CPUParticles2D" parent="." index="1"]
+position = Vector2( 0.120113, 21.1382 )
+scale = Vector2( 0.8, 0.8 )
+amount = 32
+lifetime = 0.5
+texture = ExtResource( 4 )
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector2( 0, 1 )
+spread = 25.0
+gravity = Vector2( 0, 50 )
+initial_velocity = 40.0
+angular_velocity = 30.0
+color_ramp = SubResource( 2 )
 
-[node name="Sprite" type="AnimatedSprite" parent="Visual"]
-position = Vector2( 0.5, -15 )
-frames = ExtResource( 1 )
-animation = "nw"
-frame = 1
-playing = true
+[node name="BoostEmission" type="CPUParticles2D" parent="." index="2"]
+position = Vector2( 0.544434, 21.8244 )
+scale = Vector2( 0.8, 0.8 )
+amount = 96
+lifetime = 0.7
+texture = ExtResource( 4 )
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector2( 0, 1 )
+spread = 15.0
+gravity = Vector2( 0, 50 )
+initial_velocity = 65.0
+angular_velocity = 30.0
+color_ramp = SubResource( 1 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/death = SubResource( 2 )
-anims/loremaster = SubResource( 3 )
-anims/slam = SubResource( 4 )
-anims/slap = SubResource( 5 )
-anims/throw = SubResource( 6 )
+[node name="Visual" parent="." index="3"]
+position = Vector2( 7.45058e-09, 1.75834e-06 )
+scale = Vector2( 1, 1 )
 
-[node name="RayCast" type="RayCast2D" parent="."]
-enabled = true
-cast_to = Vector2( 0, 12 )
-collision_mask = 2
+[node name="Hull" parent="Visual" index="0"]
+position = Vector2( 0, -0.23345 )
+texture = ExtResource( 3 )
+
+[node name="Cannons" type="Node2D" parent="." index="4"]
+
+[node name="DirectCannon2" parent="Cannons" index="0" instance=ExtResource( 5 )]
+position = Vector2( 21.5383, 2.57953 )
+
+[node name="DirectCannon" parent="Cannons" index="1" instance=ExtResource( 5 )]
+position = Vector2( -20.8346, 2.57953 )

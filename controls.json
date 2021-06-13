@@ -33,66 +33,6 @@
                     "scancode": "F"
                 }
             ]
-        },
-        {
-            "action": "move_left",
-            "events": [
-                {
-                    "scancode": "A"
-                },
-                {
-                    "scancode": "Left"
-                },
-                {
-                    "axis": "Left Stick X",
-                    "axis_value": -1
-                }
-            ]
-        },
-        {
-            "action": "move_right",
-            "events": [
-                {
-                    "scancode": "D"
-                },
-                {
-                    "scancode": "Right"
-                },
-                {
-                    "axis": "Left Stick X",
-                    "axis_value": 1
-                }
-            ]
-        },
-        {
-            "action": "move_up",
-            "events": [
-                {
-                    "scancode": "W"
-                },
-                {
-                    "scancode": "Up"
-                },
-                {
-                    "axis": "Left Stick Y",
-                    "axis_value": 1
-                }
-            ]
-        },
-        {
-            "action": "move_down",
-            "events": [
-                {
-                    "scancode": "S"
-                },
-                {
-                    "scancode": "Down"
-                },
-                {
-                    "axis": "Left Stick Y",
-                    "axis_value": -1
-                }
-            ]
         }
     ],
     "editor": [
@@ -115,7 +55,18 @@
     ],
     "game": [
         {
-            "action": "interact",
+            "action": "shoot",
+            "events": [
+                {
+                    "scancode": "E"
+                },
+				{
+                    "scancode": "Space"
+                }
+            ]
+        },
+        {
+            "action": "shoot",
             "events": [
                 {
                     "scancode": "E"
@@ -170,6 +121,66 @@
             "events": [
                 {
                     "scancode": "Shift"
+                }
+            ]
+        },
+        {
+            "action": "turn_left",
+            "events": [
+                {
+                    "scancode": "A"
+                },
+                {
+                    "scancode": "Left"
+                },
+                {
+                    "axis": "Left Stick X",
+                    "axis_value": -1
+                }
+            ]
+        },
+        {
+            "action": "turn_right",
+            "events": [
+                {
+                    "scancode": "D"
+                },
+                {
+                    "scancode": "Right"
+                },
+                {
+                    "axis": "Left Stick X",
+                    "axis_value": 1
+                }
+            ]
+        },
+        {
+            "action": "accelerate",
+            "events": [
+                {
+                    "scancode": "W"
+                },
+                {
+                    "scancode": "Up"
+                },
+                {
+                    "axis": "Left Stick Y",
+                    "axis_value": 1
+                }
+            ]
+        },
+        {
+            "action": "decelerate",
+            "events": [
+                {
+                    "scancode": "S"
+                },
+                {
+                    "scancode": "Down"
+                },
+                {
+                    "axis": "Left Stick Y",
+                    "axis_value": -1
                 }
             ]
         }

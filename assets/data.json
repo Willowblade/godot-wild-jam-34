@@ -2,6 +2,15 @@
     "upgrades": {
     },
     "player": {
+        "base_stats": {
+            "acceleration": 500,
+            "max_speed": 500,
+            "brake_speed": 2,
+            "turn_speed": 3,
+            "boost_power": 1.8,
+            "max_health": 50,
+            "max_shields": 80
+        }
     },
     "enemies": {
     },
