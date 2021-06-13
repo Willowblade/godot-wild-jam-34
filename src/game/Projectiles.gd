@@ -19,6 +19,7 @@ func shoot_railgun_bullet(properties, source: Node2D, target: Node2D):
 	add_child(railgun_bullet_instance)
 	railgun_bullet_instance.position = source.global_position
 	railgun_bullet_instance.rotation = source.global_rotation + PI
+
 	if target == null:
 		railgun_bullet_instance.set_size(properties.distance)
 	else:

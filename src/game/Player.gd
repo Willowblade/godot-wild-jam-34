@@ -40,7 +40,7 @@ func refresh_stats():
 	turn_speed = player_stats.turn_speed
 	max_speed = player_stats.max_speed
 	boost_power = player_stats.boost_power
-	emit_signal("updated_stats", stats)
+#	emit_signal("updated_stats", stats)
 
 
 func update_acceleration_animation():
@@ -92,9 +92,15 @@ func _physics_process(delta):
 
 	if Input.is_action_pressed("turn_left"):
 		rotation -= turn_speed * delta
+		$TurnLeftEmission.emitting = true
+	else:
+		$TurnLeftEmission.emitting = false
 
 	if Input.is_action_pressed("turn_right"):
 		rotation += turn_speed * delta
+		$TurnRightEmission.emitting = true
+	else:
+		$TurnRightEmission.emitting = false
 
 	if Input.is_action_pressed("shoot"):
 		shoot()

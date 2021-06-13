@@ -2,7 +2,7 @@
 
 [ext_resource path="res://src/game/Ship.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/game/Player.gd" type="Script" id=2]
-[ext_resource path="res://assets/graphics/ships/player.png" type="Texture" id=3]
+[ext_resource path="res://assets/graphics/ships/player-thick-outline.png" type="Texture" id=3]
 [ext_resource path="res://assets/graphics/ships/trail/particle.png" type="Texture" id=4]
 [ext_resource path="res://src/game/bullets/DirectCannon.tscn" type="PackedScene" id=5]
 
@@ -41,7 +41,39 @@ initial_velocity = 40.0
 angular_velocity = 30.0
 color_ramp = SubResource( 2 )
 
-[node name="BoostEmission" type="CPUParticles2D" parent="." index="2"]
+[node name="TurnRightEmission" type="CPUParticles2D" parent="." index="2"]
+position = Vector2( -22.1636, 8.94518 )
+rotation = 1.11095
+scale = Vector2( 0.5, 0.5 )
+amount = 32
+lifetime = 0.5
+texture = ExtResource( 4 )
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector2( 0, 1 )
+spread = 25.0
+gravity = Vector2( 0, 50 )
+initial_velocity = 40.0
+angular_velocity = 30.0
+color_ramp = SubResource( 2 )
+
+[node name="TurnLeftEmission" type="CPUParticles2D" parent="." index="3"]
+position = Vector2( 22.4039, 8.10429 )
+rotation = -1.16126
+scale = Vector2( 0.5, 0.5 )
+amount = 32
+lifetime = 0.5
+texture = ExtResource( 4 )
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector2( 0, 1 )
+spread = 25.0
+gravity = Vector2( 0, 50 )
+initial_velocity = 40.0
+angular_velocity = 30.0
+color_ramp = SubResource( 2 )
+
+[node name="BoostEmission" type="CPUParticles2D" parent="." index="4"]
 position = Vector2( 0.544434, 21.8244 )
 scale = Vector2( 0.8, 0.8 )
 amount = 96
@@ -56,15 +88,15 @@ initial_velocity = 65.0
 angular_velocity = 30.0
 color_ramp = SubResource( 1 )
 
-[node name="Visual" parent="." index="3"]
+[node name="Visual" parent="." index="5"]
 position = Vector2( 7.45058e-09, 1.75834e-06 )
 scale = Vector2( 1, 1 )
 
 [node name="Hull" parent="Visual" index="0"]
-position = Vector2( 0, -0.23345 )
+scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 3 )
 
-[node name="Cannons" type="Node2D" parent="." index="4"]
+[node name="Cannons" type="Node2D" parent="." index="6"]
 
 [node name="DirectCannon2" parent="Cannons" index="0" instance=ExtResource( 5 )]
 position = Vector2( 21.5383, 2.57953 )
