@@ -1,6 +1,6 @@
 # Godot Wild Jam 29
 
-Isabella Lau, Jerico Landry, and Laurent Van Acker's entry for the Godot Wild Jam 29
+Isabella Lau, Jerico Landry, Romeromey and Laurent Van Acker's entry for the Godot Wild Jam 29
 
 This project also shows how to integrate your Godot pipeline and send it to itch via butler.
 
