@@ -12,7 +12,6 @@ func _ready():
 func spawn_speedline(player: Player):
 	if randf() > 0.05:
 		return
-	print("Adding speed line")
 	var speed_line_instance = SpeedLineScene.instance()
 	add_child(speed_line_instance)
 	speed_line_instance.global_position = player.global_position + Vector2(randf() * 1000 - 500, randf() * 1000 - 500)

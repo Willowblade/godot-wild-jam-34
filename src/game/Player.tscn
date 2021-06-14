@@ -16,7 +16,9 @@ _data = [ Vector2( 0, 0.2 ), 0.0, 0.0, 0, 0, Vector2( 0.488372, 0.290909 ), 0.0,
 _data = [ Vector2( 0, 0.363636 ), 0.0, 0.0, 0, 0, Vector2( 0.436047, 0.445455 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.681818 ), 0.0, 0.0, 0, 0 ]
 
 [node name="Player" instance=ExtResource( 1 )]
-collision_layer = 4
+position = Vector2( 0.314972, 0.132435 )
+collision_layer = 5
+collision_mask = 5
 script = ExtResource( 2 )
 
 [node name="Visual" parent="." index="0"]
@@ -136,7 +138,43 @@ radial_accel = 10.0
 scale_amount = 0.25
 color_ramp = ExtResource( 8 )
 
-[node name="Cannons" type="Node2D" parent="." index="5"]
+[node name="StrafeRightEmission" type="CPUParticles2D" parent="." index="5"]
+position = Vector2( -25.8314, 7.10829 )
+rotation = 1.56664
+z_index = -1
+amount = 9
+speed_scale = 3.0
+fixed_fps = 100
+texture = ExtResource( 7 )
+flag_align_y = true
+direction = Vector2( 0, 1 )
+spread = 0.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 30.0
+linear_accel = -10.0
+radial_accel = 10.0
+scale_amount = 0.25
+color_ramp = ExtResource( 8 )
+
+[node name="StrafeLeftEmission" type="CPUParticles2D" parent="." index="6"]
+position = Vector2( 24.8525, 7.52211 )
+rotation = -1.55856
+z_index = -1
+amount = 9
+speed_scale = 3.0
+fixed_fps = 100
+texture = ExtResource( 7 )
+flag_align_y = true
+direction = Vector2( 0, 1 )
+spread = 0.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 30.0
+linear_accel = -10.0
+radial_accel = 10.0
+scale_amount = 0.25
+color_ramp = ExtResource( 8 )
+
+[node name="Cannons" type="Node2D" parent="." index="7"]
 
 [node name="DirectCannon2" parent="Cannons" index="0" instance=ExtResource( 5 )]
 position = Vector2( 21.5383, 2.57953 )
@@ -144,5 +182,5 @@ position = Vector2( 21.5383, 2.57953 )
 [node name="DirectCannon" parent="Cannons" index="1" instance=ExtResource( 5 )]
 position = Vector2( -20.8346, 2.57953 )
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="6"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="8"]
 polygon = PoolVector2Array( 0.0556946, -20.9827, 8.98483, -5.80314, 8.38955, 4.41576, 25.851, 3.82048, 21.4856, 17.9087, -0.341156, 22.3732, -22.4656, 16.3213, -26.3349, 2.53072, -8.17895, 4.11812, -8.97265, -5.60471 )

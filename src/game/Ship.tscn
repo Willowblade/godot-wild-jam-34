@@ -3,7 +3,8 @@
 [ext_resource path="res://src/game/Ship.gd" type="Script" id=1]
 
 [node name="Ship" type="KinematicBody2D" groups=[
-"player",
+"orbitable",
+"ships",
 ]]
 position = Vector2( 0, 0.132435 )
 script = ExtResource( 1 )

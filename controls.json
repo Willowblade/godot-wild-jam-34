@@ -183,6 +183,18 @@
                     "axis_value": -1
                 }
             ]
+        },
+        {
+            "action": "strafe_right",
+            "events": [
+                
+            ]
+        },
+        {
+            "action": "strafe_left",
+            "events": [
+                
+            ]
         }
     ]
 }
