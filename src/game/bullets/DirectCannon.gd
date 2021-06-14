@@ -11,6 +11,7 @@ var can_fire = true
 
 func _ready():
 	shoot_timeout.connect("timeout", self, "_on_shoot_timeout")
+	raycast.cast_to = Vector2(0, -DISTANCE)
 
 
 func _on_shoot_timeout():

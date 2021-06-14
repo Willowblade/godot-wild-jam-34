@@ -1,4 +1,4 @@
-extends "res://src/game/Ship.gd"
+extends Ship
 class_name Player
 
 
@@ -31,8 +31,6 @@ func _ready():
 
 func refresh_stats():
 	var player_stats = State.player.get_stats()
-	print('Player stats')
-	print(player_stats)
 	stats.health = player_stats.max_health
 	stats.shields = player_stats.max_shields
 	acceleration = player_stats.acceleration
@@ -110,4 +108,5 @@ func _physics_process(delta):
 
 	update_acceleration_animation()
 
-	position += velocity * delta
+	move_and_collide(velocity * delta)
+#	position += velocity * delta

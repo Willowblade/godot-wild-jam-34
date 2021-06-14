@@ -9,6 +9,7 @@ script = ExtResource( 2 )
 [node name="RayCast" type="RayCast2D" parent="." index="0"]
 enabled = true
 cast_to = Vector2( 0, -200 )
+collision_mask = 15
 
 [node name="ShootTimeout" type="Timer" parent="." index="1"]
 wait_time = 0.3

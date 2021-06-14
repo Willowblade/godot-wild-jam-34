@@ -19,7 +19,6 @@ func _process(delta):
 		speed_lines.spawn_speedline(player)
 	# intention here is that we can see if the velocity still changes (player is turning/accelerating at lower speeds, will turn off)
 	elif velocity.length() > 100 and velocity.normalized() == previous_velocity.normalized():
-		print("equal velocity")
 		speed_lines.visible = true
 		speed_lines.spawn_speedline(player)
 	else:
