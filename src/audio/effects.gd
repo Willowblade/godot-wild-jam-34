@@ -10,6 +10,8 @@ onready var effect_players = []
 onready var effects_playing = {}
 
 
+
+
 func _ready():
 	pass
 

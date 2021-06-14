@@ -9,6 +9,7 @@ var previous_velocity = Vector2(0, 0)
 
 func _ready():
 	player.connect("shoot", projectiles, "_on_projectile_fired")
+	AudioEngine.play_background_music("flight")
 
 
 func _process(delta):

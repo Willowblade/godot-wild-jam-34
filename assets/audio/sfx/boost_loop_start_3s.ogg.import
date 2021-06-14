@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/boost_loop_start_3s.ogg-fd5872cb7c70cbf979cd215b26105e93.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/sfx/boost_loop_start_3s.ogg"
+dest_files=[ "res://.import/boost_loop_start_3s.ogg-fd5872cb7c70cbf979cd215b26105e93.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -47,12 +47,16 @@ func update_acceleration_animation():
 	# TODO Use one trail but change properties -> might be  more elegant approach to
 	# properly swap between different trails.
 	if next_acceleration_state == "NONE":
+		AudioEngine.stop_thruster()
 		$NormalEmission.emitting = false
 		$BoostEmission.emitting = false
 	elif next_acceleration_state == "NORMAL":
+#		AudioEngine.play_thruster("thrusters", false)
+		AudioEngine.play_thruster("jet", false)
 		$NormalEmission.emitting = true
 		$BoostEmission.emitting = false
 	elif next_acceleration_state == "BOOST":
+		AudioEngine.play_thruster("jet", true)
 		$NormalEmission.emitting = false
 		$BoostEmission.emitting = true
 
@@ -62,7 +66,6 @@ func update_acceleration_animation():
 func shoot():
 	for cannon in cannons:
 		var shot_result = cannon.shoot()
-		print("Shot result", shot_result)
 		if shot_result != null:
 			emit_signal("shoot", shot_result)
 			return
