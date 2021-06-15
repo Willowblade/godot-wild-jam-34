@@ -10,8 +10,11 @@ extents = Vector2( 31.6136, 31.6308 )
 "asteroids",
 "orbitable",
 ]]
+collision_mask = 31
 mass = 100.0
 gravity_scale = 0.0
+contacts_reported = 10
+contact_monitor = true
 linear_damp = 0.1
 script = ExtResource( 2 )
 

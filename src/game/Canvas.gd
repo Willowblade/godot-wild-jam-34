@@ -71,6 +71,7 @@ func update_orbitables(include_ships = false):
 			print("updating ship position?")
 			var ship_data = orbitables.ships[ship]
 			ship.position = (ship_data.original_position - sun.position).rotated(last_timestamp * 2 * PI) + sun.position
+			ship.origin = ship.position
 
 		for asteroid in orbitables.asteroids:
 			print("updating asteroid position?")

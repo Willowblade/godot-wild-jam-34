@@ -4,10 +4,28 @@
 [ext_resource path="res://src/game/Enemy.gd" type="Script" id=2]
 
 [node name="Enemy" instance=ExtResource( 1 )]
-collision_layer = 3
-collision_mask = 2
+collision_layer = 4
+collision_mask = 9
 script = ExtResource( 2 )
 
 [node name="DetectionArea" type="Area2D" parent="." index="1"]
 
 [node name="NotifyArea" type="Area2D" parent="." index="2"]
+
+[node name="Debug" type="Label" parent="." index="3"]
+margin_left = -20.9763
+margin_top = -47.1967
+margin_right = 19.0237
+margin_bottom = -33.1967
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Target" type="Label" parent="." index="4"]
+margin_left = -20.9763
+margin_top = -27.8472
+margin_right = 19.0237
+margin_bottom = -13.8472
+__meta__ = {
+"_edit_use_anchors_": false
+}

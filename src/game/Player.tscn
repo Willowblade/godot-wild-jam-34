@@ -16,9 +16,9 @@ _data = [ Vector2( 0, 0.2 ), 0.0, 0.0, 0, 0, Vector2( 0.488372, 0.290909 ), 0.0,
 _data = [ Vector2( 0, 0.363636 ), 0.0, 0.0, 0, 0, Vector2( 0.436047, 0.445455 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.681818 ), 0.0, 0.0, 0, 0 ]
 
 [node name="Player" instance=ExtResource( 1 )]
-position = Vector2( 0.314972, 0.132435 )
-collision_layer = 5
-collision_mask = 5
+position = Vector2( 0, 0 )
+collision_layer = 2
+collision_mask = 17
 script = ExtResource( 2 )
 
 [node name="Visual" parent="." index="0"]

@@ -11,15 +11,15 @@ func _ready():
 	# Maybe make different groups and settings for effects in the Effects node
 	stream = audio_stream_random_pitch
 	connect("finished", self, "_on_finished")
-	
+
 func _on_finished():
 	emit_signal("audio_finished", self)
 
 func is_available():
 	return currently_playing == null
-	
+
 func play_effect(track_path: String):
-	# TODO might not be always desired...		
+	# TODO might not be always desired...
 	var effect_audio_stream = load(track_path)
 	effect_audio_stream.loop = false
 	stream.audio_stream = effect_audio_stream
