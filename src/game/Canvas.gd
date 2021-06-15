@@ -24,7 +24,7 @@ func get_orbitable_type(orbitable):
 	elif orbitable.is_in_group("stations"):
 		return "station"
 	elif orbitable.is_in_group("asteroids"):
-		return "station"
+		return "asteroid"
 
 func _ready():
 	player.connect("shoot", projectiles, "_on_projectile_fired")
@@ -48,8 +48,8 @@ func _ready():
 			}
 
 
-#	last_timestamp = date_to_day_percentage()
-#	update_orbitables(true)
+	last_timestamp = date_to_day_percentage()
+	update_orbitables(true)
 
 
 
@@ -74,19 +74,20 @@ func update_orbitables(include_ships = false):
 		for asteroid in orbitables.asteroids:
 			print("updating asteroid position?")
 			var asteroid_data = orbitables.asteroids[asteroid]
-			asteroid.position = (asteroid_data.original_position - sun.position).rotated(last_timestamp * 2 * PI) + sun.position
+			asteroid.update_position((asteroid_data.original_position - sun.position).rotated(last_timestamp * 2 * PI) + sun.position)
+#			var updated_position = Physics2DDirectBodyState.new()
+#			updated_position.transform = Transform2D(0, (asteroid_data.original_position - sun.position).rotated(last_timestamp * 2 * PI) + sun.position)
+#			asteroid._integrate_forces(updated_position)
+#			updated_position.integrate_forces()
+#			asteroid.position = (asteroid_data.original_position - sun.position).rotated(last_timestamp * 2 * PI) + sun.position
 
 
 
 func _physics_process(delta):
 	var now = date_to_day_percentage()
 	if (now != last_timestamp):
-		if last_timestamp == null:
-			last_timestamp = now
-			update_orbitables(true)
-		else:
-			last_timestamp = now
-			update_orbitables(false)
+		last_timestamp = now
+		update_orbitables(false)
 
 
 

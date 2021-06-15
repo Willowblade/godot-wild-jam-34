@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://src/game/Asteroid.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 31.6136, 31.6308 )
@@ -12,6 +13,7 @@ extents = Vector2( 31.6136, 31.6308 )
 mass = 10.0
 gravity_scale = 0.0
 linear_damp = 0.1
+script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
