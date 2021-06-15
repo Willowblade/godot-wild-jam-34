@@ -55,15 +55,16 @@ func _ready():
 
 
 func date_to_day_percentage():
+	var universe_start = 1623756429 #  == 15/06/2021 13:28  -> completion of this feature
 	var now = OS.get_unix_time()
-	return float(now % 86400) / 86400
+	return abs(now - universe_start) / 86400
 
 
 func update_orbitables(include_ships = false):
 #	return
 	for station in orbitables.stations:
 		var station_data = orbitables.stations[station]
-		station.position = (station_data.original_position - sun.position).rotated(last_timestamp * 2 * PI) + sun.position
+		station.position = (station_data.original_position - sun.position).rotated(last_timestamp * 2 * PI * station.orbit_speed) + sun.position
 
 	if include_ships:
 		for ship in orbitables.ships:
@@ -74,7 +75,7 @@ func update_orbitables(include_ships = false):
 		for asteroid in orbitables.asteroids:
 			print("updating asteroid position?")
 			var asteroid_data = orbitables.asteroids[asteroid]
-			asteroid.update_position((asteroid_data.original_position - sun.position).rotated(last_timestamp * 2 * PI) + sun.position)
+			asteroid.update_position((asteroid_data.original_position - sun.position).rotated(last_timestamp * 2 * PI * asteroid.orbit_speed) + sun.position)
 #			var updated_position = Physics2DDirectBodyState.new()
 #			updated_position.transform = Transform2D(0, (asteroid_data.original_position - sun.position).rotated(last_timestamp * 2 * PI) + sun.position)
 #			asteroid._integrate_forces(updated_position)

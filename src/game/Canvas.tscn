@@ -144,12 +144,13 @@ position = Vector2( 240.543, -402.686 )
 
 [node name="Container" parent="." instance=ExtResource( 9 )]
 position = Vector2( 0.538391, 93.1507 )
+gravity_scale = 0.0
 
 [node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="."]
-node_a = NodePath("../Player")
 node_b = NodePath("../Container")
 length = 100.0
 rest_length = 50.0
+damping = 6.44
 
 [node name="Sun" parent="." instance=ExtResource( 10 )]
 position = Vector2( -4293.81, 2469.45 )

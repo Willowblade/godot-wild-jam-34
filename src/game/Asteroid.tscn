@@ -10,7 +10,7 @@ extents = Vector2( 31.6136, 31.6308 )
 "asteroids",
 "orbitable",
 ]]
-mass = 10.0
+mass = 100.0
 gravity_scale = 0.0
 linear_damp = 0.1
 script = ExtResource( 2 )

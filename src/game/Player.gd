@@ -23,7 +23,7 @@ var stats = {
 
 signal shoot
 
-var weight = 10
+var mass = 10
 
 var colliding_steps = 0
 
@@ -128,51 +128,100 @@ func _physics_process(delta):
 
 	var collision: KinematicCollision2D = move_and_collide(velocity * delta, false, true, true)
 	move_and_collide(velocity * delta, true)
-	if collision != null and colliding_steps == 0:
+	if collision != null:
+		if colliding_steps != 0:
+			return
 		if not collision.collider is RigidBody2D:
 			return
+
 		var collider: RigidBody2D = collision.collider
+		var collider_position = collider.position
 		var collider_velocity = collision.collider_velocity
 		var speed_difference = velocity - collider_velocity
 		var force = Vector2()
 		var force_collider = Vector2()
 		if sign(velocity.x) == sign(collider_velocity.x):
-			if speed_difference.x > 0:
-				force.x = weight * speed_difference.x
-			elif speed_difference.x < 0:
-				force_collider.x  = collider.weight * speed_difference.x
+			if sign(velocity.x) == 1:
+				if collider_velocity.x > velocity.x:
+					if collider_position.x > position.x:
+						pass
+					else:
+						force_collider.x = collider.mass * (collider_velocity.x - velocity.x)
+				elif collider_velocity.x < velocity.x:
+					if collider_position.x > position.x:
+						force.x = mass * (velocity.x - collider_velocity.x)
+					else:
+						pass
+			else:
+				# negative velocities
+				if collider_velocity.x < velocity.x:
+					if collider_position.x < position.x:
+						pass
+					else:
+						force_collider.x = collider.mass * (collider_velocity.x - velocity.x)
+				elif collider_velocity.x > velocity.x:
+					if collider_position.x < position.x:
+						force.x = mass * (velocity.x - collider_velocity.x)
+					else:
+						pass
 		else:
-			force.x = weight * velocity.x
-			force_collider.x  = collider.weight * collider_velocity.x
-		if sign(velocity.y) == sign(collider_velocity.y):
-			if speed_difference.y > 0:
-				force.y = weight * speed_difference.y
-			elif speed_difference.y < 0:
-				force_collider.y  = collider.weight * speed_difference.y
-		else:
-			force.y = weight * velocity.y
-			force_collider.y = collider.weight * collider_velocity.y
+			force.x = mass * velocity.x
+			force_collider.x  = collider.mass * collider_velocity.x
 
-		var delta_v = (force_collider - force) / weight * delta
+		if sign(velocity.y) == sign(collider_velocity.y):
+			if sign(velocity.y) == 1:
+				if collider_velocity.y > velocity.y:
+					if collider_position.y > position.y:
+						pass
+					else:
+						force_collider.y = collider.mass * (collider_velocity.y - velocity.y)
+				elif collider_velocity.y < velocity.y:
+					if collider_position.y > position.y:
+						force.y = mass * (velocity.y - collider_velocity.y)
+					else:
+						pass
+			else:
+				# negative velocities
+				if collider_velocity.y < velocity.y:
+					if collider_position.y < position.y:
+						pass
+					else:
+						force_collider.y = collider.mass * (collider_velocity.y - velocity.y)
+				elif collider_velocity.y > velocity.y:
+					if collider_position.y < position.y:
+						force.y = mass * (velocity.y - collider_velocity.y)
+					else:
+						pass
+		else:
+			force.y = mass * velocity.y
+			force_collider.y  = collider.mass * collider_velocity.y
+
+		var delta_v = (force_collider * mass - force * collider.mass ) / mass * delta / 2
+		print(force_collider, force, delta_v)
 		var impulse = (force - force_collider) * delta
 
 #		velocity = velocity + (force_collider - force) * delta * delta * 0.5 / weight * collider.weight
 #		velocity = velocity + (force_collider * weight - force * collider.weight) * delta * delta * 0.5 / weight
 #		collider.apply_impulse(Vector2(0, 0), (force * collider.weight - force_collider * weight) * delta * delta * 0.5 / collider.weight * weight)
+		var max_knockback = 20
+		if mass > 2 * collider.mass:
+			max_knockback = 0
+		elif collider.mass > 4 * mass:
+			max_knockback = 30
+		if velocity.x > 0:
+			velocity.x = max(velocity.x + delta_v.x, -max_knockback)
+		else:
+			velocity.x = min(velocity.x + delta_v.x, max_knockback)
+		if velocity.y > 0:
+			velocity.y = max(velocity.y + delta_v.y, -max_knockback)
+		else:
+			velocity.y = min(velocity.y + delta_v.y, max_knockback)
 
-		velocity = velocity + delta_v
-		collider.apply_impulse(Vector2(0, 0), impulse * weight / collider.weight)
+		collider.apply_impulse(Vector2(0, 0), impulse * mass / collider.mass / 2)
 
 		colliding_steps += 1
 	else:
 		colliding_steps = 0
-
-		#		var force = weight * velocity / delta
-		#		var force_collider = collider.weight * collider_velocity / delta
-		#		var force_total = force + force_collider
-		#
-		#		velocity = velocity + (force_collider - force) * delta * delta * collider.weight / weight
-		#		collider.apply_impulse(Vector2(0, 0), (force - force_collider) * delta * delta * 0.2 * weight / collider.weight)
 
 
 #		velocity -= collision * delta * brake_speed

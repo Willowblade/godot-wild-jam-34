@@ -4,6 +4,8 @@ extends RigidBody2D
 var physics_body = null
 var position_to_update = null
 
+export var orbit_speed = 0.9
+
 func _ready():
 	pass
 
