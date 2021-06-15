@@ -129,6 +129,8 @@ func _physics_process(delta):
 	var collision: KinematicCollision2D = move_and_collide(velocity * delta, false, true, true)
 	move_and_collide(velocity * delta, true)
 	if collision != null and colliding_steps == 0:
+		if not collision.collider is RigidBody2D:
+			return
 		var collider: RigidBody2D = collision.collider
 		var collider_velocity = collision.collider_velocity
 		var speed_difference = velocity - collider_velocity

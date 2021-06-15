@@ -48,8 +48,8 @@ func _ready():
 			}
 
 
-	last_timestamp = date_to_day_percentage()
-	update_orbitables(true)
+#	last_timestamp = date_to_day_percentage()
+#	update_orbitables(true)
 
 
 
@@ -60,24 +60,35 @@ func date_to_day_percentage():
 
 
 func update_orbitables(include_ships = false):
+#	return
 	for station in orbitables.stations:
 		var station_data = orbitables.stations[station]
 		station.position = (station_data.original_position - sun.position).rotated(last_timestamp * 2 * PI) + sun.position
 
-	for asteroid in orbitables.asteroids:
-		var asteroid_data = orbitables.asteroids[asteroid]
-		asteroid.position = (asteroid_data.original_position - sun.position).rotated(last_timestamp * 2 * PI) + sun.position
-
 	if include_ships:
 		for ship in orbitables.ships:
+			print("updating ship position?")
 			var ship_data = orbitables.ships[ship]
 			ship.position = (ship_data.original_position - sun.position).rotated(last_timestamp * 2 * PI) + sun.position
 
+		for asteroid in orbitables.asteroids:
+			print("updating asteroid position?")
+			var asteroid_data = orbitables.asteroids[asteroid]
+			asteroid.position = (asteroid_data.original_position - sun.position).rotated(last_timestamp * 2 * PI) + sun.position
 
 
-func _process(delta):
-	if (date_to_day_percentage() != last_timestamp):
-		update_orbitables(false)
+
+func _physics_process(delta):
+	var now = date_to_day_percentage()
+	if (now != last_timestamp):
+		if last_timestamp == null:
+			last_timestamp = now
+			update_orbitables(true)
+		else:
+			last_timestamp = now
+			update_orbitables(false)
+
+
 
 	var velocity = player.velocity
 	if velocity.length() > 380:
