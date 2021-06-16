@@ -22,12 +22,43 @@ var stats = {
 
 }
 
+
+var damage_timeout = 0.0
+
+
+func death():
+	pass
+
+func take_damage(damage: int):
+	damage_timeout = 0.0
+	var damage_absorbed_by_shields = damage if stats.shields > damage else stats.shields
+	var damage_to_hull = damage - damage_absorbed_by_shields
+	if damage_absorbed_by_shields > 0:
+		stats.shields -= damage_absorbed_by_shields
+		print("Shields were damaged")
+	if damage_to_hull > 0:
+		stats.health -= damage_to_hull
+		print("Hull was damage")
+	if stats.health <= 0:
+		print("I was deleted!")
+		$Explosion.set_emitting(true)
+		$Visual.hide()
+		collision_layer = 0
+		collision_mask = 0
+		set_physics_process(false)
+		yield(get_tree().create_timer(2.0), "timeout")
+		death()
+		queue_free()
+
+
 func get_orientation():
 	return Vector2(0, -1).rotated(rotation)
 
 func load_stats(ship_stats):
 	stats.health = ship_stats.max_health
+	stats.max_health = ship_stats.max_health
 	stats.shields = ship_stats.max_shields
+	stats.max_shields = ship_stats.max_shields
 	acceleration = ship_stats.acceleration
 	brake_speed = ship_stats.brake_speed
 	turn_speed = ship_stats.turn_speed

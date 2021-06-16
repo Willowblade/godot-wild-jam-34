@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "RigidBody2D",
+"class": "Asteroid",
+"language": "GDScript",
+"path": "res://src/game/Asteroid.gd"
+}, {
 "base": "Node2D",
 "class": "Cannon",
 "language": "GDScript",
@@ -70,6 +75,7 @@ _global_script_classes=[ {
 "path": "res://src/autoload/state/Upgrade.gd"
 } ]
 _global_script_class_icons={
+"Asteroid": "",
 "Cannon": "",
 "DirectCannon": "",
 "Enemy": "",

@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/graphics/ships/armada/agile.png" type="Texture" id=1]
 [ext_resource path="res://src/game/Enemy.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/game/bullets/DirectCannon.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/game/Thruster.tres" type="Gradient" id=5]
+[ext_resource path="res://assets/graphics/ships/trail/player-trail-small.png" type="Texture" id=6]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 426.1
@@ -14,7 +16,6 @@ radius = 205.565
 "player",
 ] instance=ExtResource( 2 )]
 collision_layer = 2
-collision_mask = 9
 
 [node name="Hull" parent="Visual" index="0"]
 position = Vector2( 0, -9.36442 )
@@ -38,3 +39,73 @@ shape = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NotifyArea" index="0"]
 shape = SubResource( 2 )
+
+[node name="Solid" type="CPUParticles2D" parent="NormalEmission" index="0"]
+position = Vector2( 4.64075, 7.91171 )
+rotation = 0.00722153
+amount = 9
+speed_scale = 3.0
+fixed_fps = 100
+texture = ExtResource( 6 )
+flag_align_y = true
+direction = Vector2( 0, 1 )
+spread = 0.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 30.0
+linear_accel = -10.0
+radial_accel = 10.0
+scale_amount = 0.25
+color_ramp = ExtResource( 5 )
+
+[node name="Solid2" type="CPUParticles2D" parent="NormalEmission" index="1"]
+position = Vector2( -4.90017, 7.91171 )
+rotation = -0.000322011
+amount = 9
+speed_scale = 3.0
+fixed_fps = 100
+texture = ExtResource( 6 )
+flag_align_y = true
+direction = Vector2( 0, 1 )
+spread = 0.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 30.0
+linear_accel = -10.0
+radial_accel = 10.0
+scale_amount = 0.25
+color_ramp = ExtResource( 5 )
+
+[node name="Solid3" type="CPUParticles2D" parent="TurnRightEmission" index="0"]
+position = Vector2( -10.5125, 4.40403 )
+rotation = 0.131242
+scale = Vector2( 0.410152, 0.410152 )
+amount = 9
+speed_scale = 3.0
+fixed_fps = 100
+texture = ExtResource( 6 )
+flag_align_y = true
+direction = Vector2( 0, 1 )
+spread = 0.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 30.0
+linear_accel = -10.0
+radial_accel = 10.0
+scale_amount = 0.25
+color_ramp = ExtResource( 5 )
+
+[node name="Solid4" type="CPUParticles2D" parent="TurnLeftEmission" index="0"]
+position = Vector2( 10.674, 4.12341 )
+rotation = -0.179263
+scale = Vector2( 0.410152, 0.410152 )
+amount = 9
+speed_scale = 3.0
+fixed_fps = 100
+texture = ExtResource( 6 )
+flag_align_y = true
+direction = Vector2( 0, 1 )
+spread = 0.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 30.0
+linear_accel = -10.0
+radial_accel = 10.0
+scale_amount = 0.25
+color_ramp = ExtResource( 5 )

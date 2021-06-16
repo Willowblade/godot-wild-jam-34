@@ -2,7 +2,7 @@ extends Cannon
 class_name DirectCannon
 
 onready var shoot_timeout = $ShootTimeout
-onready var raycast = $RayCast
+onready var raycast: RayCast2D = $RayCast
 
 export var TIMEOUT = 0.3
 export var DISTANCE = 300
@@ -34,5 +34,6 @@ func shoot():
 		},
 		"source": self,
 		"target": raycast.get_collider(),
+		"hit_point": raycast.get_collision_point(),
 	}
 

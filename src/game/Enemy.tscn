@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://src/game/Ship.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/game/Enemy.gd" type="Script" id=2]
+[ext_resource path="res://src/game/ExplosionEmitter.tscn" type="PackedScene" id=3]
 
 [node name="Enemy" instance=ExtResource( 1 )]
 collision_layer = 4
@@ -13,6 +14,7 @@ script = ExtResource( 2 )
 [node name="NotifyArea" type="Area2D" parent="." index="2"]
 
 [node name="Debug" type="Label" parent="." index="3"]
+visible = false
 margin_left = -20.9763
 margin_top = -47.1967
 margin_right = 19.0237
@@ -22,6 +24,7 @@ __meta__ = {
 }
 
 [node name="Target" type="Label" parent="." index="4"]
+visible = false
 margin_left = -20.9763
 margin_top = -27.8472
 margin_right = 19.0237
@@ -29,3 +32,8 @@ margin_bottom = -13.8472
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="ExplosionEmitter" parent="Explosion" index="0" instance=ExtResource( 3 )]
+
+[node name="Raycast" type="RayCast2D" parent="." index="10"]
+collision_mask = 3

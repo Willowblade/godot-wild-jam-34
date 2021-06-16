@@ -10,6 +10,7 @@ onready var orbitables = {
 	"ships": {},
 	"stations": {},
 	"asteroids": {},
+	"normal": {},
 }
 
 var previous_velocity = Vector2(0, 0)
@@ -25,10 +26,12 @@ func get_orbitable_type(orbitable):
 		return "station"
 	elif orbitable.is_in_group("asteroids"):
 		return "asteroid"
+	else:
+		return "normal"
 
 func _ready():
 	player.connect("shoot", projectiles, "_on_projectile_fired")
-	AudioEngine.play_background_music("flight")
+	AudioEngine.play_background_music("explore")
 
 	for orbitable in orbitable_nodes:
 		if get_orbitable_type(orbitable) == "ship":
@@ -43,6 +46,11 @@ func _ready():
 			}
 		elif get_orbitable_type(orbitable) == "asteroid":
 			orbitables.asteroids[orbitable] = {
+				"distance": sun.position.distance_to(orbitable.position),
+				"original_position": orbitable.position
+			}
+		else:
+			orbitables.normal[orbitable] = {
 				"distance": sun.position.distance_to(orbitable.position),
 				"original_position": orbitable.position
 			}
@@ -65,6 +73,11 @@ func update_orbitables(include_ships = false):
 	for station in orbitables.stations:
 		var station_data = orbitables.stations[station]
 		station.position = (station_data.original_position - sun.position).rotated(last_timestamp * 2 * PI * station.orbit_speed) + sun.position
+
+	for normal in orbitables.normal:
+		var normal_data = orbitables.normal[normal]
+		normal.position = (normal_data.original_position - sun.position).rotated(last_timestamp * 2 * PI * normal.orbit_speed) + sun.position
+		normal.rotation = last_timestamp * 2 * PI * normal.orbit_speed
 
 	if include_ships:
 		for ship in orbitables.ships:

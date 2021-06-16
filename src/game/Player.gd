@@ -45,6 +45,8 @@ func shoot():
 	for cannon in cannons:
 		var shot_result = cannon.shoot()
 		if shot_result != null:
+			if shot_result.target:
+				shot_result.target.take_damage(10)
 			emit_signal("shoot", shot_result)
 			return
 
@@ -80,18 +82,6 @@ func _physics_process(delta):
 
 	if Input.is_action_pressed("shoot"):
 		shoot()
-
-	if Input.is_action_pressed("strafe_right"):
-		velocity += Vector2(100, 0).rotated(rotation) * delta
-		$StrafeRightEmission.emitting = true
-	else:
-		$StrafeRightEmission.emitting = false
-
-	if Input.is_action_pressed("strafe_left"):
-		velocity -= Vector2(100, 0).rotated(rotation) * delta
-		$StrafeLeftEmission.emitting = true
-	else:
-		$StrafeLeftEmission.emitting = false
 
 	if velocity.length() > max_speed:
 		velocity = velocity.normalized() * max_speed

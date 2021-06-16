@@ -6,6 +6,8 @@ export var faction = "Armada"
 onready var detection_area = $DetectionArea
 onready var notify_area = $NotifyArea
 
+onready var raycast = $Raycast
+
 var notifiers = []
 
 var origin = null
@@ -38,6 +40,8 @@ func _ready():
 	detection_area.connect("body_exited", self, "_on_body_exited_detection_area")
 	notify_area.connect("body_entered", self, "_on_body_entered_notify_area")
 	notify_area.connect("body_exited", self, "_on_body_exited_notify_area")
+	randomize()
+	rotation = randf() * 2 * PI
 
 
 func switch_to_investigate():
@@ -80,8 +84,12 @@ func turn_towards_target(delta):
 	var angle = target_orientation.angle_to(orientation)
 	if angle > 0 and angle < PI:
 		turn_left(delta)
+		$TurnLeftEmission.emitting = true
+		$TurnRightEmission.emitting = false
 	elif angle < 0 and angle > -PI:
 		turn_right(delta)
+		$TurnLeftEmission.emitting = false
+		$TurnRightEmission.emitting = true
 
 func move_towards_target(delta):
 	var orientation = get_orientation()
@@ -89,8 +97,10 @@ func move_towards_target(delta):
 	var angle_to_target = target_orientation.angle_to(orientation)
 	if abs(angle_to_target) < PI / 2:
 		accelerate(delta)
+		$NormalEmission.emitting = true
 	else:
 		brake(delta)
+		$NormalEmission.emitting = false
 
 
 func _physics_process(delta):
@@ -114,7 +124,20 @@ func _physics_process(delta):
 	if state == "CHASE":
 		target_position = target.position
 		turn_towards_target(delta)
-		if position.distance_to(target_position) < 200:
+
+		print((target_position - position).rotated(-rotation))
+		raycast.cast_to = (target_position - position).rotated(-rotation)
+
+		raycast.force_raycast_update()
+		var collider = raycast.get_collider()
+
+		if collider != null:
+			if not collider is Player:
+				print("Seeing ", collider, OS.get_unix_time())
+				# TODO was here adding collider logic for shooting asteroids
+			else:
+				print("Seeing player")
+		if position.distance_to(target_position) < 200 and position.distance_to(target_position) > 100:
 			brake(delta)
 		else:
 			move_towards_target(delta)
@@ -135,4 +158,3 @@ func _physics_process(delta):
 	var collision: KinematicCollision2D = move_and_collide(velocity * delta, false, true, true)
 	move_and_collide(velocity * delta, true)
 	handle_rigidbody_collision(collision, delta)
-

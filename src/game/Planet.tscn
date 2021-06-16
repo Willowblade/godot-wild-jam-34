@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/game/Planet.gd" type="Script" id=1]
+
+[node name="Planet" type="Sprite" groups=[
+"orbitable",
+]]
+rotation = -0.00340528
+z_index = -5
+script = ExtResource( 1 )

@@ -1,7 +1,7 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://src/game/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://src/game/Asteroid.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/game/asteroids/LargeAsteroid1.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/game/Canvas.gd" type="Script" id=3]
 [ext_resource path="res://src/game/Projectiles.gd" type="Script" id=4]
 [ext_resource path="res://src/game/SpeedLines.gd" type="Script" id=5]
@@ -13,6 +13,13 @@
 [ext_resource path="res://assets/graphics/PB3_2.png" type="Texture" id=11]
 [ext_resource path="res://assets/graphics/NEB1.png" type="Texture" id=12]
 [ext_resource path="res://src/game/Station.tscn" type="PackedScene" id=13]
+[ext_resource path="res://src/game/Planet.tscn" type="PackedScene" id=14]
+[ext_resource path="res://assets/graphics/planets/earth.png" type="Texture" id=15]
+[ext_resource path="res://assets/graphics/planets/mars.png" type="Texture" id=16]
+[ext_resource path="res://src/game/asteroids/SmallAsteroid1.tscn" type="PackedScene" id=17]
+[ext_resource path="res://src/game/asteroids/SmallAsteroid2.tscn" type="PackedScene" id=18]
+[ext_resource path="res://src/game/asteroids/SmallAsteroid3.tscn" type="PackedScene" id=19]
+[ext_resource path="res://src/game/asteroids/LargeAsteroid2.tscn" type="PackedScene" id=20]
 
 [node name="Canvas" type="Node2D"]
 script = ExtResource( 3 )
@@ -121,28 +128,44 @@ script = ExtResource( 5 )
 
 [node name="Asteroids" type="Node2D" parent="."]
 
-[node name="Asteroid" parent="Asteroids" instance=ExtResource( 2 )]
-position = Vector2( 219.161, -119.38 )
+[node name="LargeAsteroid1" parent="Asteroids" instance=ExtResource( 2 )]
+position = Vector2( -129.311, -112.321 )
 
-[node name="Asteroid2" parent="Asteroids" instance=ExtResource( 2 )]
-position = Vector2( -317.16, -171.053 )
+[node name="SmallAsteroid1" parent="Asteroids" instance=ExtResource( 17 )]
+position = Vector2( 179.336, -113.265 )
 
-[node name="Asteroid3" parent="Asteroids" instance=ExtResource( 2 )]
-position = Vector2( -277.069, 115.817 )
+[node name="SmallAsteroid2" parent="Asteroids" instance=ExtResource( 17 )]
+position = Vector2( -161.402, 141.581 )
 
-[node name="Asteroid4" parent="Asteroids" instance=ExtResource( 2 )]
-position = Vector2( -103.344, -350.123 )
+[node name="SmallAsteroid3" parent="Asteroids" instance=ExtResource( 17 )]
+position = Vector2( -91.5557, 249.183 )
 
-[node name="Asteroid5" parent="Asteroids" instance=ExtResource( 2 )]
-position = Vector2( 174.616, 252.124 )
+[node name="SmallAsteroid4" parent="Asteroids" instance=ExtResource( 18 )]
+position = Vector2( 275.611, 52.8569 )
 
-[node name="Asteroid6" parent="Asteroids" instance=ExtResource( 2 )]
-position = Vector2( 574.63, -137.198 )
+[node name="SmallAsteroid5" parent="Asteroids" instance=ExtResource( 18 )]
+position = Vector2( 252.958, -176.505 )
 
-[node name="Asteroid7" parent="Asteroids" instance=ExtResource( 2 )]
-position = Vector2( 240.543, -402.686 )
+[node name="SmallAsteroid6" parent="Asteroids" instance=ExtResource( 19 )]
+position = Vector2( -219.923, 237.856 )
+
+[node name="SmallAsteroid7" parent="Asteroids" instance=ExtResource( 19 )]
+position = Vector2( 136.862, -183.112 )
+
+[node name="SmallAsteroid8" parent="Asteroids" instance=ExtResource( 19 )]
+position = Vector2( 277.499, -73.6222 )
+
+[node name="SmallAsteroid9" parent="Asteroids" instance=ExtResource( 19 )]
+position = Vector2( 193.494, 3.05176e-05 )
+
+[node name="SmallAsteroid10" parent="Asteroids" instance=ExtResource( 19 )]
+position = Vector2( -235.025, -86.8364 )
+
+[node name="LargeAsteroid2" parent="Asteroids" instance=ExtResource( 20 )]
+position = Vector2( -117.04, 24.5407 )
 
 [node name="Container" parent="." instance=ExtResource( 9 )]
+visible = false
 position = Vector2( 0.538391, 93.1507 )
 gravity_scale = 0.0
 
@@ -171,3 +194,13 @@ position = Vector2( -4800, -208 )
 
 [node name="Station5" parent="Stations" instance=ExtResource( 13 )]
 position = Vector2( -353.984, -713.642 )
+
+[node name="Planets" type="Node2D" parent="."]
+
+[node name="Earth" parent="Planets" instance=ExtResource( 14 )]
+position = Vector2( 640.763, 351.495 )
+texture = ExtResource( 15 )
+
+[node name="Mars" parent="Planets" instance=ExtResource( 14 )]
+position = Vector2( -581.857, -48 )
+texture = ExtResource( 16 )
