@@ -8,8 +8,8 @@
             "brake_speed": 2,
             "turn_speed": 2.5,
             "boost_power": 1.8,
-            "max_health": 50,
-            "max_shields": 80
+            "max_health": 100,
+            "max_shields": 0
         }
     },
     "enemies": {

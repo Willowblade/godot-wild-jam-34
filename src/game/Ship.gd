@@ -3,6 +3,7 @@ class_name Ship
 
 
 onready var explosion_area = $ExplosionArea
+onready var smoke_emitter = $SmokeEmitter
 
 export var orbit_speed = 1.0
 
@@ -44,7 +45,7 @@ func update_shields(delta):
 		shield_recharge_tick_timer += delta
 		if shield_recharge_tick_timer > shield_recharge_tick:
 			stats.shields += shield_recharge_rate
-			stats.shields = max(stats.shields, stats.max_shields)
+			stats.shields = min(stats.shields, stats.max_shields)
 			shield_recharge_tick_timer = 0.0
 	else:
 		damage_timeout += delta
@@ -58,9 +59,19 @@ func take_damage(damage: int):
 		stats.shields -= damage_absorbed_by_shields
 	if damage_to_hull > 0:
 		stats.health -= damage_to_hull
+
+	print("HP: ", stats.health)
+	print("SP: ", stats.shields)
+
+	smoke_emitter.set_intensity(1.0 - stats.health / stats.max_health)
 	if stats.health <= 0:
 		$Explosion.set_emitting(true)
 		$Visual.hide()
+		$NormalEmission.emitting = false
+		$BoostEmission.emitting = false
+		$TurnLeftEmission.emitting = false
+		$TurnRightEmission.emitting = false
+		$SmokeEmitter.emitting = false
 		collision_layer = 0
 		collision_mask = 0
 		set_physics_process(false)
