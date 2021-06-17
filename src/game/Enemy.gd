@@ -51,14 +51,12 @@ func switch_to_investigate():
 func _on_body_entered_detection_area(body: PhysicsBody2D):
 	if body is Player:
 		if target == null:
-			print("Player entered detection area")
 			set_physics_process(true)
 			state = "CHASE"
 			target = body
 
 func _on_body_exited_detection_area(body: PhysicsBody2D):
 	if body is Player:
-		print("Enemy ship of same faction exited detection area")
 		# could have been dead
 		if body != null:
 			switch_to_investigate()
@@ -104,6 +102,7 @@ func move_towards_target(delta):
 
 
 func _physics_process(delta):
+	update_shields(delta)
 	$Debug.text = state
 	$Target.text = str(target)
 	if state == "IDLE":
@@ -111,12 +110,13 @@ func _physics_process(delta):
 		turn_towards_target(delta)
 		if position.distance_to(origin) < 100:
 			if velocity.length() > 0:
-				print("Braking!!")
 				brake(delta)
 			else:
 				# can go to idle when no need for movement
 				print("Going idle close to target")
 				set_physics_process(false)
+				# heal shields back to full
+				stats.shields = stats.max_shields
 		else:
 			move_towards_target(delta)
 
@@ -125,7 +125,6 @@ func _physics_process(delta):
 		target_position = target.position
 		turn_towards_target(delta)
 
-		print((target_position - position).rotated(-rotation))
 		raycast.cast_to = (target_position - position).rotated(-rotation)
 
 		raycast.force_raycast_update()
@@ -133,10 +132,12 @@ func _physics_process(delta):
 
 		if collider != null:
 			if not collider is Player:
-				print("Seeing ", collider, OS.get_unix_time())
+				# print("Seeing ", collider, OS.get_unix_time())
+				pass
 				# TODO was here adding collider logic for shooting asteroids
 			else:
-				print("Seeing player")
+				# print("Seeing player")
+				pass
 		if position.distance_to(target_position) < 200 and position.distance_to(target_position) > 100:
 			brake(delta)
 		else:

@@ -14,6 +14,8 @@ onready var origin = position
 func _ready():
 	refresh_stats()
 
+	mass = 100
+
 
 func refresh_stats():
 	var player_stats = State.player.get_stats()
@@ -51,6 +53,7 @@ func shoot():
 			return
 
 func _physics_process(delta):
+	update_shields(delta)
 	var acceleration_boost = 1.0
 	next_acceleration_state = "NONE"
 	if Input.is_action_pressed("sprint"):

@@ -1,16 +1,17 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/graphics/ships/armada/agile.png" type="Texture" id=1]
 [ext_resource path="res://src/game/Enemy.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/game/bullets/DirectCannon.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/game/SmokeEmitter.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/game/Thruster.tres" type="Gradient" id=5]
 [ext_resource path="res://assets/graphics/ships/trail/player-trail-small.png" type="Texture" id=6]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 426.1
+radius = 727.733
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 205.565
+radius = 342.657
 
 [node name="ArmadeAgile" groups=[
 "player",
@@ -109,3 +110,9 @@ linear_accel = -10.0
 radial_accel = 10.0
 scale_amount = 0.25
 color_ramp = ExtResource( 5 )
+
+[node name="SmokeEmitter" parent="SmokeEmitter" index="0" instance=ExtResource( 4 )]
+position = Vector2( -7.5, 2 )
+
+[node name="SmokeEmitter2" parent="SmokeEmitter" index="1" instance=ExtResource( 4 )]
+position = Vector2( 9.25, -0.75 )

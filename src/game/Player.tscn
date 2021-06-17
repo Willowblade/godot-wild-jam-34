@@ -18,6 +18,7 @@ _data = [ Vector2( 0, 0.363636 ), 0.0, 0.0, 0, 0, Vector2( 0.436047, 0.445455 ),
 position = Vector2( 0, 0 )
 collision_layer = 2
 collision_mask = 17
+collision/safe_margin = 0.5
 script = ExtResource( 2 )
 
 [node name="Visual" parent="." index="0"]

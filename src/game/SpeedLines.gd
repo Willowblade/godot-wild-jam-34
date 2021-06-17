@@ -4,12 +4,16 @@ extends Node2D
 onready var speed_line_texture = preload("res://assets/graphics/ships/trail/speed-line.png")
 onready var SpeedLineScene = preload("res://src/game/SpeedLine.tscn")
 
+
+var _player = null
+
 func _ready():
 	pass
 
 
 
 func spawn_speedline(player: Player):
+	_player = player
 	if randf() > 0.05:
 		return
 	var speed_line_instance = SpeedLineScene.instance()

@@ -10,8 +10,10 @@ collision_mask = 9
 script = ExtResource( 2 )
 
 [node name="DetectionArea" type="Area2D" parent="." index="1"]
+collision_mask = 2
 
 [node name="NotifyArea" type="Area2D" parent="." index="2"]
+collision_mask = 4
 
 [node name="Debug" type="Label" parent="." index="3"]
 visible = false

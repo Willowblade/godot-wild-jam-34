@@ -2,6 +2,9 @@ extends KinematicBody2D
 class_name Ship
 
 
+onready var explosion_area = $ExplosionArea
+
+export var orbit_speed = 1.0
 
 var mass = 10
 
@@ -15,8 +18,14 @@ var turn_speed: float = 0.0
 var max_speed: float = 0.0
 var boost_power: float = 0.0
 
+var shield_recharge: float = 5.0
+var shield_recharge_rate: float = 6.0
+var shield_recharge_tick: float = 0.5
+var shield_recharge_tick_timer: float = 0.0
+
 var previous_acceleration_state = "NONE"
 var next_acceleration_state = "NONE"
+
 
 var stats = {
 
@@ -29,18 +38,27 @@ var damage_timeout = 0.0
 func death():
 	pass
 
+
+func update_shields(delta):
+	if damage_timeout > shield_recharge:
+		shield_recharge_tick_timer += delta
+		if shield_recharge_tick_timer > shield_recharge_tick:
+			stats.shields += shield_recharge_rate
+			stats.shields = max(stats.shields, stats.max_shields)
+			shield_recharge_tick_timer = 0.0
+	else:
+		damage_timeout += delta
+
 func take_damage(damage: int):
 	damage_timeout = 0.0
+	shield_recharge_tick_timer = 0.0
 	var damage_absorbed_by_shields = damage if stats.shields > damage else stats.shields
 	var damage_to_hull = damage - damage_absorbed_by_shields
 	if damage_absorbed_by_shields > 0:
 		stats.shields -= damage_absorbed_by_shields
-		print("Shields were damaged")
 	if damage_to_hull > 0:
 		stats.health -= damage_to_hull
-		print("Hull was damage")
 	if stats.health <= 0:
-		print("I was deleted!")
 		$Explosion.set_emitting(true)
 		$Visual.hide()
 		collision_layer = 0
@@ -68,8 +86,11 @@ func load_stats(ship_stats):
 
 func brake(delta):
 	velocity -= velocity * delta * brake_speed
-	if velocity.length() < 3:
+	if velocity.length() < 10:
 		velocity = Vector2()
+	elif velocity.length() < 20:
+		velocity -= 2 * velocity * delta * brake_speed
+
 
 	if next_acceleration_state != "NONE":
 		next_acceleration_state = "NONE"
@@ -87,6 +108,75 @@ func turn_right(delta):
 	rotation += turn_speed * delta
 
 
+
+func get_forces(collision):
+	var collider: RigidBody2D = collision.collider
+	var collider_position = collider.position
+	var collider_velocity = collision.collider_velocity
+	var force = Vector2()
+	var force_collider = Vector2()
+	if sign(velocity.x) == sign(collider_velocity.x):
+		if sign(velocity.x) == 1:
+			if collider_velocity.x > velocity.x:
+				if collider_position.x > position.x:
+					pass
+				else:
+					force_collider.x = collider.mass * (collider_velocity.x - velocity.x)
+			elif collider_velocity.x < velocity.x:
+				if collider_position.x > position.x:
+					force.x = mass * (velocity.x - collider_velocity.x)
+				else:
+					pass
+		else:
+			# negative velocities
+			if collider_velocity.x < velocity.x:
+				if collider_position.x < position.x:
+					pass
+				else:
+					force_collider.x = collider.mass * (collider_velocity.x - velocity.x)
+			elif collider_velocity.x > velocity.x:
+				if collider_position.x < position.x:
+					force.x = mass * (velocity.x - collider_velocity.x)
+				else:
+					pass
+	else:
+		force.x = mass * velocity.x
+		force_collider.x  = collider.mass * collider_velocity.x
+
+	if sign(velocity.y) == sign(collider_velocity.y):
+		if sign(velocity.y) == 1:
+			if collider_velocity.y > velocity.y:
+				if collider_position.y > position.y:
+					pass
+				else:
+					force_collider.y = collider.mass * (collider_velocity.y - velocity.y)
+			elif collider_velocity.y < velocity.y:
+				if collider_position.y > position.y:
+					force.y = mass * (velocity.y - collider_velocity.y)
+				else:
+					pass
+		else:
+			# negative velocities
+			if collider_velocity.y < velocity.y:
+				if collider_position.y < position.y:
+					pass
+				else:
+					force_collider.y = collider.mass * (collider_velocity.y - velocity.y)
+			elif collider_velocity.y > velocity.y:
+				if collider_position.y < position.y:
+					force.y = mass * (velocity.y - collider_velocity.y)
+				else:
+					pass
+	else:
+		force.y = mass * velocity.y
+		force_collider.y  = collider.mass * collider_velocity.y
+
+	return {
+		"force_ship": force,
+		"force_collider": force_collider
+	}
+
+
 func handle_rigidbody_collision(collision, delta):
 	if collision != null:
 		if colliding_steps != 0:
@@ -95,71 +185,16 @@ func handle_rigidbody_collision(collision, delta):
 			print("Collided with non-rigidbody...")
 			return
 
-		var collider: RigidBody2D = collision.collider
-		var collider_position = collider.position
-		var collider_velocity = collision.collider_velocity
-		var speed_difference = velocity - collider_velocity
-		var force = Vector2()
-		var force_collider = Vector2()
-		if sign(velocity.x) == sign(collider_velocity.x):
-			if sign(velocity.x) == 1:
-				if collider_velocity.x > velocity.x:
-					if collider_position.x > position.x:
-						pass
-					else:
-						force_collider.x = collider.mass * (collider_velocity.x - velocity.x)
-				elif collider_velocity.x < velocity.x:
-					if collider_position.x > position.x:
-						force.x = mass * (velocity.x - collider_velocity.x)
-					else:
-						pass
-			else:
-				# negative velocities
-				if collider_velocity.x < velocity.x:
-					if collider_position.x < position.x:
-						pass
-					else:
-						force_collider.x = collider.mass * (collider_velocity.x - velocity.x)
-				elif collider_velocity.x > velocity.x:
-					if collider_position.x < position.x:
-						force.x = mass * (velocity.x - collider_velocity.x)
-					else:
-						pass
-		else:
-			force.x = mass * velocity.x
-			force_collider.x  = collider.mass * collider_velocity.x
+		var collider = collision.collider
 
-		if sign(velocity.y) == sign(collider_velocity.y):
-			if sign(velocity.y) == 1:
-				if collider_velocity.y > velocity.y:
-					if collider_position.y > position.y:
-						pass
-					else:
-						force_collider.y = collider.mass * (collider_velocity.y - velocity.y)
-				elif collider_velocity.y < velocity.y:
-					if collider_position.y > position.y:
-						force.y = mass * (velocity.y - collider_velocity.y)
-					else:
-						pass
-			else:
-				# negative velocities
-				if collider_velocity.y < velocity.y:
-					if collider_position.y < position.y:
-						pass
-					else:
-						force_collider.y = collider.mass * (collider_velocity.y - velocity.y)
-				elif collider_velocity.y > velocity.y:
-					if collider_position.y < position.y:
-						force.y = mass * (velocity.y - collider_velocity.y)
-					else:
-						pass
-		else:
-			force.y = mass * velocity.y
-			force_collider.y  = collider.mass * collider_velocity.y
+		var forces = get_forces(collision)
+		var force_ship = forces.force_ship
+		var force_collider = forces.force_collider
 
-		var delta_v = (force_collider * mass - force * collider.mass ) / mass * delta / 2
+		var delta_v = (force_collider * mass - force_ship * collider.mass ) / mass * delta / 3
 		# print(force_collider, force, delta_v)
-		var impulse = (force - force_collider) * delta
+		var impulse = (force_ship - force_collider) * delta
+		print(impulse)
 
 #		velocity = velocity + (force_collider - force) * delta * delta * 0.5 / weight * collider.weight
 #		velocity = velocity + (force_collider * weight - force * collider.weight) * delta * delta * 0.5 / weight
@@ -178,7 +213,9 @@ func handle_rigidbody_collision(collision, delta):
 		else:
 			velocity.y = min(velocity.y + delta_v.y, max_knockback)
 
-		collider.apply_impulse(Vector2(0, 0), impulse * mass / collider.mass / 2)
+		collider.apply_impulse(Vector2(0, 0), impulse * sqrt(mass / collider.mass))
+
+		GameFlow.hit_emitter.spawn_hit(collision.position)
 
 		colliding_steps += 1
 	else:

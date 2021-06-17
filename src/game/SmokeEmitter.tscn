@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://src/game/SmokeEmitter.gd" type="Script" id=1]
+[ext_resource path="res://assets/graphics/ships/trail/particle.png" type="Texture" id=2]
+
+[sub_resource type="Curve" id=4]
+_data = [ Vector2( 0, 0.2 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.427273 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=3]
+offsets = PoolRealArray( 0, 0.158784, 0.364865, 0.510135, 0.662162, 1 )
+colors = PoolColorArray( 0.183594, 0.183594, 0.183594, 1, 0.21875, 0.21875, 0.21875, 1, 0.501961, 0.501961, 0.501961, 0, 0.401367, 0.401367, 0.401367, 1, 0.347656, 0.347656, 0.347656, 1, 0.726563, 0.726563, 0.726563, 0.419608 )
+
+[node name="SmokeEmitter" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Medium" type="CPUParticles2D" parent="."]
+amount = 32
+lifetime = 0.8
+local_coords = false
+texture = ExtResource( 2 )
+direction = Vector2( 0, -1 )
+spread = 10.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 30.0
+initial_velocity_random = 0.36
+damping = 22.89
+damping_random = 0.36
+scale_amount_curve = SubResource( 4 )
+color_ramp = SubResource( 3 )

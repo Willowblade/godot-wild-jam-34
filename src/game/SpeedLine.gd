@@ -4,6 +4,7 @@ const FADE_RATE = 2
 
 var velocity = Vector2(0, 0)
 
+
 func _ready():
 	pass
 

@@ -1,6 +1,8 @@
 extends Node2D
+class_name Emitter
 
 onready var children = get_children()
+
 
 var emitting = false setget set_emitting
 
@@ -11,8 +13,8 @@ var lifetime = 0.0
 
 func _ready():
 	for child in get_children():
-		print(child)
-		print(child.lifetime)
+		if child is CollisionShape2D:
+			continue
 		if child.lifetime > lifetime:
 			lifetime = child.lifetime
 		child.set_emitting(false)
@@ -21,5 +23,7 @@ func set_emitting(new_value: bool):
 	emitting = new_value
 
 	for child in children:
+		if child is CollisionShape2D:
+			continue
 		child.one_shot = one_shot
 		child.set_emitting(emitting)
