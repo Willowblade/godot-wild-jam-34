@@ -6,6 +6,9 @@ var overlays = {
 
 var hit_emitter = null
 
+var projectiles_spawner = null
+
+
 var sun_position = Vector2(-4300, 2500)
 
 func register_overlay(overlay_name, overlay: Control):
@@ -29,3 +32,26 @@ func get_time_around_sun():
 func register_hit_emitter(new_hit_emitter):
 	hit_emitter = new_hit_emitter
 
+
+func register_projectiles_spawner(new_projectiles_spawner):
+	projectiles_spawner = new_projectiles_spawner
+
+
+func is_ship(body):
+	return body is Ship
+
+
+func is_player(body):
+	return body is Player
+
+
+func is_enemy(body):
+	return body is Enemy
+
+
+func is_asteroid(body):
+	return body is Asteroid
+
+
+func is_container(body):
+	return body is CargoContainer

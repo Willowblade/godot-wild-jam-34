@@ -103,20 +103,12 @@ damping_random = 0.48
 scale_amount_curve = SubResource( 2 )
 color_ramp = ExtResource( 8 )
 
-[node name="Cannons" type="Node2D" parent="." index="5"]
-
-[node name="DirectCannon2" parent="Cannons" index="0" instance=ExtResource( 5 )]
-position = Vector2( 21.5383, 2.57953 )
-
-[node name="DirectCannon" parent="Cannons" index="1" instance=ExtResource( 5 )]
-position = Vector2( -20.8346, 2.57953 )
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="6"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="5"]
 polygon = PoolVector2Array( 0.0556946, -20.9827, 8.98483, -5.80314, 8.38955, 4.41576, 25.851, 3.82048, 21.4856, 17.9087, -0.341156, 22.3732, -22.4656, 16.3213, -26.3349, 2.53072, -8.17895, 4.11812, -8.97265, -5.60471 )
 
 [node name="ExplosionEmitter" parent="Explosion" index="0" instance=ExtResource( 4 )]
 
-[node name="SmokeEmitter" parent="." index="9"]
+[node name="SmokeEmitter" parent="." index="8"]
 position = Vector2( 16.7938, 12.1976 )
 
 [node name="SmokeEmitter" parent="SmokeEmitter" index="1" instance=ExtResource( 7 )]
@@ -124,3 +116,9 @@ position = Vector2( -23.6881, 5.3033 )
 
 [node name="SmokeEmitter2" parent="SmokeEmitter" index="2" instance=ExtResource( 7 )]
 position = Vector2( -17.1875, -24.8404 )
+
+[node name="DirectCannon2" parent="Weapons" index="0" instance=ExtResource( 5 )]
+position = Vector2( 21.5383, 2.57953 )
+
+[node name="DirectCannon" parent="Weapons" index="1" instance=ExtResource( 5 )]
+position = Vector2( -20.8346, 2.57953 )

@@ -13,6 +13,11 @@ func _on_projectile_fired(projectile_data):
 		shoot_railgun_bullet(projectile_data)
 
 
+func fire_projectile(projectile_data):
+	if projectile_data.type == "RAILGUN":
+		shoot_railgun_bullet(projectile_data)
+
+
 func shoot_railgun_bullet(projectile_data):
 	var properties = projectile_data.get("properties", {})
 	var source = projectile_data.source

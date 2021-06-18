@@ -35,3 +35,5 @@ one_shot = true
 shape = SubResource( 1 )
 
 [node name="SmokeEmitter" parent="." instance=ExtResource( 3 )]
+
+[node name="Weapons" type="Node2D" parent="."]

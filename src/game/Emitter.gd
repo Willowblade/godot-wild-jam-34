@@ -12,6 +12,8 @@ var lifetime = 0.0
 
 
 func _ready():
+	visible = true
+
 	for child in get_children():
 		if child is CollisionShape2D:
 			continue

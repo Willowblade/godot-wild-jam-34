@@ -37,7 +37,7 @@ func get_orbitable_data(orbitable):
 
 func _ready():
 	GameFlow.register_hit_emitter($HitEmitter)
-	player.connect("shoot", projectiles, "_on_projectile_fired")
+	GameFlow.register_projectiles_spawner($Projectiles)
 	AudioEngine.play_background_music("explore")
 
 	for orbitable in orbitable_nodes:
@@ -80,7 +80,7 @@ func update_orbitables(include_ships = false):
 
 		for ship in orbitables.ships:
 			update_transformation_to_sun(ship, orbitables.ships[ship])
-			if ship is Enemy:
+			if GameFlow.is_enemy(ship):
 				ship.origin = ship.position
 
 
@@ -102,4 +102,3 @@ func _physics_process(delta):
 		speed_lines.visible = false
 
 	previous_velocity = velocity
-

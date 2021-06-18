@@ -116,3 +116,13 @@ position = Vector2( -7.5, 2 )
 
 [node name="SmokeEmitter2" parent="SmokeEmitter" index="1" instance=ExtResource( 4 )]
 position = Vector2( 9.25, -0.75 )
+
+[node name="DirectCannon" parent="Weapons" index="0" instance=ExtResource( 3 )]
+position = Vector2( 8.55877, -9.82154 )
+TIMEOUT = 1.0
+DISTANCE = 200
+
+[node name="DirectCannon2" parent="Weapons" index="1" instance=ExtResource( 3 )]
+position = Vector2( -8.83939, -10.1022 )
+TIMEOUT = 1.0
+DISTANCE = 200

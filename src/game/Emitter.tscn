@@ -3,4 +3,5 @@
 [ext_resource path="res://src/game/Emitter.gd" type="Script" id=1]
 
 [node name="Emitter" type="Node2D"]
+visible = false
 script = ExtResource( 1 )

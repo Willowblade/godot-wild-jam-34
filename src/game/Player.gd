@@ -2,12 +2,6 @@ extends Ship
 class_name Player
 
 
-onready var cannons = $Cannons.get_children()
-
-
-signal shoot
-
-
 onready var origin = position
 
 
@@ -42,15 +36,6 @@ func update_acceleration_animation():
 
 	previous_acceleration_state = next_acceleration_state
 
-
-func shoot():
-	for cannon in cannons:
-		var shot_result = cannon.shoot()
-		if shot_result != null:
-			if shot_result.target:
-				shot_result.target.take_damage(10)
-			emit_signal("shoot", shot_result)
-			return
 
 func _physics_process(delta):
 	update_shields(delta)

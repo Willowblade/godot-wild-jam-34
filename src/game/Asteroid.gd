@@ -43,8 +43,8 @@ func take_damage(damage: int):
 		queue_free()
 
 func _on_body_entered(body):
-	if body is Player or body is Enemy:
-		if body is Player:
+	if GameFlow.is_player(body) or GameFlow.is_enemy(body):
+		if GameFlow.is_player(body):
 			print("Collided with a player")
 		else:
 			print("Collided with an enemy")
@@ -84,6 +84,7 @@ func _on_body_entered(body):
 func update_position(updated_position: Vector2):
 	position_to_update = updated_position
 	set_physics_process(true)
+
 
 func _physics_process(delta):
 	if position_to_update:

@@ -49,14 +49,14 @@ func switch_to_investigate():
 	state = "INVESTIGATE"
 
 func _on_body_entered_detection_area(body: PhysicsBody2D):
-	if body is Player:
+	if GameFlow.is_player(body):
 		if target == null:
 			set_physics_process(true)
 			state = "CHASE"
 			target = body
 
 func _on_body_exited_detection_area(body: PhysicsBody2D):
-	if body is Player:
+	if GameFlow.is_player(body):
 		# could have been dead
 		if body != null:
 			switch_to_investigate()
@@ -65,7 +65,7 @@ func _on_body_exited_detection_area(body: PhysicsBody2D):
 
 
 func _on_body_entered_notify_area(body: PhysicsBody2D):
-	if body is Ship and not body is Player and body.faction == faction:
+	if GameFlow.is_ship(body) and not GameFlow.is_player(body) and body.faction == faction:
 		print("Enemy ship of same faction entered notification area")
 		notifiers.append(body)
 
@@ -77,23 +77,26 @@ func _on_body_exited_notify_area(body: PhysicsBody2D):
 
 
 func turn_towards_target(delta):
-	var orientation = get_orientation()
-	var target_orientation: Vector2 = target_position - position
-	var angle = target_orientation.angle_to(orientation)
-	if angle > 0 and angle < PI:
+	var angle_to_target = get_angle_to_target()
+	if angle_to_target > 0 and angle_to_target < PI:
 		turn_left(delta)
 		$TurnLeftEmission.emitting = true
 		$TurnRightEmission.emitting = false
-	elif angle < 0 and angle > -PI:
+	elif angle_to_target < 0 and angle_to_target > -PI:
 		turn_right(delta)
 		$TurnLeftEmission.emitting = false
 		$TurnRightEmission.emitting = true
 
-func move_towards_target(delta):
+func get_angle_to_target():
 	var orientation = get_orientation()
 	var target_orientation: Vector2 = target_position - position
-	var angle_to_target = target_orientation.angle_to(orientation)
-	if abs(angle_to_target) < PI / 2:
+	var angle = target_orientation.angle_to(orientation)
+	return angle
+
+func move_towards_target(delta):
+	var angle_to_target = get_angle_to_target()
+
+	if abs(angle_to_target) < PI / 3:
 		accelerate(delta)
 		$NormalEmission.emitting = true
 	else:
@@ -139,9 +142,16 @@ func _physics_process(delta):
 				# print("Seeing player")
 				pass
 		if position.distance_to(target_position) < 200 and position.distance_to(target_position) > 100:
+
 			brake(delta)
 		else:
 			move_towards_target(delta)
+
+		# todo be able to check weapon range here...
+		var weapon_range = 200
+		if position.distance_to(target_position) < weapon_range:
+			if get_angle_to_target() < PI / 10:
+				shoot()
 
 	if state == "INVESTIGATE":
 		turn_towards_target(delta)

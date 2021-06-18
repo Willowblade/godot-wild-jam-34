@@ -31,7 +31,43 @@ script = ExtResource( 3 )
 "orbitable",
 "ships",
 ] instance=ExtResource( 8 )]
-position = Vector2( 1140.2, -743.926 )
+position = Vector2( -1223.16, -218.883 )
+
+[node name="ArmadeAgile3" parent="Enemies" groups=[
+"orbitable",
+"ships",
+] instance=ExtResource( 8 )]
+position = Vector2( 755.634, -1108.03 )
+
+[node name="ArmadeAgile4" parent="Enemies" groups=[
+"orbitable",
+"ships",
+] instance=ExtResource( 8 )]
+position = Vector2( 1793.62, 892.542 )
+
+[node name="ArmadeAgile5" parent="Enemies" groups=[
+"orbitable",
+"ships",
+] instance=ExtResource( 8 )]
+position = Vector2( 1804.84, 747.744 )
+
+[node name="ArmadeAgile6" parent="Enemies" groups=[
+"orbitable",
+"ships",
+] instance=ExtResource( 8 )]
+position = Vector2( 1841.88, 793.765 )
+
+[node name="ArmadeAgile7" parent="Enemies" groups=[
+"orbitable",
+"ships",
+] instance=ExtResource( 8 )]
+position = Vector2( -13.9702, 1393.89 )
+
+[node name="ArmadeAgile2" parent="Enemies" groups=[
+"orbitable",
+"ships",
+] instance=ExtResource( 8 )]
+position = Vector2( -72.5924, 1255.57 )
 
 [node name="Player" parent="." groups=[
 "player",
