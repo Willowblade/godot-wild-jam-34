@@ -37,8 +37,8 @@ var stats = {
 
 var damage_timeout = 0.0
 
-signal shoot
-signal died
+signal shoot(shot)
+signal died(ship)
 
 
 func shoot():

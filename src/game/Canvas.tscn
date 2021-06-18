@@ -27,51 +27,33 @@ script = ExtResource( 3 )
 
 [node name="Enemies" type="Node2D" parent="."]
 
-[node name="ArmadeAgile" parent="Enemies" groups=[
-"orbitable",
-"ships",
-] instance=ExtResource( 8 )]
+[node name="ArmadeAgile" parent="Enemies" instance=ExtResource( 8 )]
 position = Vector2( -1223.16, -218.883 )
 
-[node name="ArmadeAgile3" parent="Enemies" groups=[
-"orbitable",
-"ships",
-] instance=ExtResource( 8 )]
+[node name="ArmadeAgile3" parent="Enemies" instance=ExtResource( 8 )]
 position = Vector2( 755.634, -1108.03 )
 
-[node name="ArmadeAgile4" parent="Enemies" groups=[
-"orbitable",
-"ships",
-] instance=ExtResource( 8 )]
+[node name="ArmadeAgile4" parent="Enemies" instance=ExtResource( 8 )]
 position = Vector2( 1793.62, 892.542 )
 
-[node name="ArmadeAgile5" parent="Enemies" groups=[
-"orbitable",
-"ships",
-] instance=ExtResource( 8 )]
+[node name="ArmadeAgile5" parent="Enemies" instance=ExtResource( 8 )]
 position = Vector2( 1804.84, 747.744 )
 
-[node name="ArmadeAgile6" parent="Enemies" groups=[
-"orbitable",
-"ships",
-] instance=ExtResource( 8 )]
+[node name="ArmadeAgile6" parent="Enemies" instance=ExtResource( 8 )]
 position = Vector2( 1841.88, 793.765 )
 
-[node name="ArmadeAgile7" parent="Enemies" groups=[
-"orbitable",
-"ships",
-] instance=ExtResource( 8 )]
+[node name="ArmadeAgile7" parent="Enemies" instance=ExtResource( 8 )]
 position = Vector2( -13.9702, 1393.89 )
 
-[node name="ArmadeAgile2" parent="Enemies" groups=[
-"orbitable",
-"ships",
-] instance=ExtResource( 8 )]
+[node name="ArmadeAgile2" parent="Enemies" instance=ExtResource( 8 )]
 position = Vector2( -72.5924, 1255.57 )
 
 [node name="Player" parent="." groups=[
 "player",
 ] instance=ExtResource( 1 )]
+
+[node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="Player"]
+length = 1.0
 
 [node name="PlayerCamera" type="Camera2D" parent="Player"]
 current = true
@@ -202,15 +184,9 @@ position = Vector2( -235.025, -86.8364 )
 position = Vector2( -117.04, 24.5407 )
 
 [node name="Container" parent="." instance=ExtResource( 9 )]
-visible = false
-position = Vector2( 0.538391, 93.1507 )
-gravity_scale = 0.0
-
-[node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="."]
-node_b = NodePath("../Container")
-length = 100.0
-rest_length = 50.0
-damping = 6.44
+position = Vector2( -4.49444, -131.439 )
+gravity_scale = 1.0
+linear_damp = 0.05
 
 [node name="Sun" parent="." instance=ExtResource( 10 )]
 position = Vector2( -4300, 2500 )

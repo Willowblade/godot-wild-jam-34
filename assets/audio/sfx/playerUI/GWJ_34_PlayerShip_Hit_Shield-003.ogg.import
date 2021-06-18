@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/GWJ_34_PlayerShip_Hit_Shield-003.ogg-3d36ed5b6e18a8445971ffa330f1debf.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/sfx/playerUI/GWJ_34_PlayerShip_Hit_Shield-003.ogg"
+dest_files=[ "res://.import/GWJ_34_PlayerShip_Hit_Shield-003.ogg-3d36ed5b6e18a8445971ffa330f1debf.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

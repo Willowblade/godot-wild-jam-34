@@ -67,11 +67,11 @@ func _on_body_entered(body):
 		var done_damage = 2 * sqrt(max(damage - 4, 0))
 
 		if done_damage > 4:
-			if body is Enemy:
+			if GameFlow.is_enemy(body):
 				body.take_damage(3 * done_damage)
 			else:
 				body.take_damage(done_damage)
-			take_damage(done_damage / 10)
+			take_damage(int(float(done_damage) / 10))
 
 		body.handle_rigidbody_collision({
 			"collider": self,

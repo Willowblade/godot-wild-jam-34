@@ -1,15 +1,122 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/graphics/ships/container.png" type="Texture" id=1]
 [ext_resource path="res://src/game/Container.gd" type="Script" id=2]
+[ext_resource path="res://assets/graphics/container/background-small.png" type="Texture" id=3]
+[ext_resource path="res://assets/graphics/container/background.png" type="Texture" id=4]
+[ext_resource path="res://assets/graphics/container/bubble.png" type="Texture" id=5]
+[ext_resource path="res://assets/graphics/container/connection_line.png" type="Texture" id=6]
 
-[node name="Container" type="RigidBody2D"]
+[sub_resource type="Curve" id=2]
+_data = [ Vector2( 0, 0.677273 ), 0.0, 0.0, 0, 0, Vector2( 0.473354, 0.559091 ), 0.0, 0.0, 0, 0, Vector2( 0.971787, 0.640909 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 75.6922
+
+[node name="Container" type="RigidBody2D" groups=[
+"container",
+"pickup",
+]]
 collision_layer = 8
 collision_mask = 29
+mass = 2.0
+gravity_scale = 0.0
+contacts_reported = 10
+contact_monitor = true
+can_sleep = false
+linear_damp = 0.2
 script = ExtResource( 2 )
+
+[node name="TetherVisuals" type="Node2D" parent="."]
+
+[node name="Background" type="Sprite" parent="TetherVisuals"]
+z_index = -2
+texture = ExtResource( 4 )
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="TetherVisuals"]
+texture = ExtResource( 5 )
+emission_shape = 1
+emission_sphere_radius = 8.0
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 20.0
+scale_amount_curve = SubResource( 2 )
+
+[node name="Foreground" type="Sprite" parent="TetherVisuals"]
+texture = ExtResource( 3 )
+
+[node name="LineSegments" type="Node2D" parent="TetherVisuals"]
+z_index = -1
+
+[node name="Sprite" type="Sprite" parent="TetherVisuals/LineSegments"]
+texture = ExtResource( 6 )
+
+[node name="Sprite2" type="Sprite" parent="TetherVisuals/LineSegments"]
+texture = ExtResource( 6 )
+
+[node name="Sprite3" type="Sprite" parent="TetherVisuals/LineSegments"]
+texture = ExtResource( 6 )
+
+[node name="Sprite4" type="Sprite" parent="TetherVisuals/LineSegments"]
+texture = ExtResource( 6 )
+
+[node name="Sprite5" type="Sprite" parent="TetherVisuals/LineSegments"]
+texture = ExtResource( 6 )
+
+[node name="Sprite6" type="Sprite" parent="TetherVisuals/LineSegments"]
+texture = ExtResource( 6 )
+
+[node name="Sprite7" type="Sprite" parent="TetherVisuals/LineSegments"]
+texture = ExtResource( 6 )
+
+[node name="Sprite8" type="Sprite" parent="TetherVisuals/LineSegments"]
+texture = ExtResource( 6 )
+
+[node name="Sprite9" type="Sprite" parent="TetherVisuals/LineSegments"]
+texture = ExtResource( 6 )
+
+[node name="Sprite10" type="Sprite" parent="TetherVisuals/LineSegments"]
+texture = ExtResource( 6 )
+
+[node name="Sprite11" type="Sprite" parent="TetherVisuals/LineSegments"]
+texture = ExtResource( 6 )
+
+[node name="Sprite12" type="Sprite" parent="TetherVisuals/LineSegments"]
+texture = ExtResource( 6 )
+
+[node name="Sprite13" type="Sprite" parent="TetherVisuals/LineSegments"]
+texture = ExtResource( 6 )
+
+[node name="Sprite14" type="Sprite" parent="TetherVisuals/LineSegments"]
+texture = ExtResource( 6 )
+
+[node name="Sprite15" type="Sprite" parent="TetherVisuals/LineSegments"]
+texture = ExtResource( 6 )
+
+[node name="Sprite16" type="Sprite" parent="TetherVisuals/LineSegments"]
+texture = ExtResource( 6 )
+
+[node name="Sprite17" type="Sprite" parent="TetherVisuals/LineSegments"]
+texture = ExtResource( 6 )
+
+[node name="Sprite18" type="Sprite" parent="TetherVisuals/LineSegments"]
+texture = ExtResource( 6 )
+
+[node name="Sprite19" type="Sprite" parent="TetherVisuals/LineSegments"]
+texture = ExtResource( 6 )
+
+[node name="Sprite20" type="Sprite" parent="TetherVisuals/LineSegments"]
+texture = ExtResource( 6 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
 polygon = PoolVector2Array( -6.71339, -5.43774, -3.77026, -8.59111, 3.79781, -8.69622, 6.63584, -5.33263, 6.74095, 5.38879, 3.6927, 8.64727, -3.34981, 8.75238, -7.02872, 5.80924 )
+
+[node name="PickupArea" type="Area2D" parent="."]
+visible = false
+
+[node name="Shape" type="CollisionShape2D" parent="PickupArea"]
+shape = SubResource( 1 )

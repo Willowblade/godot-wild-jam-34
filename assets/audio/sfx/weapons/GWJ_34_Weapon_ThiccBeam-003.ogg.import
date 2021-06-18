@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/GWJ_34_Weapon_ThiccBeam-003.ogg-8d054be3d459ed227ae759fa24d03425.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/sfx/weapons/GWJ_34_Weapon_ThiccBeam-003.ogg"
+dest_files=[ "res://.import/GWJ_34_Weapon_ThiccBeam-003.ogg-8d054be3d459ed227ae759fa24d03425.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

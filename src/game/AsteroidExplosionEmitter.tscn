@@ -5,15 +5,15 @@
 [ext_resource path="res://assets/graphics/asteroids/asteroid-particle-small.png" type="Texture" id=3]
 [ext_resource path="res://assets/graphics/asteroids/asteroid-particle.png" type="Texture" id=4]
 
-[sub_resource type="Gradient" id=4]
+[sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0, 0.577703, 1 )
 colors = PoolColorArray( 0.356445, 0.356445, 0.356445, 1, 0.524414, 0.524414, 0.524414, 1, 0.575195, 0.575195, 0.575195, 0 )
 
-[sub_resource type="Gradient" id=5]
+[sub_resource type="Gradient" id=2]
 offsets = PoolRealArray( 0.344595, 0.625 )
 colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
 
-[sub_resource type="Gradient" id=6]
+[sub_resource type="Gradient" id=3]
 offsets = PoolRealArray( 0.290541, 0.456081 )
 colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
 
@@ -35,7 +35,7 @@ initial_velocity = 150.0
 initial_velocity_random = 1.0
 damping = 73.5
 damping_random = 0.36
-color_ramp = SubResource( 4 )
+color_ramp = SubResource( 1 )
 
 [node name="Large" type="CPUParticles2D" parent="."]
 rotation = -0.00226212
@@ -60,7 +60,7 @@ angle = 720.0
 angle_random = 1.0
 scale_amount = 1.2
 scale_amount_random = 1.0
-color_ramp = SubResource( 5 )
+color_ramp = SubResource( 2 )
 
 [node name="Medium" type="CPUParticles2D" parent="."]
 rotation = -0.00226212
@@ -83,4 +83,4 @@ angular_velocity_random = 1.0
 damping = 27.11
 angle = 720.0
 angle_random = 1.0
-color_ramp = SubResource( 6 )
+color_ramp = SubResource( 3 )

@@ -40,6 +40,8 @@ func _ready():
 	GameFlow.register_projectiles_spawner($Projectiles)
 	AudioEngine.play_background_music("explore")
 
+	$Container.connect("tether", self, "_on_container_tethered")
+
 	for orbitable in orbitable_nodes:
 		if get_orbitable_type(orbitable) == "ship":
 			orbitables.ships[orbitable] = get_orbitable_data(orbitable)
@@ -60,6 +62,15 @@ func _on_asteroid_died(asteroid: Asteroid):
 	orbitables.asteroids.erase(asteroid)
 
 
+func _on_container_tethered(container: CargoContainer):
+	print("Tethering container to player", container)
+	container.sleeping = false
+	# $Player/DampedSpringJoint2D.length = player.position.distance_to(container.position)
+	$Player/DampedSpringJoint2D.node_a = player.get_path()
+	$Player/DampedSpringJoint2D.node_b = container.get_path()
+
+
+
 
 func update_transformation_to_sun(orbitable, orbitable_data):
 	orbitable.position = (orbitable_data.original_position - sun.position).rotated(last_timestamp * 2 * PI * orbitable.orbit_speed) + sun.position
@@ -67,6 +78,7 @@ func update_transformation_to_sun(orbitable, orbitable_data):
 
 
 func update_orbitables(include_ships = false):
+	return
 	for station in orbitables.stations:
 		update_transformation_to_sun(station, orbitables.stations[station])
 
