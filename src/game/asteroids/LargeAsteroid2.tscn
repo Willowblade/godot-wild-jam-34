@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://src/game/Asteroid.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/graphics/asteroids/large_2.png" type="Texture" id=2]
+[ext_resource path="res://src/game/AsteroidExplosionEmitter.tscn" type="PackedScene" id=3]
 
 [node name="LargeAsteroid1" instance=ExtResource( 1 )]
 mass = 500.0
@@ -9,6 +10,15 @@ health = 130
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 2 )
+
+[node name="AsteroidExplosionEmitter" parent="Explosion" index="0"]
+position = Vector2( 32.9627, -11.2373 )
+
+[node name="AsteroidExplosionEmitter2" parent="Explosion" index="1" instance=ExtResource( 3 )]
+position = Vector2( -33.3373, -17.9797 )
+
+[node name="AsteroidExplosionEmitter3" parent="Explosion" index="2" instance=ExtResource( 3 )]
+position = Vector2( -18.7288, 40.4543 )
 
 [node name="CollisionPolygon2D" parent="." index="2"]
 polygon = PoolVector2Array( 24.788, -35.5833, 39.1563, -47.7633, 61.1624, -33.2473, 61.8298, -17.5629, 31.4622, 33.4947, 3.76428, 52.5162, -30.2741, 52.1824, -54.9687, 41.5037, -60.6418, 4.79564, -54.3012, -8.21906, -45.9585, -9.8876, -28.2719, -35.917, 2.42944, -41.9238 )

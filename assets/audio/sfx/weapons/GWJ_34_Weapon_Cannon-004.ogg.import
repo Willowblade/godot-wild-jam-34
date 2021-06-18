@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/GWJ_34_Weapon_Cannon-004.ogg-30840582e41f7ec440fed15a0bc82150.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/sfx/weapons/GWJ_34_Weapon_Cannon-004.ogg"
+dest_files=[ "res://.import/GWJ_34_Weapon_Cannon-004.ogg-30840582e41f7ec440fed15a0bc82150.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

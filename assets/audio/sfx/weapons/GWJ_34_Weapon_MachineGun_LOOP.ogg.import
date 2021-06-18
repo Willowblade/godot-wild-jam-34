@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/GWJ_34_Weapon_MachineGun_LOOP.ogg-05661bc7b251fcf607e8323f8a4e3b61.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/sfx/weapons/GWJ_34_Weapon_MachineGun_LOOP.ogg"
+dest_files=[ "res://.import/GWJ_34_Weapon_MachineGun_LOOP.ogg-05661bc7b251fcf607e8323f8a4e3b61.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

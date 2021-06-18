@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/GWJ_34_Weapon_MachineGun_Oneshotwav.ogg-f0bd7d0a4ee2a011fd7146fae9cb3e06.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/sfx/weapons/GWJ_34_Weapon_MachineGun_Oneshotwav.ogg"
+dest_files=[ "res://.import/GWJ_34_Weapon_MachineGun_Oneshotwav.ogg-f0bd7d0a4ee2a011fd7146fae9cb3e06.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
