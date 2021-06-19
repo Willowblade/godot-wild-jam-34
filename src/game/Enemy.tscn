@@ -8,6 +8,8 @@
 collision_layer = 4
 collision_mask = 9
 script = ExtResource( 2 )
+faction = null
+orbit_speed = null
 
 [node name="DetectionArea" type="Area2D" parent="." index="1"]
 collision_mask = 2

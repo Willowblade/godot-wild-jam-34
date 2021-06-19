@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://src/game/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/game/asteroids/LargeAsteroid1.tscn" type="PackedScene" id=2]
@@ -21,6 +21,8 @@
 [ext_resource path="res://src/game/asteroids/SmallAsteroid3.tscn" type="PackedScene" id=19]
 [ext_resource path="res://src/game/asteroids/LargeAsteroid2.tscn" type="PackedScene" id=20]
 [ext_resource path="res://src/game/HitEmitter.gd" type="Script" id=21]
+[ext_resource path="res://src/game/ships/armada/ArmadaMidclasseRocket.tscn" type="PackedScene" id=22]
+[ext_resource path="res://src/game/ships/armada/ArmadaMidclasseProjectile.tscn" type="PackedScene" id=23]
 
 [node name="Canvas" type="Node2D"]
 script = ExtResource( 3 )
@@ -47,6 +49,17 @@ position = Vector2( -13.9702, 1393.89 )
 
 [node name="ArmadeAgile2" parent="Enemies" instance=ExtResource( 8 )]
 position = Vector2( -72.5924, 1255.57 )
+
+[node name="ArmadeAgile8" parent="Enemies" instance=ExtResource( 22 )]
+position = Vector2( 180.877, 353.342 )
+
+[node name="ArmadeAgile9" parent="Enemies" instance=ExtResource( 23 )]
+position = Vector2( -222.032, -162.502 )
+rotation = 1.03532
+
+[node name="ArmadeAgile10" parent="Enemies" instance=ExtResource( 23 )]
+position = Vector2( 185.262, -231.799 )
+rotation = 1.03532
 
 [node name="Player" parent="." groups=[
 "player",

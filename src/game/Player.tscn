@@ -1,13 +1,14 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://src/game/Ship.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/game/Player.gd" type="Script" id=2]
 [ext_resource path="res://assets/graphics/ships/player-thick-outline.png" type="Texture" id=3]
 [ext_resource path="res://src/game/ExplosionEmitter.tscn" type="PackedScene" id=4]
-[ext_resource path="res://src/game/bullets/DirectCannon.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/game/weapons/DirectCannon.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/graphics/ships/trail/player-trail.png" type="Texture" id=6]
 [ext_resource path="res://src/game/SmokeEmitter.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/game/Thruster.tres" type="Gradient" id=8]
+[ext_resource path="res://src/game/weapons/Beam.tscn" type="PackedScene" id=9]
 
 [sub_resource type="Curve" id=1]
 _data = [ Vector2( 0, 0.2 ), 0.0, 0.0, 0, 0, Vector2( 0.488372, 0.290909 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.518182 ), 0.0, 0.0, 0, 0 ]
@@ -118,7 +119,15 @@ position = Vector2( -23.6881, 5.3033 )
 position = Vector2( -17.1875, -24.8404 )
 
 [node name="DirectCannon2" parent="Weapons" index="0" instance=ExtResource( 5 )]
+visible = false
 position = Vector2( 21.5383, 2.57953 )
+weapon_name = "player_cannon"
 
 [node name="DirectCannon" parent="Weapons" index="1" instance=ExtResource( 5 )]
+visible = false
 position = Vector2( -20.8346, 2.57953 )
+weapon_name = "player_cannon"
+
+[node name="Beam" parent="Weapons" index="2" instance=ExtResource( 9 )]
+position = Vector2( 0, -24.6081 )
+weapon_name = "player_beam"

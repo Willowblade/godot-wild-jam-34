@@ -53,5 +53,9 @@ func is_asteroid(body):
 	return body is Asteroid
 
 
+func is_rocket(body):
+	return body is Rocket
+
+
 func is_container(body):
 	return body is CargoContainer

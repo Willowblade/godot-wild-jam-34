@@ -2,6 +2,8 @@ extends KinematicBody2D
 class_name Ship
 
 
+export var faction = "Armada"
+
 onready var explosion_area = $ExplosionArea
 onready var smoke_emitter = $SmokeEmitter
 
@@ -40,16 +42,33 @@ var damage_timeout = 0.0
 signal shoot(shot)
 signal died(ship)
 
+var minimum_shooting_distance = 9999.0
+var maximum_shooting_distance = 0.0
 
-func shoot():
+func _ready():
 	for weapon in weapons:
+		weapon.faction = faction
+		minimum_shooting_distance = min(minimum_shooting_distance, weapon.shoot_distance_min)
+		maximum_shooting_distance = max(maximum_shooting_distance, weapon.shoot_distance_max)
+
+
+func shoot(weapons_eligible_for_shooting = null):
+	var weapons_to_shoot = weapons_eligible_for_shooting
+	if weapons_eligible_for_shooting == null:
+		weapons_to_shoot = weapons
+
+	for weapon in weapons_to_shoot:
 		var shot_result = weapon.shoot()
 		if shot_result != null:
-			if shot_result.target:
-				var weapon_damage = 10
-				shot_result.target.take_damage(weapon_damage)
 			GameFlow.projectiles_spawner.fire_projectile(shot_result)
 			return
+
+func weapons_safe_for_shooting(distance: float):
+	var safe_weapons = []
+	for weapon in weapons:
+		if weapon.is_within_shooting_distance(distance):
+			safe_weapons.append(weapon)
+	return safe_weapons
 
 
 func death():
@@ -118,6 +137,7 @@ func impact_explosion():
 
 func play_explosion():
 	$Explosion.set_emitting(true)
+	$Explosion.visible = true
 	$Visual.hide()
 	$NormalEmission.emitting = false
 	$BoostEmission.emitting = false
@@ -277,6 +297,3 @@ func handle_rigidbody_collision(collision, delta):
 		colliding_steps += 1
 	else:
 		colliding_steps = 0
-
-func _ready():
-	pass

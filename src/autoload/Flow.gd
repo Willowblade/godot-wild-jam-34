@@ -26,6 +26,7 @@ var upgrades_data := {}
 var player_data := {}
 var enemies_data := {}
 var interactives_data := {}
+var weapons_data := {}
 
 var _game_flow := {
 	"menu": {
@@ -158,6 +159,21 @@ func get_interactive_value(id : String, key : String, default):
 		return data.get(key, default)
 	else:
 		return default
+
+func get_weapon_value(id : String, key : String, default):
+	if weapons_data.has(id):
+		var data : Dictionary = weapons_data[id]
+		return data.get(key, default)
+	else:
+		return default
+
+func get_weapon_stats(id: String):
+	if weapons_data.has(id):
+		var data : Dictionary = weapons_data[id]
+		return data
+	else:
+		print("Couldn't find weapon with ID ", id)
+		return {}
 
 func new_game() -> void:
 	_state_loader.load_stateJSON()

@@ -17,6 +17,7 @@ offsets = PoolRealArray( 0.516892, 1 )
 colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0.419608 )
 
 [node name="ExplosionEmitter" type="Node2D"]
+position = Vector2( -1, 0 )
 script = ExtResource( 1 )
 
 [node name="Small" type="CPUParticles2D" parent="."]

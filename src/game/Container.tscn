@@ -7,10 +7,10 @@
 [ext_resource path="res://assets/graphics/container/bubble.png" type="Texture" id=5]
 [ext_resource path="res://assets/graphics/container/connection_line.png" type="Texture" id=6]
 
-[sub_resource type="Curve" id=2]
-_data = [ Vector2( 0, 0.677273 ), 0.0, 0.0, 0, 0, Vector2( 0.473354, 0.559091 ), 0.0, 0.0, 0, 0, Vector2( 0.971787, 0.640909 ), 0.0, 0.0, 0, 0 ]
+[sub_resource type="Curve" id=1]
+_data = [ Vector2( 0, 0.745454 ), 0.0, 0.0, 0, 0, Vector2( 0.498433, 0.6 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.463636 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CircleShape2D" id=1]
+[sub_resource type="CircleShape2D" id=2]
 radius = 75.6922
 
 [node name="Container" type="RigidBody2D" groups=[
@@ -34,13 +34,17 @@ z_index = -2
 texture = ExtResource( 4 )
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="TetherVisuals"]
+amount = 12
+lifetime = 0.9
 texture = ExtResource( 5 )
 emission_shape = 1
 emission_sphere_radius = 8.0
 spread = 180.0
 gravity = Vector2( 0, 0 )
 initial_velocity = 20.0
-scale_amount_curve = SubResource( 2 )
+initial_velocity_random = 0.2
+damping = 2.41
+scale_amount_curve = SubResource( 1 )
 
 [node name="Foreground" type="Sprite" parent="TetherVisuals"]
 texture = ExtResource( 3 )
@@ -119,4 +123,4 @@ polygon = PoolVector2Array( -6.71339, -5.43774, -3.77026, -8.59111, 3.79781, -8.
 visible = false
 
 [node name="Shape" type="CollisionShape2D" parent="PickupArea"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )

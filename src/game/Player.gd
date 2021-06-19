@@ -8,6 +8,8 @@ onready var origin = position
 func _ready():
 	refresh_stats()
 
+	faction = "Player"
+
 	mass = 100
 
 

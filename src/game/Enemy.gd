@@ -1,8 +1,6 @@
 extends Ship
 class_name Enemy
 
-export var faction = "Armada"
-
 onready var detection_area = $DetectionArea
 onready var notify_area = $NotifyArea
 
@@ -17,6 +15,9 @@ var target = null
 var target_position = null
 
 
+var targets = []
+
+
 var investigation_timeout = 0.0
 
 func load_generic_enemy_stats():
@@ -25,7 +26,7 @@ func load_generic_enemy_stats():
 		"max_shields": 10,
 		"acceleration": 150,
 		"brake_speed": 1.5,
-		"turn_speed": 1,
+		"turn_speed": 1.5,
 		"max_speed": 200,
 		"boost_power": 2,
 	})
@@ -49,23 +50,28 @@ func switch_to_investigate():
 	state = "INVESTIGATE"
 
 func _on_body_entered_detection_area(body: PhysicsBody2D):
-	if GameFlow.is_player(body):
+	if GameFlow.is_ship(body) and body.faction != faction:
+		targets.append(body)
 		if target == null:
 			set_physics_process(true)
 			state = "CHASE"
 			target = body
 
 func _on_body_exited_detection_area(body: PhysicsBody2D):
-	if GameFlow.is_player(body):
+	if GameFlow.is_ship(body) and body.faction != faction:
+		targets.erase(body)
 		# could have been dead
-		if body != null:
-			switch_to_investigate()
-			target = null
-			target_position = body.position
+		if targets.size() > 0:
+			target = targets[0]
+		else:
+			if body != null:
+				switch_to_investigate()
+				target = null
+				target_position = body.position
 
 
 func _on_body_entered_notify_area(body: PhysicsBody2D):
-	if GameFlow.is_ship(body) and not GameFlow.is_player(body) and body.faction == faction:
+	if GameFlow.is_ship(body) and body.faction == faction:
 		print("Enemy ship of same faction entered notification area")
 		notifiers.append(body)
 
@@ -126,7 +132,7 @@ func _physics_process(delta):
 
 	if state == "CHASE":
 		target_position = target.position
-		turn_towards_target(delta)
+		var distance = position.distance_to(target_position)
 
 		raycast.cast_to = (target_position - position).rotated(-rotation)
 
@@ -141,17 +147,23 @@ func _physics_process(delta):
 			else:
 				# print("Seeing player")
 				pass
-		if position.distance_to(target_position) < 200 and position.distance_to(target_position) > 100:
 
+
+		if distance > minimum_shooting_distance and distance < maximum_shooting_distance:
+			turn_towards_target(delta)
 			brake(delta)
+		elif distance > maximum_shooting_distance:
+			turn_towards_target(delta)
+			move_towards_target(delta)
 		else:
+			target_position = position + Vector2.UP.rotated(rotation) * minimum_shooting_distance
 			move_towards_target(delta)
 
 		# todo be able to check weapon range here...
-		var weapon_range = 200
-		if position.distance_to(target_position) < weapon_range:
-			if get_angle_to_target() < PI / 10:
-				shoot()
+		if distance > minimum_shooting_distance and distance < maximum_shooting_distance:
+			if abs(get_angle_to_target()) < PI / 8:
+				var eligible_weapons = weapons_safe_for_shooting(distance)
+				shoot(eligible_weapons)
 
 	if state == "INVESTIGATE":
 		turn_towards_target(delta)

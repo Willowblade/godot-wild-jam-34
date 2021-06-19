@@ -4,14 +4,12 @@ class_name DirectCannon
 onready var shoot_timeout = $ShootTimeout
 onready var raycast: RayCast2D = $RayCast
 
-export var TIMEOUT = 0.3
-export var DISTANCE = 300
 
 var can_fire = true
 
 func _ready():
 	shoot_timeout.connect("timeout", self, "_on_shoot_timeout")
-	raycast.cast_to = Vector2(0, -DISTANCE)
+	raycast.cast_to = Vector2(0, -distance)
 
 
 func _on_shoot_timeout():
@@ -23,17 +21,20 @@ func shoot():
 		return
 
 	can_fire = false
-	shoot_timeout.wait_time = TIMEOUT
+	shoot_timeout.wait_time = reload
 	shoot_timeout.start()
 
+	var target = raycast.get_collider()
+	if target:
+		target.take_damage(damage)
 
 	return {
-		"type": "RAILGUN",
+		"type": type,
 		"properties": {
-			"distance": DISTANCE,
+			"distance": distance,
 		},
 		"source": self,
-		"target": raycast.get_collider(),
+		"target": target,
 		"hit_point": raycast.get_collision_point(),
 	}
 

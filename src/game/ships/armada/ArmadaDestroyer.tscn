@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://assets/graphics/ships/armada/agile.png" type="Texture" id=1]
-[ext_resource path="res://src/game/Enemy.tscn" type="PackedScene" id=2]
-[ext_resource path="res://src/game/weapons/DirectCannon.tscn" type="PackedScene" id=3]
-[ext_resource path="res://src/game/SmokeEmitter.tscn" type="PackedScene" id=4]
-[ext_resource path="res://src/game/Thruster.tres" type="Gradient" id=5]
+[ext_resource path="res://src/game/SmokeEmitter.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/game/weapons/DirectCannon.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/game/Enemy.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/game/Thruster.tres" type="Gradient" id=4]
+[ext_resource path="res://assets/graphics/ships/armada/midclasse-2.png" type="Texture" id=5]
 [ext_resource path="res://assets/graphics/ships/trail/player-trail-small.png" type="Texture" id=6]
 
 [sub_resource type="CircleShape2D" id=1]
@@ -15,14 +15,12 @@ radius = 342.657
 
 [node name="ArmadeAgile" groups=[
 "player",
-] instance=ExtResource( 2 )]
+] instance=ExtResource( 3 )]
 collision_layer = 2
-faction = "Armada"
-orbit_speed = 1.0
 
 [node name="Hull" parent="Visual" index="0"]
 position = Vector2( 0, -9.36442 )
-texture = ExtResource( 1 )
+texture = ExtResource( 5 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="1"]
 polygon = PoolVector2Array( 0.125, -14.7574, 5.75, -6.13243, 11.25, -0.757435, 11.375, 3.74256, 8.125, 4.86757, 8.125, 7.36757, -0.0838852, 7.60247, -8.375, 7.49257, -8.625, 4.49257, -11, 3.86756, -11.625, -0.882435, -4.75, -5.75743 )
@@ -54,7 +52,7 @@ initial_velocity = 30.0
 linear_accel = -10.0
 radial_accel = 10.0
 scale_amount = 0.25
-color_ramp = ExtResource( 5 )
+color_ramp = ExtResource( 4 )
 
 [node name="Solid2" type="CPUParticles2D" parent="NormalEmission" index="1"]
 position = Vector2( -4.90017, 7.91171 )
@@ -71,7 +69,7 @@ initial_velocity = 30.0
 linear_accel = -10.0
 radial_accel = 10.0
 scale_amount = 0.25
-color_ramp = ExtResource( 5 )
+color_ramp = ExtResource( 4 )
 
 [node name="Solid3" type="CPUParticles2D" parent="TurnRightEmission" index="0"]
 position = Vector2( -10.5125, 4.40403 )
@@ -89,7 +87,7 @@ initial_velocity = 30.0
 linear_accel = -10.0
 radial_accel = 10.0
 scale_amount = 0.25
-color_ramp = ExtResource( 5 )
+color_ramp = ExtResource( 4 )
 
 [node name="Solid4" type="CPUParticles2D" parent="TurnLeftEmission" index="0"]
 position = Vector2( 10.674, 4.12341 )
@@ -107,21 +105,23 @@ initial_velocity = 30.0
 linear_accel = -10.0
 radial_accel = 10.0
 scale_amount = 0.25
-color_ramp = ExtResource( 5 )
+color_ramp = ExtResource( 4 )
 
 [node name="ExplosionArea" parent="." index="12"]
 visible = false
 
-[node name="SmokeEmitter" parent="SmokeEmitter" index="0" instance=ExtResource( 4 )]
+[node name="SmokeEmitter" parent="SmokeEmitter" index="0" instance=ExtResource( 1 )]
 position = Vector2( -7.5, 2 )
 
-[node name="SmokeEmitter2" parent="SmokeEmitter" index="1" instance=ExtResource( 4 )]
+[node name="SmokeEmitter2" parent="SmokeEmitter" index="1" instance=ExtResource( 1 )]
 position = Vector2( 9.25, -0.75 )
 
-[node name="DirectCannon" parent="Weapons" index="0" instance=ExtResource( 3 )]
+[node name="DirectCannon" parent="Weapons" index="0" instance=ExtResource( 2 )]
 position = Vector2( 8.55877, -9.82154 )
-weapon_name = "cannon_mk1"
+TIMEOUT = 1.0
+DISTANCE = 200
 
-[node name="DirectCannon2" parent="Weapons" index="1" instance=ExtResource( 3 )]
+[node name="DirectCannon2" parent="Weapons" index="1" instance=ExtResource( 2 )]
 position = Vector2( -8.83939, -10.1022 )
-weapon_name = "cannon_mk1"
+TIMEOUT = 1.0
+DISTANCE = 200

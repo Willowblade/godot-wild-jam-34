@@ -14,5 +14,120 @@
     },
     "enemies": {
     },
-    "interactive": {}
+    "interactive": {},
+    "weapons": {
+        "player_cannon": {
+            "type": "cannon",
+            "damage": 8,
+            "distance": 300,
+            "reload": 0.3,
+            "shot": "default"
+        },
+        "cannon_mk1": {
+            "type": "cannon",
+            "damage": 5,
+            "distance": 150,
+            "reload": 1.0,
+            "shot": "default"
+        },
+        "cannon_mk2": {
+            "type": "cannon",
+            "damage": 8,
+            "distance": 250,
+            "reload": 0.8,
+            "shot": "default"
+        },
+        "cannon_sniper": {
+            "type": "cannon",
+            "damage": 50,
+            "distance": 600,
+            "reload": 5.0,
+            "shot": "sniper",
+            "minimum_shoot_distance": 400,
+            "maximum_shoot_distance": 600,
+            "shield_multiplier": 0.6,
+            "hull_multiplier": 1.2
+        },
+        "rocket_mk1": {
+            "type": "rocket",
+            "speed": 100,
+            "acceleration": 200,
+            "turn_speed": 2,
+            "lifetime": 8,
+            "health": 20,
+            "damage": 25,
+            "reload": 3.0,
+            "shot": "default"
+        },
+        "rocket_mk2": {
+            "type": "rocket",
+            "damage": 50,
+            "speed": 150,
+            "acceleration": 150,
+            "turn_speed": 2,
+            "lifetime": 10,
+            "health": 40,
+            "reload": 2.5,
+            "shot": "big_rocket"
+        },
+        "rocket_mk3": {
+            "type": "rocket",
+            "speed": 150,
+            "acceleration": 150,
+            "turn_speed": 2,
+            "lifetime": 10,
+            "damage": 100,
+            "health": 60,
+            "reload": 3.0,
+            "shot": "huge_rocket"
+        },
+        "player_projectile": {
+            "type": "projectile",
+            "speed": 500,
+            "lifetime": 3,
+            "damage": 20,
+            "reload": 0.3,
+            "shield_multiplier": 1.5,
+            "hull_multiplier": 1.0,
+            "shot": "energy"
+        },
+        "projectile_energy": {
+            "type": "projectile",
+            "speed": 200,
+            "damage": 15,
+            "lifetime": 4,
+            "reload": 1.2,
+            "shield_multiplier": 1.5,
+            "hull_multiplier": 0.6,
+            "shot": "energy"
+        },
+        "projectile_kinetic": {
+            "type": "projectile",
+            "speed": 250,
+            "lifetime": 4,
+            "damage": 15,
+            "reload": 1.2,
+            "shield_multiplier": 0.6,
+            "hull_multiplier": 1.2,
+            "shot": "kinetic"
+        },
+        "player_beam": {
+            "type": "beam",
+            "distance": 300,
+            "damage": 5,
+            "shot": "default"
+        },
+        "beam_mk1": {
+            "type": "beam",
+            "distance": 150,
+            "damage": 2,
+            "shot": "default"
+        },
+        "beam_mk2": {
+            "type": "beam",
+            "distance": 250,
+            "damage": 3,
+            "shot": "big_beam"
+        }
+    }
 }

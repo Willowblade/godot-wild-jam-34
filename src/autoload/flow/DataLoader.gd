@@ -15,6 +15,7 @@ func load_dataJSON() -> int:
 			Flow.player_data = data.get("player", {})
 			Flow.enemies_data = data.get("enemies", {})
 			Flow.interactives_data = data.get("interactive", {})
+			Flow.weapons_data = data.get("weapons", {})
 
 	else:
 		push_error("Essential file '{0}' does not exist, check its existence!".format([Flow.DATA_PATH]))
