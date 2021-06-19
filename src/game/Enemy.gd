@@ -44,6 +44,9 @@ func _ready():
 	randomize()
 	rotation = randf() * 2 * PI
 
+func death():
+	GameFlow.remove_follower(self)
+
 
 func switch_to_investigate():
 	investigation_timeout = 0.0
@@ -53,9 +56,22 @@ func _on_body_entered_detection_area(body: PhysicsBody2D):
 	if GameFlow.is_ship(body) and body.faction != faction:
 		targets.append(body)
 		if target == null:
-			set_physics_process(true)
-			state = "CHASE"
-			target = body
+			set_chasing(body)
+		for notifier in notifiers:
+			if notifier.state != "CHASE":
+				notifier.switch_to_investigate()
+				notifier.set_physics_process(true)
+				notifier.target = null
+				notifier.target_position = body.position
+
+func set_chasing(_target):
+	# TODO check if this causes bugs when it's not added to the targets list
+	# if _target not in targets:
+
+	set_physics_process(true)
+	GameFlow.add_follower(self)
+	state = "CHASE"
+	target = _target
 
 func _on_body_exited_detection_area(body: PhysicsBody2D):
 	if GameFlow.is_ship(body) and body.faction != faction:
@@ -71,9 +87,10 @@ func _on_body_exited_detection_area(body: PhysicsBody2D):
 
 
 func _on_body_entered_notify_area(body: PhysicsBody2D):
-	if GameFlow.is_ship(body) and body.faction == faction:
-		print("Enemy ship of same faction entered notification area")
-		notifiers.append(body)
+	if GameFlow.is_enemy(body) and body.faction == faction:
+		if not body in notifiers:
+			print("Enemy ship of same faction entered notification area")
+			notifiers.append(body)
 
 
 func _on_body_exited_notify_area(body: PhysicsBody2D):
@@ -102,7 +119,7 @@ func get_angle_to_target():
 func move_towards_target(delta):
 	var angle_to_target = get_angle_to_target()
 
-	if abs(angle_to_target) < PI / 3:
+	if abs(angle_to_target) < PI / 4:
 		accelerate(delta)
 		$NormalEmission.emitting = true
 	else:
@@ -173,6 +190,7 @@ func _physics_process(delta):
 			move_towards_target(delta)
 		investigation_timeout += delta
 		if investigation_timeout > 5:
+			GameFlow.remove_follower(self)
 			state = "IDLE"
 
 	if velocity.length() > max_speed:

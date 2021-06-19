@@ -14,10 +14,10 @@ var current_background_player = null
 
 const tracks = {
 	"main": "res://assets/audio/music/main.ogg",
+	"home": "res://assets/audio/music/home.ogg",
 	"explore": "res://assets/audio/music/explore.ogg",
 	"battle": "res://assets/audio/music/battle.ogg",
 	"flight": "res://assets/audio/music/flight.ogg",
-
 }
 
 const sfx = {

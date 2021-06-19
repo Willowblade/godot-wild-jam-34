@@ -1,4 +1,4 @@
 extends Control
 
 func _ready():
-	pass
+	GameFlow.register_markers($UICanvas/Markers)

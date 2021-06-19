@@ -27,6 +27,10 @@
 [node name="Canvas" type="Node2D"]
 script = ExtResource( 3 )
 
+[node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="."]
+position = Vector2( -50.3969, -582.083 )
+length = 1.0
+
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="ArmadeAgile" parent="Enemies" instance=ExtResource( 8 )]
@@ -51,22 +55,20 @@ position = Vector2( -13.9702, 1393.89 )
 position = Vector2( -72.5924, 1255.57 )
 
 [node name="ArmadeAgile8" parent="Enemies" instance=ExtResource( 22 )]
-position = Vector2( 180.877, 353.342 )
+position = Vector2( 246.393, 827.072 )
 
 [node name="ArmadeAgile9" parent="Enemies" instance=ExtResource( 23 )]
-position = Vector2( -222.032, -162.502 )
+position = Vector2( -1410.03, 429.498 )
 rotation = 1.03532
 
 [node name="ArmadeAgile10" parent="Enemies" instance=ExtResource( 23 )]
-position = Vector2( 185.262, -231.799 )
+position = Vector2( 1053.26, -235.799 )
 rotation = 1.03532
 
 [node name="Player" parent="." groups=[
 "player",
 ] instance=ExtResource( 1 )]
-
-[node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="Player"]
-length = 1.0
+position = Vector2( -50.3969, -582.083 )
 
 [node name="PlayerCamera" type="Camera2D" parent="Player"]
 current = true
@@ -197,7 +199,7 @@ position = Vector2( -235.025, -86.8364 )
 position = Vector2( -117.04, 24.5407 )
 
 [node name="Container" parent="." instance=ExtResource( 9 )]
-position = Vector2( -4.49444, -131.439 )
+position = Vector2( -35.9589, -477.548 )
 gravity_scale = 1.0
 linear_damp = 0.05
 
@@ -226,12 +228,21 @@ position = Vector2( -353.984, -713.642 )
 [node name="Earth" parent="Planets" instance=ExtResource( 14 )]
 position = Vector2( 640.763, 351.495 )
 rotation = -2.08819
+planet_name = "earth"
+
+[node name="Sprite" parent="Planets/Earth" index="0"]
 texture = ExtResource( 15 )
 
 [node name="Mars" parent="Planets" instance=ExtResource( 14 )]
 position = Vector2( -581.857, -48 )
 rotation = -2.54446
+planet_name = "mars"
+
+[node name="Sprite" parent="Planets/Mars" index="0"]
 texture = ExtResource( 16 )
 
 [node name="HitEmitter" type="Node2D" parent="."]
 script = ExtResource( 21 )
+
+[editable path="Planets/Earth"]
+[editable path="Planets/Mars"]

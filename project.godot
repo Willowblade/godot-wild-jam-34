@@ -54,6 +54,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/json_beautifier/json_beautifier.gd"
 }, {
+"base": "Node2D",
+"class": "Planet",
+"language": "GDScript",
+"path": "res://src/game/Planet.gd"
+}, {
 "base": "Ship",
 "class": "Player",
 "language": "GDScript",
@@ -99,6 +104,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/game/SmokeEmitter.gd"
 }, {
+"base": "Area2D",
+"class": "Station",
+"language": "GDScript",
+"path": "res://src/game/Station.gd"
+}, {
 "base": "Node2D",
 "class": "Weapon",
 "language": "GDScript",
@@ -129,6 +139,7 @@ _global_script_class_icons={
 "Enemy": "",
 "GamePopup": "",
 "JSONBeautifier": "",
+"Planet": "",
 "Player": "",
 "PlayerState": "",
 "Projectile": "",
@@ -138,6 +149,7 @@ _global_script_class_icons={
 "RocketLauncher": "",
 "Ship": "",
 "SmokeEmitter": "",
+"Station": "",
 "Weapon": "",
 "class_menu_tab": "",
 "class_pause_tab": "",

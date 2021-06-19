@@ -4,13 +4,39 @@ class_name Player
 
 onready var origin = position
 
+var destinations = []
+
+
+
+var carrying = null
 
 func _ready():
 	refresh_stats()
 
+	$MarkerRecognition.connect("area_entered", self, "_on_area_entered_marker_area")
+	$MarkerRecognition.connect("area_exited", self, "_on_area_exited_marker_area")
+
 	faction = "Player"
 
 	mass = 100
+
+
+func _on_area_entered_marker_area(area):
+	print("area entered", area)
+	if GameFlow.is_planet(area) or GameFlow.is_station(area):
+		destinations.append(area)
+
+		GameFlow.markers.make_markers(self, destinations)
+		GameFlow.markers.update_visible_destinations(destinations)
+
+func _on_area_exited_marker_area(area):
+	if GameFlow.is_planet(area) or GameFlow.is_station(area):
+		if area in destinations:
+			destinations.erase(area)
+
+		GameFlow.markers.make_markers(self, destinations)
+		GameFlow.markers.update_visible_destinations(destinations)
+
 
 
 func refresh_stats():

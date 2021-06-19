@@ -62,12 +62,17 @@ func _on_asteroid_died(asteroid: Asteroid):
 	orbitables.asteroids.erase(asteroid)
 
 
-func _on_container_tethered(container: CargoContainer):
+func _on_container_tethered(container: CargoContainer, target):
 	print("Tethering container to player", container)
+	if target == null:
+		$DampedSpringJoint2D.node_a = ""
+		$DampedSpringJoint2D.node_b = ""
+		return
+
 	container.sleeping = false
 	# $Player/DampedSpringJoint2D.length = player.position.distance_to(container.position)
-	$Player/DampedSpringJoint2D.node_a = player.get_path()
-	$Player/DampedSpringJoint2D.node_b = container.get_path()
+	$DampedSpringJoint2D.node_a = target.get_path()
+	$DampedSpringJoint2D.node_b = container.get_path()
 
 
 

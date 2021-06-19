@@ -76,7 +76,7 @@ func get_angle_to_target():
 func move_towards_target(delta):
 	var angle_to_target = get_angle_to_target()
 
-	if abs(angle_to_target) < PI / 3:
+	if abs(angle_to_target) < PI / 9:
 		accelerate(delta)
 		$NormalEmission.emitting = true
 	else:

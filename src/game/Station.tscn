@@ -1,14 +1,57 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/game/Station.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 
-[node name="Station" type="Node2D" groups=[
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 49.3595, 52.6729 )
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 81.8303
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 639.23
+
+[node name="Station" type="Area2D" groups=[
 "orbitable",
 "stations",
 ]]
+z_index = -5
+collision_layer = 32
+collision_mask = 32
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 5, 5 )
+z_index = -5
 texture = ExtResource( 2 )
+
+[node name="DeliveryArea" type="Area2D" parent="."]
+position = Vector2( 5.35144, 18.4327 )
+gravity = 0.0
+collision_layer = 3
+collision_mask = 3
+
+[node name="Sprite" type="Sprite" parent="DeliveryArea"]
+position = Vector2( 4.4545, 18.7089 )
+scale = Vector2( 1.65425, 1.65425 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeliveryArea"]
+position = Vector2( 5.46582, 21.0224 )
+scale = Vector2( 1, 1 )
+shape = SubResource( 1 )
+
+[node name="CargoSpawnPoint" type="Position2D" parent="."]
+
+[node name="AnchorPoint" type="StaticBody2D" parent="."]
+position = Vector2( 6.71753, 18.7383 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+
+[node name="PlayerDetectionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetectionArea"]
+position = Vector2( 0, -2.99661 )
+shape = SubResource( 3 )
