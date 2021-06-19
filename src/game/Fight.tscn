@@ -35,3 +35,9 @@ rotation = -1.47807
 [node name="ArmadeAgile8" parent="." instance=ExtResource( 2 )]
 position = Vector2( 46.4474, 399.893 )
 rotation = 1.35198
+
+[node name="Position2D" type="Position2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="Position2D"]
+current = true
+smoothing_enabled = true

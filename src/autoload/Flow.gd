@@ -146,12 +146,29 @@ func get_upgrade_value(id : String, key : String, default):
 func get_player_value(key : String, default):
 	return player_data.get(key, default)
 
+func get_player_stats(id: String):
+	if player_data.has(id):
+		var data : Dictionary = player_data[id]
+		return data
+	else:
+		print("Couldn't find player shell with ID ", id)
+		return {}
+
 func get_enemy_value(id : String, key : String, default):
 	if enemies_data.has(id):
 		var data : Dictionary = enemies_data[id]
 		return data.get(key, default)
 	else:
 		return default
+
+func get_enemy_stats(id: String):
+	if enemies_data.has(id):
+		var data : Dictionary = enemies_data[id]
+		return data
+	else:
+		print("Couldn't find enemy with ID ", id)
+		return {}
+
 
 func get_interactive_value(id : String, key : String, default):
 	if interactives_data.has(id):

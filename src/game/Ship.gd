@@ -7,6 +7,8 @@ export var faction = "Armada"
 onready var explosion_area = $ExplosionArea
 onready var smoke_emitter = $SmokeEmitter
 
+onready var shield = $Shield
+
 onready var weapons = $Weapons.get_children()
 
 export var orbit_speed = 1.0
@@ -24,8 +26,8 @@ var max_speed: float = 0.0
 var boost_power: float = 0.0
 
 var shield_recharge: float = 5.0
-var shield_recharge_rate: float = 6.0
-var shield_recharge_tick: float = 0.5
+var shield_recharge_rate: float = 5.0
+var shield_recharge_tick: float = 0.3
 var shield_recharge_tick_timer: float = 0.0
 
 var previous_acceleration_state = "NONE"
@@ -47,6 +49,7 @@ var maximum_shooting_distance = 0.0
 
 func _ready():
 	for weapon in weapons:
+		weapon.shooter = self
 		weapon.faction = faction
 		minimum_shooting_distance = min(minimum_shooting_distance, weapon.shoot_distance_min)
 		maximum_shooting_distance = max(maximum_shooting_distance, weapon.shoot_distance_max)
@@ -76,11 +79,20 @@ func death():
 
 
 func update_shields(delta):
+	if stats.max_shields == 0:
+		return
+
 	if damage_timeout > shield_recharge:
 		shield_recharge_tick_timer += delta
 		if shield_recharge_tick_timer > shield_recharge_tick:
 			stats.shields += shield_recharge_rate
+			if stats.shields - shield_recharge_rate <= 0:
+				$ShieldShape.disabled = false
+				if shield:
+					shield.enable()
 			stats.shields = min(stats.shields, stats.max_shields)
+			if shield:
+				shield.set_intensity(float(stats.shields) / stats.max_shields)
 			shield_recharge_tick_timer = 0.0
 	else:
 		damage_timeout += delta
@@ -95,6 +107,14 @@ func take_damage(damage: int):
 	var damage_to_hull = damage - damage_absorbed_by_shields
 	if damage_absorbed_by_shields > 0:
 		stats.shields -= damage_absorbed_by_shields
+		if stats.shields <= 0:
+			$ShieldShape.disabled = true
+		if shield != null:
+			if stats.shields <= 0:
+				shield.break_shield()
+			else:
+				shield.get_hit()
+				shield.set_intensity(float(stats.shields)/stats.max_shields)
 	if damage_to_hull > 0:
 		stats.health -= damage_to_hull
 

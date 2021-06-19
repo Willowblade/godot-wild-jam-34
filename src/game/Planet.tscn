@@ -10,6 +10,7 @@ radius = 639.23
 
 [node name="Planet" type="Area2D" groups=[
 "orbitable",
+"planet",
 ]]
 z_index = -5
 collision_layer = 32

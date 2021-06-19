@@ -17,25 +17,20 @@ var target_position = null
 
 var targets = []
 
+export var enemy_name = ""
+
 
 var investigation_timeout = 0.0
 
-func load_generic_enemy_stats():
-	load_stats({
-		"max_health": 50,
-		"max_shields": 10,
-		"acceleration": 150,
-		"brake_speed": 1.5,
-		"turn_speed": 1.5,
-		"max_speed": 200,
-		"boost_power": 2,
-	})
+
+func load_enemy_stats():
+	load_stats(Flow.get_enemy_stats(enemy_name))
 
 
 func _ready():
 	origin = position
 
-	load_generic_enemy_stats()
+	load_enemy_stats()
 
 	detection_area.connect("body_entered", self, "_on_body_entered_detection_area")
 	detection_area.connect("body_exited", self, "_on_body_exited_detection_area")

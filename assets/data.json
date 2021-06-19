@@ -2,17 +2,205 @@
     "upgrades": {
     },
     "player": {
-        "base_stats": {
+        "default": {
             "acceleration": 500,
             "max_speed": 400,
             "brake_speed": 2,
             "turn_speed": 2.5,
             "boost_power": 1.8,
             "max_health": 100,
-            "max_shields": 0
+            "max_shields": 20,
+            "shield_recharge_time": 4.0,
+            "shield_recharge_rate": 10.0
+        },
+        "armada": {
+            "acceleration": 500,
+            "max_speed": 400,
+            "brake_speed": 2,
+            "turn_speed": 2.5,
+            "boost_power": 1.8,
+            "max_health": 100,
+            "max_shields": 20,
+            "shield_recharge_time": 4.0,
+            "shield_recharge_rate": 10.0
+        },
+        "solreign": {
+            "acceleration": 500,
+            "max_speed": 400,
+            "brake_speed": 2,
+            "turn_speed": 2.5,
+            "boost_power": 1.8,
+            "max_health": 100,
+            "max_shields": 20,
+            "shield_recharge_time": 4.0,
+            "shield_recharge_rate": 10.0
+        },
+        "rot": {
+            "acceleration": 500,
+            "max_speed": 400,
+            "brake_speed": 2,
+            "turn_speed": 2.5,
+            "boost_power": 1.8,
+            "max_health": 100,
+            "max_shields": 20,
+            "shield_recharge_time": 4.0,
+            "shield_recharge_rate": 10.0
+        },
+        "carrot": {
+            "acceleration": 500,
+            "max_speed": 400,
+            "brake_speed": 2,
+            "turn_speed": 2.5,
+            "boost_power": 1.8,
+            "max_health": 100,
+            "max_shields": 20,
+            "shield_recharge_time": 4.0,
+            "shield_recharge_rate": 10.0
         }
     },
     "enemies": {
+        "armada_agile": {
+            "faction": "armada",
+            "acceleration": 500,
+            "max_speed": 400,
+            "brake_speed": 2,
+            "turn_speed": 2.5,
+            "boost_power": 1.8,
+            "max_health": 100,
+            "max_shields": 20,
+            "shield_recharge_time": 4.0,
+            "shield_recharge_rate": 10.0
+        },
+        "armada_midclasse_rocket": {
+            "faction": "armada",
+            "acceleration": 500,
+            "max_speed": 400,
+            "brake_speed": 2,
+            "turn_speed": 2.5,
+            "boost_power": 1.8,
+            "max_health": 100,
+            "max_shields": 20,
+            "shield_recharge_time": 4.0,
+            "shield_recharge_rate": 10.0
+        },
+        "armada_midclasse_projectile": {
+            "faction": "armada",
+            "acceleration": 500,
+            "max_speed": 400,
+            "brake_speed": 2,
+            "turn_speed": 2.5,
+            "boost_power": 1.8,
+            "max_health": 100,
+            "max_shields": 20,
+            "shield_recharge_time": 4.0,
+            "shield_recharge_rate": 10.0
+        },
+        "armada_destroyer": {
+            "faction": "armada",
+            "acceleration": 500,
+            "max_speed": 400,
+            "brake_speed": 2,
+            "turn_speed": 2.5,
+            "boost_power": 1.8,
+            "max_health": 100,
+            "max_shields": 20,
+            "shield_recharge_time": 4.0,
+            "shield_recharge_rate": 10.0
+        },"solreign_agile": {
+            "faction": "solreign",
+            "acceleration": 500,
+            "max_speed": 400,
+            "brake_speed": 2,
+            "turn_speed": 2.5,
+            "boost_power": 1.8,
+            "max_health": 100,
+            "max_shields": 20,
+            "shield_recharge_time": 4.0,
+            "shield_recharge_rate": 10.0
+        },
+        "solreign_midclasse_rocket": {
+            "faction": "solreign",
+            "acceleration": 500,
+            "max_speed": 400,
+            "brake_speed": 2,
+            "turn_speed": 2.5,
+            "boost_power": 1.8,
+            "max_health": 100,
+            "max_shields": 20,
+            "shield_recharge_time": 4.0,
+            "shield_recharge_rate": 10.0
+        },
+        "solreign_midclasse_projectile": {
+            "faction": "solreign",
+            "acceleration": 500,
+            "max_speed": 400,
+            "brake_speed": 2,
+            "turn_speed": 2.5,
+            "boost_power": 1.8,
+            "max_health": 100,
+            "max_shields": 20,
+            "shield_recharge_time": 4.0,
+            "shield_recharge_rate": 10.0
+        },
+        "solreign_destroyer": {
+            "faction": "solreign",
+            "acceleration": 500,
+            "max_speed": 400,
+            "brake_speed": 2,
+            "turn_speed": 2.5,
+            "boost_power": 1.8,
+            "max_health": 100,
+            "max_shields": 20,
+            "shield_recharge_time": 4.0,
+            "shield_recharge_rate": 10.0
+        },"rot_agile": {
+            "faction": "rot",
+            "acceleration": 500,
+            "max_speed": 400,
+            "brake_speed": 2,
+            "turn_speed": 2.5,
+            "boost_power": 1.8,
+            "max_health": 100,
+            "max_shields": 20,
+            "shield_recharge_time": 4.0,
+            "shield_recharge_rate": 10.0
+        },
+        "rot_midclasse_rocket": {
+            "faction": "rot",
+            "acceleration": 500,
+            "max_speed": 400,
+            "brake_speed": 2,
+            "turn_speed": 2.5,
+            "boost_power": 1.8,
+            "max_health": 100,
+            "max_shields": 20,
+            "shield_recharge_time": 4.0,
+            "shield_recharge_rate": 10.0
+        },
+        "rot_midclasse_projectile": {
+            "faction": "rot",
+            "acceleration": 500,
+            "max_speed": 400,
+            "brake_speed": 2,
+            "turn_speed": 2.5,
+            "boost_power": 1.8,
+            "max_health": 100,
+            "max_shields": 20,
+            "shield_recharge_time": 4.0,
+            "shield_recharge_rate": 10.0
+        },
+        "rot_destroyer": {
+            "faction": "rot",
+            "acceleration": 500,
+            "max_speed": 400,
+            "brake_speed": 2,
+            "turn_speed": 2.5,
+            "boost_power": 1.8,
+            "max_health": 100,
+            "max_shields": 20,
+            "shield_recharge_time": 4.0,
+            "shield_recharge_rate": 10.0
+        }
     },
     "interactive": {},
     "weapons": {

@@ -7,6 +7,8 @@ var faction = ""
 
 var stats = {}
 
+var shooter = null
+
 var type = ""
 var shot = ""
 var damage = ""

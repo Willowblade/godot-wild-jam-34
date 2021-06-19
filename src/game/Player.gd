@@ -6,7 +6,7 @@ onready var origin = position
 
 var destinations = []
 
-
+export var shell_name = "default"
 
 var carrying = null
 
@@ -16,7 +16,7 @@ func _ready():
 	$MarkerRecognition.connect("area_entered", self, "_on_area_entered_marker_area")
 	$MarkerRecognition.connect("area_exited", self, "_on_area_exited_marker_area")
 
-	faction = "Player"
+	faction = "player"
 
 	mass = 100
 
@@ -40,7 +40,7 @@ func _on_area_exited_marker_area(area):
 
 
 func refresh_stats():
-	var player_stats = State.player.get_stats()
+	var player_stats = Flow.get_player_stats(shell_name)
 	load_stats(player_stats)
 #	emit_signal("updated_stats", stats)
 

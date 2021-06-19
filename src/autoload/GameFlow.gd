@@ -10,6 +10,8 @@ var projectiles_spawner = null
 
 var markers = null
 
+var map = null
+
 var sun_position = Vector2(-4300, 2500)
 
 func register_overlay(overlay_name, overlay: Control):
@@ -40,6 +42,10 @@ func register_markers(new_markers):
 
 func register_projectiles_spawner(new_projectiles_spawner):
 	projectiles_spawner = new_projectiles_spawner
+
+
+func register_map(new_map):
+	map = new_map
 
 
 func is_ship(body):
@@ -73,6 +79,7 @@ func is_station(body):
 	return body is Station
 
 
+var player = null
 var followers = []
 var stations_in_proximity = []
 var player_mindframe = "EXPLORE"
@@ -82,7 +89,6 @@ func is_in_battle():
 	return player_mindframe == "BATTLE"
 
 func add_follower(ship):
-	print("Adding follower")
 	if ship in followers:
 		return
 	followers.append(ship)

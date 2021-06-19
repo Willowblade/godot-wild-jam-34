@@ -1,0 +1,82 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://src/game/Emitter.gd" type="Script" id=1]
+[ext_resource path="res://assets/graphics/ships/trail/single-pixel.png" type="Texture" id=2]
+[ext_resource path="res://assets/graphics/shields/shield-burst-large.png" type="Texture" id=3]
+[ext_resource path="res://assets/graphics/shields/shield-burst-small.png" type="Texture" id=4]
+
+[sub_resource type="Gradient" id=6]
+offsets = PoolRealArray( 0.47973, 0.709459 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[sub_resource type="Gradient" id=4]
+offsets = PoolRealArray( 0.385135, 0.638514 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[sub_resource type="Gradient" id=5]
+offsets = PoolRealArray( 0.327703, 0.631757 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[node name="ShieldEmitter" type="Node2D"]
+position = Vector2( -1, 0 )
+script = ExtResource( 1 )
+
+[node name="Small" type="CPUParticles2D" parent="."]
+amount = 32
+lifetime = 1.5
+speed_scale = 0.5
+explosiveness = 1.0
+lifetime_randomness = 1.0
+local_coords = false
+texture = ExtResource( 2 )
+emission_shape = 1
+emission_sphere_radius = 15.0
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 150.0
+initial_velocity_random = 1.0
+damping = 73.5
+damping_random = 0.36
+scale_amount = 2.0
+color_ramp = SubResource( 6 )
+
+[node name="Large" type="CPUParticles2D" parent="."]
+rotation = -0.00226212
+amount = 6
+lifetime = 1.5
+speed_scale = 0.5
+explosiveness = 1.0
+lifetime_randomness = 1.0
+local_coords = false
+texture = ExtResource( 3 )
+emission_shape = 1
+emission_sphere_radius = 15.0
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 50.0
+initial_velocity_random = 1.0
+damping = 33.74
+angle = 360.0
+angle_random = 1.0
+scale_amount = 2.0
+color_ramp = SubResource( 4 )
+
+[node name="Medium" type="CPUParticles2D" parent="."]
+amount = 16
+lifetime = 1.5
+speed_scale = 0.5
+explosiveness = 1.0
+lifetime_randomness = 0.61
+local_coords = false
+texture = ExtResource( 4 )
+emission_shape = 1
+emission_sphere_radius = 15.0
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 60.0
+initial_velocity_random = 0.89
+damping = 58.8
+angle = 360.0
+angle_random = 1.0
+scale_amount = 2.0
+color_ramp = SubResource( 5 )

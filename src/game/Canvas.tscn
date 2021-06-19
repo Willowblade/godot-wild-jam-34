@@ -65,9 +65,7 @@ rotation = 1.03532
 position = Vector2( 1053.26, -235.799 )
 rotation = 1.03532
 
-[node name="Player" parent="." groups=[
-"player",
-] instance=ExtResource( 1 )]
+[node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( -50.3969, -582.083 )
 
 [node name="PlayerCamera" type="Camera2D" parent="Player"]

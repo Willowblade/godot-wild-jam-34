@@ -42,6 +42,7 @@ func shoot():
 	projectile_scene_instance.load_stats(stats)
 	projectile_scene_instance.position = global_position
 	projectile_scene_instance.rotation = global_rotation
+	projectile_scene_instance.shooter = shooter
 	projectile_scene_instance.direction = Vector2.UP.rotated(global_rotation)
 	GameFlow.projectiles_spawner.shoot_projectile(projectile_scene_instance)
 

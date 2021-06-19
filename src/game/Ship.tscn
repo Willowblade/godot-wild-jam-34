@@ -30,6 +30,7 @@ script = ExtResource( 1 )
 one_shot = true
 
 [node name="ExplosionArea" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosionArea"]
 shape = SubResource( 1 )
@@ -37,3 +38,5 @@ shape = SubResource( 1 )
 [node name="SmokeEmitter" parent="." instance=ExtResource( 3 )]
 
 [node name="Weapons" type="Node2D" parent="."]
+
+[node name="ShieldShape" type="CollisionShape2D" parent="."]

@@ -14,7 +14,7 @@ radius = 639.23
 
 [node name="Station" type="Area2D" groups=[
 "orbitable",
-"stations",
+"station",
 ]]
 z_index = -5
 collision_layer = 32

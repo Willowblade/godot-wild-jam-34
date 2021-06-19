@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://src/game/Ship.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/game/Player.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://src/game/SmokeEmitter.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/game/Thruster.tres" type="Gradient" id=8]
 [ext_resource path="res://src/game/weapons/Beam.tscn" type="PackedScene" id=9]
+[ext_resource path="res://src/game/ships/MediumShield.tscn" type="PackedScene" id=10]
 
 [sub_resource type="Curve" id=1]
 _data = [ Vector2( 0, 0.2 ), 0.0, 0.0, 0, 0, Vector2( 0.488372, 0.290909 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.518182 ), 0.0, 0.0, 0, 0 ]
@@ -19,7 +20,12 @@ _data = [ Vector2( 0, 0.363636 ), 0.0, 0.0, 0, 0, Vector2( 0.436047, 0.445455 ),
 [sub_resource type="CircleShape2D" id=3]
 radius = 4131.86
 
-[node name="Player" instance=ExtResource( 1 )]
+[sub_resource type="CircleShape2D" id=4]
+radius = 32.079
+
+[node name="Player" groups=[
+"player",
+] instance=ExtResource( 1 )]
 position = Vector2( 0, 0 )
 collision_layer = 2
 collision_mask = 17
@@ -112,9 +118,6 @@ polygon = PoolVector2Array( 0.0556946, -20.9827, 8.98483, -5.80314, 8.38955, 4.4
 
 [node name="ExplosionEmitter" parent="Explosion" index="0" instance=ExtResource( 4 )]
 
-[node name="ExplosionArea" parent="." index="7"]
-visible = false
-
 [node name="SmokeEmitter" parent="." index="8"]
 position = Vector2( 16.7938, 12.1976 )
 
@@ -145,3 +148,9 @@ collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MarkerRecognition" index="0"]
 shape = SubResource( 3 )
+
+[node name="ShieldShape" parent="." index="11"]
+shape = SubResource( 4 )
+
+[node name="Shield" parent="." index="12" instance=ExtResource( 10 )]
+modulate = Color( 1, 1, 1, 0.317647 )

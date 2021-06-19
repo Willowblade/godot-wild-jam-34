@@ -40,6 +40,8 @@ func _ready():
 	GameFlow.register_projectiles_spawner($Projectiles)
 	AudioEngine.play_background_music("explore")
 
+	GameFlow.player = player
+
 	$Container.connect("tether", self, "_on_container_tethered")
 
 	for orbitable in orbitable_nodes:

@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/game/ships/armada/ArmadaMidclasseProjectile.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/game/Projectiles.gd" type="Script" id=2]
 [ext_resource path="res://src/game/HitEmitter.gd" type="Script" id=3]
+[ext_resource path="res://src/game/ships/armada/ArmadaDestroyer.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/game/Fight.gd" type="Script" id=5]
 
 [node name="Fight" type="Node2D"]
@@ -17,12 +18,15 @@ script = ExtResource( 3 )
 
 [node name="ArmadeAgile" parent="." instance=ExtResource( 1 )]
 position = Vector2( 178.059, 102.991 )
+rotation = -0.870118
 
 [node name="ArmadeAgile2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 179.473, 313.001 )
+position = Vector2( 205.502, 330.354 )
+rotation = 0.818967
 
 [node name="ArmadeAgile3" parent="." instance=ExtResource( 1 )]
-position = Vector2( 123.612, 197.743 )
+position = Vector2( 253.091, 21.5441 )
+rotation = 2.22766
 
 [node name="ArmadeAgile4" parent="." instance=ExtResource( 1 )]
 position = Vector2( 634.839, 110.234 )
@@ -35,3 +39,13 @@ faction = "Solreign"
 [node name="ArmadeAgile6" parent="." instance=ExtResource( 1 )]
 position = Vector2( 687.165, 209.229 )
 faction = "Solreign"
+
+[node name="Position2D" type="Position2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="Position2D"]
+current = true
+smoothing_enabled = true
+
+[node name="ArmadeAgile7" parent="." instance=ExtResource( 4 )]
+position = Vector2( 156.541, 211.65 )
+rotation = 1.52048
