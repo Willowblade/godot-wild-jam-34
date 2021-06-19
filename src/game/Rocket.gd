@@ -9,6 +9,7 @@ var lifetime = 0.0
 var time_lived = 0.0
 var targets = []
 
+
 func _ready():
 	connect("body_entered", self, "_on_body_entered")
 	$DetectionArea.connect("body_entered", self, "_on_target_entered")

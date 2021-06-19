@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://src/game/Rocket.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/graphics/projectiles/big_rocket.png" type="Texture" id=2]
+[ext_resource path="res://src/game/Thruster.tres" type="Gradient" id=3]
+[ext_resource path="res://assets/graphics/ships/trail/player-trail-small.png" type="Texture" id=4]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 2.50055
+height = 8.70429
+
+[node name="RocketMk1" instance=ExtResource( 1 )]
+collision/safe_margin = 1.0
+
+[node name="Hull" parent="Visual" index="0"]
+position = Vector2( 0, 0.0663986 )
+texture = ExtResource( 2 )
+
+[node name="Solid" type="CPUParticles2D" parent="NormalEmission" index="0"]
+position = Vector2( 0.0157499, 5.66171 )
+rotation = 0.00722153
+z_index = 2
+amount = 9
+speed_scale = 3.0
+fixed_fps = 100
+texture = ExtResource( 4 )
+flag_align_y = true
+direction = Vector2( 0, 1 )
+spread = 0.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 30.0
+linear_accel = -10.0
+radial_accel = 10.0
+scale_amount = 0.25
+color_ramp = ExtResource( 3 )
+
+[node name="ExplosionArea" parent="." index="6"]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="10"]
+position = Vector2( -0.0784645, -0.00638199 )
+shape = SubResource( 1 )

@@ -38,6 +38,8 @@ var stats = {
 
 }
 
+export var explosion_damage = 50.0
+
 
 var damage_timeout = 0.0
 
@@ -141,7 +143,7 @@ func impact_explosion():
 		var difference = (impacted_body.global_position - explosion_area.global_position)
 		var direction = difference.normalized()
 		var distance =  difference.length()
-		var impact = 1000.0 * 2 / (50 + distance)
+		var impact = explosion_damage * 30.0 * 2 / (50 + distance)
 		if GameFlow.is_enemy(impacted_body) or GameFlow.is_player(impacted_body):
 			if distance < 100:
 				print("Taking this much damage ", int(impact))

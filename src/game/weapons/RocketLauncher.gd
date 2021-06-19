@@ -5,6 +5,8 @@ onready var shoot_timeout = $ShootTimeout
 
 const ROCKETS = {
 	"default": preload("res://src/game/weapons/rockets/RocketMk1.tscn"),
+	"big_rocket": preload("res://src/game/weapons/rockets/RocketMk2.tscn"),
+	"huge_rocket": preload("res://src/game/weapons/rockets/RocketMk3.tscn"),
 }
 
 var can_fire = true
@@ -45,6 +47,7 @@ func shoot():
 	rocket_scene_instance.position = global_position
 	rocket_scene_instance.rotation = global_rotation
 	rocket_scene_instance.faction = faction
+	rocket_scene_instance.explosion_damage = damage
 	rocket_scene_instance.get_shot(Vector2.UP.rotated(global_rotation))
 	GameFlow.projectiles_spawner.shoot_rocket(rocket_scene_instance)
 
