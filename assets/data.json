@@ -284,7 +284,7 @@
         },
         "projectile_energy": {
             "type": "projectile",
-            "speed": 200,
+            "speed": 350,
             "damage": 15,
             "lifetime": 4,
             "reload": 1.2,
@@ -294,9 +294,9 @@
         },
         "projectile_kinetic": {
             "type": "projectile",
-            "speed": 250,
+            "speed": 300,
             "lifetime": 4,
-            "damage": 15,
+            "damage": 5,
             "reload": 1.2,
             "shield_multiplier": 0.6,
             "hull_multiplier": 1.2,

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/game/weapons/ProjectileShooter.tscn" type="PackedScene" id=1]
+
+[node name="EnergyProjectileShooter" instance=ExtResource( 1 )]
+weapon_name = "player_projectile"

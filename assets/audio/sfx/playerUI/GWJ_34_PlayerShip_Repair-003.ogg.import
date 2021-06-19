@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/GWJ_34_PlayerShip_Repair-003.ogg-ab11f59798c414a596a8e4f3a40efe64.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/sfx/playerUI/GWJ_34_PlayerShip_Repair-003.ogg"
+dest_files=[ "res://.import/GWJ_34_PlayerShip_Repair-003.ogg-ab11f59798c414a596a8e4f3a40efe64.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

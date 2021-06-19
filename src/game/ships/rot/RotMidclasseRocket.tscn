@@ -17,8 +17,7 @@ radius = 342.657
 [sub_resource type="CircleShape2D" id=3]
 radius = 32.478
 
-[node name="ArmadeAgile" instance=ExtResource( 3 )]
-collision_layer = 2
+[node name="RotMidclasseRocket" instance=ExtResource( 3 )]
 faction = "Rot"
 enemy_name = "rot_midclasse_rocket"
 

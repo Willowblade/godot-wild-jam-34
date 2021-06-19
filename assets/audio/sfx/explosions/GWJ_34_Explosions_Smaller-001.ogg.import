@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/GWJ_34_Explosions_Smaller-001.ogg-3513c350a56e7e7d7afc32c6a6fb757c.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/sfx/explosions/GWJ_34_Explosions_Smaller-001.ogg"
+dest_files=[ "res://.import/GWJ_34_Explosions_Smaller-001.ogg-3513c350a56e7e7d7afc32c6a6fb757c.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -12,8 +12,8 @@ const markers = {
 	"station": preload("res://assets/graphics/ui/markers4.png")
 }
 
-const width = 960 - 16
-const height = 540 - 16
+const width = 960.0 - 16
+const height = 540.0 - 16
 
 func set_position(direction: Vector2):
 	var angle = direction.angle_to(Vector2.RIGHT)

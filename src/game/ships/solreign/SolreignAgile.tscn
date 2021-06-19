@@ -17,8 +17,7 @@ radius = 342.657
 [sub_resource type="CircleShape2D" id=3]
 radius = 20.2808
 
-[node name="ArmadeAgile" instance=ExtResource( 2 )]
-collision_layer = 2
+[node name="SolreignAgile" instance=ExtResource( 2 )]
 faction = "Solreign"
 enemy_name = "solreign_agile"
 

@@ -18,7 +18,7 @@ radius = 342.657
 radius = 31.5023
 height = 65.1662
 
-[node name="ArmadeAgile" instance=ExtResource( 3 )]
+[node name="SolreignDestroyer" instance=ExtResource( 3 )]
 faction = "Solreign"
 enemy_name = "solreign_destroyer"
 

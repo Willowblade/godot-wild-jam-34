@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/GWJ_34_UI_Positive-002.ogg-bc963739c69ad41c656e5e7f6da2d463.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/sfx/playerUI/GWJ_34_UI_Positive-002.ogg"
+dest_files=[ "res://.import/GWJ_34_UI_Positive-002.ogg-bc963739c69ad41c656e5e7f6da2d463.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

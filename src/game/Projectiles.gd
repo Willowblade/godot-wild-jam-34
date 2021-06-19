@@ -47,6 +47,7 @@ func shoot_rocket(rocket: Rocket):
 
 
 func shoot_projectile(projectile: Projectile):
+	projectile.connect("delete", self, "on_projectile_deleted")
 	add_child(projectile)
 
 
@@ -66,3 +67,9 @@ func shoot_beam_bullet(projectile_data):
 		beam_bullet_instance.set_size(projectile_data.hit_point.distance_to(source.global_position))
 
 		GameFlow.hit_emitter.spawn_hit(projectile_data.hit_point)
+
+
+func on_projectile_deleted(projectile):
+	yield(get_tree().create_timer(0.0), "timeout")
+	remove_child(projectile)
+	projectile.queue_free()

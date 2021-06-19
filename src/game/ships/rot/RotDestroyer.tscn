@@ -18,8 +18,7 @@ radius = 342.657
 radius = 31.5023
 height = 65.1662
 
-[node name="ArmadeAgile" instance=ExtResource( 3 )]
-collision_layer = 2
+[node name="RotDestroyer" instance=ExtResource( 3 )]
 faction = "Rot"
 enemy_name = "rot_destroyer"
 

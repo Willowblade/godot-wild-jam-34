@@ -17,7 +17,7 @@ radius = 342.657
 [sub_resource type="CircleShape2D" id=3]
 radius = 32.478
 
-[node name="ArmadeAgile" instance=ExtResource( 3 )]
+[node name="ArmadaMidclasseRocket" instance=ExtResource( 3 )]
 enemy_name = "armada_midclasse_rocket"
 
 [node name="Hull" parent="Visual" index="0"]
