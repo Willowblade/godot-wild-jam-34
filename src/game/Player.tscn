@@ -153,4 +153,4 @@ shape = SubResource( 3 )
 shape = SubResource( 4 )
 
 [node name="Shield" parent="." index="12" instance=ExtResource( 10 )]
-modulate = Color( 1, 1, 1, 0.317647 )
+modulate = Color( 0.454902, 0.815686, 0.992157, 1 )

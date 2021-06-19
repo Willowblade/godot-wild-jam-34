@@ -127,4 +127,5 @@ position = Vector2( 0, -1.5 )
 shape = SubResource( 3 )
 
 [node name="Shield" parent="." index="16" instance=ExtResource( 7 )]
+modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 0, -8.25 )

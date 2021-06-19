@@ -6,9 +6,9 @@ onready var sprite = $Sprite
 var flash_time = 0.3
 var flash_timer = 1.0
 var intensity = 0.7
-var min_intensity = 0.2
+var min_intensity = 0.1
 
-var general_dimness = 0.7
+var general_dimness = 0.4
 
 
 func _ready():
