@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://assets/graphics/ships/stations/Space_Station_1.png" type="Texture" id=1]
 [ext_resource path="res://src/game/asteroids/LargeAsteroid1.tscn" type="PackedScene" id=2]
@@ -14,8 +14,8 @@
 [ext_resource path="res://assets/graphics/NEB1.png" type="Texture" id=12]
 [ext_resource path="res://src/game/Station.tscn" type="PackedScene" id=13]
 [ext_resource path="res://src/game/Planet.tscn" type="PackedScene" id=14]
-[ext_resource path="res://assets/graphics/planets/earth.png" type="Texture" id=15]
-[ext_resource path="res://assets/graphics/planets/mars.png" type="Texture" id=16]
+[ext_resource path="res://assets/graphics/planets/Purple.png" type="Texture" id=15]
+[ext_resource path="res://assets/graphics/planets/Earthlike.png" type="Texture" id=16]
 [ext_resource path="res://src/game/asteroids/SmallAsteroid1.tscn" type="PackedScene" id=17]
 [ext_resource path="res://src/game/asteroids/SmallAsteroid2.tscn" type="PackedScene" id=18]
 [ext_resource path="res://src/game/asteroids/SmallAsteroid3.tscn" type="PackedScene" id=19]
@@ -27,6 +27,16 @@
 [ext_resource path="res://assets/graphics/ships/stations/Space_Station_2.png" type="Texture" id=25]
 [ext_resource path="res://assets/graphics/ships/stations/Space_Station_4.png" type="Texture" id=26]
 [ext_resource path="res://assets/graphics/ships/stations/Space_Station_5.png" type="Texture" id=27]
+[ext_resource path="res://assets/graphics/planets/Marslike.png" type="Texture" id=28]
+[ext_resource path="res://assets/graphics/planets/Blue.png" type="Texture" id=29]
+[ext_resource path="res://assets/graphics/planets/PlanetEater.png" type="Texture" id=30]
+[ext_resource path="res://src/game/ships/solreign/SolreignAgile.tscn" type="PackedScene" id=31]
+[ext_resource path="res://src/game/ships/solreign/SolreignDestroyer.tscn" type="PackedScene" id=32]
+[ext_resource path="res://src/game/ships/solreign/SolreignMidclasseRocket.tscn" type="PackedScene" id=33]
+[ext_resource path="res://src/game/ships/rot/RotAgile.tscn" type="PackedScene" id=34]
+[ext_resource path="res://src/game/ships/solreign/SolreignMidclasseProjectile.tscn" type="PackedScene" id=35]
+[ext_resource path="res://src/game/ships/rot/RotMidclasseProjectile.tscn" type="PackedScene" id=36]
+[ext_resource path="res://src/game/ships/armada/ArmadaDestroyer.tscn" type="PackedScene" id=37]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 32.3739
@@ -37,10 +47,7 @@ radius = 1303.75
 [node name="Canvas" type="Node2D"]
 script = ExtResource( 3 )
 
-[node name="Player" parent="." groups=[
-"orbitable",
-"ships",
-] instance=ExtResource( 9 )]
+[node name="Player" parent="." instance=ExtResource( 9 )]
 position = Vector2( -1265.08, 1692.28 )
 
 [node name="PlayerCamera" type="Camera2D" parent="Player"]
@@ -134,67 +141,223 @@ length = 1.0
 
 [node name="Enemies" type="Node2D" parent="."]
 
-[node name="ArmadeAgile" parent="Enemies" groups=[
-"orbitable",
-"ships",
-] instance=ExtResource( 8 )]
-position = Vector2( -1223.16, -218.883 )
+[node name="Armada" type="Node2D" parent="Enemies"]
 
-[node name="ArmadeAgile3" parent="Enemies" groups=[
-"orbitable",
-"ships",
-] instance=ExtResource( 8 )]
-position = Vector2( 755.634, -1108.03 )
+[node name="ArmadeAgile" parent="Enemies/Armada" instance=ExtResource( 8 )]
+position = Vector2( 5387.85, -2556.99 )
 
-[node name="ArmadeAgile4" parent="Enemies" groups=[
-"orbitable",
-"ships",
-] instance=ExtResource( 8 )]
-position = Vector2( 1793.62, 892.542 )
+[node name="ArmadeAgile11" parent="Enemies/Armada" instance=ExtResource( 8 )]
+position = Vector2( -5228.33, -713.228 )
 
-[node name="ArmadeAgile5" parent="Enemies" groups=[
-"orbitable",
-"ships",
-] instance=ExtResource( 8 )]
-position = Vector2( 1804.84, 747.744 )
+[node name="ArmadeAgile12" parent="Enemies/Armada" instance=ExtResource( 8 )]
+position = Vector2( -5012.82, -803.025 )
 
-[node name="ArmadeAgile6" parent="Enemies" groups=[
-"orbitable",
-"ships",
-] instance=ExtResource( 8 )]
-position = Vector2( 1841.88, 793.765 )
+[node name="ArmadeAgile3" parent="Enemies/Armada" instance=ExtResource( 8 )]
+position = Vector2( 5386.09, -2211.53 )
 
-[node name="ArmadeAgile7" parent="Enemies" groups=[
-"orbitable",
-"ships",
-] instance=ExtResource( 8 )]
-position = Vector2( 1351.19, -98.2671 )
+[node name="ArmadeAgile4" parent="Enemies/Armada" instance=ExtResource( 8 )]
+position = Vector2( 3616.51, -438.952 )
 
-[node name="ArmadeAgile2" parent="Enemies" groups=[
-"orbitable",
-"ships",
-] instance=ExtResource( 8 )]
-position = Vector2( 1292.57, -236.587 )
+[node name="ArmadeAgile13" parent="Enemies/Armada" instance=ExtResource( 8 )]
+position = Vector2( 5768.54, -627.727 )
 
-[node name="ArmadeAgile8" parent="Enemies" groups=[
-"orbitable",
-"ships",
-] instance=ExtResource( 22 )]
-position = Vector2( 1611.56, -665.085 )
+[node name="ArmadeAgile14" parent="Enemies/Armada" instance=ExtResource( 8 )]
+position = Vector2( 3714.67, 1652.67 )
 
-[node name="ArmadeAgile9" parent="Enemies" groups=[
-"orbitable",
-"ships",
-] instance=ExtResource( 23 )]
-position = Vector2( -1410.03, 429.498 )
+[node name="ArmadeAgile5" parent="Enemies/Armada" instance=ExtResource( 8 )]
+position = Vector2( 1871.71, -4413.89 )
+
+[node name="ArmadeAgile6" parent="Enemies/Armada" instance=ExtResource( 8 )]
+position = Vector2( 2166.74, -4318.14 )
+
+[node name="ArmadeAgile7" parent="Enemies/Armada" instance=ExtResource( 8 )]
+position = Vector2( 5060.96, -2409.21 )
+
+[node name="ArmadeAgile2" parent="Enemies/Armada" instance=ExtResource( 8 )]
+position = Vector2( 1946.34, -4051.53 )
+
+[node name="ArmadeAgile8" parent="Enemies/Armada" instance=ExtResource( 22 )]
+position = Vector2( 1385.33, -2176.03 )
+
+[node name="ArmadeAgile9" parent="Enemies/Armada" instance=ExtResource( 23 )]
+position = Vector2( 1612, -2434.27 )
 rotation = 1.03532
 
-[node name="ArmadeAgile10" parent="Enemies" groups=[
-"orbitable",
-"ships",
-] instance=ExtResource( 23 )]
-position = Vector2( 1053.26, -235.799 )
+[node name="ArmadeAgile10" parent="Enemies/Armada" instance=ExtResource( 23 )]
+position = Vector2( 1915.03, -2706.75 )
 rotation = 1.03532
+
+[node name="ArmadaDestroyer" parent="Enemies/Armada" instance=ExtResource( 37 )]
+position = Vector2( -5147.16, -820.969 )
+
+[node name="ArmadaDestroyer2" parent="Enemies/Armada" instance=ExtResource( 37 )]
+position = Vector2( 1498.73, -2610.55 )
+
+[node name="ArmadaMidclasseRocket" parent="Enemies/Armada" instance=ExtResource( 22 )]
+position = Vector2( -5253.12, -776.611 )
+
+[node name="ArmadaMidclasseProjectile" parent="Enemies/Armada" instance=ExtResource( 23 )]
+position = Vector2( -5049.76, -878.827 )
+
+[node name="Solreign" type="Node2D" parent="Enemies"]
+
+[node name="SolreignAgile" parent="Enemies/Solreign" instance=ExtResource( 31 )]
+position = Vector2( 992.948, -691.428 )
+
+[node name="SolreignAgile2" parent="Enemies/Solreign" instance=ExtResource( 31 )]
+position = Vector2( 1094.4, -563.284 )
+
+[node name="SolreignAgile3" parent="Enemies/Solreign" instance=ExtResource( 31 )]
+position = Vector2( 987.609, 627.394 )
+
+[node name="SolreignAgile4" parent="Enemies/Solreign" instance=ExtResource( 31 )]
+position = Vector2( 208.063, 1134.63 )
+
+[node name="SolreignAgile5" parent="Enemies/Solreign" instance=ExtResource( 31 )]
+position = Vector2( 186.705, -1241.38 )
+
+[node name="SolreignAgile6" parent="Enemies/Solreign" instance=ExtResource( 31 )]
+position = Vector2( -966.597, -808.894 )
+
+[node name="SolreignAgile7" parent="Enemies/Solreign" instance=ExtResource( 31 )]
+position = Vector2( -2454.14, 633.346 )
+
+[node name="SolreignAgile8" parent="Enemies/Solreign" instance=ExtResource( 31 )]
+position = Vector2( -1736.8, 912.733 )
+
+[node name="SolreignAgile9" parent="Enemies/Solreign" instance=ExtResource( 31 )]
+position = Vector2( -2149.03, 1127.64 )
+
+[node name="SolreignDestroyer" parent="Enemies/Solreign" instance=ExtResource( 32 )]
+position = Vector2( 403.936, 596.785 )
+
+[node name="SolreignDestroyer3" parent="Enemies/Solreign" instance=ExtResource( 32 )]
+position = Vector2( 183.933, -795.068 )
+
+[node name="SolreignDestroyer4" parent="Enemies/Solreign" instance=ExtResource( 32 )]
+position = Vector2( -938.544, -363.905 )
+
+[node name="SolreignDestroyer5" parent="Enemies/Solreign" instance=ExtResource( 32 )]
+position = Vector2( -1726.17, 4801.11 )
+
+[node name="SolreignDestroyer2" parent="Enemies/Solreign" instance=ExtResource( 32 )]
+position = Vector2( -1770.19, 514.735 )
+
+[node name="SolreignMidclasseRocket" parent="Enemies/Solreign" instance=ExtResource( 33 )]
+position = Vector2( -438, 574.132 )
+
+[node name="SolreignMidclasseRocket2" parent="Enemies/Solreign" instance=ExtResource( 33 )]
+position = Vector2( 482.419, 663.929 )
+
+[node name="SolreignMidclasseRocket3" parent="Enemies/Solreign" instance=ExtResource( 33 )]
+position = Vector2( 76.6278, -761.68 )
+
+[node name="SolreignMidclasseRocket4" parent="Enemies/Solreign" instance=ExtResource( 33 )]
+position = Vector2( -863.1, -281.137 )
+
+[node name="SolreignMidclasseRocket5" parent="Enemies/Solreign" instance=ExtResource( 33 )]
+position = Vector2( -2262.01, 1016.33 )
+
+[node name="SolreignMidclasseProjectile" parent="Enemies/Solreign" instance=ExtResource( 35 )]
+position = Vector2( -438, 574.132 )
+
+[node name="SolreignMidclasseProjectile2" parent="Enemies/Solreign" instance=ExtResource( 35 )]
+position = Vector2( -870.488, 355.219 )
+
+[node name="Rot" type="Node2D" parent="Enemies"]
+
+[node name="RotAgile" parent="Enemies/Rot" instance=ExtResource( 34 )]
+position = Vector2( 1543.59, 1967.53 )
+
+[node name="RotAgile2" parent="Enemies/Rot" instance=ExtResource( 34 )]
+position = Vector2( 1566.28, 2077.53 )
+
+[node name="RotAgile3" parent="Enemies/Rot" instance=ExtResource( 34 )]
+position = Vector2( 2493.61, 3055.47 )
+
+[node name="RotAgile4" parent="Enemies/Rot" instance=ExtResource( 34 )]
+position = Vector2( 2417.41, 3131.67 )
+
+[node name="RotAgile6" parent="Enemies/Rot" instance=ExtResource( 34 )]
+position = Vector2( 818.232, 3360.97 )
+
+[node name="RotAgile7" parent="Enemies/Rot" instance=ExtResource( 34 )]
+position = Vector2( 682.468, 3213.89 )
+
+[node name="RotAgile8" parent="Enemies/Rot" instance=ExtResource( 34 )]
+position = Vector2( 439.223, 2659.52 )
+
+[node name="RotAgile9" parent="Enemies/Rot" instance=ExtResource( 34 )]
+position = Vector2( 111.125, 1884.53 )
+
+[node name="RotAgile10" parent="Enemies/Rot" instance=ExtResource( 34 )]
+position = Vector2( 297.802, 3541.99 )
+
+[node name="RotAgile11" parent="Enemies/Rot" instance=ExtResource( 34 )]
+position = Vector2( 195.978, 3276.12 )
+
+[node name="RotAgile12" parent="Enemies/Rot" instance=ExtResource( 34 )]
+position = Vector2( 116.782, 2840.54 )
+
+[node name="RotAgile13" parent="Enemies/Rot" instance=ExtResource( 34 )]
+position = Vector2( -1340.03, 2944.32 )
+
+[node name="RotAgile14" parent="Enemies/Rot" instance=ExtResource( 34 )]
+position = Vector2( -1373.97, 2587.94 )
+
+[node name="RotAgile15" parent="Enemies/Rot" instance=ExtResource( 34 )]
+position = Vector2( 57.0959, 1761.73 )
+
+[node name="RotAgile16" parent="Enemies/Rot" instance=ExtResource( 34 )]
+position = Vector2( -454.56, 3604.21 )
+
+[node name="RotAgile17" parent="Enemies/Rot" instance=ExtResource( 34 )]
+position = Vector2( 378.38, -3539.85 )
+
+[node name="RotAgile18" parent="Enemies/Rot" instance=ExtResource( 34 )]
+position = Vector2( 711.004, -3770.59 )
+
+[node name="RotAgile19" parent="Enemies/Rot" instance=ExtResource( 34 )]
+position = Vector2( 573.16, -3620.76 )
+
+[node name="RotAgile20" parent="Enemies/Rot" instance=ExtResource( 34 )]
+position = Vector2( -2466.84, -4676.76 )
+
+[node name="RotAgile21" parent="Enemies/Rot" instance=ExtResource( 34 )]
+position = Vector2( -2370.84, -4436.76 )
+
+[node name="RotAgile22" parent="Enemies/Rot" instance=ExtResource( 34 )]
+position = Vector2( -2658.84, -4452.76 )
+
+[node name="RotAgile5" parent="Enemies/Rot" instance=ExtResource( 34 )]
+position = Vector2( 2513.53, 3147.02 )
+
+[node name="RotMidclasseProjectile" parent="Enemies/Rot" instance=ExtResource( 36 )]
+position = Vector2( 1350.83, 3664.58 )
+
+[node name="RotMidclasseProjectile9" parent="Enemies/Rot" instance=ExtResource( 36 )]
+position = Vector2( -344.596, 3688.73 )
+
+[node name="RotMidclasseProjectile3" parent="Enemies/Rot" instance=ExtResource( 36 )]
+position = Vector2( 1454.53, 2039.88 )
+
+[node name="RotMidclasseProjectile4" parent="Enemies/Rot" instance=ExtResource( 36 )]
+position = Vector2( 742.789, 2859.02 )
+
+[node name="RotMidclasseProjectile5" parent="Enemies/Rot" instance=ExtResource( 36 )]
+position = Vector2( 329.412, 2623.82 )
+
+[node name="RotMidclasseProjectile6" parent="Enemies/Rot" instance=ExtResource( 36 )]
+position = Vector2( 667.953, 3507.59 )
+
+[node name="RotMidclasseProjectile7" parent="Enemies/Rot" instance=ExtResource( 36 )]
+position = Vector2( 221.062, 1799.22 )
+
+[node name="RotMidclasseProjectile8" parent="Enemies/Rot" instance=ExtResource( 36 )]
+position = Vector2( -1416.77, 2417.77 )
+
+[node name="RotMidclasseProjectile2" parent="Enemies/Rot" instance=ExtResource( 36 )]
+position = Vector2( 1255.08, 3619.23 )
 
 [node name="Projectiles" type="Node2D" parent="."]
 z_index = -1
@@ -206,96 +369,847 @@ z_index = 3
 script = ExtResource( 5 )
 
 [node name="Asteroids" type="Node2D" parent="."]
+rotation = -1.94136
 
 [node name="Node2D" type="Node2D" parent="Asteroids"]
+position = Vector2( 86.9759, 9.06324 )
+rotation = -0.428879
 
-[node name="SmallAsteroid13" parent="Asteroids/Node2D" instance=ExtResource( 17 )]
-position = Vector2( -274.79, 1349.36 )
-rotation = -0.55183
+[node name="LargeAsteroid1" parent="Asteroids/Node2D" instance=ExtResource( 2 )]
+position = Vector2( -1675.16, 240.489 )
+rotation = -0.12289
 
-[node name="SmallAsteroid14" parent="Asteroids/Node2D" instance=ExtResource( 18 )]
-position = Vector2( 92.3771, 1153.03 )
-rotation = -0.55183
+[node name="SmallAsteroid1" parent="Asteroids/Node2D" instance=ExtResource( 17 )]
+position = Vector2( -1527.88, 298.663 )
+rotation = -0.12289
 
-[node name="SmallAsteroid15" parent="Asteroids/Node2D" instance=ExtResource( 18 )]
-position = Vector2( 69.7241, 923.673 )
-rotation = -0.55183
+[node name="SmallAsteroid2" parent="Asteroids/Node2D" instance=ExtResource( 17 )]
+position = Vector2( -1554.16, 419.341 )
+rotation = -0.12289
 
-[node name="SmallAsteroid16" parent="Asteroids/Node2D" instance=ExtResource( 19 )]
-position = Vector2( -403.157, 1338.03 )
-rotation = -0.55183
+[node name="SmallAsteroid3" parent="Asteroids/Node2D" instance=ExtResource( 17 )]
+position = Vector2( -1498.2, 513.857 )
+rotation = -0.12289
 
-[node name="SmallAsteroid17" parent="Asteroids/Node2D" instance=ExtResource( 19 )]
-position = Vector2( -46.3719, 917.066 )
-rotation = -0.55183
+[node name="SmallAsteroid4" parent="Asteroids/Node2D" instance=ExtResource( 18 )]
+position = Vector2( -1379.27, 708.312 )
+rotation = -0.12289
 
-[node name="SmallAsteroid18" parent="Asteroids/Node2D" instance=ExtResource( 19 )]
-position = Vector2( 94.2651, 1026.56 )
-rotation = -0.55183
+[node name="SmallAsteroid5" parent="Asteroids/Node2D" instance=ExtResource( 18 )]
+position = Vector2( -1519.15, 734.289 )
+rotation = -0.12289
 
-[node name="SmallAsteroid19" parent="Asteroids/Node2D" instance=ExtResource( 19 )]
-position = Vector2( 10.2601, 1100.18 )
-rotation = -0.55183
+[node name="SmallAsteroid6" parent="Asteroids/Node2D" instance=ExtResource( 19 )]
+position = Vector2( -1774.06, 309.611 )
+rotation = -0.12289
 
-[node name="SmallAsteroid20" parent="Asteroids/Node2D" instance=ExtResource( 19 )]
-position = Vector2( -418.259, 1013.34 )
-rotation = -0.55183
+[node name="SmallAsteroid7" parent="Asteroids/Node2D" instance=ExtResource( 19 )]
+position = Vector2( -1552.84, -36.8323 )
+rotation = -0.12289
 
-[node name="LargeAsteroid3" parent="Asteroids/Node2D" instance=ExtResource( 20 )]
-position = Vector2( -300.274, 1124.72 )
-rotation = -0.55183
+[node name="SmallAsteroid8" parent="Asteroids/Node2D" instance=ExtResource( 19 )]
+position = Vector2( -1691.66, 49.1709 )
+rotation = -0.12289
 
-[node name="LargeAsteroid1" parent="Asteroids" instance=ExtResource( 2 )]
-position = Vector2( -129.311, -112.321 )
+[node name="SmallAsteroid9" parent="Asteroids/Node2D" instance=ExtResource( 19 )]
+position = Vector2( -1546.15, 605.593 )
+rotation = -0.12289
 
-[node name="SmallAsteroid1" parent="Asteroids" instance=ExtResource( 17 )]
-position = Vector2( -508.438, 606.581 )
+[node name="SmallAsteroid10" parent="Asteroids/Node2D" instance=ExtResource( 19 )]
+position = Vector2( -1576.01, 116.981 )
+rotation = -0.12289
 
-[node name="SmallAsteroid2" parent="Asteroids" instance=ExtResource( 17 )]
-position = Vector2( -849.176, 861.427 )
+[node name="LargeAsteroid2" parent="Asteroids/Node2D" instance=ExtResource( 20 )]
+position = Vector2( -1663.61, 491.872 )
+rotation = -1.26235
 
-[node name="SmallAsteroid3" parent="Asteroids" instance=ExtResource( 17 )]
-position = Vector2( -779.329, 969.029 )
+[node name="Node2D2" type="Node2D" parent="Asteroids"]
+position = Vector2( 86.9759, 9.06324 )
+rotation = 0.199629
 
-[node name="SmallAsteroid4" parent="Asteroids" instance=ExtResource( 18 )]
-position = Vector2( -412.163, 772.703 )
+[node name="LargeAsteroid1" parent="Asteroids/Node2D2" instance=ExtResource( 2 )]
+position = Vector2( -1675.16, 240.489 )
+rotation = -0.12289
 
-[node name="SmallAsteroid5" parent="Asteroids" instance=ExtResource( 18 )]
-position = Vector2( -434.816, 543.341 )
+[node name="SmallAsteroid1" parent="Asteroids/Node2D2" instance=ExtResource( 17 )]
+position = Vector2( -1527.88, 298.663 )
+rotation = -0.12289
 
-[node name="SmallAsteroid6" parent="Asteroids" instance=ExtResource( 19 )]
-position = Vector2( -907.697, 957.702 )
+[node name="SmallAsteroid2" parent="Asteroids/Node2D2" instance=ExtResource( 17 )]
+position = Vector2( -1554.16, 419.341 )
+rotation = -0.12289
 
-[node name="SmallAsteroid7" parent="Asteroids" instance=ExtResource( 19 )]
-position = Vector2( -550.912, 536.734 )
+[node name="SmallAsteroid3" parent="Asteroids/Node2D2" instance=ExtResource( 17 )]
+position = Vector2( -1498.2, 513.857 )
+rotation = -0.12289
 
-[node name="SmallAsteroid8" parent="Asteroids" instance=ExtResource( 19 )]
-position = Vector2( -410.275, 646.224 )
+[node name="SmallAsteroid4" parent="Asteroids/Node2D2" instance=ExtResource( 18 )]
+position = Vector2( -1379.27, 708.312 )
+rotation = -0.12289
 
-[node name="SmallAsteroid9" parent="Asteroids" instance=ExtResource( 19 )]
-position = Vector2( -494.28, 719.846 )
+[node name="SmallAsteroid5" parent="Asteroids/Node2D2" instance=ExtResource( 18 )]
+position = Vector2( -1519.15, 734.289 )
+rotation = -0.12289
 
-[node name="SmallAsteroid10" parent="Asteroids" instance=ExtResource( 19 )]
-position = Vector2( -922.799, 633.01 )
+[node name="SmallAsteroid6" parent="Asteroids/Node2D2" instance=ExtResource( 19 )]
+position = Vector2( -1774.06, 309.611 )
+rotation = -0.12289
 
-[node name="LargeAsteroid2" parent="Asteroids" instance=ExtResource( 20 )]
-position = Vector2( -804.814, 744.387 )
+[node name="SmallAsteroid7" parent="Asteroids/Node2D2" instance=ExtResource( 19 )]
+position = Vector2( -1552.84, -36.8323 )
+rotation = -0.12289
 
-[node name="SmallAsteroid11" parent="Asteroids" instance=ExtResource( 17 )]
-position = Vector2( -3.89795, 986.913 )
-rotation = -0.55183
+[node name="SmallAsteroid8" parent="Asteroids/Node2D2" instance=ExtResource( 19 )]
+position = Vector2( -1691.66, 49.1709 )
+rotation = -0.12289
 
-[node name="SmallAsteroid12" parent="Asteroids" instance=ExtResource( 17 )]
-position = Vector2( -344.636, 1241.76 )
-rotation = -0.55183
+[node name="SmallAsteroid9" parent="Asteroids/Node2D2" instance=ExtResource( 19 )]
+position = Vector2( -1546.15, 605.593 )
+rotation = -0.12289
+
+[node name="SmallAsteroid10" parent="Asteroids/Node2D2" instance=ExtResource( 19 )]
+position = Vector2( -1576.01, 116.981 )
+rotation = -0.12289
+
+[node name="LargeAsteroid2" parent="Asteroids/Node2D2" instance=ExtResource( 20 )]
+position = Vector2( -1663.61, 491.872 )
+rotation = -1.26235
+
+[node name="Node2D3" type="Node2D" parent="Asteroids"]
+position = Vector2( 86.9759, 9.06324 )
+rotation = 1.01331
+
+[node name="LargeAsteroid1" parent="Asteroids/Node2D3" instance=ExtResource( 2 )]
+position = Vector2( -1675.16, 240.489 )
+rotation = -0.12289
+
+[node name="SmallAsteroid1" parent="Asteroids/Node2D3" instance=ExtResource( 17 )]
+position = Vector2( -1527.88, 298.663 )
+rotation = -0.12289
+
+[node name="SmallAsteroid2" parent="Asteroids/Node2D3" instance=ExtResource( 17 )]
+position = Vector2( -1554.16, 419.341 )
+rotation = -0.12289
+
+[node name="SmallAsteroid3" parent="Asteroids/Node2D3" instance=ExtResource( 17 )]
+position = Vector2( -1498.2, 513.857 )
+rotation = -0.12289
+
+[node name="SmallAsteroid4" parent="Asteroids/Node2D3" instance=ExtResource( 18 )]
+position = Vector2( -1379.27, 708.312 )
+rotation = -0.12289
+
+[node name="SmallAsteroid5" parent="Asteroids/Node2D3" instance=ExtResource( 18 )]
+position = Vector2( -1519.15, 734.289 )
+rotation = -0.12289
+
+[node name="SmallAsteroid6" parent="Asteroids/Node2D3" instance=ExtResource( 19 )]
+position = Vector2( -1774.06, 309.611 )
+rotation = -0.12289
+
+[node name="SmallAsteroid7" parent="Asteroids/Node2D3" instance=ExtResource( 19 )]
+position = Vector2( -1552.84, -36.8323 )
+rotation = -0.12289
+
+[node name="SmallAsteroid8" parent="Asteroids/Node2D3" instance=ExtResource( 19 )]
+position = Vector2( -1691.66, 49.1709 )
+rotation = -0.12289
+
+[node name="SmallAsteroid9" parent="Asteroids/Node2D3" instance=ExtResource( 19 )]
+position = Vector2( -1546.15, 605.593 )
+rotation = -0.12289
+
+[node name="SmallAsteroid10" parent="Asteroids/Node2D3" instance=ExtResource( 19 )]
+position = Vector2( -1576.01, 116.981 )
+rotation = -0.12289
+
+[node name="LargeAsteroid2" parent="Asteroids/Node2D3" instance=ExtResource( 20 )]
+position = Vector2( -1663.61, 491.872 )
+rotation = -1.26235
+
+[node name="Node2D4" type="Node2D" parent="Asteroids"]
+position = Vector2( 86.9759, 9.06324 )
+rotation = 1.58877
+
+[node name="LargeAsteroid1" parent="Asteroids/Node2D4" instance=ExtResource( 2 )]
+position = Vector2( -1675.16, 240.489 )
+rotation = -0.12289
+
+[node name="SmallAsteroid1" parent="Asteroids/Node2D4" instance=ExtResource( 17 )]
+position = Vector2( -1527.88, 298.663 )
+rotation = -0.12289
+
+[node name="SmallAsteroid2" parent="Asteroids/Node2D4" instance=ExtResource( 17 )]
+position = Vector2( -1554.16, 419.341 )
+rotation = -0.12289
+
+[node name="SmallAsteroid3" parent="Asteroids/Node2D4" instance=ExtResource( 17 )]
+position = Vector2( -1498.2, 513.857 )
+rotation = -0.12289
+
+[node name="SmallAsteroid4" parent="Asteroids/Node2D4" instance=ExtResource( 18 )]
+position = Vector2( -1379.27, 708.312 )
+rotation = -0.12289
+
+[node name="SmallAsteroid5" parent="Asteroids/Node2D4" instance=ExtResource( 18 )]
+position = Vector2( -1519.15, 734.289 )
+rotation = -0.12289
+
+[node name="SmallAsteroid6" parent="Asteroids/Node2D4" instance=ExtResource( 19 )]
+position = Vector2( -1774.06, 309.611 )
+rotation = -0.12289
+
+[node name="SmallAsteroid7" parent="Asteroids/Node2D4" instance=ExtResource( 19 )]
+position = Vector2( -1552.84, -36.8323 )
+rotation = -0.12289
+
+[node name="SmallAsteroid8" parent="Asteroids/Node2D4" instance=ExtResource( 19 )]
+position = Vector2( -1691.66, 49.1709 )
+rotation = -0.12289
+
+[node name="SmallAsteroid9" parent="Asteroids/Node2D4" instance=ExtResource( 19 )]
+position = Vector2( -1546.15, 605.593 )
+rotation = -0.12289
+
+[node name="SmallAsteroid10" parent="Asteroids/Node2D4" instance=ExtResource( 19 )]
+position = Vector2( -1576.01, 116.981 )
+rotation = -0.12289
+
+[node name="LargeAsteroid2" parent="Asteroids/Node2D4" instance=ExtResource( 20 )]
+position = Vector2( -1663.61, 491.872 )
+rotation = -1.26235
+
+[node name="Node2D5" type="Node2D" parent="Asteroids"]
+position = Vector2( 86.9759, 9.06324 )
+rotation = 2.91582
+
+[node name="LargeAsteroid1" parent="Asteroids/Node2D5" instance=ExtResource( 2 )]
+position = Vector2( -1675.16, 240.489 )
+rotation = -0.12289
+
+[node name="SmallAsteroid1" parent="Asteroids/Node2D5" instance=ExtResource( 17 )]
+position = Vector2( -1527.88, 298.663 )
+rotation = -0.12289
+
+[node name="SmallAsteroid2" parent="Asteroids/Node2D5" instance=ExtResource( 17 )]
+position = Vector2( -1554.16, 419.341 )
+rotation = -0.12289
+
+[node name="SmallAsteroid3" parent="Asteroids/Node2D5" instance=ExtResource( 17 )]
+position = Vector2( -1498.2, 513.857 )
+rotation = -0.12289
+
+[node name="SmallAsteroid4" parent="Asteroids/Node2D5" instance=ExtResource( 18 )]
+position = Vector2( -1379.27, 708.312 )
+rotation = -0.12289
+
+[node name="SmallAsteroid5" parent="Asteroids/Node2D5" instance=ExtResource( 18 )]
+position = Vector2( -1519.15, 734.289 )
+rotation = -0.12289
+
+[node name="SmallAsteroid6" parent="Asteroids/Node2D5" instance=ExtResource( 19 )]
+position = Vector2( -1774.06, 309.611 )
+rotation = -0.12289
+
+[node name="SmallAsteroid7" parent="Asteroids/Node2D5" instance=ExtResource( 19 )]
+position = Vector2( -1552.84, -36.8323 )
+rotation = -0.12289
+
+[node name="SmallAsteroid8" parent="Asteroids/Node2D5" instance=ExtResource( 19 )]
+position = Vector2( -1691.66, 49.1709 )
+rotation = -0.12289
+
+[node name="SmallAsteroid9" parent="Asteroids/Node2D5" instance=ExtResource( 19 )]
+position = Vector2( -1546.15, 605.593 )
+rotation = -0.12289
+
+[node name="SmallAsteroid10" parent="Asteroids/Node2D5" instance=ExtResource( 19 )]
+position = Vector2( -1576.01, 116.981 )
+rotation = -0.12289
+
+[node name="LargeAsteroid2" parent="Asteroids/Node2D5" instance=ExtResource( 20 )]
+position = Vector2( -1663.61, 491.872 )
+rotation = -1.26235
+
+[node name="Node2D6" type="Node2D" parent="Asteroids"]
+position = Vector2( 86.9759, 9.06324 )
+rotation = 3.55441
+
+[node name="LargeAsteroid1" parent="Asteroids/Node2D6" instance=ExtResource( 2 )]
+position = Vector2( -1675.16, 240.489 )
+rotation = -0.12289
+
+[node name="SmallAsteroid1" parent="Asteroids/Node2D6" instance=ExtResource( 17 )]
+position = Vector2( -1527.88, 298.663 )
+rotation = -0.12289
+
+[node name="SmallAsteroid2" parent="Asteroids/Node2D6" instance=ExtResource( 17 )]
+position = Vector2( -1554.16, 419.341 )
+rotation = -0.12289
+
+[node name="SmallAsteroid3" parent="Asteroids/Node2D6" instance=ExtResource( 17 )]
+position = Vector2( -1498.2, 513.857 )
+rotation = -0.12289
+
+[node name="SmallAsteroid4" parent="Asteroids/Node2D6" instance=ExtResource( 18 )]
+position = Vector2( -1379.27, 708.312 )
+rotation = -0.12289
+
+[node name="SmallAsteroid5" parent="Asteroids/Node2D6" instance=ExtResource( 18 )]
+position = Vector2( -1519.15, 734.289 )
+rotation = -0.12289
+
+[node name="SmallAsteroid6" parent="Asteroids/Node2D6" instance=ExtResource( 19 )]
+position = Vector2( -1774.06, 309.611 )
+rotation = -0.12289
+
+[node name="SmallAsteroid7" parent="Asteroids/Node2D6" instance=ExtResource( 19 )]
+position = Vector2( -1552.84, -36.8323 )
+rotation = -0.12289
+
+[node name="SmallAsteroid8" parent="Asteroids/Node2D6" instance=ExtResource( 19 )]
+position = Vector2( -1691.66, 49.1709 )
+rotation = -0.12289
+
+[node name="SmallAsteroid9" parent="Asteroids/Node2D6" instance=ExtResource( 19 )]
+position = Vector2( -1546.15, 605.593 )
+rotation = -0.12289
+
+[node name="SmallAsteroid10" parent="Asteroids/Node2D6" instance=ExtResource( 19 )]
+position = Vector2( -1576.01, 116.981 )
+rotation = -0.12289
+
+[node name="LargeAsteroid2" parent="Asteroids/Node2D6" instance=ExtResource( 20 )]
+position = Vector2( -1663.61, 491.872 )
+rotation = -1.26235
+
+[node name="Node2D7" type="Node2D" parent="Asteroids"]
+position = Vector2( 86.9759, 9.06324 )
+rotation = 4.23321
+
+[node name="LargeAsteroid1" parent="Asteroids/Node2D7" instance=ExtResource( 2 )]
+position = Vector2( -1675.16, 240.489 )
+rotation = -0.12289
+
+[node name="SmallAsteroid1" parent="Asteroids/Node2D7" instance=ExtResource( 17 )]
+position = Vector2( -1527.88, 298.663 )
+rotation = -0.12289
+
+[node name="SmallAsteroid2" parent="Asteroids/Node2D7" instance=ExtResource( 17 )]
+position = Vector2( -1554.16, 419.341 )
+rotation = -0.12289
+
+[node name="SmallAsteroid3" parent="Asteroids/Node2D7" instance=ExtResource( 17 )]
+position = Vector2( -1498.2, 513.857 )
+rotation = -0.12289
+
+[node name="SmallAsteroid4" parent="Asteroids/Node2D7" instance=ExtResource( 18 )]
+position = Vector2( -1379.27, 708.312 )
+rotation = -0.12289
+
+[node name="SmallAsteroid5" parent="Asteroids/Node2D7" instance=ExtResource( 18 )]
+position = Vector2( -1519.15, 734.289 )
+rotation = -0.12289
+
+[node name="SmallAsteroid6" parent="Asteroids/Node2D7" instance=ExtResource( 19 )]
+position = Vector2( -1774.06, 309.611 )
+rotation = -0.12289
+
+[node name="SmallAsteroid7" parent="Asteroids/Node2D7" instance=ExtResource( 19 )]
+position = Vector2( -1552.84, -36.8323 )
+rotation = -0.12289
+
+[node name="SmallAsteroid8" parent="Asteroids/Node2D7" instance=ExtResource( 19 )]
+position = Vector2( -1691.66, 49.1709 )
+rotation = -0.12289
+
+[node name="SmallAsteroid9" parent="Asteroids/Node2D7" instance=ExtResource( 19 )]
+position = Vector2( -1546.15, 605.593 )
+rotation = -0.12289
+
+[node name="SmallAsteroid10" parent="Asteroids/Node2D7" instance=ExtResource( 19 )]
+position = Vector2( -1576.01, 116.981 )
+rotation = -0.12289
+
+[node name="LargeAsteroid2" parent="Asteroids/Node2D7" instance=ExtResource( 20 )]
+position = Vector2( -1663.61, 491.872 )
+rotation = -1.26235
+
+[node name="Node2D8" type="Node2D" parent="Asteroids"]
+position = Vector2( 86.9759, 9.06324 )
+rotation = 5.03733
+
+[node name="LargeAsteroid1" parent="Asteroids/Node2D8" instance=ExtResource( 2 )]
+position = Vector2( -1675.16, 240.489 )
+rotation = -0.12289
+
+[node name="SmallAsteroid1" parent="Asteroids/Node2D8" instance=ExtResource( 17 )]
+position = Vector2( -1527.88, 298.663 )
+rotation = -0.12289
+
+[node name="SmallAsteroid2" parent="Asteroids/Node2D8" instance=ExtResource( 17 )]
+position = Vector2( -1554.16, 419.341 )
+rotation = -0.12289
+
+[node name="SmallAsteroid3" parent="Asteroids/Node2D8" instance=ExtResource( 17 )]
+position = Vector2( -1498.2, 513.857 )
+rotation = -0.12289
+
+[node name="SmallAsteroid4" parent="Asteroids/Node2D8" instance=ExtResource( 18 )]
+position = Vector2( -1379.27, 708.312 )
+rotation = -0.12289
+
+[node name="SmallAsteroid5" parent="Asteroids/Node2D8" instance=ExtResource( 18 )]
+position = Vector2( -1519.15, 734.289 )
+rotation = -0.12289
+
+[node name="SmallAsteroid6" parent="Asteroids/Node2D8" instance=ExtResource( 19 )]
+position = Vector2( -1774.06, 309.611 )
+rotation = -0.12289
+
+[node name="SmallAsteroid7" parent="Asteroids/Node2D8" instance=ExtResource( 19 )]
+position = Vector2( -1552.84, -36.8323 )
+rotation = -0.12289
+
+[node name="SmallAsteroid8" parent="Asteroids/Node2D8" instance=ExtResource( 19 )]
+position = Vector2( -1691.66, 49.1709 )
+rotation = -0.12289
+
+[node name="SmallAsteroid9" parent="Asteroids/Node2D8" instance=ExtResource( 19 )]
+position = Vector2( -1546.15, 605.593 )
+rotation = -0.12289
+
+[node name="SmallAsteroid10" parent="Asteroids/Node2D8" instance=ExtResource( 19 )]
+position = Vector2( -1576.01, 116.981 )
+rotation = -0.12289
+
+[node name="LargeAsteroid2" parent="Asteroids/Node2D8" instance=ExtResource( 20 )]
+position = Vector2( -1663.61, 491.872 )
+rotation = -1.26235
+
+[node name="Node2D9" type="Node2D" parent="Asteroids"]
+position = Vector2( 81.7031, 7.01472 )
+rotation = 5.03733
+
+[node name="LargeAsteroid1" parent="Asteroids/Node2D9" instance=ExtResource( 2 )]
+position = Vector2( -1289.91, 1117.9 )
+rotation = -0.12289
+
+[node name="SmallAsteroid1" parent="Asteroids/Node2D9" instance=ExtResource( 17 )]
+position = Vector2( -1305.16, 891.179 )
+rotation = -0.12289
+
+[node name="SmallAsteroid2" parent="Asteroids/Node2D9" instance=ExtResource( 17 )]
+position = Vector2( -1684.92, -176.466 )
+rotation = -0.12289
+
+[node name="SmallAsteroid3" parent="Asteroids/Node2D9" instance=ExtResource( 17 )]
+position = Vector2( -1540.81, -276.123 )
+rotation = -0.12289
+
+[node name="SmallAsteroid4" parent="Asteroids/Node2D9" instance=ExtResource( 18 )]
+position = Vector2( -1667.05, -789.377 )
+rotation = -0.12289
+
+[node name="SmallAsteroid5" parent="Asteroids/Node2D9" instance=ExtResource( 18 )]
+position = Vector2( -0.214355, -1762.51 )
+rotation = -0.12289
+
+[node name="SmallAsteroid6" parent="Asteroids/Node2D9" instance=ExtResource( 19 )]
+position = Vector2( 137.764, -1614.31 )
+rotation = -0.12289
+
+[node name="SmallAsteroid7" parent="Asteroids/Node2D9" instance=ExtResource( 19 )]
+position = Vector2( 1207.29, -1316.11 )
+rotation = -0.12289
+
+[node name="SmallAsteroid8" parent="Asteroids/Node2D9" instance=ExtResource( 19 )]
+position = Vector2( 1466.49, 719.055 )
+rotation = -0.12289
+
+[node name="SmallAsteroid9" parent="Asteroids/Node2D9" instance=ExtResource( 19 )]
+position = Vector2( 1580.63, 101.856 )
+rotation = -0.12289
+
+[node name="SmallAsteroid10" parent="Asteroids/Node2D9" instance=ExtResource( 19 )]
+position = Vector2( 1661.91, 31.6989 )
+rotation = -0.12289
+
+[node name="LargeAsteroid2" parent="Asteroids/Node2D9" instance=ExtResource( 20 )]
+position = Vector2( -1527.44, 995.496 )
+rotation = -1.26235
+
+[node name="Node2D10" type="Node2D" parent="Asteroids"]
+position = Vector2( -512.88, 3599.35 )
+rotation = 5.03733
+
+[node name="LargeAsteroid1" parent="Asteroids/Node2D10" instance=ExtResource( 2 )]
+position = Vector2( -1289.91, 1117.9 )
+rotation = -0.12289
+
+[node name="SmallAsteroid1" parent="Asteroids/Node2D10" instance=ExtResource( 17 )]
+position = Vector2( -1305.16, 891.179 )
+rotation = -0.12289
+
+[node name="SmallAsteroid2" parent="Asteroids/Node2D10" instance=ExtResource( 17 )]
+position = Vector2( -1684.92, -176.466 )
+rotation = -0.12289
+
+[node name="SmallAsteroid3" parent="Asteroids/Node2D10" instance=ExtResource( 17 )]
+position = Vector2( -1540.81, -276.123 )
+rotation = -0.12289
+
+[node name="SmallAsteroid4" parent="Asteroids/Node2D10" instance=ExtResource( 18 )]
+position = Vector2( -1667.05, -789.377 )
+rotation = -0.12289
+
+[node name="SmallAsteroid5" parent="Asteroids/Node2D10" instance=ExtResource( 18 )]
+position = Vector2( -0.214355, -1762.51 )
+rotation = -0.12289
+
+[node name="SmallAsteroid6" parent="Asteroids/Node2D10" instance=ExtResource( 19 )]
+position = Vector2( 137.764, -1614.31 )
+rotation = -0.12289
+
+[node name="SmallAsteroid7" parent="Asteroids/Node2D10" instance=ExtResource( 19 )]
+position = Vector2( 1207.29, -1316.11 )
+rotation = -0.12289
+
+[node name="SmallAsteroid8" parent="Asteroids/Node2D10" instance=ExtResource( 19 )]
+position = Vector2( 1466.49, 719.055 )
+rotation = -0.12289
+
+[node name="SmallAsteroid9" parent="Asteroids/Node2D10" instance=ExtResource( 19 )]
+position = Vector2( 1580.63, 101.856 )
+rotation = -0.12289
+
+[node name="SmallAsteroid10" parent="Asteroids/Node2D10" instance=ExtResource( 19 )]
+position = Vector2( 1661.91, 31.6989 )
+rotation = -0.12289
+
+[node name="LargeAsteroid2" parent="Asteroids/Node2D10" instance=ExtResource( 20 )]
+position = Vector2( -1527.44, 995.496 )
+rotation = -1.26235
+
+[node name="Node2D11" type="Node2D" parent="Asteroids"]
+position = Vector2( -2964.65, 151.743 )
+rotation = 5.03733
+
+[node name="LargeAsteroid1" parent="Asteroids/Node2D11" instance=ExtResource( 2 )]
+position = Vector2( -1289.91, 1117.9 )
+rotation = -0.12289
+
+[node name="SmallAsteroid1" parent="Asteroids/Node2D11" instance=ExtResource( 17 )]
+position = Vector2( -1305.16, 891.179 )
+rotation = -0.12289
+
+[node name="SmallAsteroid2" parent="Asteroids/Node2D11" instance=ExtResource( 17 )]
+position = Vector2( -1684.92, -176.466 )
+rotation = -0.12289
+
+[node name="SmallAsteroid3" parent="Asteroids/Node2D11" instance=ExtResource( 17 )]
+position = Vector2( -1540.81, -276.123 )
+rotation = -0.12289
+
+[node name="SmallAsteroid4" parent="Asteroids/Node2D11" instance=ExtResource( 18 )]
+position = Vector2( -1667.05, -789.377 )
+rotation = -0.12289
+
+[node name="SmallAsteroid5" parent="Asteroids/Node2D11" instance=ExtResource( 18 )]
+position = Vector2( -0.214355, -1762.51 )
+rotation = -0.12289
+
+[node name="SmallAsteroid6" parent="Asteroids/Node2D11" instance=ExtResource( 19 )]
+position = Vector2( 137.764, -1614.31 )
+rotation = -0.12289
+
+[node name="SmallAsteroid7" parent="Asteroids/Node2D11" instance=ExtResource( 19 )]
+position = Vector2( 1207.29, -1316.11 )
+rotation = -0.12289
+
+[node name="SmallAsteroid8" parent="Asteroids/Node2D11" instance=ExtResource( 19 )]
+position = Vector2( 1466.49, 719.055 )
+rotation = -0.12289
+
+[node name="SmallAsteroid9" parent="Asteroids/Node2D11" instance=ExtResource( 19 )]
+position = Vector2( 1580.63, 101.856 )
+rotation = -0.12289
+
+[node name="SmallAsteroid10" parent="Asteroids/Node2D11" instance=ExtResource( 19 )]
+position = Vector2( 1661.91, 31.6989 )
+rotation = -0.12289
+
+[node name="LargeAsteroid2" parent="Asteroids/Node2D11" instance=ExtResource( 20 )]
+position = Vector2( -1527.44, 995.496 )
+rotation = -1.26235
+
+[node name="Node2D12" type="Node2D" parent="Asteroids"]
+position = Vector2( -2605.36, -3483.67 )
+rotation = 7.1956
+
+[node name="LargeAsteroid1" parent="Asteroids/Node2D12" instance=ExtResource( 2 )]
+position = Vector2( -1289.91, 1117.9 )
+rotation = -0.12289
+
+[node name="SmallAsteroid1" parent="Asteroids/Node2D12" instance=ExtResource( 17 )]
+position = Vector2( -1305.16, 891.179 )
+rotation = -0.12289
+
+[node name="SmallAsteroid2" parent="Asteroids/Node2D12" instance=ExtResource( 17 )]
+position = Vector2( -1684.92, -176.466 )
+rotation = -0.12289
+
+[node name="SmallAsteroid3" parent="Asteroids/Node2D12" instance=ExtResource( 17 )]
+position = Vector2( -1540.81, -276.123 )
+rotation = -0.12289
+
+[node name="SmallAsteroid4" parent="Asteroids/Node2D12" instance=ExtResource( 18 )]
+position = Vector2( -1667.05, -789.377 )
+rotation = -0.12289
+
+[node name="SmallAsteroid5" parent="Asteroids/Node2D12" instance=ExtResource( 18 )]
+position = Vector2( -0.214355, -1762.51 )
+rotation = -0.12289
+
+[node name="SmallAsteroid6" parent="Asteroids/Node2D12" instance=ExtResource( 19 )]
+position = Vector2( 137.764, -1614.31 )
+rotation = -0.12289
+
+[node name="SmallAsteroid7" parent="Asteroids/Node2D12" instance=ExtResource( 19 )]
+position = Vector2( 1207.29, -1316.11 )
+rotation = -0.12289
+
+[node name="SmallAsteroid8" parent="Asteroids/Node2D12" instance=ExtResource( 19 )]
+position = Vector2( 1466.49, 719.055 )
+rotation = -0.12289
+
+[node name="SmallAsteroid9" parent="Asteroids/Node2D12" instance=ExtResource( 19 )]
+position = Vector2( 1652.52, 106.413 )
+rotation = -0.12289
+
+[node name="SmallAsteroid10" parent="Asteroids/Node2D12" instance=ExtResource( 19 )]
+position = Vector2( 1661.91, 31.6989 )
+rotation = -0.12289
+
+[node name="LargeAsteroid2" parent="Asteroids/Node2D12" instance=ExtResource( 20 )]
+position = Vector2( -1527.44, 995.496 )
+rotation = -1.26235
+
+[node name="Node2D13" type="Node2D" parent="Asteroids"]
+position = Vector2( 1557.79, -3356.79 )
+rotation = 7.1956
+
+[node name="LargeAsteroid1" parent="Asteroids/Node2D13" instance=ExtResource( 2 )]
+position = Vector2( -1289.91, 1117.9 )
+rotation = -0.12289
+
+[node name="SmallAsteroid1" parent="Asteroids/Node2D13" instance=ExtResource( 17 )]
+position = Vector2( -1305.16, 891.179 )
+rotation = -0.12289
+
+[node name="SmallAsteroid2" parent="Asteroids/Node2D13" instance=ExtResource( 17 )]
+position = Vector2( -1684.92, -176.466 )
+rotation = -0.12289
+
+[node name="SmallAsteroid3" parent="Asteroids/Node2D13" instance=ExtResource( 17 )]
+position = Vector2( -1540.81, -276.123 )
+rotation = -0.12289
+
+[node name="SmallAsteroid4" parent="Asteroids/Node2D13" instance=ExtResource( 18 )]
+position = Vector2( -1667.05, -789.377 )
+rotation = -0.12289
+
+[node name="SmallAsteroid5" parent="Asteroids/Node2D13" instance=ExtResource( 18 )]
+position = Vector2( -0.214355, -1762.51 )
+rotation = -0.12289
+
+[node name="SmallAsteroid6" parent="Asteroids/Node2D13" instance=ExtResource( 19 )]
+position = Vector2( 137.764, -1614.31 )
+rotation = -0.12289
+
+[node name="SmallAsteroid7" parent="Asteroids/Node2D13" instance=ExtResource( 19 )]
+position = Vector2( 1207.29, -1316.11 )
+rotation = -0.12289
+
+[node name="SmallAsteroid8" parent="Asteroids/Node2D13" instance=ExtResource( 19 )]
+position = Vector2( 1466.49, 719.055 )
+rotation = -0.12289
+
+[node name="SmallAsteroid9" parent="Asteroids/Node2D13" instance=ExtResource( 19 )]
+position = Vector2( 1580.63, 101.856 )
+rotation = -0.12289
+
+[node name="SmallAsteroid10" parent="Asteroids/Node2D13" instance=ExtResource( 19 )]
+position = Vector2( 1661.91, 31.6989 )
+rotation = -0.12289
+
+[node name="LargeAsteroid2" parent="Asteroids/Node2D13" instance=ExtResource( 20 )]
+position = Vector2( -1527.44, 995.496 )
+rotation = -1.26235
+
+[node name="Node2D14" type="Node2D" parent="Asteroids"]
+position = Vector2( 3673.04, -752.805 )
+rotation = 8.07643
+
+[node name="LargeAsteroid1" parent="Asteroids/Node2D14" instance=ExtResource( 2 )]
+position = Vector2( -1289.91, 1117.9 )
+rotation = -0.12289
+
+[node name="SmallAsteroid1" parent="Asteroids/Node2D14" instance=ExtResource( 17 )]
+position = Vector2( -1305.16, 891.179 )
+rotation = -0.12289
+
+[node name="SmallAsteroid2" parent="Asteroids/Node2D14" instance=ExtResource( 17 )]
+position = Vector2( -1684.92, -176.466 )
+rotation = -0.12289
+
+[node name="SmallAsteroid3" parent="Asteroids/Node2D14" instance=ExtResource( 17 )]
+position = Vector2( -1540.81, -276.123 )
+rotation = -0.12289
+
+[node name="SmallAsteroid4" parent="Asteroids/Node2D14" instance=ExtResource( 18 )]
+position = Vector2( -1667.05, -789.377 )
+rotation = -0.12289
+
+[node name="SmallAsteroid5" parent="Asteroids/Node2D14" instance=ExtResource( 18 )]
+position = Vector2( -0.214355, -1762.51 )
+rotation = -0.12289
+
+[node name="SmallAsteroid6" parent="Asteroids/Node2D14" instance=ExtResource( 19 )]
+position = Vector2( 137.764, -1614.31 )
+rotation = -0.12289
+
+[node name="SmallAsteroid7" parent="Asteroids/Node2D14" instance=ExtResource( 19 )]
+position = Vector2( 1207.29, -1316.11 )
+rotation = -0.12289
+
+[node name="SmallAsteroid8" parent="Asteroids/Node2D14" instance=ExtResource( 19 )]
+position = Vector2( 1466.49, 719.055 )
+rotation = -0.12289
+
+[node name="SmallAsteroid9" parent="Asteroids/Node2D14" instance=ExtResource( 19 )]
+position = Vector2( 1580.63, 101.856 )
+rotation = -0.12289
+
+[node name="SmallAsteroid10" parent="Asteroids/Node2D14" instance=ExtResource( 19 )]
+position = Vector2( 1661.91, 31.6989 )
+rotation = -0.12289
+
+[node name="LargeAsteroid2" parent="Asteroids/Node2D14" instance=ExtResource( 20 )]
+position = Vector2( -1527.44, 995.496 )
+rotation = -1.26235
+
+[node name="Node2D15" type="Node2D" parent="Asteroids"]
+position = Vector2( 2480.08, 2526.31 )
+rotation = 9.64514
+
+[node name="LargeAsteroid1" parent="Asteroids/Node2D15" instance=ExtResource( 2 )]
+position = Vector2( -1289.91, 1117.9 )
+rotation = -0.12289
+
+[node name="SmallAsteroid1" parent="Asteroids/Node2D15" instance=ExtResource( 17 )]
+position = Vector2( -1305.16, 891.179 )
+rotation = -0.12289
+
+[node name="SmallAsteroid2" parent="Asteroids/Node2D15" instance=ExtResource( 17 )]
+position = Vector2( -1684.92, -176.466 )
+rotation = -0.12289
+
+[node name="SmallAsteroid3" parent="Asteroids/Node2D15" instance=ExtResource( 17 )]
+position = Vector2( -1540.81, -276.123 )
+rotation = -0.12289
+
+[node name="SmallAsteroid4" parent="Asteroids/Node2D15" instance=ExtResource( 18 )]
+position = Vector2( -1667.05, -789.377 )
+rotation = -0.12289
+
+[node name="SmallAsteroid5" parent="Asteroids/Node2D15" instance=ExtResource( 18 )]
+position = Vector2( -0.214355, -1762.51 )
+rotation = -0.12289
+
+[node name="SmallAsteroid6" parent="Asteroids/Node2D15" instance=ExtResource( 19 )]
+position = Vector2( 137.764, -1614.31 )
+rotation = -0.12289
+
+[node name="SmallAsteroid7" parent="Asteroids/Node2D15" instance=ExtResource( 19 )]
+position = Vector2( 1207.29, -1316.11 )
+rotation = -0.12289
+
+[node name="SmallAsteroid8" parent="Asteroids/Node2D15" instance=ExtResource( 19 )]
+position = Vector2( 1466.49, 719.055 )
+rotation = -0.12289
+
+[node name="SmallAsteroid9" parent="Asteroids/Node2D15" instance=ExtResource( 19 )]
+position = Vector2( 1580.63, 101.856 )
+rotation = -0.12289
+
+[node name="SmallAsteroid10" parent="Asteroids/Node2D15" instance=ExtResource( 19 )]
+position = Vector2( 1661.91, 31.6989 )
+rotation = -0.12289
+
+[node name="LargeAsteroid2" parent="Asteroids/Node2D15" instance=ExtResource( 20 )]
+position = Vector2( -1527.44, 995.496 )
+rotation = -1.26235
+
+[node name="Node2D16" type="Node2D" parent="Asteroids"]
+position = Vector2( -1261.78, 2907.64 )
+rotation = 10.3581
+
+[node name="LargeAsteroid1" parent="Asteroids/Node2D16" instance=ExtResource( 2 )]
+position = Vector2( -1289.91, 1117.9 )
+rotation = -0.12289
+
+[node name="SmallAsteroid1" parent="Asteroids/Node2D16" instance=ExtResource( 17 )]
+position = Vector2( -1305.16, 891.179 )
+rotation = -0.12289
+
+[node name="SmallAsteroid2" parent="Asteroids/Node2D16" instance=ExtResource( 17 )]
+position = Vector2( -1684.92, -176.466 )
+rotation = -0.12289
+
+[node name="SmallAsteroid3" parent="Asteroids/Node2D16" instance=ExtResource( 17 )]
+position = Vector2( -1540.81, -276.123 )
+rotation = -0.12289
+
+[node name="SmallAsteroid4" parent="Asteroids/Node2D16" instance=ExtResource( 18 )]
+position = Vector2( -1667.05, -789.377 )
+rotation = -0.12289
+
+[node name="SmallAsteroid5" parent="Asteroids/Node2D16" instance=ExtResource( 18 )]
+position = Vector2( -0.214355, -1762.51 )
+rotation = -0.12289
+
+[node name="SmallAsteroid6" parent="Asteroids/Node2D16" instance=ExtResource( 19 )]
+position = Vector2( 137.764, -1614.31 )
+rotation = -0.12289
+
+[node name="SmallAsteroid7" parent="Asteroids/Node2D16" instance=ExtResource( 19 )]
+position = Vector2( 1207.29, -1316.11 )
+rotation = -0.12289
+
+[node name="SmallAsteroid8" parent="Asteroids/Node2D16" instance=ExtResource( 19 )]
+position = Vector2( 1466.49, 719.055 )
+rotation = -0.12289
+
+[node name="SmallAsteroid9" parent="Asteroids/Node2D16" instance=ExtResource( 19 )]
+position = Vector2( 1580.63, 101.856 )
+rotation = -0.12289
+
+[node name="SmallAsteroid10" parent="Asteroids/Node2D16" instance=ExtResource( 19 )]
+position = Vector2( 1661.91, 31.6989 )
+rotation = -0.12289
+
+[node name="LargeAsteroid2" parent="Asteroids/Node2D16" instance=ExtResource( 20 )]
+position = Vector2( -1527.44, 995.496 )
+rotation = -1.26235
 
 [node name="Sun" parent="." instance=ExtResource( 10 )]
-position = Vector2( -4300, 2500 )
+position = Vector2( -21.519, -83.2334 )
 
 [node name="Stations" type="Node2D" parent="."]
 
 [node name="Station" parent="Stations" instance=ExtResource( 13 )]
-position = Vector2( 2224, 1624 )
+position = Vector2( 4354.54, -2858.94 )
 station_name = "1"
 
 [node name="Sprite" parent="Stations/Station" index="0"]
@@ -316,7 +1230,7 @@ shape = SubResource( 1 )
 position = Vector2( 0.472656, 67.1337 )
 
 [node name="Station2" parent="Stations" instance=ExtResource( 13 )]
-position = Vector2( 3887.12, 2161.4 )
+position = Vector2( -765.625, -4873.66 )
 station_name = "2"
 
 [node name="Sprite" parent="Stations/Station2" index="0"]
@@ -336,7 +1250,7 @@ shape = SubResource( 1 )
 position = Vector2( -1.11646, 79.6592 )
 
 [node name="Station3" parent="Stations" instance=ExtResource( 13 )]
-position = Vector2( 1820.84, 3834.58 )
+position = Vector2( -1745.49, -401.195 )
 station_name = "3"
 
 [node name="Sprite" parent="Stations/Station3" index="0"]
@@ -356,7 +1270,7 @@ shape = SubResource( 1 )
 position = Vector2( -1.3092, 80.4587 )
 
 [node name="Station4" parent="Stations" instance=ExtResource( 13 )]
-position = Vector2( -892.869, 5039.05 )
+position = Vector2( -2366.53, 4654.62 )
 station_name = "4"
 
 [node name="Sprite" parent="Stations/Station4" index="0"]
@@ -381,7 +1295,7 @@ position = Vector2( 0.472656, 175.206 )
 shape = SubResource( 2 )
 
 [node name="Station5" parent="Stations" instance=ExtResource( 13 )]
-position = Vector2( -3152.18, -807.499 )
+position = Vector2( -4476.34, -2366.59 )
 station_name = "5"
 
 [node name="Sprite" parent="Stations/Station5" index="0"]
@@ -407,26 +1321,50 @@ shape = SubResource( 2 )
 [node name="Planets" type="Node2D" parent="."]
 
 [node name="Earth" parent="Planets" instance=ExtResource( 14 )]
-position = Vector2( 640.763, 351.495 )
+position = Vector2( 4549.17, 351.495 )
 rotation = -2.08819
 planet_name = "earth"
 
 [node name="Sprite" parent="Planets/Earth" index="0"]
-texture = ExtResource( 15 )
+texture = ExtResource( 16 )
 
 [node name="Mars" parent="Planets" instance=ExtResource( 14 )]
-position = Vector2( -581.857, -48 )
+position = Vector2( 536.937, -3828.17 )
 rotation = -2.54446
 planet_name = "mars"
 
 [node name="Sprite" parent="Planets/Mars" index="0"]
-texture = ExtResource( 16 )
+texture = ExtResource( 28 )
+
+[node name="Eater" parent="Planets" instance=ExtResource( 14 )]
+position = Vector2( 350.472, 3172.77 )
+rotation = -2.54446
+planet_name = "eater"
+
+[node name="Sprite" parent="Planets/Eater" index="0"]
+texture = ExtResource( 30 )
+
+[node name="Blue" parent="Planets" instance=ExtResource( 14 )]
+position = Vector2( -1904.07, -2658.52 )
+rotation = -2.54446
+planet_name = "blue"
+
+[node name="Sprite" parent="Planets/Blue" index="0"]
+texture = ExtResource( 29 )
+
+[node name="Purple" parent="Planets" instance=ExtResource( 14 )]
+position = Vector2( -1988.82, 714.813 )
+rotation = -2.54446
+planet_name = "purple"
+
+[node name="Sprite" parent="Planets/Purple" index="0"]
+texture = ExtResource( 15 )
 
 [node name="HitEmitter" type="Node2D" parent="."]
 script = ExtResource( 21 )
 
 [node name="IGPS" parent="." instance=ExtResource( 24 )]
-position = Vector2( -890.734, 1904.85 )
+position = Vector2( 5343.54, 1020.9 )
 
 [editable path="Stations/Station"]
 [editable path="Stations/Station2"]
@@ -435,3 +1373,6 @@ position = Vector2( -890.734, 1904.85 )
 [editable path="Stations/Station5"]
 [editable path="Planets/Earth"]
 [editable path="Planets/Mars"]
+[editable path="Planets/Eater"]
+[editable path="Planets/Blue"]
+[editable path="Planets/Purple"]
