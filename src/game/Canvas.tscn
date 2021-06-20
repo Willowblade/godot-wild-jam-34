@@ -6,7 +6,7 @@
 [ext_resource path="res://src/game/Projectiles.gd" type="Script" id=4]
 [ext_resource path="res://src/game/SpeedLines.gd" type="Script" id=5]
 [ext_resource path="res://assets/graphics/PB3.png" type="Texture" id=6]
-[ext_resource path="res://assets/graphics/PB2.png" type="Texture" id=7]
+[ext_resource path="res://assets/graphics/PB1.png" type="Texture" id=7]
 [ext_resource path="res://src/game/ships/armada/ArmadeAgile.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/game/shells/DefaultShell.tscn" type="PackedScene" id=9]
 [ext_resource path="res://src/game/Sun.tscn" type="PackedScene" id=10]
@@ -97,10 +97,12 @@ __meta__ = {
 }
 
 [node name="Space_BG4" type="ParallaxLayer" parent="Player/PlayerCamera/ParallaxBackground"]
+visible = false
 motion_scale = Vector2( 0.12, 0.12 )
 motion_mirroring = Vector2( 1000, 600 )
 
 [node name="TextureRect" type="TextureRect" parent="Player/PlayerCamera/ParallaxBackground/Space_BG4"]
+visible = false
 modulate = Color( 1, 1, 1, 0.431373 )
 margin_left = -30.0
 margin_top = -30.0
