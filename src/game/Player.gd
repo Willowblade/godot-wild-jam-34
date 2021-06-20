@@ -31,6 +31,7 @@ func update_heat(delta):
 		if heat_recharge_tick_timer > heat_recharge_tick:
 			heat = max(0, heat - heat_recharge_rate)
 			heat_recharge_tick_timer = 0.0
+		should_update_stats = true
 	else:
 		heat_timeout += delta
 
@@ -132,6 +133,8 @@ func take_hull_damage(damage: float):
 
 
 func increase_heat(increment):
+	# heat factor should be like a bit reduced imo
+	increment = increment * 0.8
 	heat += increment
 	if heat > heat_max:
 		take_hull_damage((heat - heat_max) / 2)

@@ -37,6 +37,8 @@ func take_damage(damage: int):
 	if health <= 0:
 		$Sprite.visible = false
 		$Explosion.emitting = true
+		AudioEngine.play_effect("explosion_smaller" + str(1 + (randi() % 2)))
+
 		collision_layer = 0
 		collision_mask = 0
 		emit_signal("died", self)

@@ -174,6 +174,7 @@ func impact_explosion():
 
 
 func play_explosion():
+	AudioEngine.play_effect("explosion_small" + str(1 + (randi() % 4)))
 	$Explosion.set_emitting(true)
 	$Explosion.visible = true
 	$Visual.hide()

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/GWJ_34_PlayerShip_Hit_Hull-004.ogg-9f8083c2096d9d7b24b55ee20f1b0418.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/sfx/ui/GWJ_34_PlayerShip_Hit_Hull-004.ogg"
+dest_files=[ "res://.import/GWJ_34_PlayerShip_Hit_Hull-004.ogg-9f8083c2096d9d7b24b55ee20f1b0418.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

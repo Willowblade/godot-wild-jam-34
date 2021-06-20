@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/GWJ_34_PlayerShip_Warnings-005.ogg-732b78cf0e7c33353f4f75b959737b57.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/sfx/ui/GWJ_34_PlayerShip_Warnings-005.ogg"
+dest_files=[ "res://.import/GWJ_34_PlayerShip_Warnings-005.ogg-732b78cf0e7c33353f4f75b959737b57.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
