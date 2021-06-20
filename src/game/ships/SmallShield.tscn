@@ -9,4 +9,5 @@
 texture = ExtResource( 2 )
 
 [node name="Emitter" parent="." index="1"]
+visible = true
 scale = Vector2( 0.75, 0.75 )

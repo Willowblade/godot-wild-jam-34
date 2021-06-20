@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://src/game/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/graphics/ships/player/armada.png" type="Texture" id=2]
 [ext_resource path="res://src/game/weapons/projectiles/KineticProjectileShooter.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/game/weapons/RocketLauncher.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/game/SmokeEmitter.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/game/Thruster.tres" type="Gradient" id=6]
+[ext_resource path="res://assets/graphics/ships/trail/player-trail-small.png" type="Texture" id=7]
+[ext_resource path="res://assets/graphics/ships/trail/player-trail.png" type="Texture" id=8]
 
 [node name="Player" instance=ExtResource( 1 )]
 shell_name = "armada"
@@ -12,22 +16,285 @@ shell_name = "armada"
 scale = Vector2( 1, 1 )
 texture = ExtResource( 2 )
 
+[node name="NormalEmission" parent="." index="1"]
+visible = true
+modulate = Color( 1, 0.192157, 0.192157, 1 )
+
+[node name="Solid" type="CPUParticles2D" parent="NormalEmission" index="0"]
+position = Vector2( 14, 19.3251 )
+rotation = 0.00722153
+amount = 9
+speed_scale = 3.0
+fixed_fps = 100
+texture = ExtResource( 7 )
+flag_align_y = true
+direction = Vector2( 0, 1 )
+spread = 0.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 30.0
+linear_accel = -10.0
+radial_accel = 10.0
+scale_amount = 0.25
+color_ramp = ExtResource( 6 )
+
+[node name="Solid4" type="CPUParticles2D" parent="NormalEmission" index="1"]
+position = Vector2( 21.6402, 19.3251 )
+rotation = 0.00722153
+amount = 9
+speed_scale = 3.0
+fixed_fps = 100
+texture = ExtResource( 7 )
+flag_align_y = true
+direction = Vector2( 0, 1 )
+spread = 0.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 30.0
+linear_accel = -10.0
+radial_accel = 10.0
+scale_amount = 0.25
+color_ramp = ExtResource( 6 )
+
+[node name="Solid2" type="CPUParticles2D" parent="NormalEmission" index="2"]
+position = Vector2( -14.125, 19.5916 )
+rotation = -0.000322011
+amount = 9
+speed_scale = 3.0
+fixed_fps = 100
+texture = ExtResource( 7 )
+flag_align_y = true
+direction = Vector2( 0, 1 )
+spread = 0.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 30.0
+linear_accel = -10.0
+radial_accel = 10.0
+scale_amount = 0.25
+color_ramp = ExtResource( 6 )
+
+[node name="Solid3" type="CPUParticles2D" parent="NormalEmission" index="3"]
+position = Vector2( -21.5518, 18.7497 )
+rotation = -0.000322011
+amount = 9
+speed_scale = 3.0
+fixed_fps = 100
+texture = ExtResource( 7 )
+flag_align_y = true
+direction = Vector2( 0, 1 )
+spread = 0.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 30.0
+linear_accel = -10.0
+radial_accel = 10.0
+scale_amount = 0.25
+color_ramp = ExtResource( 6 )
+
+[node name="Solid5" type="CPUParticles2D" parent="NormalEmission" index="4"]
+position = Vector2( 9.53674e-07, 21.0643 )
+rotation = -0.000322011
+amount = 9
+speed_scale = 3.0
+fixed_fps = 100
+texture = ExtResource( 8 )
+flag_align_y = true
+direction = Vector2( 0, 1 )
+spread = 0.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 30.0
+linear_accel = -10.0
+radial_accel = 10.0
+scale_amount = 0.25
+color_ramp = ExtResource( 6 )
+
+[node name="Solid" type="CPUParticles2D" parent="BoostEmission" index="0"]
+position = Vector2( 14, 19.3251 )
+rotation = 0.00722153
+amount = 9
+speed_scale = 3.0
+fixed_fps = 100
+texture = ExtResource( 7 )
+flag_align_y = true
+direction = Vector2( 0, 1 )
+spread = 0.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 30.0
+linear_accel = -10.0
+radial_accel = 10.0
+scale_amount = 0.25
+color_ramp = ExtResource( 6 )
+
+[node name="Solid4" type="CPUParticles2D" parent="BoostEmission" index="1"]
+position = Vector2( 21.6402, 19.3251 )
+rotation = 0.00722153
+amount = 9
+speed_scale = 3.0
+fixed_fps = 100
+texture = ExtResource( 7 )
+flag_align_y = true
+direction = Vector2( 0, 1 )
+spread = 0.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 30.0
+linear_accel = -10.0
+radial_accel = 10.0
+scale_amount = 0.25
+color_ramp = ExtResource( 6 )
+
+[node name="Solid2" type="CPUParticles2D" parent="BoostEmission" index="2"]
+position = Vector2( -14.125, 19.5916 )
+rotation = -0.000322011
+amount = 9
+speed_scale = 3.0
+fixed_fps = 100
+texture = ExtResource( 7 )
+flag_align_y = true
+direction = Vector2( 0, 1 )
+spread = 0.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 30.0
+linear_accel = -10.0
+radial_accel = 10.0
+scale_amount = 0.25
+color_ramp = ExtResource( 6 )
+
+[node name="Solid3" type="CPUParticles2D" parent="BoostEmission" index="3"]
+position = Vector2( -21.5518, 18.7497 )
+rotation = -0.000322011
+amount = 9
+speed_scale = 3.0
+fixed_fps = 100
+texture = ExtResource( 7 )
+flag_align_y = true
+direction = Vector2( 0, 1 )
+spread = 0.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 30.0
+linear_accel = -10.0
+radial_accel = 10.0
+scale_amount = 0.25
+color_ramp = ExtResource( 6 )
+
+[node name="Solid5" type="CPUParticles2D" parent="BoostEmission" index="4"]
+position = Vector2( 9.53674e-07, 21.0643 )
+rotation = -0.000322011
+amount = 9
+speed_scale = 3.0
+fixed_fps = 100
+texture = ExtResource( 8 )
+flag_align_y = true
+direction = Vector2( 0, 1 )
+spread = 0.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 30.0
+linear_accel = -10.0
+radial_accel = 10.0
+scale_amount = 0.25
+color_ramp = ExtResource( 6 )
+
+[node name="TurnRightEmission" parent="." index="3"]
+visible = true
+modulate = Color( 1, 0.192157, 0.192157, 1 )
+
+[node name="Solid3" type="CPUParticles2D" parent="TurnRightEmission" index="0"]
+position = Vector2( -30.2959, 9.17449 )
+rotation = 0.131242
+scale = Vector2( 0.410152, 0.410152 )
+amount = 9
+speed_scale = 3.0
+fixed_fps = 100
+texture = ExtResource( 7 )
+flag_align_y = true
+direction = Vector2( 0, 1 )
+spread = 0.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 30.0
+linear_accel = -10.0
+radial_accel = 10.0
+scale_amount = 0.25
+color_ramp = ExtResource( 6 )
+
+[node name="TurnLeftEmission" parent="." index="4"]
+visible = true
+modulate = Color( 1, 0.192157, 0.192157, 1 )
+
+[node name="Solid4" type="CPUParticles2D" parent="TurnLeftEmission" index="0"]
+position = Vector2( 30.3094, 9.46469 )
+rotation = -0.179263
+scale = Vector2( 0.410152, 0.410152 )
+amount = 9
+speed_scale = 3.0
+fixed_fps = 100
+texture = ExtResource( 7 )
+flag_align_y = true
+direction = Vector2( 0, 1 )
+spread = 0.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 30.0
+linear_accel = -10.0
+radial_accel = 10.0
+scale_amount = 0.25
+color_ramp = ExtResource( 6 )
+
 [node name="CollisionPolygon2D" parent="." index="5"]
+visible = false
 polygon = PoolVector2Array( 0.0556946, -20.9827, 8.98483, -5.80314, 8.84829, 2.53124, 31.3833, 2.88519, 27.1359, 20.1109, -0.341156, 22.3732, -27.8448, 19.521, -30.9124, 3.00317, -8.4954, 3.00317, -8.97265, -5.60471 )
+
+[node name="ExplosionArea" parent="." index="7"]
+visible = true
+
+[node name="CollisionShape2D" parent="ExplosionArea" index="0"]
+visible = false
+
+[node name="SmokeEmitter" parent="SmokeEmitter" index="1" instance=ExtResource( 5 )]
+visible = true
+position = Vector2( 4.84636, 2 )
+
+[node name="SmokeEmitter2" parent="SmokeEmitter" index="2" instance=ExtResource( 5 )]
+visible = true
+position = Vector2( -38.3456, 2 )
+
+[node name="SmokeEmitter3" parent="SmokeEmitter" index="3" instance=ExtResource( 5 )]
+visible = true
+position = Vector2( -24.9973, -3.45669 )
+
+[node name="SmokeEmitter4" parent="SmokeEmitter" index="4" instance=ExtResource( 5 )]
+visible = true
+position = Vector2( -8.97866, -3.45669 )
+
+[node name="SmokeEmitter5" parent="SmokeEmitter" index="5" instance=ExtResource( 5 )]
+visible = true
+position = Vector2( -16.7938, 4.42181 )
 
 [node name="KineticProjectileShooter" parent="Weapons" index="0" instance=ExtResource( 3 )]
 position = Vector2( 14, -11.625 )
 
-[node name="KineticProjectileShooter2" parent="Weapons" index="1" instance=ExtResource( 3 )]
+[node name="KineticProjectileShooter3" parent="Weapons" index="1" instance=ExtResource( 3 )]
+position = Vector2( 14, -4.64232 )
+
+[node name="KineticProjectileShooter4" parent="Weapons" index="2" instance=ExtResource( 3 )]
+position = Vector2( 14, 3.93135 )
+
+[node name="KineticProjectileShooter5" parent="Weapons" index="3" instance=ExtResource( 3 )]
+position = Vector2( 14, 10.8256 )
+
+[node name="KineticProjectileShooter2" parent="Weapons" index="4" instance=ExtResource( 3 )]
 position = Vector2( -14.125, -12 )
 
-[node name="RocketLauncher" parent="Weapons" index="2" instance=ExtResource( 4 )]
-position = Vector2( -21.375, -8.5 )
+[node name="KineticProjectileShooter6" parent="Weapons" index="5" instance=ExtResource( 3 )]
+position = Vector2( -14.125, -4.64232 )
+
+[node name="KineticProjectileShooter7" parent="Weapons" index="6" instance=ExtResource( 3 )]
+position = Vector2( -14.125, 3.93135 )
+
+[node name="KineticProjectileShooter8" parent="Weapons" index="7" instance=ExtResource( 3 )]
+position = Vector2( -14.125, 10.8256 )
+
+[node name="RocketLauncher" parent="Weapons" index="8" instance=ExtResource( 4 )]
+position = Vector2( -21.5518, -7.88128 )
 weapon_name = "rocket_mk2"
 
-[node name="RocketLauncher2" parent="Weapons" index="3" instance=ExtResource( 4 )]
-position = Vector2( 21.375, -8.25 )
+[node name="RocketLauncher2" parent="Weapons" index="9" instance=ExtResource( 4 )]
+position = Vector2( 21.6402, -8.07322 )
 weapon_name = "rocket_mk2"
 
 [node name="Shield" parent="." index="12"]
-visible = false
+modulate = Color( 1, 0.258824, 0.258824, 0.490196 )

@@ -119,12 +119,15 @@ polygon = PoolVector2Array( 0.0556946, -20.9827, 8.98483, -5.80314, 8.38955, 4.4
 [node name="ExplosionEmitter" parent="Explosion" index="0" instance=ExtResource( 4 )]
 
 [node name="SmokeEmitter" parent="." index="8"]
+visible = true
 position = Vector2( 16.7938, 12.1976 )
 
 [node name="SmokeEmitter" parent="SmokeEmitter" index="1" instance=ExtResource( 1 )]
+visible = true
 position = Vector2( -23.6881, 5.3033 )
 
 [node name="SmokeEmitter2" parent="SmokeEmitter" index="2" instance=ExtResource( 1 )]
+visible = true
 position = Vector2( -17.1875, -24.8404 )
 
 [node name="DirectCannon2" parent="Weapons" index="0" instance=ExtResource( 3 )]
