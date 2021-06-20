@@ -15,18 +15,18 @@
         },
         "armada": {
             "acceleration": 500,
-            "max_speed": 400,
+            "max_speed": 450,
             "brake_speed": 2,
-            "turn_speed": 2.5,
-            "boost_power": 1.8,
+            "turn_speed": 3.0,
+            "boost_power": 2.0,
             "max_health": 150,
             "max_shields": 100,
             "shield_recharge_time": 2.0,
             "shield_recharge_rate": 8.0
         },
         "solreign": {
-            "acceleration": 500,
-            "max_speed": 400,
+            "acceleration": 750,
+            "max_speed": 500,
             "brake_speed": 2,
             "turn_speed": 2.5,
             "boost_power": 1.8,
@@ -63,8 +63,8 @@
             "faction": "armada",
             "acceleration": 600,
             "max_speed": 500,
-            "brake_speed": 1,
-            "turn_speed": 2.0,
+            "brake_speed": 3,
+            "turn_speed": 4.0,
             "boost_power": 2.0,
             "max_health": 75,
             "max_shields": 10,
@@ -316,11 +316,19 @@
             "damage": 2,
             "shot": "default"
         },
-        "beam_mk2": {
+      "beam_mk2": {
+        "type": "beam",
+        "distance": 250,
+        "damage": 3,
+        "shot": "big_beam"
+      },
+      "beam_tooth": {
             "type": "beam",
-            "distance": 250,
-            "damage": 3,
-            "shot": "big_beam"
+            "distance": 18,
+        "damage": 6,
+        "minimum_shoot_distance": 5,
+            "maximum_shoot_distance": 20,
+            "shot": "tooth"
         }
     }
 }
