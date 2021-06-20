@@ -165,7 +165,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Space Jam"
-run/main_scene="res://src/Game.tscn"
+run/main_scene="res://src/Menu.tscn"
 boot_splash/bg_color=Color( 0.141176, 0.141176, 0.141176, 1 )
 config/icon="res://icon.png"
 

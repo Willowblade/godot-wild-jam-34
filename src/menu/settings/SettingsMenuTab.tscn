@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
+[ext_resource path="res://src/options/options_menu_example.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/menu/settings/SettingsMenuTab.gd" type="Script" id=2]
 [ext_resource path="res://src/UI/base/VolumeHBox.gd" type="Script" id=3]
 
@@ -23,7 +24,7 @@ margin_left = 32.0
 margin_top = 200.0
 margin_right = 928.0
 margin_bottom = 508.0
-color = Color( 0, 0, 0, 0.760784 )
+color = Color( 0, 0, 0, 0.54902 )
 
 [node name="BackContainer" type="VBoxContainer" parent="."]
 margin_left = 32.0
@@ -90,45 +91,78 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer"]
-margin_right = 896.0
-margin_bottom = 284.0
+margin_right = 884.0
+margin_bottom = 404.0
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 16
 alignment = 1
 
+[node name="SectionHBox" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+margin_right = 884.0
+margin_bottom = 14.0
+
+[node name="FrontHSeparator" type="HSeparator" parent="VBoxContainer/ScrollContainer/VBoxContainer/SectionHBox"]
+margin_right = 423.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/SectionHBox"]
+margin_left = 427.0
+margin_right = 456.0
+margin_bottom = 14.0
+text = "KEYS"
+
+[node name="BackHSeparator" type="HSeparator" parent="VBoxContainer/ScrollContainer/VBoxContainer/SectionHBox"]
+margin_left = 460.0
+margin_right = 884.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+margin_top = 30.0
+margin_right = 884.0
+margin_bottom = 182.0
+
+[node name="MarginContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/CenterContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 253.0
+margin_right = 630.0
+margin_bottom = 152.0
+
 [node name="AudioContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
-margin_top = 39.0
-margin_right = 896.0
-margin_bottom = 229.0
+margin_top = 198.0
+margin_right = 884.0
+margin_bottom = 388.0
 mouse_filter = 2
 custom_constants/separation = 16
 
 [node name="SectionHBox" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/AudioContainer"]
-margin_right = 896.0
+margin_right = 884.0
 margin_bottom = 14.0
 
 [node name="FrontHSeparator" type="HSeparator" parent="VBoxContainer/ScrollContainer/VBoxContainer/AudioContainer/SectionHBox"]
-margin_right = 421.0
+margin_right = 415.0
 margin_bottom = 14.0
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/AudioContainer/SectionHBox"]
-margin_left = 425.0
-margin_right = 470.0
+margin_left = 419.0
+margin_right = 464.0
 margin_bottom = 14.0
 text = "AUDIO"
 
 [node name="BackHSeparator" type="HSeparator" parent="VBoxContainer/ScrollContainer/VBoxContainer/AudioContainer/SectionHBox"]
-margin_left = 474.0
-margin_right = 896.0
+margin_left = 468.0
+margin_right = 884.0
 margin_bottom = 14.0
 size_flags_horizontal = 3
 
 [node name="MasterVolumeHBox" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/AudioContainer"]
 margin_top = 30.0
-margin_right = 896.0
+margin_right = 884.0
 margin_bottom = 46.0
 alignment = 1
 script = ExtResource( 3 )
@@ -136,34 +170,33 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 text = "MASTER"
-value = 100.0
 
 [node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/AudioContainer/MasterVolumeHBox"]
 margin_top = 1.0
-margin_right = 380.0
+margin_right = 374.0
 margin_bottom = 15.0
 size_flags_horizontal = 3
 text = "MASTER"
 align = 2
 
 [node name="VolumeSlider" type="HSlider" parent="VBoxContainer/ScrollContainer/VBoxContainer/AudioContainer/MasterVolumeHBox"]
-margin_left = 384.0
-margin_right = 512.0
+margin_left = 378.0
+margin_right = 506.0
 margin_bottom = 16.0
 rect_min_size = Vector2( 128, 0 )
 value = 100.0
 
 [node name="VolumeLabel" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/AudioContainer/MasterVolumeHBox"]
-margin_left = 516.0
+margin_left = 510.0
 margin_top = 1.0
-margin_right = 896.0
+margin_right = 884.0
 margin_bottom = 15.0
 size_flags_horizontal = 3
 text = "100%"
 
 [node name="MusicVolumeHBox" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/AudioContainer"]
 margin_top = 62.0
-margin_right = 896.0
+margin_right = 884.0
 margin_bottom = 78.0
 alignment = 1
 script = ExtResource( 3 )
@@ -171,35 +204,34 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 text = "MUSIC"
-value = 100.0
 
 [node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/AudioContainer/MusicVolumeHBox"]
 margin_top = 1.0
-margin_right = 380.0
+margin_right = 374.0
 margin_bottom = 15.0
 size_flags_horizontal = 3
 text = "MUSIC"
 align = 2
 
 [node name="VolumeSlider" type="HSlider" parent="VBoxContainer/ScrollContainer/VBoxContainer/AudioContainer/MusicVolumeHBox"]
-margin_left = 384.0
-margin_right = 512.0
+margin_left = 378.0
+margin_right = 506.0
 margin_bottom = 16.0
 rect_min_size = Vector2( 128, 0 )
 value = 100.0
 
 [node name="VolumeLabel" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/AudioContainer/MusicVolumeHBox"]
-margin_left = 516.0
+margin_left = 510.0
 margin_top = 1.0
-margin_right = 896.0
+margin_right = 884.0
 margin_bottom = 15.0
 size_flags_horizontal = 3
 text = "100%"
 
 [node name="MuteMusicCheckBox" type="CheckBox" parent="VBoxContainer/ScrollContainer/VBoxContainer/AudioContainer"]
-margin_left = 392.0
+margin_left = 386.0
 margin_top = 94.0
-margin_right = 504.0
+margin_right = 498.0
 margin_bottom = 118.0
 size_flags_horizontal = 4
 text = "MUTE_MUSIC"
@@ -207,7 +239,7 @@ align = 1
 
 [node name="SFXVolumeHBox" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/AudioContainer"]
 margin_top = 134.0
-margin_right = 896.0
+margin_right = 884.0
 margin_bottom = 150.0
 alignment = 1
 script = ExtResource( 3 )
@@ -215,44 +247,43 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 text = "SFX"
-value = 100.0
 
 [node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/AudioContainer/SFXVolumeHBox"]
 margin_top = 1.0
-margin_right = 380.0
+margin_right = 374.0
 margin_bottom = 15.0
 size_flags_horizontal = 3
 text = "SFX"
 align = 2
 
 [node name="VolumeSlider" type="HSlider" parent="VBoxContainer/ScrollContainer/VBoxContainer/AudioContainer/SFXVolumeHBox"]
-margin_left = 384.0
-margin_right = 512.0
+margin_left = 378.0
+margin_right = 506.0
 margin_bottom = 16.0
 rect_min_size = Vector2( 128, 0 )
 value = 100.0
 
 [node name="VolumeLabel" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/AudioContainer/SFXVolumeHBox"]
-margin_left = 516.0
+margin_left = 510.0
 margin_top = 1.0
-margin_right = 896.0
+margin_right = 884.0
 margin_bottom = 15.0
 size_flags_horizontal = 3
 text = "100%"
 
 [node name="MuteSFXCheckBox" type="CheckBox" parent="VBoxContainer/ScrollContainer/VBoxContainer/AudioContainer"]
-margin_left = 402.0
+margin_left = 396.0
 margin_top = 166.0
-margin_right = 494.0
+margin_right = 488.0
 margin_bottom = 190.0
 size_flags_horizontal = 4
 text = "MUTE_SFX"
 align = 1
 
 [node name="LocaleContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
-margin_top = 245.0
-margin_right = 896.0
-margin_bottom = 245.0
+margin_top = 404.0
+margin_right = 884.0
+margin_bottom = 404.0
 mouse_filter = 2
 custom_constants/separation = 16
 
@@ -306,6 +337,7 @@ margin_left = 156.0
 margin_right = 176.0
 margin_bottom = 20.0
 text = ">"
+
 [connection signal="mouse_entered" from="BackContainer/BackButton" to="." method="_on_button_mouse_entered"]
 [connection signal="mouse_entered" from="VBoxContainer/ScrollContainer/VBoxContainer/AudioContainer/MasterVolumeHBox/VolumeSlider" to="." method="_on_button_mouse_entered"]
 [connection signal="mouse_entered" from="VBoxContainer/ScrollContainer/VBoxContainer/AudioContainer/MusicVolumeHBox/VolumeSlider" to="." method="_on_button_mouse_entered"]

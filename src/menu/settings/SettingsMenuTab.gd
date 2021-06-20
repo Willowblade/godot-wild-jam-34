@@ -24,7 +24,7 @@ func _ready():
 	_error = _master_volume_slider.connect("value_changed", self, "_on_master_volume_slider_changed")
 	_error = _sfx_volume_slider.connect("value_changed", self, "_on_sfx_volume_slider_changed")
 	_error = _music_volume_slider.connect("value_changed", self, "_on_music_volume_slider_changed")
-	
+
 	_error = _mute_music_check_box.connect("toggled", self, "_on_mute_music_check_box_toggled")
 	_error = _mute_sfx_check_box.connect("toggled", self, "_on_mute_sfx_check_box_toggled")
 

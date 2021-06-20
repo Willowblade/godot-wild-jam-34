@@ -30,6 +30,8 @@ func save_state_to_context() -> Dictionary:
 	context["player"] = player.context
 	context["upgrades"] = upgrades.context
 
+	print("Saving this context", context)
+
 	return context
 
 

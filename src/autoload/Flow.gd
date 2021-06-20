@@ -28,6 +28,8 @@ var enemies_data := {}
 var interactives_data := {}
 var weapons_data := {}
 
+var game_or_tutorial = "game"
+
 var _game_flow := {
 	"menu": {
 		"packed_scene": preload("res://src/Menu.tscn"),
@@ -131,6 +133,7 @@ func change_scene_to(key : String) -> void:
 		push_error("Requested scene '{0}' was not recognized... ignoring call for changing scene.".format([key]))
 
 func go_to_game() -> void:
+	GameFlow.reset()
 	change_scene_to("game")
 
 func go_to_menu() -> void:
@@ -193,6 +196,7 @@ func get_weapon_stats(id: String):
 		return {}
 
 func new_game() -> void:
+	print("Doing a new game...")
 	_state_loader.load_stateJSON()
 	go_to_game()
 
@@ -201,6 +205,7 @@ func save_game() -> void:
 	_state_loader.save_stateJSON()
 
 func load_game():
+	print("Loading game from context...")
 	_state_loader.load_stateJSON(Flow.USER_SAVE_PATH)
 	go_to_game()
 

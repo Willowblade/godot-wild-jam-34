@@ -1,0 +1,264 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/options/rebindable_action.tscn" type="PackedScene" id=2]
+
+[node name="MarginContainer" type="MarginContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HotkeysContainer" type="HBoxContainer" parent="."]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 940.0
+margin_bottom = 520.0
+custom_constants/separation = 80
+
+[node name="GridContainer" type="GridContainer" parent="HotkeysContainer"]
+margin_right = 337.0
+margin_bottom = 112.0
+columns = 3
+
+[node name="ShipHandling" type="Label" parent="HotkeysContainer/GridContainer"]
+margin_right = 101.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 0, 30 )
+text = "Ship"
+align = 1
+valign = 1
+
+[node name="Interact" type="HBoxContainer" parent="HotkeysContainer/GridContainer"]
+margin_left = 105.0
+margin_right = 213.0
+margin_bottom = 30.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="HotkeysContainer/GridContainer/Interact"]
+margin_top = 8.0
+margin_right = 54.0
+margin_bottom = 22.0
+text = "Interact:"
+
+[node name="RebindableAction" parent="HotkeysContainer/GridContainer/Interact" instance=ExtResource( 2 )]
+margin_left = 58.0
+margin_right = 88.0
+margin_bottom = 30.0
+keep_pressed_outside = true
+text = "Up"
+align = 2
+action = "interact"
+
+[node name="UiDown" type="HBoxContainer" parent="HotkeysContainer/GridContainer"]
+margin_left = 217.0
+margin_right = 337.0
+margin_bottom = 30.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="HotkeysContainer/GridContainer/UiDown"]
+margin_top = 8.0
+margin_right = 36.0
+margin_bottom = 22.0
+text = "Shoot"
+
+[node name="RebindableAction" parent="HotkeysContainer/GridContainer/UiDown" instance=ExtResource( 2 )]
+margin_left = 40.0
+margin_right = 88.0
+margin_bottom = 30.0
+text = "Down"
+align = 2
+action = "shoot"
+
+[node name="UILeft" type="HBoxContainer" parent="HotkeysContainer/GridContainer"]
+margin_top = 34.0
+margin_right = 101.0
+margin_bottom = 54.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="HotkeysContainer/GridContainer/UILeft"]
+margin_top = 3.0
+margin_right = 27.0
+margin_bottom = 17.0
+text = "Map"
+
+[node name="RebindableAction" parent="HotkeysContainer/GridContainer/UILeft" instance=ExtResource( 2 )]
+margin_left = 31.0
+margin_right = 67.0
+text = "Left"
+align = 2
+action = "switch"
+
+[node name="UILeft2" type="HBoxContainer" parent="HotkeysContainer/GridContainer"]
+margin_left = 105.0
+margin_top = 34.0
+margin_right = 213.0
+margin_bottom = 54.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="HotkeysContainer/GridContainer/UILeft2"]
+margin_top = 3.0
+margin_right = 37.0
+margin_bottom = 17.0
+text = "Boost"
+
+[node name="RebindableAction" parent="HotkeysContainer/GridContainer/UILeft2" instance=ExtResource( 2 )]
+margin_left = 41.0
+margin_right = 77.0
+text = "Left"
+align = 2
+action = "sprint"
+
+[node name="UILeft3" type="HBoxContainer" parent="HotkeysContainer/GridContainer"]
+margin_left = 217.0
+margin_top = 34.0
+margin_right = 337.0
+margin_bottom = 54.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="HotkeysContainer/GridContainer/UILeft3"]
+margin_top = 3.0
+margin_right = 53.0
+margin_bottom = 17.0
+text = "Turn left"
+
+[node name="RebindableAction" parent="HotkeysContainer/GridContainer/UILeft3" instance=ExtResource( 2 )]
+margin_left = 57.0
+margin_right = 93.0
+text = "Left"
+align = 2
+action = "turn_left"
+
+[node name="UILeft4" type="HBoxContainer" parent="HotkeysContainer/GridContainer"]
+margin_top = 58.0
+margin_right = 101.0
+margin_bottom = 78.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="HotkeysContainer/GridContainer/UILeft4"]
+margin_top = 3.0
+margin_right = 61.0
+margin_bottom = 17.0
+text = "Turn right"
+
+[node name="RebindableAction" parent="HotkeysContainer/GridContainer/UILeft4" instance=ExtResource( 2 )]
+margin_left = 65.0
+margin_right = 101.0
+text = "Left"
+align = 2
+action = "turn_right"
+
+[node name="UILeft5" type="HBoxContainer" parent="HotkeysContainer/GridContainer"]
+margin_left = 105.0
+margin_top = 58.0
+margin_right = 213.0
+margin_bottom = 78.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="HotkeysContainer/GridContainer/UILeft5"]
+margin_top = 3.0
+margin_right = 68.0
+margin_bottom = 17.0
+text = "Accelerate"
+
+[node name="RebindableAction" parent="HotkeysContainer/GridContainer/UILeft5" instance=ExtResource( 2 )]
+margin_left = 72.0
+margin_right = 108.0
+text = "Left"
+align = 2
+action = "accelerate"
+
+[node name="UILeft6" type="HBoxContainer" parent="HotkeysContainer/GridContainer"]
+margin_left = 217.0
+margin_top = 58.0
+margin_right = 337.0
+margin_bottom = 78.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="HotkeysContainer/GridContainer/UILeft6"]
+margin_top = 3.0
+margin_right = 70.0
+margin_bottom = 17.0
+text = "Decelerate"
+
+[node name="RebindableAction" parent="HotkeysContainer/GridContainer/UILeft6" instance=ExtResource( 2 )]
+margin_left = 74.0
+margin_right = 110.0
+text = "Left"
+align = 2
+action = "decelerate"
+
+[node name="Label" type="Label" parent="HotkeysContainer/GridContainer"]
+margin_top = 82.0
+margin_right = 101.0
+margin_bottom = 112.0
+rect_min_size = Vector2( 0, 30 )
+text = "Menu:"
+align = 1
+valign = 1
+
+[node name="UIRight" type="HBoxContainer" parent="HotkeysContainer/GridContainer"]
+margin_left = 105.0
+margin_top = 82.0
+margin_right = 213.0
+margin_bottom = 112.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="HotkeysContainer/GridContainer/UIRight"]
+margin_top = 8.0
+margin_right = 50.0
+margin_bottom = 22.0
+text = "Confirm"
+
+[node name="RebindableAction" parent="HotkeysContainer/GridContainer/UIRight" instance=ExtResource( 2 )]
+margin_left = 54.0
+margin_right = 98.0
+margin_bottom = 30.0
+text = "Right"
+action = "confirm"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HotkeysContainer/GridContainer"]
+margin_left = 217.0
+margin_top = 82.0
+margin_right = 337.0
+margin_bottom = 112.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="HotkeysContainer/GridContainer/HBoxContainer"]
+margin_top = 8.0
+margin_right = 67.0
+margin_bottom = 22.0
+text = "UI Accept:"
+
+[node name="RebindableAction" parent="HotkeysContainer/GridContainer/HBoxContainer" instance=ExtResource( 2 )]
+margin_left = 71.0
+margin_right = 120.0
+margin_bottom = 30.0
+action = "ui_accept"
+
+[editable path="HotkeysContainer/GridContainer/HBoxContainer/RebindableAction"]

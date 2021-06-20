@@ -5,8 +5,9 @@ var level := 1
 var experience := 0
 var location := {
 	"position": Vector2(0, 0),
+	"angle": 0.0,
 }
-
+var shell = "armada"
 var conditions = []
 
 var context : Dictionary setget set_context, get_context
@@ -17,6 +18,8 @@ func set_context(value : Dictionary) -> void:
 		"position": Vector2(0, 0),
 	})
 	conditions = value.get("conditions", [])
+	shell = value.get("shell", "armada")
+	print("Loaded player context ", value)
 
 func get_context() -> Dictionary:
 	var _context := {}
@@ -25,6 +28,9 @@ func get_context() -> Dictionary:
 	_context.experience = experience
 	_context.location = location
 	_context.conditions = conditions
+	_context.shell = shell
+
+	print("Getting player context ", _context)
 
 	return _context
 

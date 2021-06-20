@@ -40,6 +40,8 @@ func get_orbitable_type(orbitable):
 	else:
 		return "normal"
 
+
+
 func get_orbitable_data(orbitable):
 	return {
 		"distance": sun.position.distance_to(orbitable.position),
@@ -47,13 +49,18 @@ func get_orbitable_data(orbitable):
 		"original_rotation": orbitable.rotation
 	}
 
+
 func _ready():
 	GameFlow.register_canvas(self)
 	GameFlow.register_hit_emitter($HitEmitter)
 	GameFlow.register_projectiles_spawner($Projectiles)
 	AudioEngine.play_background_music("explore")
+	GameFlow.overlays.transition.set_color(Color(0, 0, 0, 1))
+	GameFlow.overlays.transition.transition_to_clear()
 
-	GameFlow.player = player
+	GameFlow.update_player(player)
+	if State.player.shell != player.shell_name:
+		swap_player(null, State.player.shell)
 
 	for orbitable in orbitable_nodes:
 		if get_orbitable_type(orbitable) == "ship":
@@ -69,9 +76,10 @@ func _ready():
 
 	last_timestamp = GameFlow.get_time_around_sun()
 	update_orbitables(true)
+	player.position = igps.position + 128 * Vector2.DOWN
 
 
-func swap_player(shell):
+func swap_player(shell = null, shell_name = null):
 	var camera = player.get_node("PlayerCamera")
 	player.remove_child(camera)
 	var old_type = player.shell_name
@@ -84,15 +92,22 @@ func swap_player(shell):
 	remove_child(player)
 	player.queue_free()
 	# call_deferred("queue_free", player)
-	player = shells[shell.shell_name].instance()
+	if shell != null:
+		player = shells[shell.shell_name].instance()
+	else:
+		player = shells[shell_name].instance()
 	add_child(player)
-	shell.update_shell(old_type)
+	if shell != null:
+		shell.get_parent().update_type(old_type)
+	State.player.shell = player.shell_name
+	Flow.save_game()
+
 	player.position = old_position
 	player.rotation = old_rotation
 	player.destinations = old_destinations
 	player.velocity = old_velocity
 	player.add_child(camera)
-	GameFlow.player = player
+	GameFlow.update_player(player)
 
 
 func drop_material(enemy, material_type):
@@ -104,11 +119,12 @@ func drop_material(enemy, material_type):
 
 
 func _on_picked_up(material):
-	State.add_material(material.type, 1)
-	yield(get_tree().create_timer(0.0), "timeout")
-	remove_child(material)
-	material.queue_free()
-
+	if not GameFlow.is_in_battle():
+		State.add_material(material.type, 1)
+		yield(get_tree().create_timer(0.0), "timeout")
+		remove_child(material)
+		material.queue_free()
+		Flow.save_game()
 
 
 func spawn_container_with_destination(destination):

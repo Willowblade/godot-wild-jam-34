@@ -39,10 +39,11 @@ func _ready():
 	randomize()
 	rotation = randf() * 2 * PI
 
-func death():
+func predeath():
 	print("Enemy died death function")
 	GameFlow.remove_follower(self)
-	GameFlow.canvas.drop_material(self, faction.to_lower())
+	if GameFlow.canvas:
+		GameFlow.canvas.drop_material(self, faction.to_lower())
 
 
 func switch_to_investigate():

@@ -13,6 +13,9 @@ func set_context(value : Dictionary) -> void:
 	rot = value.get('rot', 0)
 	post = value.get('post', 0)
 
+	print("Loaded upgrade context ", value)
+
+
 func get_context() -> Dictionary:
 	var _context := {}
 

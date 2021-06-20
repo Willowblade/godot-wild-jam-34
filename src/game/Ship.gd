@@ -103,10 +103,14 @@ func update_shields(delta):
 	else:
 		damage_timeout += delta
 
+func take_damage_extra():
+	pass
+
 func take_damage(damage: int):
 	if stats.health <= 0:
 		print("You can't kill what's already dead...")
 		return
+	take_damage_extra()
 	damage_timeout = 0.0
 	shield_recharge_tick_timer = 0.0
 	var damage_absorbed_by_shields = damage if stats.shields > damage else stats.shields
@@ -124,10 +128,8 @@ func take_damage(damage: int):
 	if damage_to_hull > 0:
 		stats.health -= damage_to_hull
 
-	print("HP: ", stats.health)
-	print("SP: ", stats.shields)
-
 	smoke_emitter.set_intensity(1.0 - stats.health / stats.max_health)
+
 	if stats.health <= 0:
 		play_explosion()
 		impact_explosion()
@@ -135,11 +137,16 @@ func take_damage(damage: int):
 		collision_layer = 0
 		collision_mask = 0
 		set_physics_process(false)
+		predeath()
 		yield(get_tree().create_timer(2.0), "timeout")
 		emit_signal("died", self)
 		death()
-		queue_free()
+		if faction.to_lower() != "player":
+			queue_free()
 
+
+func predeath():
+	pass
 
 func impact_explosion():
 	var impacted_bodies = explosion_area.get_overlapping_bodies()

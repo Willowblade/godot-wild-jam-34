@@ -6,10 +6,14 @@
                 "y": 0
             },
             "angle": 0.0
-        }
+        },
+        "shell": "default"
     },
     "upgrades": {
-        "solreign": 20
+        "solreign": 20,
+        "armada": 0,
+        "rot": 0,
+        "post": 0
     },
     "packages_delivered": []
 }

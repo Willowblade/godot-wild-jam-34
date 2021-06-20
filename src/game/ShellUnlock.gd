@@ -9,6 +9,7 @@ export var quantity = 15
 
 var current = -1
 
+var unlocked = false
 
 const textures = {
 	"armada": preload("res://assets/graphics/ships/player/armada.png"),
@@ -33,13 +34,15 @@ func update_type(new_type):
 
 
 func unlock():
-	set_physics_process(false)
+	unlocked = true
+	set_physics_process(true)
 	$Unlock.visible = false
 	$Shell.visible = true
 	$Shell.collision_shape.disabled = false
 
 
 func lock():
+	unlocked = false
 	set_physics_process(true)
 	$Unlock.visible = true
 	$Shell.visible = false
@@ -49,7 +52,13 @@ func lock():
 
 
 func _physics_process(true):
+	if unlocked:
+		if GameFlow.player.shell_name == type:
+			update_type("default")
+		return
+
 	var amount = State.get_material_amount(type)
+
 	if amount >= quantity:
 		unlock()
 	else:

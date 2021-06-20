@@ -85,14 +85,6 @@
             ]
         },
         {
-            "action": "toggle_inventory",
-            "events": [
-                {
-                    "scancode": "I"
-                }
-            ]
-        },
-        {
             "action": "left_mouse_button",
             "events": [
                 {

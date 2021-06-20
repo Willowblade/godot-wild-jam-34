@@ -1,6 +1,6 @@
 extends Control
 
-onready var _tab_container := $TabContainer
+onready var _tab_container := $CanvasLayer/TabContainer
 
 func _ready():
 	if ConfigData.skip_menu:

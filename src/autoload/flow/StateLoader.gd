@@ -21,5 +21,7 @@ func load_stateJSON(path : String = Flow.DEFAULT_CONTEXT_PATH) -> int:
 
 func save_stateJSON(path : String = Flow.USER_SAVE_PATH) -> int:
 	## Save the current State to the user://saves-folder.
+	
 	var context : Dictionary = State.save_state_to_context()
+	print("Saving ", context, "  to ", path)
 	return Flow.save_JSON(path, context)

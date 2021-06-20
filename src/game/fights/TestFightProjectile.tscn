@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/game/ships/armada/ArmadaMidclasseProjectile.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/game/Projectiles.gd" type="Script" id=2]
@@ -6,6 +6,10 @@
 [ext_resource path="res://src/game/ships/armada/ArmadaDestroyer.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/game/Fight.gd" type="Script" id=5]
 [ext_resource path="res://src/game/ships/solreign/SolreignMidclasseRocket.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/graphics/PB3.png" type="Texture" id=7]
+[ext_resource path="res://assets/graphics/PB2.png" type="Texture" id=8]
+[ext_resource path="res://assets/graphics/NEB1.png" type="Texture" id=9]
+[ext_resource path="res://assets/graphics/PB3_2.png" type="Texture" id=10]
 
 [node name="Fight" type="Node2D"]
 script = ExtResource( 5 )
@@ -34,6 +38,81 @@ rotation = 2.22766
 [node name="Camera2D" type="Camera2D" parent="Position2D"]
 current = true
 smoothing_enabled = true
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="Position2D/Camera2D"]
+
+[node name="Space_BG2" type="ParallaxLayer" parent="Position2D/Camera2D/ParallaxBackground"]
+motion_scale = Vector2( 0.1, 0.1 )
+motion_mirroring = Vector2( 1000, 600 )
+
+[node name="TextureRect" type="TextureRect" parent="Position2D/Camera2D/ParallaxBackground/Space_BG2"]
+margin_left = -30.0
+margin_top = -30.0
+margin_right = 970.0
+margin_bottom = 570.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource( 8 )
+expand = true
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Space_BG3" type="ParallaxLayer" parent="Position2D/Camera2D/ParallaxBackground"]
+motion_scale = Vector2( 0.15, 0.15 )
+motion_mirroring = Vector2( 1000, 600 )
+
+[node name="TextureRect" type="TextureRect" parent="Position2D/Camera2D/ParallaxBackground/Space_BG3"]
+margin_left = -30.0
+margin_top = -30.0
+margin_right = 970.0
+margin_bottom = 570.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Space_BG4" type="ParallaxLayer" parent="Position2D/Camera2D/ParallaxBackground"]
+motion_scale = Vector2( 0.12, 0.12 )
+motion_mirroring = Vector2( 1000, 600 )
+
+[node name="TextureRect" type="TextureRect" parent="Position2D/Camera2D/ParallaxBackground/Space_BG4"]
+modulate = Color( 1, 1, 1, 0.431373 )
+margin_left = -30.0
+margin_top = -30.0
+margin_right = 970.0
+margin_bottom = 570.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource( 9 )
+expand = true
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Space_BG5" type="ParallaxLayer" parent="Position2D/Camera2D/ParallaxBackground"]
+motion_scale = Vector2( 0.5, 0.5 )
+motion_mirroring = Vector2( 1000, 600 )
+
+[node name="TextureRect" type="TextureRect" parent="Position2D/Camera2D/ParallaxBackground/Space_BG5"]
+margin_left = -30.0
+margin_top = -30.0
+margin_right = 970.0
+margin_bottom = 570.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource( 10 )
+expand = true
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ArmadeAgile7" parent="." instance=ExtResource( 4 )]
 position = Vector2( 156.541, 211.65 )

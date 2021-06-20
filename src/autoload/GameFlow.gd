@@ -16,7 +16,7 @@ var canvas = null
 
 var sun_position = Vector2(-4300, 2500)
 
-func register_overlay(overlay_name, overlay: Control):
+func register_overlay(overlay_name, overlay):
 	overlays[overlay_name] = overlay
 
 
@@ -86,10 +86,31 @@ func is_station(body):
 
 
 var player = null
+var player_shell = "default"
 var followers = []
-var in_igps
+var in_igps = false
 var stations_in_proximity = []
 var player_mindframe = "EXPLORE"
+
+
+func reset():
+	player = null
+	player_shell = "default"
+	followers = []
+	in_igps = false
+	stations_in_proximity = []
+	player_mindframe = "EXPLORE"
+
+func update_player(new_player):
+	player = new_player
+	player.connect("died", self, "_on_player_dead")
+
+
+func _on_player_dead(_player):
+	if Flow.game_or_tutorial == "game":
+		Flow.go_to_game()
+	else:
+		Flow.go_to_game()
 
 
 func is_in_battle():

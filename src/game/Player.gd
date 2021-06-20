@@ -12,11 +12,31 @@ var swappable_shell = null
 
 var carrying = null
 
+var should_update_stats = false
+
+
+var heat = 0.0
+var heat_max = 100.0
+var heat_timeout = 0.0
+
+var heat_recharge: float = 1.5
+var heat_recharge_rate: float = 4.0
+var heat_recharge_tick: float = 0.2
+var heat_recharge_tick_timer: float = 0.0
+
+
+func update_heat(delta):
+	if heat_timeout > heat_recharge:
+		heat_recharge_tick_timer += delta
+		if heat_recharge_tick_timer > heat_recharge_tick:
+			heat = max(0, heat - heat_recharge_rate)
+			heat_recharge_tick_timer = 0.0
+	else:
+		heat_timeout += delta
+
 func _ready():
 	refresh_stats()
 
-	stats.health = 0.5 * stats.max_health
-	print("HEALTH", stats.health)
 	smoke_emitter.set_intensity(1.0 - stats.health / stats.max_health)
 
 	$MarkerRecognition.connect("area_entered", self, "_on_area_entered_marker_area")
@@ -26,6 +46,9 @@ func _ready():
 
 	mass = 100
 
+
+func take_damage_extra():
+	should_update_stats = true
 
 func _on_area_entered_marker_area(area):
 	if area in destinations:
@@ -52,6 +75,7 @@ func _on_area_exited_marker_area(area):
 func refresh_stats():
 	var player_stats = Flow.get_player_stats(shell_name)
 	load_stats(player_stats)
+	should_update_stats = true
 #	emit_signal("updated_stats", stats)
 
 
@@ -78,10 +102,61 @@ func update_acceleration_animation():
 func heal(percent):
 	stats.health = min(stats.health + stats.max_health * percent, stats.max_health)
 	smoke_emitter.set_intensity(1.0 - stats.health / stats.max_health)
+	should_update_stats = true
 
+
+func take_hull_damage(damage: float):
+	if stats.health <= 0:
+		print("You can't kill what's already dead...")
+		return
+
+	if damage > 0:
+		stats.health -= damage
+
+	smoke_emitter.set_intensity(1.0 - stats.health / stats.max_health)
+
+	if stats.health <= 0:
+		play_explosion()
+		impact_explosion()
+
+		collision_layer = 0
+		collision_mask = 0
+		set_physics_process(false)
+		predeath()
+		yield(get_tree().create_timer(2.0), "timeout")
+		emit_signal("died", self)
+		death()
+		if faction.to_lower() != "player":
+			queue_free()
+
+
+func increase_heat(increment):
+	heat += increment
+	if heat > heat_max:
+		take_hull_damage(heat - heat_max)
+		heat = heat_max
+
+	heat_timeout = 0.0
+
+	should_update_stats = true
+
+
+func update_stats():
+	GameFlow.overlays.hud.update_stats(
+		{
+			"health": float(stats.health) / stats.max_health,
+			"shield": float(stats.shields) / stats.max_shields,
+			"heat": float(heat) / heat_max,
+		}
+	)
 
 func _physics_process(delta):
+	if heat > 0:
+		update_heat(delta)
 	update_shields(delta)
+	if damage_timeout > shield_recharge:
+		should_update_stats = true
+
 	var acceleration_boost = 1.0
 	next_acceleration_state = "NONE"
 
@@ -89,7 +164,7 @@ func _physics_process(delta):
 		print("interacting")
 		if swappable_shell and carrying == null:
 			print("Interacting with swappable shell")
-			GameFlow.canvas.swap_player(swappable_shell)
+			GameFlow.canvas.swap_player(swappable_shell, null)
 			return
 
 	if Input.is_action_pressed("sprint"):
@@ -126,6 +201,13 @@ func _physics_process(delta):
 		velocity = velocity.normalized() * max_speed
 
 	update_acceleration_animation()
+
+	if next_acceleration_state == "BOOST":
+		increase_heat(0.4)
+
+	if should_update_stats:
+		update_stats()
+		should_update_stats = false
 
 	var collision: KinematicCollision2D = move_and_collide(velocity * delta, false, true, true)
 	move_and_collide(velocity * delta, true)
