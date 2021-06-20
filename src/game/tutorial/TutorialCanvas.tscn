@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://assets/graphics/PB1.png" type="Texture" id=1]
 [ext_resource path="res://assets/graphics/PB3.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://src/game/SpeedLines.gd" type="Script" id=6]
 [ext_resource path="res://src/game/HitEmitter.gd" type="Script" id=7]
 [ext_resource path="res://src/game/Projectiles.gd" type="Script" id=8]
+[ext_resource path="res://assets/theme.tres" type="Theme" id=9]
 [ext_resource path="res://assets/graphics/planets/earth.png" type="Texture" id=11]
 [ext_resource path="res://assets/graphics/PB3_2.png" type="Texture" id=12]
 [ext_resource path="res://assets/graphics/NEB1.png" type="Texture" id=13]
@@ -125,10 +126,7 @@ length = 1.0
 
 [node name="Enemies" type="Node2D" parent="."]
 
-[node name="ArmadeAgile" parent="Enemies" groups=[
-"orbitable",
-"ships",
-] instance=ExtResource( 23 )]
+[node name="ArmadeAgile" parent="Enemies" instance=ExtResource( 23 )]
 position = Vector2( -2530.89, 2944.54 )
 
 [node name="Projectiles" type="Node2D" parent="."]
@@ -1562,6 +1560,7 @@ margin_left = -5556.08
 margin_top = 6063.89
 margin_right = -5281.08
 margin_bottom = 6318.89
+theme = ExtResource( 9 )
 bbcode_enabled = true
 bbcode_text = "[center]Welcome, new recruit! Time to take off that blindfold. 
 
@@ -1615,6 +1614,7 @@ margin_left = -3715.35
 margin_top = 4604.37
 margin_right = -3371.35
 margin_bottom = 4788.37
+theme = ExtResource( 9 )
 text = "What's this?
 
 A lost package?
@@ -1633,6 +1633,7 @@ margin_left = -5085.71
 margin_top = 6681.54
 margin_right = -4656.71
 margin_bottom = 6882.54
+theme = ExtResource( 9 )
 text = "Bet you didn't read all that huh?
 
 In short:
@@ -1669,6 +1670,7 @@ margin_left = -4139.73
 margin_top = 6603.08
 margin_right = -3795.73
 margin_bottom = 6787.08
+theme = ExtResource( 9 )
 text = "Try not to hit any meteors!
 
 We've lost many new applicants with these rocks.
@@ -1686,6 +1688,7 @@ margin_left = -3972.97
 margin_top = 3830.39
 margin_right = -3621.97
 margin_bottom = 4048.39
+theme = ExtResource( 9 )
 text = "We've hired a professional Armada soldier to train you.
 You'll meet him soon.
 
@@ -1709,6 +1712,7 @@ margin_left = -2949.84
 margin_top = 2865.05
 margin_right = -2598.84
 margin_bottom = 3083.05
+theme = ExtResource( 9 )
 text = "Here he is!
 Get him!"
 align = 1
@@ -1721,6 +1725,7 @@ margin_left = -1106.89
 margin_top = 2427.51
 margin_right = -755.893
 margin_bottom = 2645.51
+theme = ExtResource( 9 )
 text = "Our pride and joy.
 
 The IGPS flagship.
@@ -1740,6 +1745,7 @@ margin_left = -54.838
 margin_top = 1670.2
 margin_right = 296.162
 margin_bottom = 1888.2
+theme = ExtResource( 9 )
 text = "Fly over the landing pad to deliver your package!
 
 Right here -------------------------------------->
