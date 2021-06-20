@@ -175,7 +175,14 @@ func deliver_package():
 	State.player.delivered_packets.append(destination.station_name)
 	State.upgrades.post += 1
 	Flow.save_game()
-	GameFlow.objective = canvas.comeback_message
-	GameFlow.overlays.popup.show_popup_custom(GameFlow.objective, Vector2(0, 40), "info", 3)
-	destination = null
-	canvas.spawn_container_with_destination(canvas.station_map[canvas.get_container_destination()])
+
+	if Flow._game_state == Flow.STATE.GAME:
+		GameFlow.objective = canvas.comeback_message
+		GameFlow.overlays.popup.show_popup_custom(GameFlow.objective, Vector2(0, 40), "info", 3)
+		destination = null
+		canvas.spawn_container_with_destination(canvas.station_map[canvas.get_container_destination()])
+	else:
+		GameFlow.overlays.popup.show_popup_custom("Well done! Good luck in your career!", Vector2(0, 40), "info", 3)
+		yield(get_tree().create_timer(1.5), "timeout")
+		yield(GameFlow.overlays.transition.transition_to_dark(1.0), "completed")
+		Flow.go_to_menu()

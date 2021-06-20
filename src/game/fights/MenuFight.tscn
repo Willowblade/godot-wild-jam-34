@@ -1,12 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/game/HitEmitter.gd" type="Script" id=1]
 [ext_resource path="res://src/game/Projectiles.gd" type="Script" id=2]
 [ext_resource path="res://src/game/ships/armada/ArmadeAgile.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/game/ships/armada/ArmadaMidclasseRocket.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/game/Fight.gd" type="Script" id=5]
-[ext_resource path="res://src/game/asteroids/SmallAsteroid1.tscn" type="PackedScene" id=6]
-[ext_resource path="res://src/game/asteroids/SmallAsteroid2.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/game/asteroids/LargeAsteroid1.tscn" type="PackedScene" id=8]
 
 [node name="Fight" type="Node2D"]
@@ -33,6 +31,20 @@ faction = "Solreign"
 position = Vector2( 177.361, 54.6198 )
 faction = "Solreign"
 
+[node name="ArmadeAgile9" parent="." groups=[
+"orbitable",
+"ships",
+] instance=ExtResource( 3 )]
+position = Vector2( 618.168, -269.763 )
+faction = "Solreign"
+
+[node name="ArmadeAgile10" parent="." groups=[
+"orbitable",
+"ships",
+] instance=ExtResource( 3 )]
+position = Vector2( 168.448, -385.728 )
+faction = "Solreign"
+
 [node name="Projectiles" type="Node2D" parent="."]
 z_index = -1
 script = ExtResource( 2 )
@@ -47,6 +59,27 @@ script = ExtResource( 1 )
 position = Vector2( 871.031, 102.518 )
 rotation = -1.47807
 
+[node name="ArmadeAgile11" parent="." groups=[
+"orbitable",
+"ships",
+] instance=ExtResource( 4 )]
+position = Vector2( 890.509, -32.3296 )
+rotation = -1.47807
+
+[node name="ArmadeAgile12" parent="." groups=[
+"orbitable",
+"ships",
+] instance=ExtResource( 4 )]
+position = Vector2( 1047.83, 235.867 )
+rotation = -1.47807
+
+[node name="ArmadeAgile13" parent="." groups=[
+"orbitable",
+"ships",
+] instance=ExtResource( 4 )]
+position = Vector2( 598.339, 138.477 )
+rotation = -1.47807
+
 [node name="ArmadeAgile8" parent="." groups=[
 "orbitable",
 "ships",
@@ -59,33 +92,6 @@ rotation = 1.35198
 [node name="Camera2D" type="Camera2D" parent="Position2D"]
 current = true
 smoothing_enabled = true
-
-[node name="SmallAsteroid1" parent="." instance=ExtResource( 6 )]
-position = Vector2( 237.962, 214.39 )
-
-[node name="SmallAsteroid2" parent="." instance=ExtResource( 6 )]
-position = Vector2( 445.617, 68.4702 )
-
-[node name="SmallAsteroid3" parent="." instance=ExtResource( 6 )]
-position = Vector2( 704.906, 418.678 )
-
-[node name="SmallAsteroid4" parent="." instance=ExtResource( 6 )]
-position = Vector2( 776.744, 176.227 )
-
-[node name="SmallAsteroid5" parent="." instance=ExtResource( 6 )]
-position = Vector2( 681.334, -8.97971 )
-
-[node name="SmallAsteroid6" parent="." instance=ExtResource( 6 )]
-position = Vector2( 227.86, 466.944 )
-
-[node name="SmallAsteroid7" parent="." instance=ExtResource( 6 )]
-position = Vector2( 48.2659, 252.554 )
-
-[node name="SmallAsteroid8" parent="." instance=ExtResource( 7 )]
-position = Vector2( 343.473, 429.903 )
-
-[node name="SmallAsteroid9" parent="." instance=ExtResource( 7 )]
-position = Vector2( 253.676, 379.392 )
 
 [node name="LargeAsteroid1" parent="." instance=ExtResource( 8 )]
 position = Vector2( 865.418, 279.493 )

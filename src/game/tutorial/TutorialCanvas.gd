@@ -4,6 +4,7 @@ onready var ContainerScene = preload("res://src/game/Container.tscn")
 onready var MaterialScene = preload("res://src/game/Material.tscn")
 
 onready var container = $Container
+onready var station = $Stations/Station
 onready var projectiles = $Projectiles
 onready var player = $Player
 onready var speed_lines = $SpeedLines
@@ -39,6 +40,7 @@ func _ready():
 
 	GameFlow.update_player(player)
 
+	container.destination = station
 	container.connect("tether", self, "_on_container_tethered")
 
 

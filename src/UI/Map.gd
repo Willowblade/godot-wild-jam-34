@@ -1,8 +1,8 @@
 extends Node2D
 
 
-onready var objective_box = $ObjectiveBox
-onready var objective_text = $ObjectiveBox/Objective
+onready var objective_box = $Objective/ObjectiveBox
+onready var objective_text = $Objective/ObjectiveBox/Objective
 
 
 const MARKERS = {

@@ -28,10 +28,7 @@ radius = 32.3739
 [node name="TutorialCanvas" type="Node2D"]
 script = ExtResource( 4 )
 
-[node name="Player" parent="." groups=[
-"orbitable",
-"ships",
-] instance=ExtResource( 5 )]
+[node name="Player" parent="." instance=ExtResource( 5 )]
 position = Vector2( -5604.51, 6151.12 )
 rotation = 1.57079
 
@@ -1503,7 +1500,7 @@ position = Vector2( -139.04, 24.5407 )
 [node name="Stations" type="Node2D" parent="."]
 
 [node name="Station" parent="Stations" instance=ExtResource( 17 )]
-position = Vector2( 357.781, 1613.57 )
+position = Vector2( 493.545, 1665.56 )
 station_name = "tutorial"
 
 [node name="Sprite" parent="Stations/Station" index="0"]

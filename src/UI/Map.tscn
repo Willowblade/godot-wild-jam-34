@@ -1,7 +1,17 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/UI/Map.gd" type="Script" id=1]
 [ext_resource path="res://assets/graphics/ships/trail/single-pixel.png" type="Texture" id=2]
+[ext_resource path="res://assets/graphics/Button_NoShine.png" type="Texture" id=3]
+[ext_resource path="res://assets/theme.tres" type="Theme" id=4]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 64, 32 )
+margin_left = 13.569
+margin_right = 14.5157
+margin_top = 14.3579
+margin_bottom = 13.7268
 
 [node name="Map" type="Node2D"]
 position = Vector2( 480, 270 )
@@ -12,25 +22,34 @@ modulate = Color( 0, 0, 0, 0.596078 )
 scale = Vector2( 960, 540 )
 texture = ExtResource( 2 )
 
-[node name="ObjectiveBox" type="Panel" parent="."]
-margin_left = -201.0
+[node name="Objective" type="Node2D" parent="."]
+z_index = 1
+
+[node name="ObjectiveBox" type="Panel" parent="Objective"]
+margin_left = -342.0
 margin_top = -232.0
-margin_right = 177.0
+margin_right = 344.0
 margin_bottom = -129.0
+theme = ExtResource( 4 )
+custom_styles/panel = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="ObjectiveBox"]
+[node name="Label" type="Label" parent="Objective/ObjectiveBox"]
 margin_left = 27.0
 margin_top = 15.0
-margin_right = 344.0
+margin_right = 654.0
 margin_bottom = 29.0
 text = "Current Objective:"
 align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Objective" type="Label" parent="ObjectiveBox"]
+[node name="Objective" type="Label" parent="Objective/ObjectiveBox"]
 margin_left = 30.0
 margin_top = 48.0
-margin_right = 345.0
+margin_right = 665.0
 margin_bottom = 87.0
+align = 1

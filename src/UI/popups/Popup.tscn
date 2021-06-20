@@ -1,12 +1,23 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/UI/popups/Popup.gd" type="Script" id=1]
+[ext_resource path="res://assets/theme.tres" type="Theme" id=2]
+[ext_resource path="res://assets/graphics/Button_NoShine.png" type="Texture" id=3]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 2.99143, 63.6261, 25.8962 )
+margin_left = 14.2735
+margin_right = 15.4969
+margin_top = 14.6813
+margin_bottom = 14.2735
 
 [node name="Popup" type="Control"]
 margin_right = 40.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 600, 0 )
 mouse_filter = 2
+theme = ExtResource( 2 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -15,15 +26,16 @@ __meta__ = {
 [node name="PanelContainer" type="PanelContainer" parent="."]
 margin_right = 618.0
 margin_bottom = 34.0
+custom_styles/panel = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 611.0
-margin_bottom = 27.0
+margin_left = 14.2735
+margin_top = 14.6813
+margin_right = 618.273
+margin_bottom = 34.6813
 rect_min_size = Vector2( 600, 20 )
 
 [node name="TextureRect" type="TextureRect" parent="PanelContainer/HBoxContainer"]
