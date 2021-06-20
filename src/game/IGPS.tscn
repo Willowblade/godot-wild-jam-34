@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/graphics/ships/igps/IGPS.png" type="Texture" id=1]
 [ext_resource path="res://src/game/IGPS.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://assets/graphics/ships/player/carrot.png" type="Texture" id=6]
 [ext_resource path="res://src/game/ShellUnlock.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/graphics/ships/solreign/collectible.png" type="Texture" id=8]
+[ext_resource path="res://assets/graphics/ships/container.png" type="Texture" id=9]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 386.878
@@ -59,6 +60,16 @@ type = "carrot"
 
 [node name="Sprite" parent="ShellUnlock4/Shell" index="0"]
 texture = ExtResource( 6 )
+
+[node name="Sprite" parent="ShellUnlock4/Unlock" index="1"]
+texture = ExtResource( 9 )
+
+[node name="Label" parent="ShellUnlock4/Unlock" index="2"]
+margin_top = 11.336
+margin_right = 34.0
+margin_bottom = 42.336
+text = "Deliveries
+to unlock"
 
 [editable path="ShellUnlock"]
 [editable path="ShellUnlock/Shell"]

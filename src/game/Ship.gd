@@ -115,7 +115,6 @@ func take_damage_extra():
 
 func take_damage(damage: int):
 	if stats.health <= 0:
-		print("You can't kill what's already dead...")
 		return
 	take_damage_extra()
 	damage_timeout = 0.0
