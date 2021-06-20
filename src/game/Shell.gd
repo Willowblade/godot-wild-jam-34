@@ -8,7 +8,7 @@ onready var collision_shape = $CollisionShape2D
 const textures = {
 	"armada": preload("res://assets/graphics/ships/player/armada.png"),
 	"default": preload("res://assets/graphics/ships/player/standard.png"),
-	"carrot": preload("res://assets/graphics/ships/player/carrot.png"),
+	"post": preload("res://assets/graphics/ships/player/carrot.png"),
 	"rot": preload("res://assets/graphics/ships/player/rot.png"),
 	"solreign": preload("res://assets/graphics/ships/player/solreign.png"),
 }

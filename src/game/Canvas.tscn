@@ -37,7 +37,10 @@ radius = 1303.75
 [node name="Canvas" type="Node2D"]
 script = ExtResource( 3 )
 
-[node name="Player" parent="." instance=ExtResource( 9 )]
+[node name="Player" parent="." groups=[
+"orbitable",
+"ships",
+] instance=ExtResource( 9 )]
 position = Vector2( -1265.08, 1692.28 )
 
 [node name="PlayerCamera" type="Camera2D" parent="Player"]
@@ -130,7 +133,6 @@ bias = 0.9
 length = 1.0
 
 [node name="Enemies" type="Node2D" parent="."]
-position = Vector2( 1694.91, -2242.97 )
 
 [node name="ArmadeAgile" parent="Enemies" groups=[
 "orbitable",

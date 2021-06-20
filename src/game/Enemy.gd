@@ -78,7 +78,7 @@ func _on_body_exited_detection_area(body: PhysicsBody2D):
 		if targets.size() > 0:
 			target = targets[0]
 		else:
-			if body != null: 
+			if body != null:
 				if GameFlow.is_rocket(body):
 					state = "IDLE"
 					target = null
