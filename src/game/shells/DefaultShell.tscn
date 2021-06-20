@@ -230,22 +230,28 @@ visible = true
 position = Vector2( -13.1568, 3.23744 )
 
 [node name="KineticProjectileShooter" parent="Weapons" index="0" instance=ExtResource( 3 )]
-position = Vector2( -18.5235, -4.4834 )
+position = Vector2( -18.5235, -7.66898 )
+weapon_name = "player_projectile"
 
 [node name="KineticProjectileShooter2" parent="Weapons" index="1" instance=ExtResource( 3 )]
-position = Vector2( -18.4055, 0 )
+position = Vector2( -18.4055, -3.18558 )
+weapon_name = "player_projectile"
 
 [node name="KineticProjectileShooter3" parent="Weapons" index="2" instance=ExtResource( 3 )]
-position = Vector2( -18.4055, 3.42155 )
+position = Vector2( -18.4055, 0.235973 )
+weapon_name = "player_projectile"
 
 [node name="KineticProjectileShooter4" parent="Weapons" index="3" instance=ExtResource( 3 )]
-position = Vector2( 18.5235, -4.36542 )
+position = Vector2( 18.5235, -7.551 )
+weapon_name = "player_projectile"
 
 [node name="KineticProjectileShooter5" parent="Weapons" index="4" instance=ExtResource( 3 )]
-position = Vector2( 18.5235, -0.117985 )
+position = Vector2( 18.5235, -3.30356 )
+weapon_name = "player_projectile"
 
 [node name="KineticProjectileShooter6" parent="Weapons" index="5" instance=ExtResource( 3 )]
-position = Vector2( 18.5235, 3.06759 )
+position = Vector2( 18.5235, -0.117987 )
+weapon_name = "player_projectile"
 
 [node name="ShieldShape" parent="." index="11"]
 visible = false

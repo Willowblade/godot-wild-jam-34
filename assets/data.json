@@ -275,13 +275,13 @@
         },
         "player_projectile": {
             "type": "projectile",
-            "speed": 500,
+            "speed": 700,
             "lifetime": 3,
-            "damage": 20,
-            "reload": 0.3,
-            "shield_multiplier": 1.5,
+            "damage": 3,
+            "reload": 0.4,
+            "shield_multiplier": 1.0,
             "hull_multiplier": 1.0,
-            "shot": "energy"
+            "shot": "kinetic"
         },
         "projectile_energy": {
             "type": "projectile",
