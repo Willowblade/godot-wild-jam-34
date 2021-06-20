@@ -39,14 +39,14 @@ alignment = 1
 margin_right = 128.0
 margin_bottom = 20.0
 rect_min_size = Vector2( 128, 0 )
-text = "NEW"
+text = "TUTORIAL"
 
 [node name="LoadButton" type="Button" parent="VBoxContainer/VBoxContainer"]
 margin_left = 144.0
 margin_right = 272.0
 margin_bottom = 20.0
 rect_min_size = Vector2( 128, 0 )
-text = "LOAD"
+text = "CAREER MODE"
 
 [node name="SettingsButton" type="Button" parent="VBoxContainer/VBoxContainer"]
 margin_left = 288.0

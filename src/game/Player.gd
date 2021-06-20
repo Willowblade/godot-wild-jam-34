@@ -72,8 +72,9 @@ func _on_area_entered_marker_area(area):
 	if GameFlow.is_planet(area) or GameFlow.is_station(area):
 		destinations.append(area)
 
-		GameFlow.markers.make_markers(self, destinations)
-		GameFlow.markers.update_visible_destinations(destinations)
+		if GameFlow.markers:
+			GameFlow.markers.make_markers(self, destinations)
+			GameFlow.markers.update_visible_destinations(destinations)
 
 func _on_area_exited_marker_area(area):
 	if not area in destinations:
@@ -82,8 +83,9 @@ func _on_area_exited_marker_area(area):
 		if area in destinations:
 			destinations.erase(area)
 
-		GameFlow.markers.make_markers(self, destinations)
-		GameFlow.markers.update_visible_destinations(destinations)
+		if GameFlow.markers:
+			GameFlow.markers.make_markers(self, destinations)
+			GameFlow.markers.update_visible_destinations(destinations)
 
 
 

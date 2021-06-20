@@ -27,7 +27,7 @@ func _on_settings_button_pressed():
 	emit_signal("button_pressed", TABS.SETTINGS)
 
 func _on_new_button_pressed():
-	Flow.new_game()
+	Flow.tutorial()
 
 func _on_load_button_pressed():
 	Flow.load_game()

@@ -3,21 +3,13 @@ extends Node2D
 onready var ContainerScene = preload("res://src/game/Container.tscn")
 onready var MaterialScene = preload("res://src/game/Material.tscn")
 
+onready var container = $Container
 onready var projectiles = $Projectiles
 onready var player = $Player
 onready var speed_lines = $SpeedLines
-onready var sun = $Sun
 onready var igps = $IGPS
 
 onready var spring = $Player/DampedSpringJoint2D
-
-onready var orbitable_nodes = get_tree().get_nodes_in_group("orbitable")
-onready var orbitables = {
-	"ships": {},
-	"stations": {},
-	"asteroids": {},
-	"normal": {},
-}
 
 const shells = {
 	"default": preload("res://src/game/shells/DefaultShell.tscn"),
@@ -29,45 +21,12 @@ const shells = {
 
 var previous_velocity = Vector2(0, 0)
 
-var last_timestamp = 0
-
-
-func get_orbitable_type(orbitable):
-	if orbitable.is_in_group("ships"):
-		return "ship"
-	elif orbitable.is_in_group("stations"):
-		return "station"
-	elif orbitable.is_in_group("asteroids"):
-		return "asteroid"
-	else:
-		return "normal"
-
-var station_map = {
-
-}
-
-func get_orbitable_data(orbitable):
-	return {
-		"distance": sun.position.distance_to(orbitable.position),
-		"original_position": orbitable.position,
-		"original_rotation": orbitable.rotation
-	}
-
-
-func get_container_destination():
-	var delivered_packets = State.player.delivered_packets
-	for i in range(5):
-		if str((i + 1)) in delivered_packets:
-			continue
-		else:
-			return str(i + 1)
-	return str(1 + (randi() % 5))
+var station_map = {}
 
 
 func _ready():
 	for station in get_tree().get_nodes_in_group("station"):
 		station_map[station.station_name] = station
-
 
 	GameFlow.register_canvas(self)
 	GameFlow.register_hit_emitter($HitEmitter)
@@ -77,30 +36,10 @@ func _ready():
 	GameFlow.overlays.transition.transition_to_clear(1.5)
 	GameFlow.destination = null
 	GameFlow.igps = igps
-	GameFlow.sun = sun
 
 	GameFlow.update_player(player)
-	if State.player.shell != player.shell_name:
-		swap_player(null, State.player.shell)
 
-	for orbitable in orbitable_nodes:
-		if get_orbitable_type(orbitable) == "ship":
-			orbitables.ships[orbitable] = get_orbitable_data(orbitable)
-		elif get_orbitable_type(orbitable) == "station":
-			orbitables.stations[orbitable] = get_orbitable_data(orbitable)
-		elif get_orbitable_type(orbitable) == "asteroid":
-			# TODO this could be cleaner
-			orbitable.connect("died", self, "_on_asteroid_died")
-			orbitables.asteroids[orbitable] = get_orbitable_data(orbitable)
-		else:
-			orbitables.normal[orbitable] = get_orbitable_data(orbitable)
-
-	var spawn_container_destination = station_map[get_container_destination()]
-	spawn_container_with_destination(spawn_container_destination)
-
-	last_timestamp = GameFlow.get_time_around_sun()
-	update_orbitables(true)
-	player.position = igps.position + 256 * Vector2.DOWN
+	container.connect("tether", self, "_on_container_tethered")
 
 
 func swap_player(shell = null, shell_name = null):
@@ -126,7 +65,6 @@ func swap_player(shell = null, shell_name = null):
 	if shell != null:
 		shell.get_parent().update_type(old_type)
 	State.player.shell = player.shell_name
-	Flow.save_game()
 
 	player.position = old_position
 	player.rotation = old_rotation
@@ -154,17 +92,6 @@ func _on_picked_up(material):
 		Flow.save_game()
 
 
-func spawn_container_with_destination(destination):
-	var container_instance = ContainerScene.instance()
-	add_child(container_instance)
-	container_instance.position = igps.cargo_spawn_point.global_position
-	container_instance.destination = destination
-	container_instance.connect("tether", self, "_on_container_tethered")
-
-func _on_asteroid_died(asteroid: Asteroid):
-	orbitables.asteroids.erase(asteroid)
-
-
 func _on_container_tethered(container: CargoContainer, target):
 	if target == null:
 		spring.node_a = ""
@@ -180,38 +107,7 @@ func _on_container_tethered(container: CargoContainer, target):
 	spring.node_b = container.get_path()
 
 
-
-
-func update_transformation_to_sun(orbitable, orbitable_data):
-	orbitable.position = (orbitable_data.original_position - sun.position).rotated(last_timestamp * 2 * PI * orbitable.orbit_speed) + sun.position
-	orbitable.rotation =  last_timestamp * 2 * PI * orbitable.orbit_speed + orbitable_data.original_rotation
-
-
-func update_orbitables(include_ships = false):
-	return
-	for station in orbitables.stations:
-		update_transformation_to_sun(station, orbitables.stations[station])
-
-	for normal in orbitables.normal:
-		update_transformation_to_sun(normal, orbitables.normal[normal])
-
-	if include_ships:
-		for asteroid in orbitables.asteroids:
-			var asteroid_data = orbitables.asteroids[asteroid]
-			asteroid.update_position((asteroid_data.original_position - sun.position).rotated(last_timestamp * 2 * PI * asteroid.orbit_speed) + sun.position)
-
-		for ship in orbitables.ships:
-			update_transformation_to_sun(ship, orbitables.ships[ship])
-			if GameFlow.is_enemy(ship):
-				ship.origin = ship.position
-
-
 func _physics_process(delta):
-	var now = GameFlow.get_time_around_sun()
-	if (abs(now - last_timestamp) > 0.000001):
-		last_timestamp = now
-		update_orbitables(false)
-
 	var velocity = player.velocity
 	if velocity.length() > 380:
 		speed_lines.visible = true

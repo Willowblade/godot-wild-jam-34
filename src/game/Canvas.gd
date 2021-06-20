@@ -30,7 +30,7 @@ const shells = {
 
 
 var predefined_packages = {
-	"1": "Deliver these letters to Station 1, they haven't read their mail in years",
+	"1": "Station 1 hasn't read their mail in years. Press TAB to open up your map!",
 	"2": "Station 2 has been in a rut lately, bring them this CD of Inside",
 	"3": "All eyes on me, all eyes on - Oh. Hi. Deliver this underwear to Station 3",
 	"4": "How's fighting all those pirates going? Yeah, they tricked me into coming here too.",

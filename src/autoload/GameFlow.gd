@@ -115,10 +115,10 @@ func update_player(new_player):
 
 
 func _on_player_dead(_player):
-	if Flow.game_or_tutorial == "game":
+	if Flow._game_state == Flow.STATE.GAME:
 		Flow.go_to_game()
 	else:
-		Flow.go_to_game()
+		Flow.go_to_tutorial()
 
 
 func is_in_battle():

@@ -1,6 +1,6 @@
 extends Node
 
-enum STATE {MENU, GAME}
+enum STATE {MENU, GAME, TUTORIAL}
 
 const OPTIONS_PATH := "res://options.cfg"
 # Settings are a subset of options that can be modified by the user.
@@ -38,6 +38,10 @@ var _game_flow := {
 	"game": {
 		"packed_scene": preload("res://src/Game.tscn"),
 		"state": STATE.GAME
+		},
+	"tutorial": {
+		"packed_scene": preload("res://src/TutorialGame.tscn"),
+		"state": STATE.TUTORIAL
 		},
 	}
 var _game_state : int = STATE.MENU
@@ -136,6 +140,11 @@ func go_to_game() -> void:
 	GameFlow.reset()
 	change_scene_to("game")
 
+
+func go_to_tutorial() -> void:
+	GameFlow.reset()
+	change_scene_to("tutorial")
+
 func go_to_menu() -> void:
 	change_scene_to("menu")
 
@@ -200,7 +209,13 @@ func new_game() -> void:
 	_state_loader.load_stateJSON()
 	go_to_game()
 
+func tutorial() -> void:
+	_state_loader.load_stateJSON()
+	go_to_tutorial()
+
 func save_game() -> void:
+	if _game_state == STATE.TUTORIAL:
+		return
 	print("Saving game context to '{0}'".format([Flow.USER_SAVE_PATH]))
 	_state_loader.save_stateJSON()
 
