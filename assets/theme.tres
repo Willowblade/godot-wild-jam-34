@@ -1,8 +1,16 @@
-[gd_resource type="Theme" load_steps=7 format=2]
+[gd_resource type="Theme" load_steps=8 format=2]
 
 [ext_resource path="res://assets/fonts/pixellari.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/graphics/Button_Shine.png" type="Texture" id=2]
 [ext_resource path="res://assets/graphics/Button_NoShine.png" type="Texture" id=3]
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 64, 32 )
+margin_left = 16.5623
+margin_right = 15.0901
+margin_top = 15.2742
+margin_bottom = 13.986
 
 [sub_resource type="StyleBoxTexture" id=2]
 texture = ExtResource( 2 )
@@ -33,6 +41,6 @@ Button/constants/hseparation = 2
 Button/fonts/font = null
 Button/styles/disabled = null
 Button/styles/focus = null
-Button/styles/hover = null
+Button/styles/hover = SubResource( 4 )
 Button/styles/normal = SubResource( 2 )
 Button/styles/pressed = SubResource( 3 )

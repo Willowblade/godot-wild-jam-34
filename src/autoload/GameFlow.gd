@@ -100,6 +100,16 @@ var objective = null
 var destination = null
 
 
+func reset_to_menu():
+	hit_emitter = null
+	projectiles_spawner = null
+	markers = null
+	map = null
+	canvas = null
+
+	reset()
+
+
 func reset():
 	objective = null
 	player = null

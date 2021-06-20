@@ -145,40 +145,76 @@ length = 1.0
 
 [node name="Armada" type="Node2D" parent="Enemies"]
 
-[node name="ArmadeAgile" parent="Enemies/Armada" instance=ExtResource( 8 )]
+[node name="ArmadeAgile" parent="Enemies/Armada" groups=[
+"orbitable",
+"ships",
+] instance=ExtResource( 8 )]
 position = Vector2( 5387.85, -2556.99 )
 
-[node name="ArmadeAgile11" parent="Enemies/Armada" instance=ExtResource( 8 )]
+[node name="ArmadeAgile11" parent="Enemies/Armada" groups=[
+"orbitable",
+"ships",
+] instance=ExtResource( 8 )]
 position = Vector2( -5228.33, -713.228 )
 
-[node name="ArmadeAgile12" parent="Enemies/Armada" instance=ExtResource( 8 )]
+[node name="ArmadeAgile12" parent="Enemies/Armada" groups=[
+"orbitable",
+"ships",
+] instance=ExtResource( 8 )]
 position = Vector2( -5012.82, -803.025 )
 
-[node name="ArmadeAgile3" parent="Enemies/Armada" instance=ExtResource( 8 )]
+[node name="ArmadeAgile3" parent="Enemies/Armada" groups=[
+"orbitable",
+"ships",
+] instance=ExtResource( 8 )]
 position = Vector2( 5386.09, -2211.53 )
 
-[node name="ArmadeAgile4" parent="Enemies/Armada" instance=ExtResource( 8 )]
+[node name="ArmadeAgile4" parent="Enemies/Armada" groups=[
+"orbitable",
+"ships",
+] instance=ExtResource( 8 )]
 position = Vector2( 3616.51, -438.952 )
 
-[node name="ArmadeAgile13" parent="Enemies/Armada" instance=ExtResource( 8 )]
+[node name="ArmadeAgile13" parent="Enemies/Armada" groups=[
+"orbitable",
+"ships",
+] instance=ExtResource( 8 )]
 position = Vector2( 5768.54, -627.727 )
 
-[node name="ArmadeAgile14" parent="Enemies/Armada" instance=ExtResource( 8 )]
+[node name="ArmadeAgile14" parent="Enemies/Armada" groups=[
+"orbitable",
+"ships",
+] instance=ExtResource( 8 )]
 position = Vector2( 3714.67, 1652.67 )
 
-[node name="ArmadeAgile5" parent="Enemies/Armada" instance=ExtResource( 8 )]
+[node name="ArmadeAgile5" parent="Enemies/Armada" groups=[
+"orbitable",
+"ships",
+] instance=ExtResource( 8 )]
 position = Vector2( 1871.71, -4413.89 )
 
-[node name="ArmadeAgile6" parent="Enemies/Armada" instance=ExtResource( 8 )]
+[node name="ArmadeAgile6" parent="Enemies/Armada" groups=[
+"orbitable",
+"ships",
+] instance=ExtResource( 8 )]
 position = Vector2( 2166.74, -4318.14 )
 
-[node name="ArmadeAgile7" parent="Enemies/Armada" instance=ExtResource( 8 )]
+[node name="ArmadeAgile7" parent="Enemies/Armada" groups=[
+"orbitable",
+"ships",
+] instance=ExtResource( 8 )]
 position = Vector2( 5060.96, -2409.21 )
 
-[node name="ArmadeAgile2" parent="Enemies/Armada" instance=ExtResource( 8 )]
+[node name="ArmadeAgile2" parent="Enemies/Armada" groups=[
+"orbitable",
+"ships",
+] instance=ExtResource( 8 )]
 position = Vector2( 1946.34, -4051.53 )
 
-[node name="ArmadeAgile8" parent="Enemies/Armada" instance=ExtResource( 22 )]
+[node name="ArmadeAgile8" parent="Enemies/Armada" groups=[
+"orbitable",
+"ships",
+] instance=ExtResource( 22 )]
 position = Vector2( 1385.33, -2176.03 )
 
 [node name="ArmadeAgile9" parent="Enemies/Armada" instance=ExtResource( 23 )]

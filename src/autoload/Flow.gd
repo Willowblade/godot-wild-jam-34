@@ -146,6 +146,7 @@ func go_to_tutorial() -> void:
 	change_scene_to("tutorial")
 
 func go_to_menu() -> void:
+	GameFlow.reset_to_menu()
 	change_scene_to("menu")
 
 func get_upgrade_value(id : String, key : String, default):
