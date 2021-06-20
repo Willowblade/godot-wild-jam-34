@@ -55,9 +55,9 @@ texture = ExtResource( 5 )
 texture = ExtResource( 3 )
 
 [node name="ShellUnlock4" parent="." instance=ExtResource( 7 )]
-position = Vector2( -92, -18 )
+position = Vector2( -92, -17.2508 )
 type = "post"
-quantity = 8
+quantity = 7
 
 [node name="Sprite" parent="ShellUnlock4/Shell" index="0"]
 texture = ExtResource( 6 )

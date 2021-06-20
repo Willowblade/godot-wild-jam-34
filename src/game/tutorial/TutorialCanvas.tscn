@@ -126,7 +126,10 @@ length = 1.0
 
 [node name="Enemies" type="Node2D" parent="."]
 
-[node name="ArmadeAgile" parent="Enemies" instance=ExtResource( 23 )]
+[node name="ArmadeAgile" parent="Enemies" groups=[
+"orbitable",
+"ships",
+] instance=ExtResource( 23 )]
 position = Vector2( -2530.89, 2944.54 )
 
 [node name="Projectiles" type="Node2D" parent="."]

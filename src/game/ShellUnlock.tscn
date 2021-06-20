@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/game/ShellUnlock.gd" type="Script" id=1]
 [ext_resource path="res://src/game/Shell.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/graphics/ships/armada/collectible.png" type="Texture" id=3]
+[ext_resource path="res://assets/theme.tres" type="Theme" id=4]
 
 [node name="ShellUnlock" type="Node2D"]
 script = ExtResource( 1 )
@@ -12,10 +13,13 @@ script = ExtResource( 1 )
 [node name="Unlock" type="Node2D" parent="."]
 
 [node name="Quantity" type="Label" parent="Unlock"]
-margin_left = -30.7351
-margin_top = -28.6162
-margin_right = 31.2649
-margin_bottom = -14.6162
+margin_left = -36.0
+margin_top = -29.0
+margin_right = 38.0
+margin_bottom = -13.0
+theme = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 0.498039 )
+text = "Test"
 align = 1
 valign = 1
 __meta__ = {
@@ -23,13 +27,16 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="Unlock"]
+modulate = Color( 1, 1, 1, 0.647059 )
 texture = ExtResource( 3 )
 
 [node name="Label" type="Label" parent="Unlock"]
-margin_left = -31.0
+margin_left = -46.0
 margin_top = 9.0
-margin_right = 32.0
-margin_bottom = 23.0
+margin_right = 45.0
+margin_bottom = 25.0
+theme = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 0.537255 )
 text = "To Unlock"
 align = 1
 valign = 1
