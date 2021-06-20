@@ -4,15 +4,29 @@ export var shell_name = "armada"
 onready var collision_shape = $CollisionShape2D
 
 
+
+const textures = {
+	"armada": preload("res://assets/graphics/ships/player/armada.png"),
+	"default": preload("res://assets/graphics/ships/player/standard.png"),
+	"carrot": preload("res://assets/graphics/ships/player/carrot.png"),
+	"rot": preload("res://assets/graphics/ships/player/rot.png"),
+	"solreign": preload("res://assets/graphics/ships/player/solreign.png"),
+}
+
+
 func _ready():
 	connect("body_entered", self, "_on_body_entered")
 	connect("body_exited", self, "_on_body_exited")
 
 
+func update_shell(new_shell):
+	shell_name = new_shell
+	$Sprite.texture = textures[new_shell]
+
 
 func _on_body_entered(body):
 	if GameFlow.is_player(body):
-		body.swappable_shell = shell_name
+		body.swappable_shell = self
 
 
 

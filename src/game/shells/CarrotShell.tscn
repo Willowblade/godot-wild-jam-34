@@ -5,6 +5,7 @@
 [ext_resource path="res://src/game/weapons/Beam.tscn" type="PackedScene" id=3]
 
 [node name="Player" instance=ExtResource( 1 )]
+shell_name = "carrot"
 
 [node name="Hull" parent="Visual" index="0"]
 scale = Vector2( 1, 1 )

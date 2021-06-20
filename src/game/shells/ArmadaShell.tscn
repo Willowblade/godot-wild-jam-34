@@ -6,6 +6,7 @@
 [ext_resource path="res://src/game/weapons/RocketLauncher.tscn" type="PackedScene" id=4]
 
 [node name="Player" instance=ExtResource( 1 )]
+shell_name = "armada"
 
 [node name="Hull" parent="Visual" index="0"]
 scale = Vector2( 1, 1 )

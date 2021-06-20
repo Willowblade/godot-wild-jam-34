@@ -6,10 +6,10 @@
 [ext_resource path="res://src/game/ExplosionEmitter.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/game/ships/MediumShield.tscn" type="PackedScene" id=10]
 
-[sub_resource type="CircleShape2D" id=3]
+[sub_resource type="CircleShape2D" id=1]
 radius = 4131.86
 
-[sub_resource type="CircleShape2D" id=4]
+[sub_resource type="CircleShape2D" id=2]
 radius = 32.079
 
 [node name="Player" groups=[
@@ -43,10 +43,10 @@ collision_layer = 32
 collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MarkerRecognition" index="0"]
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
 [node name="ShieldShape" parent="." index="11"]
-shape = SubResource( 4 )
+shape = SubResource( 2 )
 
 [node name="Shield" parent="." index="12" instance=ExtResource( 10 )]
 modulate = Color( 0.454902, 0.815686, 0.992157, 1 )

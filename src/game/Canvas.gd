@@ -71,9 +71,10 @@ func _ready():
 	update_orbitables(true)
 
 
-func swap_player(shell_name):
+func swap_player(shell):
 	var camera = player.get_node("PlayerCamera")
 	player.remove_child(camera)
+	var old_type = player.shell_name
 	var old_rotation = player.rotation
 	var old_position = player.position
 	var old_velocity = player.velocity
@@ -83,8 +84,9 @@ func swap_player(shell_name):
 	remove_child(player)
 	player.queue_free()
 	# call_deferred("queue_free", player)
-	player = shells[shell_name].instance()
+	player = shells[shell.shell_name].instance()
 	add_child(player)
+	shell.update_shell(old_type)
 	player.position = old_position
 	player.rotation = old_rotation
 	player.destinations = old_destinations

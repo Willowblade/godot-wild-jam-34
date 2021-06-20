@@ -9,6 +9,15 @@ export var quantity = 15
 
 var current = -1
 
+
+const textures = {
+	"armada": preload("res://assets/graphics/ships/player/armada.png"),
+	"default": preload("res://assets/graphics/ships/player/standard.png"),
+	"carrot": preload("res://assets/graphics/ships/player/carrot.png"),
+	"rot": preload("res://assets/graphics/ships/player/rot.png"),
+	"solreign": preload("res://assets/graphics/ships/player/solreign.png"),
+}
+
 func _ready():
 	$Shell.shell_name = type
 
@@ -16,6 +25,12 @@ func _ready():
 		unlock()
 	else:
 		lock()
+
+func update_type(new_type):
+	type = new_type
+	$Shell.shell_name = new_type
+	$Shell/Sprite.texture = textures[new_type]
+
 
 func unlock():
 	set_physics_process(false)

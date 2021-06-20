@@ -4,6 +4,7 @@
 [ext_resource path="res://assets/graphics/ships/player/rot.png" type="Texture" id=2]
 
 [node name="Player" instance=ExtResource( 1 )]
+shell_name = "rot"
 
 [node name="Hull" parent="Visual" index="0"]
 scale = Vector2( 1, 1 )
