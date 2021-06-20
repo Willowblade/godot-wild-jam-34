@@ -3,14 +3,15 @@ extends Node2D
 
 const FADE_RATE = 2.0 / 60
 
+export var sprite_size = 16.0
+
 func _ready():
 	pass
 
 
 func set_size(size: float):
 	scale.x = 1.0
-	$Line.scale.y = size / 16.0
-
+	$Line.scale.y = size / sprite_size
 
 
 func _process(delta):

@@ -9,6 +9,8 @@ var location := {
 }
 var shell = "armada"
 var conditions = []
+var delivered_packets = []
+
 
 var context : Dictionary setget set_context, get_context
 func set_context(value : Dictionary) -> void:
@@ -19,7 +21,7 @@ func set_context(value : Dictionary) -> void:
 	})
 	conditions = value.get("conditions", [])
 	shell = value.get("shell", "armada")
-	print("Loaded player context ", value)
+	delivered_packets = value.get("delivered_packets", [])
 
 func get_context() -> Dictionary:
 	var _context := {}
@@ -29,8 +31,7 @@ func get_context() -> Dictionary:
 	_context.location = location
 	_context.conditions = conditions
 	_context.shell = shell
-
-	print("Getting player context ", _context)
+	_context.delivered_packets = delivered_packets
 
 	return _context
 

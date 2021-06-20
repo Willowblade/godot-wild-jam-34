@@ -35,6 +35,7 @@ func shoot():
 
 	return {
 		"type": type,
+		"shot": shot,
 		"properties": {
 			"distance": distance,
 		},

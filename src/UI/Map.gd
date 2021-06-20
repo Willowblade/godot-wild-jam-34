@@ -73,7 +73,7 @@ func set_destination(_destination):
 		if destination != null:
 			markers[destination].texture = MARKERS["station"]
 	else:
-		markers[_destination].texture = MARKERS["destination"]
+		markers[_destination].texture = MARKERS["mail"]
 	destination = _destination
 
 func _ready():

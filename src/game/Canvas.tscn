@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://assets/graphics/ships/stations/Space_Station_1.png" type="Texture" id=1]
 [ext_resource path="res://src/game/asteroids/LargeAsteroid1.tscn" type="PackedScene" id=2]
@@ -27,20 +27,16 @@
 [ext_resource path="res://assets/graphics/ships/stations/Space_Station_2.png" type="Texture" id=25]
 [ext_resource path="res://assets/graphics/ships/stations/Space_Station_4.png" type="Texture" id=26]
 [ext_resource path="res://assets/graphics/ships/stations/Space_Station_5.png" type="Texture" id=27]
+[ext_resource path="res://src/game/Container.tscn" type="PackedScene" id=28]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 148.817
+radius = 32.3739
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 1303.75
 
 [node name="Canvas" type="Node2D"]
-position = Vector2( 57.1465, 419.074 )
 script = ExtResource( 3 )
-
-[node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="."]
-position = Vector2( -50.3969, -582.083 )
-length = 1.0
 
 [node name="Player" parent="." instance=ExtResource( 9 )]
 position = Vector2( -1265.08, 1692.28 )
@@ -54,7 +50,6 @@ drag_margin_bottom = 0.1
 [node name="ParallaxBackground" type="ParallaxBackground" parent="Player/PlayerCamera"]
 
 [node name="Space_BG2" type="ParallaxLayer" parent="Player/PlayerCamera/ParallaxBackground"]
-position = Vector2( 57.1465, 419.074 )
 motion_scale = Vector2( 0.1, 0.1 )
 motion_mirroring = Vector2( 1000, 600 )
 
@@ -74,7 +69,6 @@ __meta__ = {
 }
 
 [node name="Space_BG3" type="ParallaxLayer" parent="Player/PlayerCamera/ParallaxBackground"]
-position = Vector2( 57.1465, 419.074 )
 motion_scale = Vector2( 0.15, 0.15 )
 motion_mirroring = Vector2( 1000, 600 )
 
@@ -94,7 +88,6 @@ __meta__ = {
 }
 
 [node name="Space_BG4" type="ParallaxLayer" parent="Player/PlayerCamera/ParallaxBackground"]
-position = Vector2( 57.1465, 419.074 )
 motion_scale = Vector2( 0.12, 0.12 )
 motion_mirroring = Vector2( 1000, 600 )
 
@@ -115,7 +108,6 @@ __meta__ = {
 }
 
 [node name="Space_BG5" type="ParallaxLayer" parent="Player/PlayerCamera/ParallaxBackground"]
-position = Vector2( 57.1465, 419.074 )
 motion_scale = Vector2( 0.5, 0.5 )
 motion_mirroring = Vector2( 1000, 600 )
 
@@ -133,6 +125,10 @@ stretch_mode = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="Player"]
+bias = 0.9
+length = 1.0
 
 [node name="Enemies" type="Node2D" parent="."]
 position = Vector2( 1694.91, -2242.97 )
@@ -230,16 +226,17 @@ rotation = 1.57079
 texture = ExtResource( 1 )
 
 [node name="DeliveryArea" parent="Stations/Station" index="1"]
-position = Vector2( -3.33069, 456.479 )
+position = Vector2( -0.552856, 95.8911 )
 
 [node name="Sprite" parent="Stations/Station/DeliveryArea" index="0"]
 texture = null
 
 [node name="CollisionShape2D" parent="Stations/Station/DeliveryArea" index="1"]
+position = Vector2( 0, 0 )
 shape = SubResource( 1 )
 
 [node name="AnchorPoint" parent="Stations/Station" index="3"]
-position = Vector2( 0.472656, 318.083 )
+position = Vector2( 0.472656, 67.1337 )
 
 [node name="Station2" parent="Stations" instance=ExtResource( 13 )]
 position = Vector2( 3887.12, 2161.4 )
@@ -249,17 +246,17 @@ station_name = "2"
 texture = ExtResource( 25 )
 
 [node name="DeliveryArea" parent="Stations/Station2" index="1"]
-position = Vector2( -3.33069, 554.022 )
+position = Vector2( -0.213989, 112.651 )
 
 [node name="Sprite" parent="Stations/Station2/DeliveryArea" index="0"]
 texture = null
 
 [node name="CollisionShape2D" parent="Stations/Station2/DeliveryArea" index="1"]
-position = Vector2( 5.46582, 8.88202 )
+position = Vector2( 0, 0 )
 shape = SubResource( 1 )
 
 [node name="AnchorPoint" parent="Stations/Station2" index="3"]
-position = Vector2( 0.472656, 403.855 )
+position = Vector2( -1.11646, 79.6592 )
 
 [node name="Station3" parent="Stations" instance=ExtResource( 13 )]
 position = Vector2( 1820.84, 3834.58 )
@@ -269,17 +266,17 @@ station_name = "3"
 texture = ExtResource( 25 )
 
 [node name="DeliveryArea" parent="Stations/Station3" index="1"]
-position = Vector2( -3.33069, 554.022 )
+position = Vector2( -0.0726318, 111.879 )
 
 [node name="Sprite" parent="Stations/Station3/DeliveryArea" index="0"]
 texture = null
 
 [node name="CollisionShape2D" parent="Stations/Station3/DeliveryArea" index="1"]
-position = Vector2( 5.46582, 8.88202 )
+position = Vector2( 0, 0 )
 shape = SubResource( 1 )
 
 [node name="AnchorPoint" parent="Stations/Station3" index="3"]
-position = Vector2( 0.472656, 403.855 )
+position = Vector2( -1.3092, 80.4587 )
 
 [node name="Station4" parent="Stations" instance=ExtResource( 13 )]
 position = Vector2( -892.869, 5039.05 )
@@ -290,17 +287,18 @@ rotation = 1.57079
 texture = ExtResource( 26 )
 
 [node name="DeliveryArea" parent="Stations/Station4" index="1"]
-position = Vector2( -3.33069, 1027.49 )
+position = Vector2( 0.907227, 207.396 )
 
 [node name="Sprite" parent="Stations/Station4/DeliveryArea" index="0"]
+position = Vector2( 0, 0 )
 texture = null
 
 [node name="CollisionShape2D" parent="Stations/Station4/DeliveryArea" index="1"]
-position = Vector2( 5.46582, 8.88202 )
+position = Vector2( 0, 0 )
 shape = SubResource( 1 )
 
 [node name="AnchorPoint" parent="Stations/Station4" index="3"]
-position = Vector2( 0.472656, 889.968 )
+position = Vector2( 0.472656, 175.206 )
 
 [node name="CollisionShape2D" parent="Stations/Station4/PlayerDetectionArea" index="0"]
 shape = SubResource( 2 )
@@ -314,17 +312,17 @@ rotation = 3.14159
 texture = ExtResource( 27 )
 
 [node name="DeliveryArea" parent="Stations/Station5" index="1"]
-position = Vector2( -16.7999, 840.518 )
+position = Vector2( -1.47375, 170.878 )
 
 [node name="Sprite" parent="Stations/Station5/DeliveryArea" index="0"]
 texture = null
 
 [node name="CollisionShape2D" parent="Stations/Station5/DeliveryArea" index="1"]
-position = Vector2( 5.46582, 8.88202 )
+position = Vector2( 0, 0 )
 shape = SubResource( 1 )
 
 [node name="AnchorPoint" parent="Stations/Station5" index="3"]
-position = Vector2( 0.472656, 889.968 )
+position = Vector2( -0.321045, 139.128 )
 
 [node name="CollisionShape2D" parent="Stations/Station5/PlayerDetectionArea" index="0"]
 shape = SubResource( 2 )
@@ -352,6 +350,9 @@ script = ExtResource( 21 )
 
 [node name="IGPS" parent="." instance=ExtResource( 24 )]
 position = Vector2( -890.734, 1904.85 )
+
+[node name="Container" parent="." instance=ExtResource( 28 )]
+position = Vector2( -583.946, 2373.03 )
 
 [editable path="Stations/Station"]
 [editable path="Stations/Station2"]

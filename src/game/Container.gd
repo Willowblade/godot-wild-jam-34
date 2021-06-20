@@ -7,6 +7,8 @@ var destination = "test"
 
 var tethered = false setget set_tethered
 
+
+var should_move_to_position = null
 var player = null
 
 var delivery_station = null
@@ -45,6 +47,14 @@ func _on_body_entered_pickup(body):
 
 func _physics_process(delta):
 	var direct_state = Physics2DServer.body_get_direct_state(get_rid())
+
+	if should_move_to_position != null:
+		direct_state.transform.origin = should_move_to_position
+		should_move_to_position = null
+		if !tethered:
+			set_physics_process(false)
+			return
+
 	if delivery_station != null and not delivered:
 		if direct_state.linear_velocity.length() < 1000:
 			sleeping = false
@@ -65,8 +75,8 @@ func _physics_process(delta):
 	var segments = $TetherVisuals/LineSegments.get_children()
 	var curve = Curve2D.new()
 	if delivered:
-		curve.add_point(delivery_station.delivery_area.global_position)
-		curve.add_point(delivery_station.delivery_area.global_position + offset, Vector2(0, 0), 32 * Vector2.DOWN)
+		curve.add_point(delivery_station.cargo_anchor_point.global_position)
+		curve.add_point(delivery_station.cargo_anchor_point.global_position + offset, Vector2(0, 0), 32 * Vector2.DOWN)
 	else:
 		var direction_away_from_player = Vector2(0, 1).rotated(player.rotation)
 		curve.add_point(player.position + 32 * direction_away_from_player, Vector2(0, 0), 64 * direction_away_from_player)
@@ -75,7 +85,7 @@ func _physics_process(delta):
 
 	var start_point = player.position
 	if delivered:
-		start_point = delivery_station.delivery_area.global_position
+		start_point = delivery_station.cargo_anchor_point.global_position
 	var i = 0
 	for segment in segments:
 		segment.visible = false
@@ -95,9 +105,10 @@ func _physics_process(delta):
 
 	if delivered:
 		linear_damp = 1.0
-		var distance = (delivery_station.delivery_area.global_position + 2 * offset - position).length()
-		if direct_state.linear_velocity.length() < 75:
-			apply_impulse(Vector2(0, 0), (delivery_station.delivery_area.global_position + 2 * offset - position).normalized() * 5)
+		var distance = (delivery_station.cargo_anchor_point.global_position + 2 * offset - position).length()
+		if direct_state.linear_velocity.length() < 60:
+			print("Applyingn impulse")
+			apply_impulse(Vector2(0, 0), (delivery_station.cargo_anchor_point.global_position + 2 * offset - position).normalized() * 4)
 		# if abs(direct_state.linear_velocity.angle_to(delivery_station.delivery_area.global_position - position)) >= PI / 2:
 		# 	apply_impulse(Vector2(0, 0), (delivery_station.delivery_area.global_position - position) / 10)
 		# else:

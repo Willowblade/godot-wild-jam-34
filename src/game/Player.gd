@@ -30,6 +30,11 @@ var played_beam = false
 
 
 func update_heat(delta):
+	if heat > 80:
+		$Visual/Hull.modulate = Color(1.0, 0.9 - (heat - 80) / 30 * 0.7, 0.9 - (heat - 80) / 30 * 0.7, 1)
+	else:
+		$Visual/Hull.modulate = Color(1 ,1 ,1, 1)
+
 	if heat_timeout > heat_recharge:
 		if not heat_released:
 			heat_released = true
@@ -145,9 +150,12 @@ func increase_heat(increment):
 	# heat factor should be like a bit reduced imo
 	increment = increment * 0.8
 	heat += increment
-	if heat > heat_max:
-		take_hull_damage((heat - heat_max) / 2)
-		heat = heat_max
+	if heat > heat_max + 10:
+		take_hull_damage((heat - heat_max - 10) / 2)
+		heat = heat_max + 10
+
+	if heat > 80:
+		$Visual/Hull.modulate = Color(1.0, 0.9 - (heat - 80) / 30 * 0.7, 0.9 - (heat - 80) / 30 * 0.7, 1)
 
 	heat_timeout = 0.0
 
@@ -197,11 +205,13 @@ func _physics_process(delta):
 	next_acceleration_state = "NONE"
 
 	if Input.is_action_just_pressed("interact"):
-		AudioEngine.play_effect("ui_positive" + str(1 + (randi() % 5)))
 		if swappable_shell and carrying == null:
+			AudioEngine.play_effect("ui_positive" + str(1 + (randi() % 5)))
 			print("Interacting with swappable shell")
 			GameFlow.canvas.swap_player(swappable_shell, null)
 			return
+		else:
+			AudioEngine.play_effect("ui_negative" + str(1 + (randi() % 4)))
 
 	if Input.is_action_pressed("sprint"):
 		next_acceleration_state = "BOOST"

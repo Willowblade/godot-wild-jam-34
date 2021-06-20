@@ -9,6 +9,8 @@ onready var speed_lines = $SpeedLines
 onready var sun = $Sun
 onready var igps = $IGPS
 
+onready var spring = $Player/DampedSpringJoint2D
+
 onready var orbitable_nodes = get_tree().get_nodes_in_group("orbitable")
 onready var orbitables = {
 	"ships": {},
@@ -40,7 +42,9 @@ func get_orbitable_type(orbitable):
 	else:
 		return "normal"
 
+var station_map = {
 
+}
 
 func get_orbitable_data(orbitable):
 	return {
@@ -50,13 +54,28 @@ func get_orbitable_data(orbitable):
 	}
 
 
+func get_container_destination():
+	var delivered_packets = State.player.delivered_packets
+	for i in range(5):
+		if str((i + 1)) in delivered_packets:
+			continue
+		else:
+			return str(i + 1)
+	return str(1 + (randi() % 5))
+
+
 func _ready():
+	for station in get_tree().get_nodes_in_group("station"):
+		station_map[station.station_name] = station
+
+
+
 	GameFlow.register_canvas(self)
 	GameFlow.register_hit_emitter($HitEmitter)
 	GameFlow.register_projectiles_spawner($Projectiles)
 	AudioEngine.play_background_music("explore")
 	GameFlow.overlays.transition.set_color(Color(0, 0, 0, 1))
-	GameFlow.overlays.transition.transition_to_clear()
+	GameFlow.overlays.transition.transition_to_clear(1.5)
 	GameFlow.destination = null
 	GameFlow.igps = igps
 	GameFlow.sun = sun
@@ -77,14 +96,21 @@ func _ready():
 		else:
 			orbitables.normal[orbitable] = get_orbitable_data(orbitable)
 
+	$Container.connect("tether", self, "_on_container_tethered")
+
+	var spawn_container_destination = station_map[get_container_destination()]
+	spawn_container_with_destination(spawn_container_destination)
+
 	last_timestamp = GameFlow.get_time_around_sun()
 	update_orbitables(true)
-	player.position = igps.position + 128 * Vector2.DOWN
+	player.position = igps.position + 256 * Vector2.DOWN
 
 
 func swap_player(shell = null, shell_name = null):
 	var camera = player.get_node("PlayerCamera")
+
 	player.remove_child(camera)
+	player.remove_child(spring)
 	var old_type = player.shell_name
 	var old_rotation = player.rotation
 	var old_position = player.position
@@ -110,15 +136,16 @@ func swap_player(shell = null, shell_name = null):
 	player.destinations = old_destinations
 	player.velocity = old_velocity
 	player.add_child(camera)
+	player.add_child(spring)
 	GameFlow.update_player(player)
 
 
 func drop_material(enemy, material_type):
-	var container_instance = MaterialScene.instance()
-	container_instance.position = enemy.position
-	container_instance.set_type(material_type)
-	add_child(container_instance)
-	container_instance.connect("picked_up", self, "_on_picked_up")
+	var material_instance = MaterialScene.instance()
+	material_instance.position = enemy.position
+	material_instance.set_type(material_type)
+	add_child(material_instance)
+	material_instance.connect("picked_up", self, "_on_picked_up")
 
 
 func _on_picked_up(material):
@@ -132,9 +159,9 @@ func _on_picked_up(material):
 
 func spawn_container_with_destination(destination):
 	var container_instance = ContainerScene.instance()
+	add_child(container_instance)
 	container_instance.position = igps.cargo_spawn_point.global_position
 	container_instance.destination = destination
-	add_child(container_instance)
 	container_instance.connect("tether", self, "_on_container_tethered")
 
 func _on_asteroid_died(asteroid: Asteroid):
@@ -142,16 +169,18 @@ func _on_asteroid_died(asteroid: Asteroid):
 
 
 func _on_container_tethered(container: CargoContainer, target):
-	print("Tethering container to player", container)
 	if target == null:
-		$DampedSpringJoint2D.node_a = ""
-		$DampedSpringJoint2D.node_b = ""
+		spring.node_a = ""
+		spring.node_b = ""
 		return
 
+	GameFlow.destination = container.destination
 	container.sleeping = false
+	# spring.length = 1
+	# spring.rest_length = 1
 	# $Player/DampedSpringJoint2D.length = player.position.distance_to(container.position)
-	$DampedSpringJoint2D.node_a = target.get_path()
-	$DampedSpringJoint2D.node_b = container.get_path()
+	spring.node_a = target.get_path()
+	spring.node_b = container.get_path()
 
 
 

@@ -24,7 +24,7 @@ gravity_scale = 0.0
 contacts_reported = 10
 contact_monitor = true
 can_sleep = false
-linear_damp = 0.2
+linear_damp = 0.1
 script = ExtResource( 2 )
 
 [node name="TetherVisuals" type="Node2D" parent="."]

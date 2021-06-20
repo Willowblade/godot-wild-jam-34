@@ -27,7 +27,7 @@ func _on_body_entered_delivery_area(body):
 		var container = body.carrying
 		if container == null:
 			return
-		if container.destination == station_name:
+		if container.destination == self:
 			container.delivery_station = self
 		else:
 			delivery_area.modulate = Color(1, 0, 0, 1)

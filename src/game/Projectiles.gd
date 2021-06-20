@@ -3,6 +3,9 @@ class_name Projectiles
 
 onready var RailgunBulletScene = preload("res://src/game/weapons/RailgunBullet.tscn")
 onready var BeamBulletScene = preload("res://src/game/weapons/BeamBullet.tscn")
+onready var BeamToothScene = preload("res://src/game/weapons/FangBullet.tscn")
+onready var BeamThiccScene = preload("res://src/game/weapons/BeamThicc.tscn")
+
 onready var HitEffectScene = preload("res://src/game/HitEmitter.tscn")
 
 
@@ -55,7 +58,14 @@ func shoot_beam_bullet(projectile_data):
 	var properties = projectile_data.get("properties", {})
 	var source = projectile_data.source
 	var target = projectile_data.target
-	var beam_bullet_instance = BeamBulletScene.instance()
+	var beam_bullet_instance
+	if projectile_data.shot == "tooth":
+		beam_bullet_instance = BeamToothScene.instance()
+	if projectile_data.shot == "thicc":
+		beam_bullet_instance = BeamThiccScene.instance()
+	else:
+		beam_bullet_instance = BeamBulletScene.instance()
+
 	add_child(beam_bullet_instance)
 	beam_bullet_instance.position = source.global_position
 	beam_bullet_instance.rotation = source.global_rotation + PI
