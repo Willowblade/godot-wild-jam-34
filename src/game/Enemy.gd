@@ -79,9 +79,13 @@ func _on_body_exited_detection_area(body: PhysicsBody2D):
 			target = targets[0]
 		else:
 			if body != null:
-				switch_to_investigate()
-				target = null
-				target_position = body.position
+				if GameFlow.is_rocket(body):
+					state = "IDLE"
+					target = null
+				else:
+					switch_to_investigate()
+					target = null
+					target_position = body.position
 
 
 func _on_body_entered_notify_area(body: PhysicsBody2D):
@@ -108,11 +112,13 @@ func turn_towards_target(delta):
 		$TurnLeftEmission.emitting = false
 		$TurnRightEmission.emitting = true
 
+
 func get_angle_to_target():
 	var orientation = get_orientation()
 	var target_orientation: Vector2 = target_position - position
 	var angle = target_orientation.angle_to(orientation)
 	return angle
+
 
 func move_towards_target(delta):
 	var angle_to_target = get_angle_to_target()

@@ -3,7 +3,7 @@ class_name CargoContainer
 
 onready var pickup_area = $PickupArea
 
-var destination = "test"
+export var destination = "test"
 
 var tethered = false setget set_tethered
 
@@ -21,7 +21,6 @@ func set_tethered(new_tethered):
 
 
 signal tether(container, target)
-
 
 
 func _ready():

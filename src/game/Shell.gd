@@ -8,7 +8,7 @@ onready var collision_shape = $CollisionShape2D
 const textures = {
 	"armada": preload("res://assets/graphics/ships/player/armada.png"),
 	"default": preload("res://assets/graphics/ships/player/standard.png"),
-	"carrot": preload("res://assets/graphics/ships/player/carrot.png"),
+	"post": preload("res://assets/graphics/ships/player/carrot.png"),
 	"rot": preload("res://assets/graphics/ships/player/rot.png"),
 	"solreign": preload("res://assets/graphics/ships/player/solreign.png"),
 }
@@ -26,6 +26,7 @@ func update_shell(new_shell):
 
 func _on_body_entered(body):
 	if GameFlow.is_player(body):
+		GameFlow.overlays.popup.show_popup_custom("Swap ships by pressing E", Vector2(0, 40), "info", 3)
 		body.swappable_shell = self
 
 

@@ -10,6 +10,7 @@ func _on_body_entered(body):
 	if GameFlow.is_player(body):
 		AudioEngine.play_effect("warning2")
 		set_physics_process(true)
+		GameFlow.overlays.popup.show_popup_custom("Watch out buddy! Try not to overheat when close to the sun. I lost my dad that way.", Vector2(0, 40), "info", 3)
 		body.sun = self
 
 func _on_body_exited(body):

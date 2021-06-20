@@ -12,7 +12,7 @@
 _data = [ Vector2( 0.25, 0.498864 ), 0.0, 0.0, 0, 0, Vector2( 0.605372, 0.7625 ), 0.0, 0.0, 0, 0, Vector2( 0.904959, 1 ), 0.0, 0.0, 0, 0 ]
 
 [node name="Player" instance=ExtResource( 1 )]
-shell_name = "carrot"
+shell_name = "post"
 
 [node name="Hull" parent="Visual" index="0"]
 scale = Vector2( 1, 1 )

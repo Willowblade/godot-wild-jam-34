@@ -46,7 +46,7 @@
             "shield_recharge_time": 3.0,
             "shield_recharge_rate": 10.0
         },
-        "carrot": {
+        "post": {
             "acceleration": 500,
             "max_speed": 600,
             "brake_speed": 2,
