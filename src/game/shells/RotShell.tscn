@@ -117,9 +117,6 @@ radial_accel = 10.0
 scale_amount = 0.25
 color_ramp = ExtResource( 4 )
 
-[node name="BoostEmission" parent="." index="2"]
-visible = true
-
 [node name="Solid3" type="CPUParticles2D" parent="BoostEmission" index="0"]
 modulate = Color( 0, 1, 0.180392, 0.784314 )
 position = Vector2( -19.3747, 20.9567 )
