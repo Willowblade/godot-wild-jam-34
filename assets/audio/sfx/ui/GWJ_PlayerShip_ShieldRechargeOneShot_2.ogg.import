@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/GWJ_PlayerShip_ShieldRechargeOneShot_2.ogg-f66c5b4ec15e03bb38e4fc0ba5ada048.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/sfx/ui/GWJ_PlayerShip_ShieldRechargeOneShot_2.ogg"
+dest_files=[ "res://.import/GWJ_PlayerShip_ShieldRechargeOneShot_2.ogg-f66c5b4ec15e03bb38e4fc0ba5ada048.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

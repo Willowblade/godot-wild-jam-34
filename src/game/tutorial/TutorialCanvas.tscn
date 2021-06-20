@@ -31,7 +31,7 @@ script = ExtResource( 4 )
 "orbitable",
 "ships",
 ] instance=ExtResource( 5 )]
-position = Vector2( -2520.55, 2532.96 )
+position = Vector2( -5332.68, 6353.11 )
 
 [node name="PlayerCamera" type="Camera2D" parent="Player"]
 current = true
