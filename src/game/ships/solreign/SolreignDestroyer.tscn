@@ -242,27 +242,35 @@ position = Vector2( -1.07669, -25.8875 )
 
 [node name="Beam" parent="Weapons" index="0" instance=ExtResource( 2 )]
 position = Vector2( 14.4557, -48.0011 )
+weapon_name = "beam_mk1"
 
 [node name="Beam2" parent="Weapons" index="1" instance=ExtResource( 2 )]
 position = Vector2( -14.4517, -47.8449 )
+weapon_name = "beam_mk1"
 
 [node name="Beam3" parent="Weapons" index="2" instance=ExtResource( 2 )]
 position = Vector2( 14.5219, -28.8332 )
+weapon_name = "beam_mk1"
 
 [node name="Beam4" parent="Weapons" index="3" instance=ExtResource( 2 )]
 position = Vector2( -14.4517, -28.8332 )
+weapon_name = "beam_mk1"
 
 [node name="Beam5" parent="Weapons" index="4" instance=ExtResource( 2 )]
 position = Vector2( 14.5678, -9.92188 )
+weapon_name = "beam_mk1"
 
 [node name="Beam6" parent="Weapons" index="5" instance=ExtResource( 2 )]
 position = Vector2( -14.4891, -9.92188 )
+weapon_name = "beam_mk1"
 
 [node name="Beam7" parent="Weapons" index="6" instance=ExtResource( 2 )]
 position = Vector2( -14.6208, 8.10868 )
+weapon_name = "beam_mk1"
 
 [node name="Beam8" parent="Weapons" index="7" instance=ExtResource( 2 )]
 position = Vector2( 14.4978, 8.1392 )
+weapon_name = "beam_mk1"
 
 [node name="EnergyProjectileShooter" parent="Weapons" index="8" instance=ExtResource( 6 )]
 position = Vector2( -20.5213, 14.0177 )

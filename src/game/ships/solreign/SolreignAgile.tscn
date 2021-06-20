@@ -117,9 +117,11 @@ position = Vector2( 9.25, -0.75 )
 
 [node name="Beam" parent="Weapons" index="0" instance=ExtResource( 3 )]
 position = Vector2( -12.5, -6.60201 )
+weapon_name = "beam_mk1"
 
 [node name="Beam2" parent="Weapons" index="1" instance=ExtResource( 3 )]
 position = Vector2( 12, -6.60201 )
+weapon_name = "beam_mk1"
 
 [node name="ShieldShape" parent="." index="15"]
 visible = false

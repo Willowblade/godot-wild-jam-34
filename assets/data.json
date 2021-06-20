@@ -8,8 +8,8 @@
             "brake_speed": 2,
             "turn_speed": 2.5,
             "boost_power": 1.8,
-            "max_health": 100,
-            "max_shields": 60,
+            "max_health": 150,
+            "max_shields": 100,
             "shield_recharge_time": 3.0,
             "shield_recharge_rate": 8.0
         },
@@ -19,8 +19,8 @@
             "brake_speed": 2,
             "turn_speed": 2.8,
             "boost_power": 2.0,
-            "max_health": 150,
-            "max_shields": 75,
+            "max_health": 200,
+            "max_shields": 150,
             "shield_recharge_time": 2.0,
             "shield_recharge_rate": 8.0
         },
@@ -30,8 +30,8 @@
             "brake_speed": 2,
             "turn_speed": 3.0,
             "boost_power": 2.2,
-            "max_health": 100,
-            "max_shields": 200,
+            "max_health": 150,
+            "max_shields": 300,
             "shield_recharge_time": 2.0,
             "shield_recharge_rate": 10.0
         },
@@ -42,7 +42,7 @@
             "turn_speed": 3.2,
             "boost_power": 2.2,
             "max_health": 500,
-            "max_shields": 50,
+            "max_shields": 10,
             "shield_recharge_time": 3.0,
             "shield_recharge_rate": 10.0
         },
@@ -283,6 +283,16 @@
             "hull_multiplier": 1.0,
             "shot": "kinetic"
         },
+        "player_projectile_energy": {
+            "type": "projectile",
+            "speed": 700,
+            "lifetime": 3,
+            "damage": 3,
+            "reload": 0.4,
+            "shield_multiplier": 1.0,
+            "hull_multiplier": 1.0,
+            "shot": "energy"
+        },
         "projectile_energy": {
             "type": "projectile",
             "speed": 350,
@@ -313,14 +323,14 @@
         },
         "beam_mk1": {
             "type": "beam",
-            "distance": 150,
-            "damage": 2,
+            "distance": 200,
+            "damage": 1,
             "shot": "default"
         },
       "beam_mk2": {
         "type": "beam",
         "distance": 250,
-        "damage": 3,
+        "damage": 2,
         "shot": "big_beam"
       },
       "beam_tooth": {

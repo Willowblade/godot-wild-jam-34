@@ -134,15 +134,19 @@ position = Vector2( 9.25, -0.75 )
 
 [node name="Beam" parent="Weapons" index="0" instance=ExtResource( 5 )]
 position = Vector2( -13.4727, -27.8472 )
+weapon_name = "beam_mk1"
 
 [node name="Beam2" parent="Weapons" index="1" instance=ExtResource( 5 )]
 position = Vector2( 13.5, -27.8472 )
+weapon_name = "beam_mk1"
 
 [node name="Beam3" parent="Weapons" index="2" instance=ExtResource( 5 )]
 position = Vector2( -20.4737, -15.8278 )
+weapon_name = "beam_mk1"
 
 [node name="Beam4" parent="Weapons" index="3" instance=ExtResource( 5 )]
 position = Vector2( 20.4737, -15.8278 )
+weapon_name = "beam_mk1"
 
 [node name="ShieldShape" parent="." index="15"]
 visible = false
