@@ -157,7 +157,7 @@
         },"rot_agile": {
             "faction": "rot",
             "acceleration": 2000,
-            "max_speed": 650,
+            "max_speed": 550,
             "brake_speed": 2,
             "turn_speed": 5.0,
             "boost_power": 1.8,
@@ -169,7 +169,7 @@
         "rot_midclasse_rocket": {
             "faction": "rot",
             "acceleration": 2000,
-            "max_speed": 600,
+            "max_speed": 500,
             "brake_speed": 2,
             "turn_speed": 5.0,
             "boost_power": 1.8,
@@ -181,7 +181,7 @@
         "rot_midclasse_projectile": {
             "faction": "rot",
             "acceleration": 2000,
-            "max_speed": 600,
+            "max_speed": 500,
             "brake_speed": 2,
             "turn_speed": 5.0,
             "boost_power": 1.8,

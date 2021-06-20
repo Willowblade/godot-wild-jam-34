@@ -12,7 +12,7 @@
 radius = 727.733
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 342.657
+radius = 223.051
 
 [sub_resource type="CircleShape2D" id=3]
 radius = 20.2808
@@ -33,9 +33,6 @@ visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" index="0"]
 shape = SubResource( 1 )
-
-[node name="NotifyArea" parent="." index="3"]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NotifyArea" index="0"]
 shape = SubResource( 2 )

@@ -266,27 +266,35 @@ position = Vector2( -16.7938, 4.42181 )
 
 [node name="KineticProjectileShooter" parent="Weapons" index="0" instance=ExtResource( 3 )]
 position = Vector2( 14, -11.625 )
+weapon_name = "player_projectile"
 
 [node name="KineticProjectileShooter3" parent="Weapons" index="1" instance=ExtResource( 3 )]
 position = Vector2( 14, -4.64232 )
+weapon_name = "player_projectile"
 
 [node name="KineticProjectileShooter4" parent="Weapons" index="2" instance=ExtResource( 3 )]
 position = Vector2( 14, 3.93135 )
+weapon_name = "player_projectile"
 
 [node name="KineticProjectileShooter5" parent="Weapons" index="3" instance=ExtResource( 3 )]
 position = Vector2( 14, 10.8256 )
+weapon_name = "player_projectile"
 
 [node name="KineticProjectileShooter2" parent="Weapons" index="4" instance=ExtResource( 3 )]
 position = Vector2( -14.125, -12 )
+weapon_name = "player_projectile"
 
 [node name="KineticProjectileShooter6" parent="Weapons" index="5" instance=ExtResource( 3 )]
 position = Vector2( -14.125, -4.64232 )
+weapon_name = "player_projectile"
 
 [node name="KineticProjectileShooter7" parent="Weapons" index="6" instance=ExtResource( 3 )]
 position = Vector2( -14.125, 3.93135 )
+weapon_name = "player_projectile"
 
 [node name="KineticProjectileShooter8" parent="Weapons" index="7" instance=ExtResource( 3 )]
 position = Vector2( -14.125, 10.8256 )
+weapon_name = "player_projectile"
 
 [node name="RocketLauncher" parent="Weapons" index="8" instance=ExtResource( 4 )]
 position = Vector2( -21.5518, -7.88128 )

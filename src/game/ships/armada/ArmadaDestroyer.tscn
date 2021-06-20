@@ -30,14 +30,8 @@ texture = ExtResource( 5 )
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="1"]
 polygon = PoolVector2Array( 0.0583572, -38.0156, 8.89719, -24.9341, 8.89719, -6.90288, 16.4986, -6.54933, 54.152, 1.40562, 54.5056, 18.7297, 40.1867, 12.189, 17.5593, 12.8961, 17.5593, 18.7297, -17.4425, 18.7297, -18.8568, 11.8354, -37.5951, 19.9672, -57.0405, 19.4368, -50.4998, 10.4212, -54.5656, -0.362141, -8.42692, -6.72611, -8.07336, -26.3483 )
 
-[node name="DetectionArea" parent="." index="2"]
-visible = false
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" index="0"]
 shape = SubResource( 1 )
-
-[node name="NotifyArea" parent="." index="3"]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NotifyArea" index="0"]
 shape = SubResource( 2 )
@@ -178,6 +172,12 @@ linear_accel = -10.0
 radial_accel = 10.0
 scale_amount = 0.25
 color_ramp = ExtResource( 4 )
+
+[node name="Explosion" parent="." index="10"]
+visible = true
+
+[node name="ExplosionArea" parent="." index="12"]
+visible = true
 
 [node name="SmokeEmitter" parent="." index="13"]
 visible = true

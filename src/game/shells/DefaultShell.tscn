@@ -257,4 +257,4 @@ weapon_name = "player_projectile"
 visible = false
 
 [node name="Shield" parent="." index="12"]
-visible = false
+modulate = Color( 0.454902, 0.815686, 0.992157, 0.392157 )
