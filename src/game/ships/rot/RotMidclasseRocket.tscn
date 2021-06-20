@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://src/game/SmokeEmitter.tscn" type="PackedScene" id=1]
-[ext_resource path="res://src/game/weapons/projectiles/KineticProjectileShooter.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/game/weapons/Beam.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/game/Thruster.tres" type="Gradient" id=2]
 [ext_resource path="res://src/game/Enemy.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/graphics/ships/trail/solreign.png" type="Texture" id=4]
 [ext_resource path="res://assets/graphics/ships/rot/midclasse-2.png" type="Texture" id=6]
 [ext_resource path="res://src/game/ships/MediumShield.tscn" type="PackedScene" id=7]
 
@@ -25,8 +26,9 @@ position = Vector2( 0, -9.36442 )
 texture = ExtResource( 6 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="1"]
+visible = false
 position = Vector2( -0.0834351, -2.91995 )
-polygon = PoolVector2Array( -3.49689, -28.3338, 7.64679, -20.3741, 11.5798, -25.8991, 15.3256, -10.0732, 21.1315, -10.1669, 13.2654, 1.25772, 18.8841, 5.37805, 3.80737, 8.46832, 3.80737, 15.398, -8.25525, 7.11642, -12.0393, 12.9501, -15.6131, -2.7641, -23.0228, -2.76419, -13.4579, -14.5893, -18.8712, -18.4785, -3.57733, -21.5267 )
+polygon = PoolVector2Array( 3.33255, -21.3414, 7.64679, -20.3741, 10.4984, -16.7742, 13.727, -11.7345, 14.5143, -5.90736, 13.2654, 1.25772, 10.1834, 4.40823, 3.80737, 8.46832, -2.80948, 7.71555, -8.25525, 7.11642, -12.1801, 1.96716, -15.6131, -2.7641, -15.0937, -8.34843, -13.4579, -14.5893, -8.87286, -18.9003, -3.57733, -21.5267 )
 
 [node name="DetectionArea" parent="." index="2"]
 visible = false
@@ -40,27 +42,120 @@ visible = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NotifyArea" index="0"]
 shape = SubResource( 2 )
 
-[node name="SmokeEmitter" parent="SmokeEmitter" index="0" instance=ExtResource( 1 )]
-position = Vector2( -7.5, 2 )
+[node name="NormalEmission" parent="." index="6"]
+visible = true
 
-[node name="SmokeEmitter2" parent="SmokeEmitter" index="1" instance=ExtResource( 1 )]
-position = Vector2( 9.25, -0.75 )
+[node name="Solid6" type="CPUParticles2D" parent="NormalEmission" index="0"]
+modulate = Color( 0, 1, 0.180392, 0.196078 )
+position = Vector2( 7.50714, -11.9442 )
+rotation = 0.00722153
+scale = Vector2( 4, 4 )
+amount = 10
+lifetime = 0.25
+speed_scale = 3.0
+fixed_fps = 100
+texture = ExtResource( 4 )
+flag_align_y = true
+direction = Vector2( 0, 1 )
+spread = 0.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 30.0
+linear_accel = -10.0
+radial_accel = 10.0
+scale_amount = 0.25
+color_ramp = ExtResource( 2 )
 
-[node name="KineticProjectileShooter" parent="Weapons" index="0" instance=ExtResource( 2 )]
-position = Vector2( -21.1084, -6.83792 )
-weapon_name = "cannon_sniper"
+[node name="Solid7" type="CPUParticles2D" parent="NormalEmission" index="1"]
+modulate = Color( 0, 1, 0.180392, 0.196078 )
+position = Vector2( 2.73248, -1.79654 )
+rotation = 1.5708
+scale = Vector2( 4, 4 )
+amount = 10
+lifetime = 0.25
+speed_scale = 3.0
+fixed_fps = 100
+texture = ExtResource( 4 )
+flag_align_y = true
+direction = Vector2( 0, 1 )
+spread = 0.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 30.0
+linear_accel = -10.0
+radial_accel = 10.0
+scale_amount = 0.25
+color_ramp = ExtResource( 2 )
 
-[node name="KineticProjectileShooter2" parent="Weapons" index="1" instance=ExtResource( 2 )]
-position = Vector2( -2.97299, -30.0275 )
-weapon_name = "cannon_sniper"
+[node name="Solid8" type="CPUParticles2D" parent="NormalEmission" index="2"]
+modulate = Color( 0, 1, 0.180392, 0.196078 )
+position = Vector2( -7.36792, -6.61041 )
+rotation = 3.14159
+scale = Vector2( 4, 4 )
+amount = 10
+lifetime = 0.25
+speed_scale = 3.0
+fixed_fps = 100
+texture = ExtResource( 4 )
+flag_align_y = true
+direction = Vector2( 0, 1 )
+spread = 0.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 30.0
+linear_accel = -10.0
+radial_accel = 10.0
+scale_amount = 0.25
+color_ramp = ExtResource( 2 )
 
-[node name="KineticProjectileShooter3" parent="Weapons" index="2" instance=ExtResource( 2 )]
-position = Vector2( 20.5138, -12.1894 )
-weapon_name = "cannon_sniper"
+[node name="Solid9" type="CPUParticles2D" parent="NormalEmission" index="3"]
+modulate = Color( 0, 1, 0.180392, 0.196078 )
+position = Vector2( -2.60071, -16.8265 )
+rotation = 4.71239
+scale = Vector2( 4, 4 )
+amount = 10
+lifetime = 0.25
+speed_scale = 3.0
+fixed_fps = 100
+texture = ExtResource( 4 )
+flag_align_y = true
+direction = Vector2( 0, 1 )
+spread = 0.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 30.0
+linear_accel = -10.0
+radial_accel = 10.0
+scale_amount = 0.25
+color_ramp = ExtResource( 2 )
 
-[node name="KineticProjectileShooter4" parent="Weapons" index="3" instance=ExtResource( 2 )]
-position = Vector2( 2.97299, 11.5948 )
-weapon_name = "cannon_sniper"
+[node name="Beam" parent="Weapons" index="0" instance=ExtResource( 1 )]
+position = Vector2( -14.9022, -21.6781 )
+weapon_name = "beam_tooth"
+
+[node name="Beam2" parent="Weapons" index="1" instance=ExtResource( 1 )]
+position = Vector2( -0.65219, -27.9281 )
+weapon_name = "beam_tooth"
+
+[node name="Beam3" parent="Weapons" index="2" instance=ExtResource( 1 )]
+position = Vector2( 12.4728, -25.0531 )
+weapon_name = "beam_tooth"
+
+[node name="Beam4" parent="Weapons" index="3" instance=ExtResource( 1 )]
+position = Vector2( 18.5978, -10.0531 )
+weapon_name = "beam_tooth"
+
+[node name="Beam5" parent="Weapons" index="4" instance=ExtResource( 1 )]
+position = Vector2( 15.7228, 2.8219 )
+weapon_name = "beam_tooth"
+
+[node name="Beam6" parent="Weapons" index="5" instance=ExtResource( 1 )]
+position = Vector2( 0.59781, 9.0719 )
+weapon_name = "beam_tooth"
+
+[node name="Beam7" parent="Weapons" index="6" instance=ExtResource( 1 )]
+position = Vector2( -12.5272, 5.9469 )
+weapon_name = "beam_tooth"
+
+[node name="Beam8" parent="Weapons" index="7" instance=ExtResource( 1 )]
+position = Vector2( -18.7772, -8.9281 )
+weapon_name = "beam_tooth"
 
 [node name="ShieldShape" parent="." index="15"]
 visible = false
