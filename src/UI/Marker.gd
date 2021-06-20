@@ -1,14 +1,20 @@
 extends Node2D
 
-
 var destination = null
 
 const markers = {
-	"earth": preload("res://assets/graphics/ui/markers2.png"),
-	"mars": preload("res://assets/graphics/ui/markers3.png"),
-	"destination": preload("res://assets/graphics/ui/markers1.png"),
-	"home": preload("res://assets/graphics/ui/markers4.png"),
-	"station": preload("res://assets/graphics/ui/markers4.png")
+	"earth": preload("res://assets/graphics/ui/markers/Navigation_Earthlike.png"),
+	"blue": preload("res://assets/graphics/ui/markers/Navigation_Blue.png"),
+	"purple": preload("res://assets/graphics/ui/markers/Navigation_Purple.png"),
+	"mars": preload("res://assets/graphics/ui/markers/Navigation_Marslike.png"),
+	"eater": preload("res://assets/graphics/ui/markers/Navigation_PlanetEater.png"),
+	"sun": preload("res://assets/graphics/ui/markers/Navigation_Sun.png"),
+	"sun_small": preload("res://assets/graphics/ui/markers/Navigation_Sun_Small.png"),
+	"station": preload("res://assets/graphics/ui/markers/Navigation_Space_Station.png"),
+	"mail": preload("res://assets/graphics/ui/markers/Navigation_Mail.png"),
+	"mail_small": preload("res://assets/graphics/ui/markers/Navigation_Mail_Small.png"),
+	"igps": preload("res://assets/graphics/ui/markers/Navigation_IGPS.png"),
+	"destination": preload("res://assets/graphics/ui/markers/Navigation_Flag2.png"),
 }
 
 const width = 960.0 - 16
@@ -38,10 +44,10 @@ func _process(delta):
 	var player = GameFlow.player
 	if destination == null or player == null:
 		return
-	if destination.position.distance_to(player.position) < 500:
-		visible = false
+	if destination.position.distance_to(player.position) < 300:
+		$Marked.visible = false
 	else:
-		visible = true
+		$Marked.visible = true
 	set_position((destination.position - player.position).normalized())
 	$Marked.rotation = -rotation
 

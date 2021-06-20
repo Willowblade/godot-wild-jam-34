@@ -14,7 +14,7 @@ var carrying = null
 
 var should_update_stats = false
 
-
+var sun = null
 var heat = 0.0
 var heat_max = 100.0
 var heat_timeout = 0.0
@@ -134,7 +134,7 @@ func take_hull_damage(damage: float):
 func increase_heat(increment):
 	heat += increment
 	if heat > heat_max:
-		take_hull_damage(heat - heat_max)
+		take_hull_damage((heat - heat_max) / 2)
 		heat = heat_max
 
 	heat_timeout = 0.0
@@ -155,13 +155,24 @@ func weapon_shot(weapon):
 	if weapon.type == "rocket":
 		increase_heat(5.0)
 	if weapon.type == "beam":
-		increase_heat(0.05)
+		increase_heat(0.06)
 	if weapon.type == "projectile":
-		increase_heat(1.0)
+		increase_heat(1.1)
+
+func increase_heat_from_sun():
+	if sun == null:
+		return
+	var distance_from_sun = position.distance_to(sun.position)
+	if distance_from_sun < 600:
+		increase_heat(0.5)
+	else:
+		increase_heat(0.4 * (900 - (distance_from_sun - 600)) / 900)
 
 func _physics_process(delta):
 	if heat > 0:
 		update_heat(delta)
+	if sun != null:
+		increase_heat_from_sun()
 	update_shields(delta)
 	if damage_timeout > shield_recharge:
 		should_update_stats = true

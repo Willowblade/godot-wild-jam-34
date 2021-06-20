@@ -57,6 +57,9 @@ func _ready():
 	AudioEngine.play_background_music("explore")
 	GameFlow.overlays.transition.set_color(Color(0, 0, 0, 1))
 	GameFlow.overlays.transition.transition_to_clear()
+	GameFlow.destination = null
+	GameFlow.igps = igps
+	GameFlow.sun = sun
 
 	GameFlow.update_player(player)
 	if State.player.shell != player.shell_name:

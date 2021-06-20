@@ -1,15 +1,23 @@
 extends Node2D
 
 
+
 const MARKERS = {
-	"earth": preload("res://assets/graphics/ui/markers2.png"),
-	"mars": preload("res://assets/graphics/ui/markers3.png"),
-	"sun": preload("res://assets/graphics/ui/markers3.png"),
-	"destination": preload("res://assets/graphics/ui/markers1.png"),
-	"home": preload("res://assets/graphics/ui/markers4.png"),
-	"player": preload("res://assets/graphics/ui/markers2.png"),
-	"station": preload("res://assets/graphics/ui/markers4.png")
+	"earth": preload("res://assets/graphics/ui/markers/Navigation_Earthlike.png"),
+	"blue": preload("res://assets/graphics/ui/markers/Navigation_Blue.png"),
+	"purple": preload("res://assets/graphics/ui/markers/Navigation_Purple.png"),
+	"mars": preload("res://assets/graphics/ui/markers/Navigation_Marslike.png"),
+	"eater": preload("res://assets/graphics/ui/markers/Navigation_PlanetEater.png"),
+	"sun": preload("res://assets/graphics/ui/markers/Navigation_Sun.png"),
+	"sun_small": preload("res://assets/graphics/ui/markers/Navigation_Sun_Small.png"),
+	"station": preload("res://assets/graphics/ui/markers/Navigation_Space_Station.png"),
+	"mail": preload("res://assets/graphics/ui/markers/Navigation_Mail.png"),
+	"mail_small": preload("res://assets/graphics/ui/markers/Navigation_Mail_Small.png"),
+	"igps": preload("res://assets/graphics/ui/markers/Navigation_IGPS.png"),
+	"destination": preload("res://assets/graphics/ui/markers/Navigation_Flag2.png"),
+	"player": preload("res://assets/graphics/container/bubble.png"),
 }
+
 
 var planets = []
 var stations = []
@@ -43,8 +51,17 @@ func initialize_objects():
 		sprite.texture = MARKERS["station"]
 		markers[station] = sprite
 
+	var sprite = Sprite.new()
+	add_child(sprite)
+	sprite.texture = MARKERS["sun"]
+	markers[GameFlow.sun] = sprite
+
+	sprite = Sprite.new()
+	add_child(sprite)
+	sprite.texture = MARKERS["igps"]
+	markers[GameFlow.igps] = sprite
+
 func set_player(_player):
-	print("Setting player", _player)
 	player = _player
 	if player_marker == null:
 		player_marker = Sprite.new()
@@ -52,11 +69,12 @@ func set_player(_player):
 		player_marker.texture = MARKERS["player"]
 
 func set_destination(_destination):
-	destination = _destination
-	if destination == null:
-		markers[destination].texture = MARKERS["station"]
+	if _destination == null:
+		if destination != null:
+			markers[destination].texture = MARKERS["station"]
 	else:
-		markers[destination].texture = MARKERS["destination"]
+		markers[_destination].texture = MARKERS["destination"]
+	destination = _destination
 
 func _ready():
 	set_process(false)
@@ -73,6 +91,7 @@ func turn_off():
 
 func _process(delta):
 	set_player(GameFlow.player)
+	set_destination(GameFlow.destination)
 	if player == null:
 		return
 

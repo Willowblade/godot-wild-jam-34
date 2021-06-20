@@ -27,6 +27,20 @@ func add_marker(player, destination):
 	return marker_instance
 
 func make_markers(player, destinations):
+	if not GameFlow.sun in markers:
+		var marker_instance = add_marker(player, GameFlow.sun)
+		marker_instance.set_marker("sun")
+		markers[GameFlow.sun] = marker_instance
+		marker_instance.visible = true
+		marker_instance.set_process(true)
+
+	if not GameFlow.igps in markers:
+		var marker_instance = add_marker(player, GameFlow.igps)
+		marker_instance.set_marker("igps")
+		markers[GameFlow.igps] = marker_instance
+		marker_instance.visible = true
+		marker_instance.set_process(true)
+
 	for destination in destinations:
 		if not destination in markers:
 			var marker_instance = add_marker(player, destination)
@@ -49,14 +63,15 @@ func clear_destination_marker():
 func update_visible_destinations(destinations):
 	print("updating visible destinations ", destinations)
 	for destination in markers:
+		if destination == GameFlow.sun:
+			continue
+
+		if destination == GameFlow.igps:
+			continue
+
 		if destination in destinations:
 			markers[destination].set_process(true)
 			markers[destination].visible = true
 		else:
 			markers[destination].visible = false
 			markers[destination].set_process(false)
-
-
-
-
-

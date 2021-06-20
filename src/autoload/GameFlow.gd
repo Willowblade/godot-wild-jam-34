@@ -92,6 +92,11 @@ var in_igps = false
 var stations_in_proximity = []
 var player_mindframe = "EXPLORE"
 
+var igps = null
+var sun = null
+
+var destination = null
+
 
 func reset():
 	player = null
