@@ -2,6 +2,9 @@ extends Node2D
 
 var destination = null
 
+
+var _marker_type = ""
+
 const markers = {
 	"earth": preload("res://assets/graphics/ui/markers/Navigation_Earthlike.png"),
 	"blue": preload("res://assets/graphics/ui/markers/Navigation_Blue.png"),
@@ -37,10 +40,15 @@ func set_marker_destination():
 
 
 func set_marker(marker_type):
-	$Marked.texture = markers[marker_type]
+	_marker_type = marker_type
+	$Marked.texture = markers[_marker_type]
 
 
 func _process(delta):
+	if GameFlow.destination == self:
+		$Marked.texture = markers["mail"]
+	else:
+		$Marked.texture = markers[_marker_type]
 	var player = GameFlow.player
 	if destination == null or player == null:
 		return
