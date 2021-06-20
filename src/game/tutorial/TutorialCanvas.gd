@@ -27,38 +27,6 @@ const shells = {
 	"post": preload("res://src/game/shells/CarrotShell.tscn"),
 }
 
-
-
-var predefined_packages = {
-	"1": "Deliver these letters to Station 1, they haven't read their mail in years",
-	"2": "Station 2 has been in a rut lately, bring them this CD of Inside",
-	"3": "All eyes on me, all eyes on - Oh. Hi. Deliver this underwear to Station 3",
-	"4": "How's fighting all those pirates going? Yeah, they tricked me into coming here too.",
-	"5": "If you can deliver these ship prototypes to Station 5, we'll give you the first one!",
-}
-
-var start_objective = "We need you to pick up a package at the IGPS"
-
-var comeback_message = "Great job! Come back to the IGPS for your next assignment"
-
-var random_messages = [
-	"Deliver a live monkey to Station ",
-	"Deliver this whole crate filled with pride flags to Station ",
-	"A fuckton of carrots needs delivering to Station ",
-	"We need you to deliver this batch of weapons to Station ",
-	"Spare parts for vibrators - don't ask - are very hastily needed at Station ",
-]
-# TODO on start set tethered to ship?
-
-
-func make_delivery_message(station):
-	var delivered_packets = State.player.delivered_packets
-	if station.station_name in delivered_packets:
-		return random_messages[randi() % random_messages.size()] + station.station_name
-	else:
-		return predefined_packages[station.station_name]
-
-
 var previous_velocity = Vector2(0, 0)
 
 var last_timestamp = 0
@@ -74,7 +42,9 @@ func get_orbitable_type(orbitable):
 	else:
 		return "normal"
 
-var station_map = {}
+var station_map = {
+
+}
 
 func get_orbitable_data(orbitable):
 	return {
@@ -108,8 +78,6 @@ func _ready():
 	GameFlow.destination = null
 	GameFlow.igps = igps
 	GameFlow.sun = sun
-	GameFlow.objective = start_objective
-	GameFlow.overlays.popup.show_popup_custom(GameFlow.objective, Vector2(0, 40), "info", 3)
 
 	GameFlow.update_player(player)
 	if State.player.shell != player.shell_name:
@@ -204,8 +172,6 @@ func _on_container_tethered(container: CargoContainer, target):
 		return
 
 	GameFlow.destination = container.destination
-	GameFlow.objective = make_delivery_message(container.destination)
-	GameFlow.overlays.popup.show_popup_custom(GameFlow.objective, Vector2(0, 40), "info", 3)
 	container.sleeping = false
 	# spring.length = 1
 	# spring.rest_length = 1

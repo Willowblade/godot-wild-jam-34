@@ -180,7 +180,7 @@ func weapon_shot(weapon):
 		increase_heat(0.06)
 	if weapon.type == "projectile":
 		AudioEngine.play_effect("weapon_projectile")
-		increase_heat(1.1)
+		increase_heat(0.55)
 
 func increase_heat_from_sun():
 	if sun == null:
@@ -205,11 +205,15 @@ func _physics_process(delta):
 	next_acceleration_state = "NONE"
 
 	if Input.is_action_just_pressed("interact"):
-		if swappable_shell and carrying == null:
-			AudioEngine.play_effect("ui_positive" + str(1 + (randi() % 5)))
-			print("Interacting with swappable shell")
-			GameFlow.canvas.swap_player(swappable_shell, null)
-			return
+		if swappable_shell:
+			if carrying != null:
+				GameFlow.overlays.popup.show_popup_custom("You can't swap when on a delivery", Vector2(0, 40), "info", 3)
+				AudioEngine.play_effect("ui_negative" + str(1 + (randi() % 4)))
+			else:
+				AudioEngine.play_effect("ui_positive" + str(1 + (randi() % 5)))
+				print("Interacting with swappable shell")
+				GameFlow.canvas.swap_player(swappable_shell, null)
+				return
 		else:
 			AudioEngine.play_effect("ui_negative" + str(1 + (randi() % 4)))
 

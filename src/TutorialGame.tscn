@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://src/Game.gd" type="Script" id=1]
+[ext_resource path="res://src/game/tutorial/TutorialCanvas.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/UI/Markers.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/UI/Transition.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/UI/Map.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/UI/PauseUI.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/UI/HUD.tscn" type="PackedScene" id=7]
+
+[node name="Game" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.25989
+margin_top = -2.51978
+margin_right = 1.25989
+margin_bottom = -2.51978
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UICanvas" type="CanvasLayer" parent="."]
+
+[node name="Markers" parent="UICanvas" instance=ExtResource( 3 )]
+
+[node name="Map" parent="UICanvas" instance=ExtResource( 5 )]
+
+[node name="Transition" parent="UICanvas" instance=ExtResource( 4 )]
+
+[node name="PauseUI" parent="UICanvas" instance=ExtResource( 6 )]
+visible = false
+
+[node name="HUD" parent="UICanvas" instance=ExtResource( 7 )]
+
+[node name="ViewportContainer" type="ViewportContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TutorialCanvas" parent="ViewportContainer" instance=ExtResource( 2 )]

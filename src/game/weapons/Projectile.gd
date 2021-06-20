@@ -43,8 +43,8 @@ func _on_body_entered(body):
 		return
 
 	if GameFlow.is_ship(body) or GameFlow.is_asteroid(body) or GameFlow.is_container(body):
-		if body == shooter:
-			if own_goal_timer < 0.5:
+		if GameFlow.is_ship(body):
+			if body.faction == shooter.faction:
 				return
 		GameFlow.hit_emitter.spawn_hit(position)
 		used = true

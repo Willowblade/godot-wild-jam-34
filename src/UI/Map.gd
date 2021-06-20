@@ -1,6 +1,9 @@
 extends Node2D
 
 
+onready var objective_box = $ObjectiveBox
+onready var objective_text = $ObjectiveBox/Objective
+
 
 const MARKERS = {
 	"earth": preload("res://assets/graphics/ui/markers/Navigation_Earthlike.png"),
@@ -90,6 +93,13 @@ func turn_off():
 
 
 func _process(delta):
+	if GameFlow.objective:
+		objective_box.show()
+		objective_text.text = GameFlow.objective
+	else:
+		objective_box.hide()
+
+
 	set_player(GameFlow.player)
 	set_destination(GameFlow.destination)
 	if player == null:

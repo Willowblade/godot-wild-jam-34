@@ -112,11 +112,13 @@ func turn_towards_target(delta):
 		$TurnLeftEmission.emitting = false
 		$TurnRightEmission.emitting = true
 
+
 func get_angle_to_target():
 	var orientation = get_orientation()
 	var target_orientation: Vector2 = target_position - position
 	var angle = target_orientation.angle_to(orientation)
 	return angle
+
 
 func move_towards_target(delta):
 	var angle_to_target = get_angle_to_target()

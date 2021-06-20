@@ -95,10 +95,13 @@ var player_mindframe = "EXPLORE"
 var igps = null
 var sun = null
 
+var objective = null
+
 var destination = null
 
 
 func reset():
+	objective = null
 	player = null
 	player_shell = "default"
 	followers = []
@@ -172,5 +175,7 @@ func deliver_package():
 	State.player.delivered_packets.append(destination.station_name)
 	State.upgrades.post += 1
 	Flow.save_game()
+	GameFlow.objective = canvas.comeback_message
+	GameFlow.overlays.popup.show_popup_custom(GameFlow.objective, Vector2(0, 40), "info", 3)
 	destination = null
 	canvas.spawn_container_with_destination(canvas.station_map[canvas.get_container_destination()])

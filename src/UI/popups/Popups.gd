@@ -1,6 +1,6 @@
 extends Control
 
-onready var popup_scene = preload("res://src/UI/Popup.tscn")
+onready var popup_scene = preload("res://src/UI/popups/Popup.tscn")
 onready var tween = $Tween
 
 var popups = [null, null, null, null]
@@ -9,7 +9,7 @@ var texts_being_shown = []
 
 func _ready():
 	GameFlow.register_overlay("popup", self)
-	
+
 func show_popup(text: String, type: String = "info", timeout: float = 1.0):
 	print("Showing popup")
 	if texts_being_shown.has(text):

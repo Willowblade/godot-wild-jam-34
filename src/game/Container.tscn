@@ -27,13 +27,7 @@ can_sleep = false
 linear_damp = 0.1
 script = ExtResource( 2 )
 
-[node name="TetherVisuals" type="Node2D" parent="."]
-
-[node name="Background" type="Sprite" parent="TetherVisuals"]
-z_index = -2
-texture = ExtResource( 4 )
-
-[node name="CPUParticles2D" type="CPUParticles2D" parent="TetherVisuals"]
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 amount = 12
 lifetime = 0.9
 texture = ExtResource( 5 )
@@ -45,6 +39,12 @@ initial_velocity = 20.0
 initial_velocity_random = 0.2
 damping = 2.41
 scale_amount_curve = SubResource( 1 )
+
+[node name="TetherVisuals" type="Node2D" parent="."]
+
+[node name="Background" type="Sprite" parent="TetherVisuals"]
+z_index = -2
+texture = ExtResource( 4 )
 
 [node name="Foreground" type="Sprite" parent="TetherVisuals"]
 texture = ExtResource( 3 )

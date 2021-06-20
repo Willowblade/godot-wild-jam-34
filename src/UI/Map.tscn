@@ -11,3 +11,26 @@ script = ExtResource( 1 )
 modulate = Color( 0, 0, 0, 0.596078 )
 scale = Vector2( 960, 540 )
 texture = ExtResource( 2 )
+
+[node name="ObjectiveBox" type="Panel" parent="."]
+margin_left = -201.0
+margin_top = -232.0
+margin_right = 177.0
+margin_bottom = -129.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ObjectiveBox"]
+margin_left = 27.0
+margin_top = 15.0
+margin_right = 344.0
+margin_bottom = 29.0
+text = "Current Objective:"
+align = 1
+
+[node name="Objective" type="Label" parent="ObjectiveBox"]
+margin_left = 30.0
+margin_top = 48.0
+margin_right = 345.0
+margin_bottom = 87.0

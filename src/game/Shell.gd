@@ -26,6 +26,7 @@ func update_shell(new_shell):
 
 func _on_body_entered(body):
 	if GameFlow.is_player(body):
+		GameFlow.overlays.popup.show_popup_custom("Swap ships by pressing E", Vector2(0, 40), "info", 3)
 		body.swappable_shell = self
 
 
