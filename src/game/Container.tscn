@@ -11,7 +11,7 @@
 _data = [ Vector2( 0, 0.745454 ), 0.0, 0.0, 0, 0, Vector2( 0.498433, 0.6 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.463636 ), 0.0, 0.0, 0, 0 ]
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 75.6922
+radius = 40.4602
 
 [node name="Container" type="RigidBody2D" groups=[
 "container",
@@ -120,7 +120,6 @@ visible = false
 polygon = PoolVector2Array( -6.71339, -5.43774, -3.77026, -8.59111, 3.79781, -8.69622, 6.63584, -5.33263, 6.74095, 5.38879, 3.6927, 8.64727, -3.34981, 8.75238, -7.02872, 5.80924 )
 
 [node name="PickupArea" type="Area2D" parent="."]
-visible = false
 
 [node name="Shape" type="CollisionShape2D" parent="PickupArea"]
 shape = SubResource( 2 )

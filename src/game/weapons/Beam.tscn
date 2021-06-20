@@ -5,6 +5,7 @@
 
 [node name="Beam" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+weapon_name = "player_beam"
 
 [node name="RayCast" type="RayCast2D" parent="." index="0"]
 enabled = true

@@ -47,9 +47,11 @@ func _ready():
 
 func set_emitter_properties(emitter, modifier):
 	if modifier < 0.01:
-		emitter.emitting = false
+		if emitter.emitting:
+			emitter.emitting = false
 	else:
-		emitter.emitting = true
+		if not emitter.emitting:
+			emitter.emitting = true
 	emitter.spread = int(min_spread + (max_spread - min_spread) * modifier)
 	emitter.amount = int(min_amount + (max_amount - min_amount) * modifier)
 	emitter.initial_velocity = int(min_initial_velocity + (max_initial_velocity - min_initial_velocity) * modifier)

@@ -24,7 +24,7 @@ const shells = {
 	"armada": preload("res://src/game/shells/ArmadaShell.tscn"),
 	"rot": preload("res://src/game/shells/RotShell.tscn"),
 	"solreign": preload("res://src/game/shells/SolreignShell.tscn"),
-	"carrot": preload("res://src/game/shells/CarrotShell.tscn"),
+	"post": preload("res://src/game/shells/CarrotShell.tscn"),
 }
 
 var previous_velocity = Vector2(0, 0)
@@ -69,7 +69,6 @@ func _ready():
 		station_map[station.station_name] = station
 
 
-
 	GameFlow.register_canvas(self)
 	GameFlow.register_hit_emitter($HitEmitter)
 	GameFlow.register_projectiles_spawner($Projectiles)
@@ -95,8 +94,6 @@ func _ready():
 			orbitables.asteroids[orbitable] = get_orbitable_data(orbitable)
 		else:
 			orbitables.normal[orbitable] = get_orbitable_data(orbitable)
-
-	$Container.connect("tether", self, "_on_container_tethered")
 
 	var spawn_container_destination = station_map[get_container_destination()]
 	spawn_container_with_destination(spawn_container_destination)

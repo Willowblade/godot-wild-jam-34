@@ -61,7 +61,7 @@ func shoot_beam_bullet(projectile_data):
 	var beam_bullet_instance
 	if projectile_data.shot == "tooth":
 		beam_bullet_instance = BeamToothScene.instance()
-	if projectile_data.shot == "thicc":
+	elif projectile_data.shot == "thicc":
 		beam_bullet_instance = BeamThiccScene.instance()
 	else:
 		beam_bullet_instance = BeamBulletScene.instance()

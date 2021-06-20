@@ -306,7 +306,7 @@
         },
         "player_beam": {
             "type": "beam",
-            "distance": 300,
+            "distance": 350,
             "damage": 5,
             "shot": "default"
         },

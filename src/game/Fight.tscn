@@ -9,15 +9,24 @@
 [node name="Fight" type="Node2D"]
 script = ExtResource( 3 )
 
-[node name="ArmadeAgile4" parent="." instance=ExtResource( 1 )]
+[node name="ArmadeAgile4" parent="." groups=[
+"orbitable",
+"ships",
+] instance=ExtResource( 1 )]
 position = Vector2( 825.977, 422.568 )
 faction = "Solreign"
 
-[node name="ArmadeAgile5" parent="." instance=ExtResource( 1 )]
+[node name="ArmadeAgile5" parent="." groups=[
+"orbitable",
+"ships",
+] instance=ExtResource( 1 )]
 position = Vector2( 515.054, 495.506 )
 faction = "Solreign"
 
-[node name="ArmadeAgile6" parent="." instance=ExtResource( 1 )]
+[node name="ArmadeAgile6" parent="." groups=[
+"orbitable",
+"ships",
+] instance=ExtResource( 1 )]
 position = Vector2( 177.361, 54.6198 )
 faction = "Solreign"
 
@@ -28,11 +37,17 @@ script = ExtResource( 4 )
 [node name="HitEmitter" type="Node2D" parent="."]
 script = ExtResource( 5 )
 
-[node name="ArmadeAgile7" parent="." instance=ExtResource( 2 )]
+[node name="ArmadeAgile7" parent="." groups=[
+"orbitable",
+"ships",
+] instance=ExtResource( 2 )]
 position = Vector2( 871.031, 102.518 )
 rotation = -1.47807
 
-[node name="ArmadeAgile8" parent="." instance=ExtResource( 2 )]
+[node name="ArmadeAgile8" parent="." groups=[
+"orbitable",
+"ships",
+] instance=ExtResource( 2 )]
 position = Vector2( 46.4474, 399.893 )
 rotation = 1.35198
 

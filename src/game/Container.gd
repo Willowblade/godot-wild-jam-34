@@ -68,7 +68,7 @@ func _physics_process(delta):
 		var distance = (delivery_station.cargo_anchor_point.global_position + 2 * offset - position).length()
 		print(distance)
 		if distance < 10:
-			print("Delivered!!")
+			GameFlow.deliver_package()
 			queue_free()
 
 

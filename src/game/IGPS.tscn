@@ -56,7 +56,7 @@ texture = ExtResource( 3 )
 
 [node name="ShellUnlock4" parent="." instance=ExtResource( 7 )]
 position = Vector2( -92, -18 )
-type = "carrot"
+type = "post"
 quantity = 8
 
 [node name="Sprite" parent="ShellUnlock4/Shell" index="0"]

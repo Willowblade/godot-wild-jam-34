@@ -166,3 +166,11 @@ func enter_igps():
 
 func exit_igps():
 	in_igps = false
+
+
+func deliver_package():
+	State.player.delivered_packets.append(destination.station_name)
+	State.upgrades.post += 1
+	Flow.save_game()
+	destination = null
+	canvas.spawn_container_with_destination(canvas.station_map[canvas.get_container_destination()])

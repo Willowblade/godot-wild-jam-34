@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://assets/graphics/ships/stations/Space_Station_1.png" type="Texture" id=1]
 [ext_resource path="res://src/game/asteroids/LargeAsteroid1.tscn" type="PackedScene" id=2]
@@ -27,7 +27,6 @@
 [ext_resource path="res://assets/graphics/ships/stations/Space_Station_2.png" type="Texture" id=25]
 [ext_resource path="res://assets/graphics/ships/stations/Space_Station_4.png" type="Texture" id=26]
 [ext_resource path="res://assets/graphics/ships/stations/Space_Station_5.png" type="Texture" id=27]
-[ext_resource path="res://src/game/Container.tscn" type="PackedScene" id=28]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 32.3739
@@ -133,35 +132,65 @@ length = 1.0
 [node name="Enemies" type="Node2D" parent="."]
 position = Vector2( 1694.91, -2242.97 )
 
-[node name="ArmadeAgile" parent="Enemies" instance=ExtResource( 8 )]
+[node name="ArmadeAgile" parent="Enemies" groups=[
+"orbitable",
+"ships",
+] instance=ExtResource( 8 )]
 position = Vector2( -1223.16, -218.883 )
 
-[node name="ArmadeAgile3" parent="Enemies" instance=ExtResource( 8 )]
+[node name="ArmadeAgile3" parent="Enemies" groups=[
+"orbitable",
+"ships",
+] instance=ExtResource( 8 )]
 position = Vector2( 755.634, -1108.03 )
 
-[node name="ArmadeAgile4" parent="Enemies" instance=ExtResource( 8 )]
+[node name="ArmadeAgile4" parent="Enemies" groups=[
+"orbitable",
+"ships",
+] instance=ExtResource( 8 )]
 position = Vector2( 1793.62, 892.542 )
 
-[node name="ArmadeAgile5" parent="Enemies" instance=ExtResource( 8 )]
+[node name="ArmadeAgile5" parent="Enemies" groups=[
+"orbitable",
+"ships",
+] instance=ExtResource( 8 )]
 position = Vector2( 1804.84, 747.744 )
 
-[node name="ArmadeAgile6" parent="Enemies" instance=ExtResource( 8 )]
+[node name="ArmadeAgile6" parent="Enemies" groups=[
+"orbitable",
+"ships",
+] instance=ExtResource( 8 )]
 position = Vector2( 1841.88, 793.765 )
 
-[node name="ArmadeAgile7" parent="Enemies" instance=ExtResource( 8 )]
+[node name="ArmadeAgile7" parent="Enemies" groups=[
+"orbitable",
+"ships",
+] instance=ExtResource( 8 )]
 position = Vector2( 1351.19, -98.2671 )
 
-[node name="ArmadeAgile2" parent="Enemies" instance=ExtResource( 8 )]
+[node name="ArmadeAgile2" parent="Enemies" groups=[
+"orbitable",
+"ships",
+] instance=ExtResource( 8 )]
 position = Vector2( 1292.57, -236.587 )
 
-[node name="ArmadeAgile8" parent="Enemies" instance=ExtResource( 22 )]
+[node name="ArmadeAgile8" parent="Enemies" groups=[
+"orbitable",
+"ships",
+] instance=ExtResource( 22 )]
 position = Vector2( 1611.56, -665.085 )
 
-[node name="ArmadeAgile9" parent="Enemies" instance=ExtResource( 23 )]
+[node name="ArmadeAgile9" parent="Enemies" groups=[
+"orbitable",
+"ships",
+] instance=ExtResource( 23 )]
 position = Vector2( -1410.03, 429.498 )
 rotation = 1.03532
 
-[node name="ArmadeAgile10" parent="Enemies" instance=ExtResource( 23 )]
+[node name="ArmadeAgile10" parent="Enemies" groups=[
+"orbitable",
+"ships",
+] instance=ExtResource( 23 )]
 position = Vector2( 1053.26, -235.799 )
 rotation = 1.03532
 
@@ -350,9 +379,6 @@ script = ExtResource( 21 )
 
 [node name="IGPS" parent="." instance=ExtResource( 24 )]
 position = Vector2( -890.734, 1904.85 )
-
-[node name="Container" parent="." instance=ExtResource( 28 )]
-position = Vector2( -583.946, 2373.03 )
 
 [editable path="Stations/Station"]
 [editable path="Stations/Station2"]
