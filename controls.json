@@ -17,16 +17,6 @@
             ]
         },
         {
-            "action": "interact",
-            "events": [
-                {
-                    "scancode": "E",
-                    "alt": true,
-                    "control": true
-                }
-            ]
-        },
-        {
             "action": "toggle_full_screen",
             "events": [
                 {
@@ -55,22 +45,16 @@
     ],
     "game": [
         {
-            "action": "shoot",
+            "action": "interact",
             "events": [
                 {
                     "scancode": "E"
-                },
-				{
-                    "scancode": "Space"
                 }
             ]
         },
         {
             "action": "shoot",
             "events": [
-                {
-                    "scancode": "E"
-                },
 				{
                     "scancode": "Space"
                 }

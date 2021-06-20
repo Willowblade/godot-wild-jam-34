@@ -114,6 +114,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/game/Station.gd"
 }, {
+"base": "Reference",
+"class": "UpgradeState",
+"language": "GDScript",
+"path": "res://src/autoload/state/Upgrade.gd"
+}, {
 "base": "Node2D",
 "class": "Weapon",
 "language": "GDScript",
@@ -128,11 +133,6 @@ _global_script_classes=[ {
 "class": "class_pause_tab",
 "language": "GDScript",
 "path": "res://src/UI/pause/PauseTab.gd"
-}, {
-"base": "Reference",
-"class": "class_upgrade",
-"language": "GDScript",
-"path": "res://src/autoload/state/Upgrade.gd"
 } ]
 _global_script_class_icons={
 "Asteroid": "",
@@ -156,10 +156,10 @@ _global_script_class_icons={
 "Ship": "",
 "SmokeEmitter": "",
 "Station": "",
+"UpgradeState": "",
 "Weapon": "",
 "class_menu_tab": "",
-"class_pause_tab": "",
-"class_upgrade": ""
+"class_pause_tab": ""
 }
 
 [application]

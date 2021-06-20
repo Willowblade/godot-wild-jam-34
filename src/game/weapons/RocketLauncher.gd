@@ -40,13 +40,11 @@ func shoot():
 	shoot_timeout.wait_time = reload
 	shoot_timeout.start()
 
-	print("Firing rocket!")
-
 	var rocket_scene_instance = ROCKETS[shot].instance()
 	rocket_scene_instance.load_stats(stats)
 	rocket_scene_instance.position = global_position
 	rocket_scene_instance.rotation = global_rotation
-	rocket_scene_instance.faction = faction
+	rocket_scene_instance.faction = shooter.faction
 	rocket_scene_instance.explosion_damage = damage
 	rocket_scene_instance.get_shot(Vector2.UP.rotated(global_rotation))
 	GameFlow.projectiles_spawner.shoot_rocket(rocket_scene_instance)

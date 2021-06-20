@@ -39,7 +39,6 @@ texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DeliveryArea"]
 position = Vector2( 5.46582, 21.0224 )
-scale = Vector2( 1, 1 )
 shape = SubResource( 1 )
 
 [node name="CargoSpawnPoint" type="Position2D" parent="."]
@@ -51,6 +50,8 @@ position = Vector2( 6.71753, 18.7383 )
 shape = SubResource( 2 )
 
 [node name="PlayerDetectionArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetectionArea"]
 position = Vector2( 0, -2.99661 )

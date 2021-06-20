@@ -22,7 +22,6 @@ func add_marker(player, destination):
 	var marker_instance = MarkerScene.instance()
 	add_child(marker_instance)
 	marker_instance.visible = false
-	marker_instance.player = player
 	marker_instance.destination = destination
 	marker_instance.set_process(false)
 	return marker_instance
@@ -57,9 +56,6 @@ func update_visible_destinations(destinations):
 			markers[destination].visible = false
 			markers[destination].set_process(false)
 
-func set_player(player):
-	for marker in markers.values():
-		marker.player = player
 
 
 

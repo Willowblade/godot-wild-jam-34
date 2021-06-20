@@ -1,0 +1,156 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://src/game/SmokeEmitter.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/game/Ship.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/game/weapons/DirectCannon.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/game/ExplosionEmitter.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/game/Thruster.tres" type="Gradient" id=5]
+[ext_resource path="res://src/game/Player.gd" type="Script" id=6]
+[ext_resource path="res://assets/graphics/ships/trail/player-trail.png" type="Texture" id=7]
+[ext_resource path="res://assets/graphics/ships/player-thick-outline.png" type="Texture" id=8]
+[ext_resource path="res://src/game/weapons/Beam.tscn" type="PackedScene" id=9]
+[ext_resource path="res://src/game/ships/MediumShield.tscn" type="PackedScene" id=10]
+
+[sub_resource type="Curve" id=1]
+_data = [ Vector2( 0, 0.2 ), 0.0, 0.0, 0, 0, Vector2( 0.488372, 0.290909 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.518182 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Curve" id=2]
+_data = [ Vector2( 0, 0.363636 ), 0.0, 0.0, 0, 0, Vector2( 0.436047, 0.445455 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.681818 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 4131.86
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 32.079
+
+[node name="Player" groups=[
+"player",
+] instance=ExtResource( 2 )]
+position = Vector2( 0, 0 )
+collision_layer = 2
+collision_mask = 17
+collision/safe_margin = 0.5
+script = ExtResource( 6 )
+
+[node name="Visual" parent="." index="0"]
+position = Vector2( 7.45058e-09, 1.75834e-06 )
+
+[node name="Hull" parent="Visual" index="0"]
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 8 )
+
+[node name="Solid" type="CPUParticles2D" parent="NormalEmission" index="0"]
+position = Vector2( 0.471924, 21.5281 )
+amount = 32
+lifetime = 0.5
+speed_scale = 2.0
+texture = ExtResource( 7 )
+flag_align_y = true
+direction = Vector2( 0, 1 )
+spread = 0.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 30.0
+initial_velocity_random = 1.0
+damping = 3.23
+damping_random = 0.48
+scale_amount = 0.25
+
+[node name="Variable" type="CPUParticles2D" parent="NormalEmission" index="1"]
+position = Vector2( -1.52588e-05, 32.8545 )
+z_index = -1
+amount = 64
+lifetime = 0.8
+speed_scale = 6.0
+fixed_fps = 300
+local_coords = false
+texture = ExtResource( 7 )
+flag_align_y = true
+direction = Vector2( 0, 1 )
+spread = 0.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 25.0
+initial_velocity_random = 1.0
+linear_accel = 10.0
+damping = 3.23
+damping_random = 0.48
+scale_amount_curve = SubResource( 1 )
+color_ramp = ExtResource( 5 )
+
+[node name="Solid" type="CPUParticles2D" parent="BoostEmission" index="0"]
+position = Vector2( 0.471924, 21.5281 )
+amount = 40
+lifetime = 0.5
+speed_scale = 2.0
+texture = ExtResource( 7 )
+flag_align_y = true
+direction = Vector2( 0, 1 )
+spread = 0.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 40.0
+initial_velocity_random = 1.0
+damping = 3.23
+damping_random = 0.48
+scale_amount = 0.4
+
+[node name="Variable" type="CPUParticles2D" parent="BoostEmission" index="1"]
+position = Vector2( 0.667404, 30.1849 )
+z_index = -1
+amount = 64
+lifetime = 1.4
+speed_scale = 6.0
+fixed_fps = 300
+local_coords = false
+texture = ExtResource( 7 )
+flag_align_y = true
+direction = Vector2( 0, 1 )
+spread = 0.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 40.0
+initial_velocity_random = 1.0
+linear_accel = 10.0
+damping = 3.23
+damping_random = 0.48
+scale_amount_curve = SubResource( 2 )
+color_ramp = ExtResource( 5 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="5"]
+polygon = PoolVector2Array( 0.0556946, -20.9827, 8.98483, -5.80314, 8.38955, 4.41576, 25.851, 3.82048, 21.4856, 17.9087, -0.341156, 22.3732, -22.4656, 16.3213, -26.3349, 2.53072, -8.17895, 4.11812, -8.97265, -5.60471 )
+
+[node name="ExplosionEmitter" parent="Explosion" index="0" instance=ExtResource( 4 )]
+
+[node name="SmokeEmitter" parent="." index="8"]
+position = Vector2( 16.7938, 12.1976 )
+
+[node name="SmokeEmitter" parent="SmokeEmitter" index="1" instance=ExtResource( 1 )]
+position = Vector2( -23.6881, 5.3033 )
+
+[node name="SmokeEmitter2" parent="SmokeEmitter" index="2" instance=ExtResource( 1 )]
+position = Vector2( -17.1875, -24.8404 )
+
+[node name="DirectCannon2" parent="Weapons" index="0" instance=ExtResource( 3 )]
+visible = false
+position = Vector2( 21.5383, 2.57953 )
+weapon_name = "player_cannon"
+
+[node name="DirectCannon" parent="Weapons" index="1" instance=ExtResource( 3 )]
+visible = false
+position = Vector2( -20.8346, 2.57953 )
+weapon_name = "player_cannon"
+
+[node name="Beam" parent="Weapons" index="2" instance=ExtResource( 9 )]
+position = Vector2( 0, -24.6081 )
+weapon_name = "player_beam"
+
+[node name="MarkerRecognition" type="Area2D" parent="." index="10"]
+visible = false
+collision_layer = 32
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MarkerRecognition" index="0"]
+shape = SubResource( 3 )
+
+[node name="ShieldShape" parent="." index="11"]
+shape = SubResource( 4 )
+
+[node name="Shield" parent="." index="12" instance=ExtResource( 10 )]
+modulate = Color( 0.454902, 0.815686, 0.992157, 1 )

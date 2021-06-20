@@ -1,36 +1,24 @@
 extends Reference
-class_name class_upgrade
+class_name UpgradeState
 
-var id := ""
+var armada := 0
+var solreign := 0
+var rot := 0
+var post := 0
 
 var context : Dictionary setget set_context, get_context
 func set_context(value : Dictionary) -> void:
-	if not value.has("id"):
-		push_error("Upgrade context requires id!")
-		return
-
-	id = value.id
+	armada = value.get('armada', 0)
+	solreign = value.get('solreign', 0)
+	rot = value.get('rot', 0)
+	post = value.get('post', 0)
 
 func get_context() -> Dictionary:
 	var _context := {}
 
-	_context.id = id
+	_context.armada = armada
+	_context.solreign = solreign
+	_context.rot = rot
+	_context.post = post
 
 	return _context
-
-# These are all constants derived from data.JSON and should be treated as such!
-var name : String setget , get_name
-func get_name() -> String:
-	return Flow.get_upgrade_value(id, "name", "MISSING NAME")
-
-var description : String setget , get_description
-func get_description() -> String:
-	return Flow.get_upgrade_value(id, "description", "MISSING DESCRIPTION")
-
-var effect : Dictionary setget , get_effect
-func get_effect() -> Dictionary:
-	return Flow.get_upgrade_value(id, "effect", {})
-
-var target : Dictionary setget , get_target
-func get_target() -> Dictionary:
-	return Flow.get_upgrade_value(id, "target", {})

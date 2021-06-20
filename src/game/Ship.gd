@@ -49,6 +49,11 @@ signal died(ship)
 var minimum_shooting_distance = 9999.0
 var maximum_shooting_distance = 0.0
 
+func load_shields():
+	if stats.shields > 0:
+		if shield:
+			shield.visible = true
+
 func _ready():
 	for weapon in weapons:
 		weapon.shooter = self
@@ -66,7 +71,6 @@ func shoot(weapons_eligible_for_shooting = null):
 		var shot_result = weapon.shoot()
 		if shot_result != null:
 			GameFlow.projectiles_spawner.fire_projectile(shot_result)
-			return
 
 func weapons_safe_for_shooting(distance: float):
 	var safe_weapons = []

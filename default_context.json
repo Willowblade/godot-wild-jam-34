@@ -1,10 +1,15 @@
 {
     "player": {
         "location": {
-            "location": "yurt",
-            "id": "1"
+            "location": {
+                "x": 0,
+                "y": 0
+            },
+            "angle": 0.0
         }
     },
-    "upgrades": [],
-    "battles": []
+    "upgrades": {
+        "solreign": 20
+    },
+    "packages_delivered": []
 }

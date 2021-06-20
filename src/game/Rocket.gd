@@ -10,10 +10,18 @@ var time_lived = 0.0
 var targets = []
 
 
+var regular_collision_layer = 0
+var regular_collision_mask = 0
+
+
 func _ready():
+	regular_collision_layer = collision_layer
+	regular_collision_mask = collision_mask
 	connect("body_entered", self, "_on_body_entered")
 	$DetectionArea.connect("body_entered", self, "_on_target_entered")
 	$DetectionArea.connect("body_exited", self, "_on_target_exited")
+	collision_layer = 0
+	collision_mask = 0
 
 
 
@@ -104,6 +112,10 @@ func explode():
 func _physics_process(delta):
 	lifetime -= delta
 	time_lived += delta
+
+	if time_lived > 1.0:
+		collision_mask = regular_collision_mask
+		collision_layer = regular_collision_layer
 
 	if lifetime < 0:
 		explode()

@@ -1,0 +1,51 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/game/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/graphics/ships/player/carrot.png" type="Texture" id=2]
+[ext_resource path="res://src/game/weapons/Beam.tscn" type="PackedScene" id=3]
+
+[node name="Player" instance=ExtResource( 1 )]
+
+[node name="Hull" parent="Visual" index="0"]
+scale = Vector2( 1, 1 )
+texture = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" parent="." index="5"]
+polygon = PoolVector2Array( -0.18726, -30.4805, 10.9567, 0.637043, 14.5128, 16.5332, -0.0548286, 23.6846, -13.563, 16.2683, -12.1941, 0.91766 )
+
+[node name="Beam" parent="Weapons" index="0" instance=ExtResource( 3 )]
+position = Vector2( -27.9307, 7.24784 )
+
+[node name="Beam2" parent="Weapons" index="1" instance=ExtResource( 3 )]
+position = Vector2( -23.1577, -1.76777 )
+
+[node name="Beam3" parent="Weapons" index="2" instance=ExtResource( 3 )]
+position = Vector2( -17.5009, -10.7834 )
+
+[node name="Beam4" parent="Weapons" index="3" instance=ExtResource( 3 )]
+position = Vector2( -12.5512, -19.4454 )
+
+[node name="Beam5" parent="Weapons" index="4" instance=ExtResource( 3 )]
+position = Vector2( -7.60141, -28.6378 )
+
+[node name="Beam6" parent="Weapons" index="5" instance=ExtResource( 3 )]
+position = Vector2( 17.8544, -10.4298 )
+
+[node name="Beam10" parent="Weapons" index="6" instance=ExtResource( 3 )]
+position = Vector2( 22.4506, -0.883888 )
+
+[node name="Beam11" parent="Weapons" index="7" instance=ExtResource( 3 )]
+position = Vector2( 28.2843, 6.71751 )
+
+[node name="Beam7" parent="Weapons" index="8" instance=ExtResource( 3 )]
+position = Vector2( 7.95494, -28.1075 )
+
+[node name="Beam8" parent="Weapons" index="9" instance=ExtResource( 3 )]
+position = Vector2( 12.9047, -19.6222 )
+
+[node name="Beam9" parent="Weapons" index="10" instance=ExtResource( 3 )]
+position = Vector2( 12.9047, -19.6222 )
+
+[node name="Shield" parent="." index="12"]
+visible = false
+modulate = Color( 0.85098, 0.580392, 0, 1 )

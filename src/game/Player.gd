@@ -8,20 +8,28 @@ var destinations = []
 
 export var shell_name = "default"
 
+var swappable_shell = null
+
 var carrying = null
 
 func _ready():
 	refresh_stats()
 
+	stats.health = 0.5 * stats.max_health
+	print("HEALTH", stats.health)
+	smoke_emitter.set_intensity(1.0 - stats.health / stats.max_health)
+
 	$MarkerRecognition.connect("area_entered", self, "_on_area_entered_marker_area")
 	$MarkerRecognition.connect("area_exited", self, "_on_area_exited_marker_area")
 
-	faction = "player"
+	faction = "Player"
 
 	mass = 100
 
 
 func _on_area_entered_marker_area(area):
+	if area in destinations:
+		return
 	print("area entered", area)
 	if GameFlow.is_planet(area) or GameFlow.is_station(area):
 		destinations.append(area)
@@ -30,6 +38,8 @@ func _on_area_entered_marker_area(area):
 		GameFlow.markers.update_visible_destinations(destinations)
 
 func _on_area_exited_marker_area(area):
+	if not area in destinations:
+		return
 	if GameFlow.is_planet(area) or GameFlow.is_station(area):
 		if area in destinations:
 			destinations.erase(area)
@@ -65,10 +75,23 @@ func update_acceleration_animation():
 	previous_acceleration_state = next_acceleration_state
 
 
+func heal(percent):
+	stats.health = min(stats.health + stats.max_health * percent, stats.max_health)
+	smoke_emitter.set_intensity(1.0 - stats.health / stats.max_health)
+
+
 func _physics_process(delta):
 	update_shields(delta)
 	var acceleration_boost = 1.0
 	next_acceleration_state = "NONE"
+
+	if Input.is_action_just_pressed("interact"):
+		print("interacting")
+		if swappable_shell and carrying == null:
+			print("Interacting with swappable shell")
+			GameFlow.canvas.swap_player(swappable_shell)
+			return
+
 	if Input.is_action_pressed("sprint"):
 		next_acceleration_state = "BOOST"
 		acceleration_boost = boost_power

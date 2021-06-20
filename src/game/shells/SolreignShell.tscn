@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/game/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/graphics/ships/player/solreign.png" type="Texture" id=2]
+[ext_resource path="res://src/game/weapons/Beam.tscn" type="PackedScene" id=3]
+
+[node name="Player" instance=ExtResource( 1 )]
+
+[node name="Hull" parent="Visual" index="0"]
+scale = Vector2( 1, 1 )
+texture = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" parent="." index="5"]
+polygon = PoolVector2Array( -0.0262756, -24.7759, 8.98483, -5.80314, 13.6258, -1.57176, 31.3324, 9.34175, 17.3008, 26.0461, 10.3963, 12.6826, -0.294491, 27.2711, -10.4285, 14.9099, -18.1125, 25.8234, -31.1419, 8.67358, -12.5443, -2.23993, -8.97265, -5.60471 )
+
+[node name="Beam" parent="Weapons" index="0" instance=ExtResource( 3 )]
+position = Vector2( -12.875, -12.625 )
+weapon_name = "player_beam"
+
+[node name="Beam2" parent="Weapons" index="1" instance=ExtResource( 3 )]
+position = Vector2( -9, -18.125 )
+weapon_name = "player_beam"
+
+[node name="Beam3" parent="Weapons" index="2" instance=ExtResource( 3 )]
+position = Vector2( -6, -25.375 )
+weapon_name = "player_beam"
+
+[node name="Beam4" parent="Weapons" index="3" instance=ExtResource( 3 )]
+position = Vector2( 6.375, -25.375 )
+weapon_name = "player_beam"
+
+[node name="Beam5" parent="Weapons" index="4" instance=ExtResource( 3 )]
+position = Vector2( 9.375, -18.75 )
+weapon_name = "player_beam"
+
+[node name="Beam6" parent="Weapons" index="5" instance=ExtResource( 3 )]
+position = Vector2( 12.7653, -12.5 )
+weapon_name = "player_beam"
+
+[node name="Shield" parent="." index="12"]
+visible = false

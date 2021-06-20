@@ -8,7 +8,6 @@
 [ext_resource path="res://assets/graphics/PB3.png" type="Texture" id=6]
 [ext_resource path="res://assets/graphics/PB2.png" type="Texture" id=7]
 [ext_resource path="res://src/game/ships/armada/ArmadeAgile.tscn" type="PackedScene" id=8]
-[ext_resource path="res://src/game/Container.tscn" type="PackedScene" id=9]
 [ext_resource path="res://src/game/Sun.tscn" type="PackedScene" id=10]
 [ext_resource path="res://assets/graphics/PB3_2.png" type="Texture" id=11]
 [ext_resource path="res://assets/graphics/NEB1.png" type="Texture" id=12]
@@ -23,6 +22,7 @@
 [ext_resource path="res://src/game/HitEmitter.gd" type="Script" id=21]
 [ext_resource path="res://src/game/ships/armada/ArmadaMidclasseRocket.tscn" type="PackedScene" id=22]
 [ext_resource path="res://src/game/ships/armada/ArmadaMidclasseProjectile.tscn" type="PackedScene" id=23]
+[ext_resource path="res://src/game/IGPS.tscn" type="PackedScene" id=24]
 
 [node name="Canvas" type="Node2D"]
 script = ExtResource( 3 )
@@ -66,7 +66,7 @@ position = Vector2( 1053.26, -235.799 )
 rotation = 1.03532
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( -50.3969, -582.083 )
+position = Vector2( -1306.22, 1793.8 )
 
 [node name="PlayerCamera" type="Camera2D" parent="Player"]
 current = true
@@ -196,11 +196,6 @@ position = Vector2( -235.025, -86.8364 )
 [node name="LargeAsteroid2" parent="Asteroids" instance=ExtResource( 20 )]
 position = Vector2( -117.04, 24.5407 )
 
-[node name="Container" parent="." instance=ExtResource( 9 )]
-position = Vector2( -35.9589, -477.548 )
-gravity_scale = 1.0
-linear_damp = 0.05
-
 [node name="Sun" parent="." instance=ExtResource( 10 )]
 position = Vector2( -4300, 2500 )
 
@@ -241,6 +236,9 @@ texture = ExtResource( 16 )
 
 [node name="HitEmitter" type="Node2D" parent="."]
 script = ExtResource( 21 )
+
+[node name="IGPS" parent="." instance=ExtResource( 24 )]
+position = Vector2( -1906.36, 1815.85 )
 
 [editable path="Planets/Earth"]
 [editable path="Planets/Mars"]

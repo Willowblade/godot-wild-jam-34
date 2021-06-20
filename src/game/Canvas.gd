@@ -1,9 +1,13 @@
 extends Node2D
 
+onready var ContainerScene = preload("res://src/game/Container.tscn")
+onready var MaterialScene = preload("res://src/game/Material.tscn")
+
 onready var projectiles = $Projectiles
 onready var player = $Player
 onready var speed_lines = $SpeedLines
 onready var sun = $Sun
+onready var igps = $IGPS
 
 onready var orbitable_nodes = get_tree().get_nodes_in_group("orbitable")
 onready var orbitables = {
@@ -11,6 +15,14 @@ onready var orbitables = {
 	"stations": {},
 	"asteroids": {},
 	"normal": {},
+}
+
+const shells = {
+	"default": preload("res://src/game/shells/DefaultShell.tscn"),
+	"armada": preload("res://src/game/shells/ArmadaShell.tscn"),
+	"rot": preload("res://src/game/shells/RotShell.tscn"),
+	"solreign": preload("res://src/game/shells/SolreignShell.tscn"),
+	"carrot": preload("res://src/game/shells/CarrotShell.tscn"),
 }
 
 var previous_velocity = Vector2(0, 0)
@@ -36,13 +48,12 @@ func get_orbitable_data(orbitable):
 	}
 
 func _ready():
+	GameFlow.register_canvas(self)
 	GameFlow.register_hit_emitter($HitEmitter)
 	GameFlow.register_projectiles_spawner($Projectiles)
 	AudioEngine.play_background_music("explore")
 
 	GameFlow.player = player
-
-	$Container.connect("tether", self, "_on_container_tethered")
 
 	for orbitable in orbitable_nodes:
 		if get_orbitable_type(orbitable) == "ship":
@@ -59,6 +70,51 @@ func _ready():
 	last_timestamp = GameFlow.get_time_around_sun()
 	update_orbitables(true)
 
+
+func swap_player(shell_name):
+	var camera = player.get_node("PlayerCamera")
+	player.remove_child(camera)
+	var old_rotation = player.rotation
+	var old_position = player.position
+	var old_velocity = player.velocity
+	var old_destinations = player.destinations
+	# camera.smoothing_enabled = false
+	# camera.position = player.position
+	remove_child(player)
+	player.queue_free()
+	# call_deferred("queue_free", player)
+	player = shells[shell_name].instance()
+	add_child(player)
+	player.position = old_position
+	player.rotation = old_rotation
+	player.destinations = old_destinations
+	player.velocity = old_velocity
+	player.add_child(camera)
+	GameFlow.player = player
+
+
+func drop_material(enemy, material_type):
+	var container_instance = MaterialScene.instance()
+	container_instance.position = enemy.position
+	container_instance.set_type(material_type)
+	add_child(container_instance)
+	container_instance.connect("picked_up", self, "_on_picked_up")
+
+
+func _on_picked_up(material):
+	State.add_material(material.type, 1)
+	yield(get_tree().create_timer(0.0), "timeout")
+	remove_child(material)
+	material.queue_free()
+
+
+
+func spawn_container_with_destination(destination):
+	var container_instance = ContainerScene.instance()
+	container_instance.position = igps.cargo_spawn_point.global_position
+	container_instance.destination = destination
+	add_child(container_instance)
+	container_instance.connect("tether", self, "_on_container_tethered")
 
 func _on_asteroid_died(asteroid: Asteroid):
 	orbitables.asteroids.erase(asteroid)
