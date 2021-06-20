@@ -39,6 +39,6 @@ func _physics_process(delta):
 	if healing_tick_timer > healing_tick:
 		print("Should heal")
 		healing_tick_timer = 0.0
-		if not GameFlow.is_in_battle() and player.velocity.length < 40:
+		if not GameFlow.is_in_battle() and player.velocity.length() < 40:
 			print("Healing...")
 			player.heal(0.1)

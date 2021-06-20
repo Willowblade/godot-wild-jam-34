@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://src/game/Ship.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/game/Player.gd" type="Script" id=2]
 [ext_resource path="res://assets/graphics/ships/player-thick-outline.png" type="Texture" id=3]
 [ext_resource path="res://src/game/ExplosionEmitter.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/graphics/shields/cross.png" type="Texture" id=5]
 [ext_resource path="res://src/game/ships/MediumShield.tscn" type="PackedScene" id=10]
 
 [sub_resource type="CircleShape2D" id=1]
@@ -50,3 +51,16 @@ shape = SubResource( 2 )
 
 [node name="Shield" parent="." index="12" instance=ExtResource( 10 )]
 modulate = Color( 0.454902, 0.815686, 0.992157, 1 )
+
+[node name="Healing" type="CPUParticles2D" parent="." index="13"]
+z_index = 12
+emitting = false
+one_shot = true
+local_coords = false
+texture = ExtResource( 5 )
+emission_shape = 1
+emission_sphere_radius = 8.0
+direction = Vector2( 0, -1 )
+gravity = Vector2( 0, 0 )
+initial_velocity = 30.0
+scale_amount = 0.75

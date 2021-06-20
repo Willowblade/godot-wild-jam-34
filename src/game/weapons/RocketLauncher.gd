@@ -49,4 +49,7 @@ func shoot():
 	rocket_scene_instance.get_shot(Vector2.UP.rotated(global_rotation))
 	GameFlow.projectiles_spawner.shoot_rocket(rocket_scene_instance)
 
+	return {
+		"success": true
+	}
 

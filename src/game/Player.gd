@@ -19,9 +19,9 @@ var heat = 0.0
 var heat_max = 100.0
 var heat_timeout = 0.0
 
-var heat_recharge: float = 1.5
-var heat_recharge_rate: float = 4.0
-var heat_recharge_tick: float = 0.2
+var heat_recharge: float = 0.5
+var heat_recharge_rate: float = 3.0
+var heat_recharge_tick: float = 0.1
 var heat_recharge_tick_timer: float = 0.0
 
 
@@ -102,6 +102,7 @@ func update_acceleration_animation():
 func heal(percent):
 	stats.health = min(stats.health + stats.max_health * percent, stats.max_health)
 	smoke_emitter.set_intensity(1.0 - stats.health / stats.max_health)
+	$Healing.emitting = true
 	should_update_stats = true
 
 
@@ -149,6 +150,14 @@ func update_stats():
 			"heat": float(heat) / heat_max,
 		}
 	)
+
+func weapon_shot(weapon):
+	if weapon.type == "rocket":
+		increase_heat(5.0)
+	if weapon.type == "beam":
+		increase_heat(0.05)
+	if weapon.type == "projectile":
+		increase_heat(1.0)
 
 func _physics_process(delta):
 	if heat > 0:

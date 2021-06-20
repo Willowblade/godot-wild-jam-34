@@ -25,9 +25,9 @@ var turn_speed: float = 0.0
 var max_speed: float = 0.0
 var boost_power: float = 0.0
 
-var shield_recharge: float = 5.0
-var shield_recharge_rate: float = 5.0
-var shield_recharge_tick: float = 0.3
+var shield_recharge: float = 4.0
+var shield_recharge_rate: float = 3.0
+var shield_recharge_tick: float = 0.1
 var shield_recharge_tick_timer: float = 0.0
 
 var previous_acceleration_state = "NONE"
@@ -62,6 +62,9 @@ func _ready():
 		maximum_shooting_distance = max(maximum_shooting_distance, weapon.shoot_distance_max)
 
 
+func weapon_shot(weapon):
+	pass
+
 func shoot(weapons_eligible_for_shooting = null):
 	var weapons_to_shoot = weapons_eligible_for_shooting
 	if weapons_eligible_for_shooting == null:
@@ -70,7 +73,9 @@ func shoot(weapons_eligible_for_shooting = null):
 	for weapon in weapons_to_shoot:
 		var shot_result = weapon.shoot()
 		if shot_result != null:
-			GameFlow.projectiles_spawner.fire_projectile(shot_result)
+			weapon_shot(weapon)
+			if weapon.type == "beam" or weapon.type == "cannon":
+				GameFlow.projectiles_spawner.fire_projectile(shot_result)
 
 func weapons_safe_for_shooting(distance: float):
 	var safe_weapons = []
