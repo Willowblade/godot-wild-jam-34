@@ -100,6 +100,8 @@ func update_shields(delta):
 			if stats.shields - shield_recharge_rate <= 0:
 				$ShieldShape.disabled = false
 				if shield:
+					if faction.to_lower() == "player":
+						AudioEngine.play_effect("shield_recharge")
 					shield.enable()
 			stats.shields = min(stats.shields, stats.max_shields)
 			if shield:
@@ -123,6 +125,8 @@ func take_damage(damage: int):
 	if damage_absorbed_by_shields > 0:
 		stats.shields -= damage_absorbed_by_shields
 		if stats.shields <= 0:
+			if faction.to_lower() == "player":
+				AudioEngine.play_effect("shield_hit" + str(1 + (randi() % 5)))
 			$ShieldShape.disabled = true
 		if shield != null:
 			if stats.shields <= 0:
@@ -131,6 +135,8 @@ func take_damage(damage: int):
 				shield.get_hit()
 				shield.set_intensity(float(stats.shields)/stats.max_shields)
 	if damage_to_hull > 0:
+		if faction.to_lower() == "player":
+			AudioEngine.play_effect("hull_hit" + str(1 + (randi() % 5)))
 		stats.health -= damage_to_hull
 
 	smoke_emitter.set_intensity(1.0 - stats.health / stats.max_health)

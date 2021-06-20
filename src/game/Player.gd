@@ -19,20 +19,29 @@ var heat = 0.0
 var heat_max = 100.0
 var heat_timeout = 0.0
 
+var heat_released = false
 var heat_recharge: float = 0.5
 var heat_recharge_rate: float = 3.0
 var heat_recharge_tick: float = 0.1
 var heat_recharge_tick_timer: float = 0.0
 
+var playing_beam = false
+var played_beam = false
+
 
 func update_heat(delta):
 	if heat_timeout > heat_recharge:
+		if not heat_released:
+			heat_released = true
+			if heat > heat_max * 0.8:
+				AudioEngine.play_effect("heat_release")
 		heat_recharge_tick_timer += delta
 		if heat_recharge_tick_timer > heat_recharge_tick:
 			heat = max(0, heat - heat_recharge_rate)
 			heat_recharge_tick_timer = 0.0
 		should_update_stats = true
 	else:
+		heat_released = false
 		heat_timeout += delta
 
 func _ready():
@@ -146,20 +155,23 @@ func increase_heat(increment):
 
 
 func update_stats():
-	GameFlow.overlays.hud.update_stats(
-		{
-			"health": float(stats.health) / stats.max_health,
-			"shield": float(stats.shields) / stats.max_shields,
-			"heat": float(heat) / heat_max,
-		}
-	)
+	GameFlow.overlays.hud.update_stats({
+		"health": float(stats.health) / stats.max_health,
+		"shield": float(stats.shields) / stats.max_shields,
+		"heat": float(heat) / heat_max,
+	})
 
 func weapon_shot(weapon):
 	if weapon.type == "rocket":
+		AudioEngine.play_effect("weapon_rocket")
 		increase_heat(5.0)
 	if weapon.type == "beam":
+		if not playing_beam:
+			AudioEngine.play_effect("weapon_thiccbeam" + str(1 + (randi() % 3)))
+		played_beam = true
 		increase_heat(0.06)
 	if weapon.type == "projectile":
+		AudioEngine.play_effect("weapon_projectile")
 		increase_heat(1.1)
 
 func increase_heat_from_sun():
@@ -172,6 +184,7 @@ func increase_heat_from_sun():
 		increase_heat(0.4 * (900 - (distance_from_sun - 600)) / 900)
 
 func _physics_process(delta):
+	played_beam = false
 	if heat > 0:
 		update_heat(delta)
 	if sun != null:
@@ -184,7 +197,7 @@ func _physics_process(delta):
 	next_acceleration_state = "NONE"
 
 	if Input.is_action_just_pressed("interact"):
-		print("interacting")
+		AudioEngine.play_effect("ui_positive" + str(1 + (randi() % 5)))
 		if swappable_shell and carrying == null:
 			print("Interacting with swappable shell")
 			GameFlow.canvas.swap_player(swappable_shell, null)
@@ -219,6 +232,8 @@ func _physics_process(delta):
 
 	if Input.is_action_pressed("shoot"):
 		shoot()
+
+	playing_beam = played_beam
 
 	if velocity.length() > max_speed:
 		velocity = velocity.normalized() * max_speed

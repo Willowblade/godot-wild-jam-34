@@ -102,10 +102,12 @@ func _process(delta):
 
 	player_marker.position = Vector2()
 
+
 func _physics_process(delta):
 	if Input.is_action_just_pressed("switch"):
-		print("Switch pressed!")
 		if not visible:
+			AudioEngine.play_effect("ui_positive" + str(1 + (randi() % 5)))
 			turn_on()
 		else:
+			AudioEngine.play_effect("ui_negative" + str(1 + (randi() % 4)))
 			turn_off()

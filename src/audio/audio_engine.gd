@@ -31,6 +31,9 @@ const sfx = {
 	"explosion_smaller1": "res://assets/audio/sfx/explosions/GWJ_34_Explosions_Smaller-001.ogg",
 	"explosion_smaller2": "res://assets/audio/sfx/explosions/GWJ_34_Explosions_Smaller-002.ogg",
 	"heat_release": "res://assets/audio/sfx/ui/GWJ_34_PlayerShip_HeatRelease.ogg",
+
+	"shield_recharge": "res://assets/audio/sfx/ui/GWJ_34_PlayerShip_ShieldRecharge.ogg",
+	"shield_recharging": "res://assets/audio/sfx/ui/GWJ_34_PlayerShip_ShieldRecharging.ogg",
 	"hull_hit1": "res://assets/audio/sfx/ui/GWJ_34_PlayerShip_Hit_Hull-001.ogg",
 	"hull_hit2": "res://assets/audio/sfx/ui/GWJ_34_PlayerShip_Hit_Hull-002.ogg",
 	"hull_hit3": "res://assets/audio/sfx/ui/GWJ_34_PlayerShip_Hit_Hull-003.ogg",
@@ -62,18 +65,19 @@ const sfx = {
 	"ui_positive4": "res://assets/audio/sfx/ui/GWJ_34_UI_Positive-004.ogg",
 	"ui_positive5": "res://assets/audio/sfx/ui/GWJ_34_UI_Positive-005.ogg",
 
-	"weapon_cannon1": "res://assets/audio/sfx/ui/GWJ_34_Weapon_Cannon-001.ogg",
-	"weapon_cannon2": "res://assets/audio/sfx/ui/GWJ_34_Weapon_Cannon-002.ogg",
-	"weapon_cannon3": "res://assets/audio/sfx/ui/GWJ_34_Weapon_Cannon-003.ogg",
-	"weapon_cannon4": "res://assets/audio/sfx/ui/GWJ_34_Weapon_Cannon-004.ogg",
+	"weapon_cannon1": "res://assets/audio/sfx/weapons/GWJ_34_Weapon_Cannon-001.ogg",
+	"weapon_cannon2": "res://assets/audio/sfx/weapons/GWJ_34_Weapon_Cannon-002.ogg",
+	"weapon_cannon3": "res://assets/audio/sfx/weapons/GWJ_34_Weapon_Cannon-003.ogg",
+	"weapon_cannon4": "res://assets/audio/sfx/weapons/GWJ_34_Weapon_Cannon-004.ogg",
 
-	"weapon_thiccbeam1": "res://assets/audio/sfx/ui/GWJ_34_Weapon_ThiccBeam-001.ogg",
-	"weapon_thiccbeam2": "res://assets/audio/sfx/ui/GWJ_34_Weapon_ThiccBeam-002.ogg",
-	"weapon_thiccbeam3": "res://assets/audio/sfx/ui/GWJ_34_Weapon_ThiccBeam-003.ogg",
-	"weapon_thiccbeam4": "res://assets/audio/sfx/ui/GWJ_34_Weapon_ThiccBeam-004.ogg",
+	"weapon_thiccbeam1": "res://assets/audio/sfx/weapons/GWJ_34_Weapon_ThiccBeam-001.ogg",
+	"weapon_thiccbeam2": "res://assets/audio/sfx/weapons/GWJ_34_Weapon_ThiccBeam-002.ogg",
+	"weapon_thiccbeam3": "res://assets/audio/sfx/weapons/GWJ_34_Weapon_ThiccBeam-003.ogg",
 
-	"weapon_projectile": "res://assets/audio/sfx/ui/GWJ_34_Weapon_MachineGun_Oneshotwav.ogg",
-	"weapon_rocket": "res://assets/audio/sfx/ui/GWJ_34_Weapon_Rocket.ogg",
+	"sun": "res://assets/audio/sfx/GWJ_34_Ambience_Sun.ogg",
+
+	"weapon_projectile": "res://assets/audio/sfx/weapons/GWJ_34_Weapon_MachineGun_Oneshotwav.ogg",
+	"weapon_rocket": "res://assets/audio/sfx/weapons/GWJ_34_Weapon_Rocket.ogg",
 }
 
 
@@ -159,6 +163,20 @@ func play_thruster(thruster_type: String, boost: bool):
 	if boost:
 		$ThrusterPlayer.stream.loop_offset = 3
 	$ThrusterPlayer.play()
+
+
+func play_sun_ambient(on, distance):
+	if $SunAmbiancePlayer.playing:
+		if on:
+			$SunAmbiancePlayer.volume_db = -3 - log(distance)
+		else:
+			$SunAmbiancePlayer.stop()
+	else:
+		if on:
+			var track_path = sfx["sun"]
+			$SunAmbiancePlayer.stream = load(track_path)
+			$SunAmbiancePlayer.volume_db = -3 - log(distance)
+			$SunAmbiancePlayer.play()
 
 
 func stop_thruster():

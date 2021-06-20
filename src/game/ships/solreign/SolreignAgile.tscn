@@ -18,7 +18,7 @@ radius = 342.657
 radius = 20.2808
 
 [node name="SolreignAgile" instance=ExtResource( 2 )]
-position = Vector2( 478.004, 260.348 )
+position = Vector2( 0, 0 )
 faction = "Solreign"
 enemy_name = "solreign_agile"
 

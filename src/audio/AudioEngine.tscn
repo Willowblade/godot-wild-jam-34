@@ -84,6 +84,10 @@ bus = "SFX"
 volume_db = -12.0
 bus = "SFX"
 
+[node name="SunAmbiancePlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -12.0
+bus = "SFX"
+
 [node name="Effects" type="Node" parent="."]
 script = ExtResource( 3 )
 
