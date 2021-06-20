@@ -4,7 +4,7 @@
 [ext_resource path="res://src/game/weapons/projectiles/EnergyProjectileShooter.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/game/Enemy.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/game/Thruster.tres" type="Gradient" id=4]
-[ext_resource path="res://assets/graphics/ships/trail/player-trail-small.png" type="Texture" id=5]
+[ext_resource path="res://assets/graphics/ships/trail/solreign.png" type="Texture" id=5]
 [ext_resource path="res://assets/graphics/ships/solreign/midclasse-2.png" type="Texture" id=6]
 [ext_resource path="res://src/game/ships/MediumShield.tscn" type="PackedScene" id=7]
 
@@ -26,7 +26,8 @@ position = Vector2( 0, -9.36442 )
 texture = ExtResource( 6 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="1"]
-polygon = PoolVector2Array( -0.181789, -26.7375, 7.70161, -14.8598, 13.1674, -14.6496, 23.4684, -14.8598, 19.2639, -4.03328, 24.5195, 2.16833, 15.9004, 6.16259, 6.12494, 3.21946, 11.4586, -4.0942, -11.5779, -3.71962, -6.05288, 3.30369, -15.9792, 6.20666, -25.1563, 2.74182, -18.6948, -3.62598, -23.658, -15.0506, -8.30033, -14.8633 )
+visible = false
+polygon = PoolVector2Array( -0.181789, -26.7375, 7.70161, -14.8598, 12.3294, -21.2164, 30.4815, -9.30068, 22.352, -4.06665, 16.5612, 8.51729, 7.65221, -4.62346, 5.3136, 6.73549, -0.0317917, 15.7558, -5.37719, 6.51277, -7.82716, -4.84619, -16.1793, 8.40593, -22.3043, -3.73257, -30.0996, -9.41204, -12.393, -20.9937, -8.30033, -14.8633 )
 
 [node name="DetectionArea" parent="." index="2"]
 visible = false
@@ -40,10 +41,16 @@ visible = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NotifyArea" index="0"]
 shape = SubResource( 2 )
 
+[node name="NormalEmission" parent="." index="6"]
+visible = true
+modulate = Color( 0.87451, 0, 1, 1 )
+
 [node name="Solid" type="CPUParticles2D" parent="NormalEmission" index="0"]
-position = Vector2( 4.64075, 7.91171 )
+position = Vector2( -0.00162792, -4.73323 )
 rotation = 0.00722153
-amount = 9
+scale = Vector2( 4, 4 )
+amount = 10
+lifetime = 0.25
 speed_scale = 3.0
 fixed_fps = 100
 texture = ExtResource( 5 )
@@ -58,9 +65,11 @@ scale_amount = 0.25
 color_ramp = ExtResource( 4 )
 
 [node name="Solid2" type="CPUParticles2D" parent="NormalEmission" index="1"]
-position = Vector2( -4.90017, 7.91171 )
-rotation = -0.000322011
-amount = 9
+position = Vector2( -15.9377, -7.52871 )
+rotation = 0.00722153
+scale = Vector2( 4, 4 )
+amount = 10
+lifetime = 0.25
 speed_scale = 3.0
 fixed_fps = 100
 texture = ExtResource( 5 )
@@ -73,12 +82,35 @@ linear_accel = -10.0
 radial_accel = 10.0
 scale_amount = 0.25
 color_ramp = ExtResource( 4 )
+
+[node name="Solid3" type="CPUParticles2D" parent="NormalEmission" index="2"]
+position = Vector2( 16.1298, -7.35298 )
+rotation = 0.00722153
+scale = Vector2( 4, 4 )
+amount = 10
+lifetime = 0.25
+speed_scale = 3.0
+fixed_fps = 100
+texture = ExtResource( 5 )
+flag_align_y = true
+direction = Vector2( 0, 1 )
+spread = 0.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 30.0
+linear_accel = -10.0
+radial_accel = 10.0
+scale_amount = 0.25
+color_ramp = ExtResource( 4 )
+
+[node name="TurnRightEmission" parent="." index="8"]
+visible = true
+modulate = Color( 0.87451, 0, 1, 1 )
 
 [node name="Solid3" type="CPUParticles2D" parent="TurnRightEmission" index="0"]
-position = Vector2( -10.5125, 4.40403 )
+position = Vector2( -22.285, -4.00493 )
 rotation = 0.131242
-scale = Vector2( 0.410152, 0.410152 )
-amount = 9
+scale = Vector2( 2, 2 )
+lifetime = 0.2
 speed_scale = 3.0
 fixed_fps = 100
 texture = ExtResource( 5 )
@@ -92,11 +124,15 @@ radial_accel = 10.0
 scale_amount = 0.25
 color_ramp = ExtResource( 4 )
 
+[node name="TurnLeftEmission" parent="." index="9"]
+visible = true
+modulate = Color( 0.87451, 0, 1, 1 )
+
 [node name="Solid4" type="CPUParticles2D" parent="TurnLeftEmission" index="0"]
-position = Vector2( 10.674, 4.12341 )
+position = Vector2( 22.4227, -3.95036 )
 rotation = -0.179263
-scale = Vector2( 0.410152, 0.410152 )
-amount = 9
+scale = Vector2( 2, 2 )
+lifetime = 0.2
 speed_scale = 3.0
 fixed_fps = 100
 texture = ExtResource( 5 )
@@ -123,9 +159,10 @@ position = Vector2( 24.2415, -21.5689 )
 position = Vector2( -24.3124, -22.237 )
 
 [node name="ShieldShape" parent="." index="15"]
+visible = false
 position = Vector2( 0, -7.77829 )
 shape = SubResource( 3 )
 
 [node name="Shield" parent="." index="16" instance=ExtResource( 7 )]
-modulate = Color( 0, 0, 0, 1 )
+modulate = Color( 0.945098, 1, 0.290196, 0.196078 )
 position = Vector2( 0, -7.77829 )

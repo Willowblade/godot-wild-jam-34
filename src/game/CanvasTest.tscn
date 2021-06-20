@@ -1,6 +1,5 @@
 [gd_scene load_steps=24 format=2]
 
-[ext_resource path="res://src/game/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/game/asteroids/LargeAsteroid1.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/game/Canvas.gd" type="Script" id=3]
 [ext_resource path="res://src/game/Projectiles.gd" type="Script" id=4]
@@ -8,7 +7,7 @@
 [ext_resource path="res://assets/graphics/PB3.png" type="Texture" id=6]
 [ext_resource path="res://assets/graphics/PB2.png" type="Texture" id=7]
 [ext_resource path="res://src/game/ships/armada/ArmadeAgile.tscn" type="PackedScene" id=8]
-[ext_resource path="res://src/game/Container.tscn" type="PackedScene" id=9]
+[ext_resource path="res://src/game/shells/DefaultShell.tscn" type="PackedScene" id=9]
 [ext_resource path="res://src/game/Sun.tscn" type="PackedScene" id=10]
 [ext_resource path="res://assets/graphics/PB3_2.png" type="Texture" id=11]
 [ext_resource path="res://assets/graphics/NEB1.png" type="Texture" id=12]
@@ -23,6 +22,7 @@
 [ext_resource path="res://src/game/HitEmitter.gd" type="Script" id=21]
 [ext_resource path="res://src/game/ships/armada/ArmadaMidclasseRocket.tscn" type="PackedScene" id=22]
 [ext_resource path="res://src/game/ships/armada/ArmadaMidclasseProjectile.tscn" type="PackedScene" id=23]
+[ext_resource path="res://src/game/IGPS.tscn" type="PackedScene" id=24]
 
 [node name="Canvas" type="Node2D"]
 script = ExtResource( 3 )
@@ -31,42 +31,11 @@ script = ExtResource( 3 )
 position = Vector2( -50.3969, -582.083 )
 length = 1.0
 
-[node name="Enemies" type="Node2D" parent="."]
-
-[node name="ArmadeAgile" parent="Enemies" instance=ExtResource( 8 )]
-position = Vector2( -1223.16, -218.883 )
-
-[node name="ArmadeAgile3" parent="Enemies" instance=ExtResource( 8 )]
-position = Vector2( 1128.25, -239.675 )
-
-[node name="ArmadeAgile4" parent="Enemies" instance=ExtResource( 8 )]
-position = Vector2( 1793.62, 892.542 )
-
-[node name="ArmadeAgile5" parent="Enemies" instance=ExtResource( 8 )]
-position = Vector2( 1804.84, 747.744 )
-
-[node name="ArmadeAgile6" parent="Enemies" instance=ExtResource( 8 )]
-position = Vector2( 1841.88, 793.765 )
-
-[node name="ArmadeAgile7" parent="Enemies" instance=ExtResource( 8 )]
-position = Vector2( -13.9702, 1393.89 )
-
-[node name="ArmadeAgile2" parent="Enemies" instance=ExtResource( 8 )]
-position = Vector2( -72.5924, 1255.57 )
-
-[node name="ArmadeAgile8" parent="Enemies" instance=ExtResource( 22 )]
-position = Vector2( -457.737, -369.761 )
-
-[node name="ArmadeAgile9" parent="Enemies" instance=ExtResource( 23 )]
-position = Vector2( -1410.03, 429.498 )
-rotation = 1.03532
-
-[node name="ArmadeAgile10" parent="Enemies" instance=ExtResource( 23 )]
-position = Vector2( 1045.28, -256.545 )
-rotation = 1.03532
-
-[node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( -50.3969, -582.083 )
+[node name="Player" parent="." groups=[
+"orbitable",
+"ships",
+] instance=ExtResource( 9 )]
+position = Vector2( -1265.08, 1692.28 )
 
 [node name="PlayerCamera" type="Camera2D" parent="Player"]
 current = true
@@ -87,6 +56,7 @@ margin_right = 970.0
 margin_bottom = 570.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource( 7 )
 expand = true
 stretch_mode = 2
@@ -105,6 +75,7 @@ margin_right = 970.0
 margin_bottom = 570.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource( 6 )
 expand = true
 stretch_mode = 2
@@ -124,6 +95,7 @@ margin_right = 970.0
 margin_bottom = 570.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource( 12 )
 expand = true
 stretch_mode = 2
@@ -142,12 +114,47 @@ margin_right = 970.0
 margin_bottom = 570.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource( 11 )
 expand = true
 stretch_mode = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="ArmadeAgile" parent="Enemies" instance=ExtResource( 8 )]
+position = Vector2( -1223.16, -218.883 )
+
+[node name="ArmadeAgile3" parent="Enemies" instance=ExtResource( 8 )]
+position = Vector2( 755.634, -1108.03 )
+
+[node name="ArmadeAgile4" parent="Enemies" instance=ExtResource( 8 )]
+position = Vector2( 1793.62, 892.542 )
+
+[node name="ArmadeAgile5" parent="Enemies" instance=ExtResource( 8 )]
+position = Vector2( 1804.84, 747.744 )
+
+[node name="ArmadeAgile6" parent="Enemies" instance=ExtResource( 8 )]
+position = Vector2( 1841.88, 793.765 )
+
+[node name="ArmadeAgile7" parent="Enemies" instance=ExtResource( 8 )]
+position = Vector2( -13.9702, 1393.89 )
+
+[node name="ArmadeAgile2" parent="Enemies" instance=ExtResource( 8 )]
+position = Vector2( -72.5924, 1255.57 )
+
+[node name="ArmadeAgile8" parent="Enemies" instance=ExtResource( 22 )]
+position = Vector2( 246.393, 827.072 )
+
+[node name="ArmadeAgile9" parent="Enemies" instance=ExtResource( 23 )]
+position = Vector2( -1410.03, 429.498 )
+rotation = 1.03532
+
+[node name="ArmadeAgile10" parent="Enemies" instance=ExtResource( 23 )]
+position = Vector2( 1053.26, -235.799 )
+rotation = 1.03532
 
 [node name="Projectiles" type="Node2D" parent="."]
 z_index = -1
@@ -196,11 +203,6 @@ position = Vector2( -235.025, -86.8364 )
 [node name="LargeAsteroid2" parent="Asteroids" instance=ExtResource( 20 )]
 position = Vector2( -117.04, 24.5407 )
 
-[node name="Container" parent="." instance=ExtResource( 9 )]
-position = Vector2( -35.9589, -477.548 )
-gravity_scale = 1.0
-linear_damp = 0.05
-
 [node name="Sun" parent="." instance=ExtResource( 10 )]
 position = Vector2( -4300, 2500 )
 
@@ -241,6 +243,9 @@ texture = ExtResource( 16 )
 
 [node name="HitEmitter" type="Node2D" parent="."]
 script = ExtResource( 21 )
+
+[node name="IGPS" parent="." instance=ExtResource( 24 )]
+position = Vector2( -1906.36, 1815.85 )
 
 [editable path="Planets/Earth"]
 [editable path="Planets/Mars"]

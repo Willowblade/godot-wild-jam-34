@@ -18,6 +18,7 @@ radius = 342.657
 radius = 32.0744
 
 [node name="ArmadaMidclasseProjectile" instance=ExtResource( 3 )]
+position = Vector2( 506.428, 268.329 )
 enemy_name = "armada_midclasse_projectile"
 
 [node name="Hull" parent="Visual" index="0"]
@@ -39,8 +40,12 @@ visible = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NotifyArea" index="0"]
 shape = SubResource( 2 )
 
+[node name="NormalEmission" parent="." index="6"]
+visible = true
+modulate = Color( 1, 0.192157, 0.192157, 1 )
+
 [node name="Solid" type="CPUParticles2D" parent="NormalEmission" index="0"]
-position = Vector2( 4.64075, 7.91171 )
+position = Vector2( 12.4543, -2.41805 )
 rotation = 0.00722153
 amount = 9
 speed_scale = 3.0
@@ -57,7 +62,7 @@ scale_amount = 0.25
 color_ramp = ExtResource( 2 )
 
 [node name="Solid2" type="CPUParticles2D" parent="NormalEmission" index="1"]
-position = Vector2( -4.90017, 7.91171 )
+position = Vector2( -12.5813, -1.88832 )
 rotation = -0.000322011
 amount = 9
 speed_scale = 3.0
@@ -73,8 +78,12 @@ radial_accel = 10.0
 scale_amount = 0.25
 color_ramp = ExtResource( 2 )
 
+[node name="TurnRightEmission" parent="." index="8"]
+visible = true
+modulate = Color( 1, 0.192157, 0.192157, 1 )
+
 [node name="Solid3" type="CPUParticles2D" parent="TurnRightEmission" index="0"]
-position = Vector2( -10.5125, 4.40403 )
+position = Vector2( -20.3125, -7.11763 )
 rotation = 0.131242
 scale = Vector2( 0.410152, 0.410152 )
 amount = 9
@@ -91,8 +100,12 @@ radial_accel = 10.0
 scale_amount = 0.25
 color_ramp = ExtResource( 2 )
 
+[node name="TurnLeftEmission" parent="." index="9"]
+visible = true
+modulate = Color( 1, 0.192157, 0.192157, 1 )
+
 [node name="Solid4" type="CPUParticles2D" parent="TurnLeftEmission" index="0"]
-position = Vector2( 10.674, 4.12341 )
+position = Vector2( 19.1497, -7.00095 )
 rotation = -0.179263
 scale = Vector2( 0.410152, 0.410152 )
 amount = 9
@@ -109,6 +122,9 @@ radial_accel = 10.0
 scale_amount = 0.25
 color_ramp = ExtResource( 2 )
 
+[node name="Explosion" parent="." index="10"]
+visible = true
+
 [node name="SmokeEmitter" parent="SmokeEmitter" index="0" instance=ExtResource( 1 )]
 position = Vector2( -7.5, 2 )
 
@@ -116,15 +132,27 @@ position = Vector2( -7.5, 2 )
 position = Vector2( 9.25, -0.75 )
 
 [node name="KineticProjectileShooter" parent="Weapons" index="0" instance=ExtResource( 6 )]
-position = Vector2( -12.4032, -25.9627 )
+position = Vector2( -12.3854, -35.3969 )
 
-[node name="KineticProjectileShooter2" parent="Weapons" index="1" instance=ExtResource( 6 )]
-position = Vector2( 12.5083, -25.8576 )
+[node name="KineticProjectileShooter3" parent="Weapons" index="1" instance=ExtResource( 6 )]
+position = Vector2( -12.4599, -25.9858 )
+
+[node name="KineticProjectileShooter2" parent="Weapons" index="2" instance=ExtResource( 6 )]
+position = Vector2( 12.38, -35.336 )
+
+[node name="KineticProjectileShooter4" parent="Weapons" index="3" instance=ExtResource( 6 )]
+position = Vector2( 12.5042, -26.0079 )
+
+[node name="KineticProjectileShooter5" parent="Weapons" index="4" instance=ExtResource( 6 )]
+position = Vector2( -12.5304, -17.385 )
+
+[node name="KineticProjectileShooter6" parent="Weapons" index="5" instance=ExtResource( 6 )]
+position = Vector2( 12.4884, -17.4433 )
 
 [node name="ShieldShape" parent="." index="15"]
-position = Vector2( 0, -7.77829 )
+position = Vector2( -0.210236, -9.81836 )
 shape = SubResource( 3 )
 
 [node name="Shield" parent="." index="16" instance=ExtResource( 7 )]
-modulate = Color( 1, 0.368627, 0.368627, 1 )
-position = Vector2( 0, -7.77829 )
+modulate = Color( 1, 0.258824, 0.258824, 0.490196 )
+position = Vector2( -0.0334778, -9.88528 )

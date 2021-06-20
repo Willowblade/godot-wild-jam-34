@@ -9,9 +9,9 @@
             "turn_speed": 2.5,
             "boost_power": 1.8,
             "max_health": 100,
-            "max_shields": 20,
-            "shield_recharge_time": 4.0,
-            "shield_recharge_rate": 10.0
+            "max_shields": 60,
+            "shield_recharge_time": 3.0,
+            "shield_recharge_rate": 8.0
         },
         "armada": {
             "acceleration": 500,
@@ -19,10 +19,10 @@
             "brake_speed": 2,
             "turn_speed": 2.5,
             "boost_power": 1.8,
-            "max_health": 100,
-            "max_shields": 20,
-            "shield_recharge_time": 4.0,
-            "shield_recharge_rate": 10.0
+            "max_health": 150,
+            "max_shields": 100,
+            "shield_recharge_time": 2.0,
+            "shield_recharge_rate": 8.0
         },
         "solreign": {
             "acceleration": 500,
@@ -31,8 +31,8 @@
             "turn_speed": 2.5,
             "boost_power": 1.8,
             "max_health": 100,
-            "max_shields": 20,
-            "shield_recharge_time": 4.0,
+            "max_shields": 200,
+            "shield_recharge_time": 2.0,
             "shield_recharge_rate": 10.0
         },
         "rot": {
@@ -41,9 +41,9 @@
             "brake_speed": 2,
             "turn_speed": 2.5,
             "boost_power": 1.8,
-            "max_health": 100,
-            "max_shields": 20,
-            "shield_recharge_time": 4.0,
+            "max_health": 500,
+            "max_shields": 50,
+            "shield_recharge_time": 3.0,
             "shield_recharge_rate": 10.0
         },
         "carrot": {
@@ -52,23 +52,23 @@
             "brake_speed": 2,
             "turn_speed": 2.5,
             "boost_power": 1.8,
-            "max_health": 100,
-            "max_shields": 20,
-            "shield_recharge_time": 4.0,
-            "shield_recharge_rate": 10.0
+            "max_health": 500,
+            "max_shields": 500,
+            "shield_recharge_time": 2.0,
+            "shield_recharge_rate": 15.0
         }
     },
     "enemies": {
         "armada_agile": {
             "faction": "armada",
-            "acceleration": 500,
-            "max_speed": 400,
-            "brake_speed": 2,
-            "turn_speed": 2.5,
-            "boost_power": 1.8,
-            "max_health": 100,
-            "max_shields": 20,
-            "shield_recharge_time": 4.0,
+            "acceleration": 600,
+            "max_speed": 500,
+            "brake_speed": 1,
+            "turn_speed": 2.0,
+            "boost_power": 2.0,
+            "max_health": 75,
+            "max_shields": 10,
+            "shield_recharge_time": 2.0,
             "shield_recharge_rate": 10.0
         },
         "armada_midclasse_rocket": {
@@ -227,12 +227,12 @@
         },
         "cannon_sniper": {
             "type": "cannon",
-            "damage": 50,
-            "distance": 600,
-            "reload": 5.0,
+            "damage": 10,
+            "distance": 30,
+            "reload": 3.0,
             "shot": "sniper",
-            "minimum_shoot_distance": 400,
-            "maximum_shoot_distance": 600,
+            "minimum_shoot_distance": 10,
+            "maximum_shoot_distance": 30,
             "shield_multiplier": 0.6,
             "hull_multiplier": 1.2
         },
@@ -251,10 +251,10 @@
         "rocket_mk2": {
             "type": "rocket",
             "damage": 50,
-            "speed": 150,
+            "speed": 200,
             "acceleration": 250,    
             "brake_speed": 3,
-            "turn_speed": 1.5,
+            "turn_speed": 1.9,
             "lifetime": 10,
             "health": 40,
             "reload": 2.5,
@@ -294,11 +294,13 @@
         },
         "projectile_kinetic": {
             "type": "projectile",
-            "speed": 300,
-            "lifetime": 4,
-            "damage": 5,
-            "reload": 1.2,
+            "speed": 600,
+            "lifetime": 2,
+            "damage": 2,
+            "reload": 0.4,
             "shield_multiplier": 0.6,
+            "minimum_shoot_distance": 50,
+            "maximum_shoot_distance": 400,
             "hull_multiplier": 1.2,
             "shot": "kinetic"
         },

@@ -1,10 +1,7 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://src/game/SmokeEmitter.tscn" type="PackedScene" id=1]
-[ext_resource path="res://src/game/Thruster.tres" type="Gradient" id=2]
 [ext_resource path="res://src/game/Enemy.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/graphics/ships/rot/midclasse-1.png" type="Texture" id=4]
-[ext_resource path="res://assets/graphics/ships/trail/player-trail-small.png" type="Texture" id=5]
 [ext_resource path="res://src/game/weapons/projectiles/KineticProjectileShooter.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/game/ships/MediumShield.tscn" type="PackedScene" id=7]
 
@@ -18,6 +15,7 @@ radius = 342.657
 radius = 32.0744
 
 [node name="RotMidclasseProjectile" instance=ExtResource( 3 )]
+position = Vector2( 464.386, 249.315 )
 faction = "Rot"
 enemy_name = "rot_midclasse_projectile"
 
@@ -26,7 +24,8 @@ position = Vector2( 0, -9.36442 )
 texture = ExtResource( 4 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="1"]
-polygon = PoolVector2Array( 0.0188026, -24.1355, 4.58601, -19.4895, 4.50727, -15.0011, 14.8153, -14.8848, 19.4872, -10.4632, 19.3204, -6.70894, 6.88969, -6.29181, 4.22001, -1.28616, 9.9765, 3.80292, 8.80852, 7.3903, -0.118225, 8.55829, -9.4621, 5.88861, -4.45646, -1.45301, -7.45984, -6.8758, -18.9728, -6.79237, -19.2231, -10.8803, -14.5512, -14.9683, -4.54841, -15.0798, -4.53524, -19.0597 )
+position = Vector2( -0.105103, -2.10223 )
+polygon = PoolVector2Array( 0.0188026, -24.1355, 6.95187, -33.0308, 15.7813, -34.9228, 29.7612, -19.6816, 29.6561, -13.7953, 20.7216, -5.28123, 10.1052, -12.8493, 9.57968, -2.02277, 4.9549, 2.39195, 7.05713, 7.2271, 0.540192, 23.6246, -7.44849, 7.64757, -5.03091, 2.49707, -9.76068, -2.44319, -9.76068, -12.7442, -20.9026, -5.49144, -29.5218, -13.5851, -29.4166, -19.8918, -15.647, -34.8177, -6.92267, -33.1359 )
 
 [node name="DetectionArea" parent="." index="2"]
 visible = false
@@ -40,92 +39,23 @@ visible = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NotifyArea" index="0"]
 shape = SubResource( 2 )
 
-[node name="Solid" type="CPUParticles2D" parent="NormalEmission" index="0"]
-position = Vector2( 4.64075, 7.91171 )
-rotation = 0.00722153
-amount = 9
-speed_scale = 3.0
-fixed_fps = 100
-texture = ExtResource( 5 )
-flag_align_y = true
-direction = Vector2( 0, 1 )
-spread = 0.0
-gravity = Vector2( 0, 0 )
-initial_velocity = 30.0
-linear_accel = -10.0
-radial_accel = 10.0
-scale_amount = 0.25
-color_ramp = ExtResource( 2 )
-
-[node name="Solid2" type="CPUParticles2D" parent="NormalEmission" index="1"]
-position = Vector2( -4.90017, 7.91171 )
-rotation = -0.000322011
-amount = 9
-speed_scale = 3.0
-fixed_fps = 100
-texture = ExtResource( 5 )
-flag_align_y = true
-direction = Vector2( 0, 1 )
-spread = 0.0
-gravity = Vector2( 0, 0 )
-initial_velocity = 30.0
-linear_accel = -10.0
-radial_accel = 10.0
-scale_amount = 0.25
-color_ramp = ExtResource( 2 )
-
-[node name="Solid3" type="CPUParticles2D" parent="TurnRightEmission" index="0"]
-position = Vector2( -10.5125, 4.40403 )
-rotation = 0.131242
-scale = Vector2( 0.410152, 0.410152 )
-amount = 9
-speed_scale = 3.0
-fixed_fps = 100
-texture = ExtResource( 5 )
-flag_align_y = true
-direction = Vector2( 0, 1 )
-spread = 0.0
-gravity = Vector2( 0, 0 )
-initial_velocity = 30.0
-linear_accel = -10.0
-radial_accel = 10.0
-scale_amount = 0.25
-color_ramp = ExtResource( 2 )
-
-[node name="Solid4" type="CPUParticles2D" parent="TurnLeftEmission" index="0"]
-position = Vector2( 10.674, 4.12341 )
-rotation = -0.179263
-scale = Vector2( 0.410152, 0.410152 )
-amount = 9
-speed_scale = 3.0
-fixed_fps = 100
-texture = ExtResource( 5 )
-flag_align_y = true
-direction = Vector2( 0, 1 )
-spread = 0.0
-gravity = Vector2( 0, 0 )
-initial_velocity = 30.0
-linear_accel = -10.0
-radial_accel = 10.0
-scale_amount = 0.25
-color_ramp = ExtResource( 2 )
-
-[node name="SmokeEmitter" parent="SmokeEmitter" index="0" instance=ExtResource( 1 )]
-position = Vector2( -7.5, 2 )
-
-[node name="SmokeEmitter2" parent="SmokeEmitter" index="1" instance=ExtResource( 1 )]
-position = Vector2( 9.25, -0.75 )
-
 [node name="KineticProjectileShooter" parent="Weapons" index="0" instance=ExtResource( 6 )]
-position = Vector2( -12.4032, -25.9627 )
+position = Vector2( -14.4212, -36.334 )
 
 [node name="KineticProjectileShooter2" parent="Weapons" index="1" instance=ExtResource( 6 )]
-position = Vector2( 12.5083, -25.8576 )
+position = Vector2( 14.4212, -36.334 )
+
+[node name="KineticProjectileShooter3" parent="Weapons" index="2" instance=ExtResource( 6 )]
+position = Vector2( -28.8424, -21.5382 )
+
+[node name="KineticProjectileShooter4" parent="Weapons" index="3" instance=ExtResource( 6 )]
+position = Vector2( 28.8424, -21.7254 )
 
 [node name="ShieldShape" parent="." index="15"]
+visible = false
 position = Vector2( 0, -7.77829 )
 shape = SubResource( 3 )
 
 [node name="Shield" parent="." index="16" instance=ExtResource( 7 )]
-modulate = Color( 0.14902, 0.262745, 0.121569, 1 )
+modulate = Color( 0.14902, 0.262745, 0.121569, 0 )
 position = Vector2( 0, -7.77829 )
