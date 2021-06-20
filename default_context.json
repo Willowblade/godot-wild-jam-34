@@ -13,7 +13,7 @@
     "upgrades": {
         "solreign": 20,
         "armada": 0,
-        "rot": 0,
+        "rot": 20,
         "post": 0
     },
 }
