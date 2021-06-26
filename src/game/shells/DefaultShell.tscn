@@ -230,19 +230,19 @@ visible = true
 position = Vector2( -13.1568, 3.23744 )
 
 [node name="KineticProjectileShooter" parent="Weapons" index="0" instance=ExtResource( 3 )]
-position = Vector2( -18.5235, -7.66898 )
+position = Vector2( -18.4645, -5.53991 )
 weapon_name = "player_projectile"
 
 [node name="KineticProjectileShooter2" parent="Weapons" index="1" instance=ExtResource( 3 )]
-position = Vector2( -7.29369, -12.9084 )
+position = Vector2( -8.47353, -13.7343 )
 weapon_name = "player_projectile"
 
 [node name="KineticProjectileShooter3" parent="Weapons" index="2" instance=ExtResource( 3 )]
-position = Vector2( 7.5882, -12.8601 )
+position = Vector2( 8.53207, -13.686 )
 weapon_name = "player_projectile"
 
 [node name="KineticProjectileShooter4" parent="Weapons" index="3" instance=ExtResource( 3 )]
-position = Vector2( 18.3251, -6.95572 )
+position = Vector2( 18.5021, -5.65789 )
 weapon_name = "player_projectile"
 
 [node name="ShieldShape" parent="." index="11"]

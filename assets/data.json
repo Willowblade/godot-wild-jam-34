@@ -4,7 +4,7 @@
     "player": {
         "default": {
             "acceleration": 500,
-            "max_speed": 400,
+            "max_speed": 350,
             "brake_speed": 2,
             "turn_speed": 2.5,
             "boost_power": 1.8,
@@ -15,7 +15,7 @@
         },
         "armada": {
             "acceleration": 500,
-            "max_speed": 450,
+            "max_speed": 375,
             "brake_speed": 2,
             "turn_speed": 2.8,
             "boost_power": 2.0,
@@ -26,7 +26,7 @@
         },
         "solreign": {
             "acceleration": 750,
-            "max_speed": 500,
+            "max_speed": 400,
             "brake_speed": 2,
             "turn_speed": 3.0,
             "boost_power": 2.2,
@@ -37,7 +37,7 @@
         },
         "rot": {
             "acceleration": 500,
-            "max_speed": 600,
+            "max_speed": 425,
             "brake_speed": 2,
             "turn_speed": 3.2,
             "boost_power": 2.2,
@@ -48,7 +48,7 @@
         },
         "post": {
             "acceleration": 500,
-            "max_speed": 600,
+            "max_speed": 450,
             "brake_speed": 2,
             "turn_speed": 3.5,
             "boost_power": 1.8,
@@ -62,7 +62,7 @@
         "armada_agile": {
             "faction": "armada",
             "acceleration": 1000,
-            "max_speed": 600,
+            "max_speed": 340,
             "brake_speed": 3,
             "turn_speed": 4.0,
             "boost_power": 2.0,
@@ -74,7 +74,7 @@
         "armada_midclasse_rocket": {
             "faction": "armada",
             "acceleration": 750,
-            "max_speed": 500,
+            "max_speed": 330,
             "brake_speed": 2,
             "turn_speed": 2.5,
             "boost_power": 1.8,
@@ -86,7 +86,7 @@
         "armada_midclasse_projectile": {
             "faction": "armada",
             "acceleration": 750,
-            "max_speed": 500,
+            "max_speed": 330,
             "brake_speed": 2,
             "turn_speed": 2.5,
             "boost_power": 1.8,
@@ -97,7 +97,7 @@
         },
       "armada_destroyer": {
         "faction": "armada",
-        "acceleration": 500,
+        "acceleration": 320,
         "max_speed": 600,
         "brake_speed": 2,
         "turn_speed": 2.0,
@@ -110,7 +110,7 @@
       "solreign_agile": {
             "faction": "solreign",
             "acceleration": 1000,
-            "max_speed": 600,
+            "max_speed": 340,
             "brake_speed": 2,
             "turn_speed": 5.0,
             "boost_power": 1.8,
@@ -122,7 +122,7 @@
         "solreign_midclasse_rocket": {
             "faction": "solreign",
             "acceleration": 1000,
-            "max_speed": 500,
+            "max_speed": 330,
             "brake_speed": 2,
             "turn_speed": 3.0,
             "boost_power": 1.8,
@@ -134,7 +134,7 @@
         "solreign_midclasse_projectile": {
             "faction": "solreign",
             "acceleration": 1000,
-            "max_speed": 500,
+            "max_speed": 330,
             "brake_speed": 2,
             "turn_speed": 3.0,
             "boost_power": 1.8,
@@ -146,7 +146,7 @@
         "solreign_destroyer": {
             "faction": "solreign",
             "acceleration": 500,
-            "max_speed": 700,
+            "max_speed": 340,
             "brake_speed": 2,
             "turn_speed": 2.5,
             "boost_power": 1.8,
@@ -157,7 +157,7 @@
         },"rot_agile": {
             "faction": "rot",
             "acceleration": 2000,
-            "max_speed": 550,
+            "max_speed": 345,
             "brake_speed": 2,
             "turn_speed": 5.0,
             "boost_power": 1.8,
@@ -169,7 +169,7 @@
         "rot_midclasse_rocket": {
             "faction": "rot",
             "acceleration": 2000,
-            "max_speed": 500,
+            "max_speed": 340,
             "brake_speed": 2,
             "turn_speed": 5.0,
             "boost_power": 1.8,
@@ -181,7 +181,7 @@
         "rot_midclasse_projectile": {
             "faction": "rot",
             "acceleration": 2000,
-            "max_speed": 500,
+            "max_speed": 340,
             "brake_speed": 2,
             "turn_speed": 5.0,
             "boost_power": 1.8,
@@ -277,7 +277,7 @@
             "type": "projectile",
             "speed": 700,
             "lifetime": 3,
-            "damage": 3,
+            "damage": 4,
             "reload": 0.2,
             "shield_multiplier": 1.0,
             "hull_multiplier": 1.0,
@@ -328,16 +328,24 @@
             "shot": "default"
         },
       "beam_mk2": {
-        "type": "beam",
-        "distance": 250,
-        "damage": 2,
-        "shot": "big_beam"
+            "type": "beam",
+            "distance": 250,
+            "damage": 2,
+            "shot": "big_beam"
       },
       "beam_tooth": {
             "type": "beam",
             "distance": 18,
-        "damage": 6,
-        "minimum_shoot_distance": 5,
+            "damage": 6,
+            "minimum_shoot_distance": 5,
+            "maximum_shoot_distance": 20,
+            "shot": "tooth"
+      },
+      "player_tooth": {
+            "type": "beam",
+            "distance": 18,
+            "damage": 50,
+            "minimum_shoot_distance": 5,
             "maximum_shoot_distance": 20,
             "shot": "tooth"
         }

@@ -9,8 +9,6 @@
 
 [node name="Player" instance=ExtResource( 1 )]
 position = Vector2( -1.18921, -0.297302 )
-collision_layer = 6
-collision_mask = 21
 shell_name = "rot"
 
 [node name="Hull" parent="Visual" index="0"]
@@ -119,6 +117,9 @@ linear_accel = -10.0
 radial_accel = 10.0
 scale_amount = 0.25
 color_ramp = ExtResource( 4 )
+
+[node name="BoostEmission" parent="." index="2"]
+visible = true
 
 [node name="Solid3" type="CPUParticles2D" parent="BoostEmission" index="0"]
 modulate = Color( 0, 1, 0.180392, 0.784314 )
@@ -306,6 +307,9 @@ color_ramp = ExtResource( 4 )
 visible = false
 polygon = PoolVector2Array( 0.375, -30.25, 7.75, -19, 9.26747, -6.58341, 14.875, -6.625, 30.625, 12.625, 20.25, 22.5, 11.5, 18.375, -0.17363, 24.1051, -12.9803, 16.6438, -19.875, 23.5, -29.625, 11.375, -13.5, -6.75, -8.69192, -6.86403, -7.375, -18.625 )
 
+[node name="SmokeEmitter" parent="." index="8"]
+visible = true
+
 [node name="SmokeEmitter" parent="SmokeEmitter" index="1" instance=ExtResource( 3 )]
 visible = true
 position = Vector2( -34.4863, 0.618202 )
@@ -327,56 +331,55 @@ position = Vector2( 0.0852356, -8.5624 )
 
 [node name="Beam" parent="Weapons" index="0" instance=ExtResource( 6 )]
 position = Vector2( -2.52719, -23.5531 )
-weapon_name = "beam_tooth"
+weapon_name = "player_tooth"
 
 [node name="Beam2" parent="Weapons" index="1" instance=ExtResource( 6 )]
 position = Vector2( -5.55669, -17.4077 )
-weapon_name = "beam_tooth"
+weapon_name = "player_tooth"
 
 [node name="Beam3" parent="Weapons" index="2" instance=ExtResource( 6 )]
 position = Vector2( -15.2833, -2.45168 )
-weapon_name = "beam_tooth"
+weapon_name = "player_tooth"
 
 [node name="Beam4" parent="Weapons" index="3" instance=ExtResource( 6 )]
 position = Vector2( -19.5381, 1.46941 )
-weapon_name = "beam_tooth"
+weapon_name = "player_tooth"
 
 [node name="Beam5" parent="Weapons" index="4" instance=ExtResource( 6 )]
 position = Vector2( -23.626, 5.64078 )
-weapon_name = "beam_tooth"
+weapon_name = "player_tooth"
 
 [node name="Beam6" parent="Weapons" index="5" instance=ExtResource( 6 )]
 position = Vector2( -27.5471, 9.6453 )
-weapon_name = "beam_tooth"
+weapon_name = "player_tooth"
 
 [node name="Beam7" parent="Weapons" index="6" instance=ExtResource( 6 )]
 position = Vector2( 27.4659, 9.42258 )
-weapon_name = "beam_tooth"
+weapon_name = "player_tooth"
 
 [node name="Beam8" parent="Weapons" index="7" instance=ExtResource( 6 )]
 position = Vector2( 23.3455, 5.41353 )
-weapon_name = "beam_tooth"
+weapon_name = "player_tooth"
 
 [node name="Beam9" parent="Weapons" index="8" instance=ExtResource( 6 )]
 position = Vector2( 19.6705, 1.40449 )
-weapon_name = "beam_tooth"
+weapon_name = "player_tooth"
 
 [node name="Beam10" parent="Weapons" index="9" instance=ExtResource( 6 )]
 position = Vector2( 15.6615, -2.71592 )
-weapon_name = "beam_tooth"
+weapon_name = "player_tooth"
 
 [node name="Beam11" parent="Weapons" index="10" instance=ExtResource( 6 )]
 position = Vector2( 2.52073, -23.4293 )
-weapon_name = "beam_tooth"
+weapon_name = "player_tooth"
 
 [node name="Beam12" parent="Weapons" index="11" instance=ExtResource( 6 )]
 position = Vector2( 5.52752, -17.4157 )
-weapon_name = "beam_tooth"
+weapon_name = "player_tooth"
 
 [node name="ShieldShape" parent="." index="11"]
 visible = false
 position = Vector2( 0, 0.125 )
 
 [node name="Shield" parent="." index="12"]
-visible = false
 modulate = Color( 0, 1, 0.180392, 0.294118 )
