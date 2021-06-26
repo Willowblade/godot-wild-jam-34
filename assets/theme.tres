@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/graphics/Button_Shine.png" type="Texture" id=2]
 [ext_resource path="res://assets/graphics/Button_NoShine.png" type="Texture" id=3]
 
-[sub_resource type="StyleBoxTexture" id=4]
+[sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 2 )
 region_rect = Rect2( 0, 0, 64, 32 )
 margin_left = 16.5623
@@ -28,11 +28,11 @@ margin_right = 13.7268
 margin_top = 14.3579
 margin_bottom = 14.3579
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=4]
 font_data = ExtResource( 1 )
 
 [resource]
-default_font = SubResource( 1 )
+default_font = SubResource( 4 )
 Button/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
 Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
 Button/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
@@ -41,6 +41,6 @@ Button/constants/hseparation = 2
 Button/fonts/font = null
 Button/styles/disabled = null
 Button/styles/focus = null
-Button/styles/hover = SubResource( 4 )
+Button/styles/hover = SubResource( 1 )
 Button/styles/normal = SubResource( 2 )
 Button/styles/pressed = SubResource( 3 )

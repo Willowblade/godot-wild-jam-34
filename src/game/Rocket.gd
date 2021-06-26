@@ -17,7 +17,6 @@ var regular_collision_mask = 0
 func _ready():
 	regular_collision_layer = collision_layer
 	regular_collision_mask = collision_mask
-	connect("body_entered", self, "_on_body_entered")
 	$DetectionArea.connect("body_entered", self, "_on_target_entered")
 	$DetectionArea.connect("body_exited", self, "_on_target_exited")
 	collision_layer = 0

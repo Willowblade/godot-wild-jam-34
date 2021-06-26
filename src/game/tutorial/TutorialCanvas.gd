@@ -9,6 +9,8 @@ onready var projectiles = $Projectiles
 onready var player = $Player
 onready var speed_lines = $SpeedLines
 onready var igps = $IGPS
+onready var enemy = $Enemies/ArmadeAgile
+onready var enemy_text = $Texts/EnemyText
 
 onready var spring = $Player/DampedSpringJoint2D
 
@@ -40,9 +42,14 @@ func _ready():
 
 	GameFlow.update_player(player)
 
+	enemy.connect("died", self, "_on_enemy_died")
+
 	container.destination = station
 	container.connect("tether", self, "_on_container_tethered")
 
+
+func _on_enemy_died(_enemy):
+	enemy_text.text = "Well done!"
 
 func swap_player(shell = null, shell_name = null):
 	var camera = player.get_node("PlayerCamera")

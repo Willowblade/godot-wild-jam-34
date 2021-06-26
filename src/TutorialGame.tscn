@@ -21,10 +21,10 @@ __meta__ = {
 
 [node name="UICanvas" type="CanvasLayer" parent="."]
 
-[node name="Transition" parent="UICanvas" instance=ExtResource( 4 )]
-
 [node name="PauseUI" parent="UICanvas" instance=ExtResource( 6 )]
 visible = false
+
+[node name="Transition" parent="UICanvas" instance=ExtResource( 4 )]
 
 [node name="HUD" parent="UICanvas" instance=ExtResource( 7 )]
 

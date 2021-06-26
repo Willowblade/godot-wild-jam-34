@@ -234,23 +234,15 @@ position = Vector2( -18.5235, -7.66898 )
 weapon_name = "player_projectile"
 
 [node name="KineticProjectileShooter2" parent="Weapons" index="1" instance=ExtResource( 3 )]
-position = Vector2( -18.4055, -3.18558 )
+position = Vector2( -7.29369, -12.9084 )
 weapon_name = "player_projectile"
 
 [node name="KineticProjectileShooter3" parent="Weapons" index="2" instance=ExtResource( 3 )]
-position = Vector2( -18.4055, 0.235973 )
+position = Vector2( 7.5882, -12.8601 )
 weapon_name = "player_projectile"
 
 [node name="KineticProjectileShooter4" parent="Weapons" index="3" instance=ExtResource( 3 )]
-position = Vector2( 18.5235, -7.551 )
-weapon_name = "player_projectile"
-
-[node name="KineticProjectileShooter5" parent="Weapons" index="4" instance=ExtResource( 3 )]
-position = Vector2( 18.5235, -3.30356 )
-weapon_name = "player_projectile"
-
-[node name="KineticProjectileShooter6" parent="Weapons" index="5" instance=ExtResource( 3 )]
-position = Vector2( 18.5235, -0.117987 )
+position = Vector2( 18.3251, -6.95572 )
 weapon_name = "player_projectile"
 
 [node name="ShieldShape" parent="." index="11"]
