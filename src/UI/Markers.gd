@@ -26,6 +26,7 @@ func add_marker(player, destination):
 	marker_instance.set_process(false)
 	return marker_instance
 
+
 func make_markers(player, destinations):
 	if not GameFlow.sun in markers:
 		var marker_instance = add_marker(player, GameFlow.sun)
@@ -50,18 +51,30 @@ func make_markers(player, destinations):
 	if destination_marker == null:
 		destination_marker = add_marker(player, null)
 
+
 func set_destination_marker(destination):
 	destination_marker.destination = destination
+	destination_marker.set_marker("mail_flag")
 	destination_marker.visible = true
 	destination_marker.set_process(true)
+
 
 func clear_destination_marker():
 	destination_marker.destination = null
 	destination_marker.visible = false
 	destination_marker.set_process(false)
 
+
+func _process(delta):
+	# TODO this should also be signal driven...
+	if GameFlow.destination:
+		set_destination_marker(GameFlow.destination)
+	else:
+		clear_destination_marker()
+
+
 func update_visible_destinations(destinations):
-	print("updating visible destinations ", destinations)
+
 	for destination in markers:
 		if destination == GameFlow.sun:
 			continue

@@ -278,7 +278,7 @@
             "speed": 700,
             "lifetime": 3,
             "damage": 3,
-            "reload": 0.4,
+            "reload": 0.2,
             "shield_multiplier": 1.0,
             "hull_multiplier": 1.0,
             "shot": "kinetic"
@@ -288,7 +288,7 @@
             "speed": 700,
             "lifetime": 3,
             "damage": 3,
-            "reload": 0.4,
+            "reload": 0.3,
             "shield_multiplier": 1.0,
             "hull_multiplier": 1.0,
             "shot": "energy"
@@ -307,8 +307,8 @@
             "type": "projectile",
             "speed": 600,
             "lifetime": 2,
-            "damage": 2,
-            "reload": 0.4,
+            "damage": 3,
+            "reload": 0.6,
             "shield_multiplier": 0.6,
             "minimum_shoot_distance": 50,
             "maximum_shoot_distance": 400,
