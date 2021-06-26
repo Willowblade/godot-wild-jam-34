@@ -39,9 +39,6 @@ func initialize_objects():
 	planets = get_tree().get_nodes_in_group("planet")
 	stations = get_tree().get_nodes_in_group("station")
 
-	print(planets)
-	print(stations)
-
 	for planet in planets:
 		var sprite = Sprite.new()
 		add_child(sprite)

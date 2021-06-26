@@ -98,7 +98,7 @@ func update_shields(delta):
 		if shield_recharge_tick_timer > shield_recharge_tick:
 			stats.shields += shield_recharge_rate
 			if stats.shields - shield_recharge_rate <= 0:
-				$ShieldShape.disabled = false
+				$ShieldShape.call_deferred("set_disabled", false)
 				if shield:
 					if faction.to_lower() == "player":
 						AudioEngine.play_effect("shield_recharge")
@@ -126,7 +126,7 @@ func take_damage(damage: int):
 		if stats.shields <= 0:
 			if faction.to_lower() == "player":
 				AudioEngine.play_effect("shield_hit" + str(1 + (randi() % 5)))
-			$ShieldShape.disabled = true
+			$ShieldShape.call_deferred("set_disabled", true)
 		if shield != null:
 			if stats.shields <= 0:
 				shield.break_shield()
@@ -167,11 +167,9 @@ func impact_explosion():
 		var impact = explosion_damage * 30.0 * 2 / (50 + distance)
 		if GameFlow.is_enemy(impacted_body) or GameFlow.is_player(impacted_body):
 			if distance < 100:
-				print("Taking this much damage ", int(impact))
 				impacted_body.take_damage(int(impact))
 			impacted_body.velocity += direction * (1000.0 * 20 / (50 + distance))
 		if GameFlow.is_asteroid(impacted_body):
-			print("Applying impulse in direction ", direction)
 			impacted_body.apply_impulse(Vector2(0, 0), direction * (1000.0 * 20 / (20 + distance)) * impacted_body.mass)
 
 
@@ -315,7 +313,6 @@ func handle_rigidbody_collision(collision, delta):
 		var delta_v = (force_collider * mass - force_ship * collider.mass ) / mass * delta / 3
 		# print(force_collider, force, delta_v)
 		var impulse = (force_ship - force_collider) * delta
-		print(impulse)
 
 #		velocity = velocity + (force_collider - force) * delta * delta * 0.5 / weight * collider.weight
 #		velocity = velocity + (force_collider * weight - force * collider.weight) * delta * delta * 0.5 / weight

@@ -208,14 +208,9 @@ func _physics_process(delta):
 
 	if Input.is_action_just_pressed("interact"):
 		if swappable_shell:
-			if carrying != null:
-				GameFlow.overlays.popup.show_popup_custom("You can't swap when on a delivery", Vector2(0, 40), "info", 3)
-				AudioEngine.play_effect("ui_negative" + str(1 + (randi() % 4)))
-			else:
-				AudioEngine.play_effect("ui_positive" + str(1 + (randi() % 5)))
-				print("Interacting with swappable shell")
-				GameFlow.canvas.swap_player(swappable_shell, null)
-				return
+			AudioEngine.play_effect("ui_positive" + str(1 + (randi() % 5)))
+			GameFlow.canvas.swap_player(swappable_shell, null)
+			return
 		else:
 			AudioEngine.play_effect("ui_negative" + str(1 + (randi() % 4)))
 

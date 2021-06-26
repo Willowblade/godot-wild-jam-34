@@ -19,7 +19,6 @@ func _ready():
 	var direct_state = Physics2DServer.body_get_direct_state(get_rid())
 	var new_position = (position - GameFlow.sun_position).rotated(GameFlow.get_time_around_sun() * 2 * PI * orbit_speed) + GameFlow.sun_position
 	direct_state.transform.origin = new_position
-	print(new_position)
 
 	rotation = randf() * 2 * PI
 

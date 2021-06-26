@@ -8,6 +8,9 @@
 [ext_resource path="res://src/game/weapons/Beam.tscn" type="PackedScene" id=6]
 
 [node name="Player" instance=ExtResource( 1 )]
+position = Vector2( -1.18921, -0.297302 )
+collision_layer = 6
+collision_mask = 21
 shell_name = "rot"
 
 [node name="Hull" parent="Visual" index="0"]

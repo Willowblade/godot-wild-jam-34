@@ -137,6 +137,7 @@ func is_in_battle():
 func add_follower(ship):
 	if ship in followers:
 		return
+
 	followers.append(ship)
 	if followers.size() == 1:
 		player_mindframe = "BATTLE"

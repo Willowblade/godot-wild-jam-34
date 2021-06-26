@@ -46,7 +46,7 @@ faction = "Solreign"
 "orbitable",
 "ships",
 ] instance=ExtResource( 3 )]
-position = Vector2( 168.448, -385.728 )
+position = Vector2( 320.62, -157.47 )
 faction = "Solreign"
 
 [node name="Projectiles" type="Node2D" parent="."]

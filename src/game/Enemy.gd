@@ -51,9 +51,11 @@ func switch_to_investigate():
 	state = "INVESTIGATE"
 
 func _on_body_entered_detection_area(body: PhysicsBody2D):
+	if stats.health <= 0:
+		return
 	if GameFlow.is_ship(body) and body.faction != faction:
 		targets.append(body)
-		if target == null:
+		if target == null or state == "INVESTIGATE":
 			set_chasing(body)
 		for notifier in notifiers:
 			if notifier.state != "CHASE":
@@ -67,11 +69,15 @@ func set_chasing(_target):
 	# if _target not in targets:
 
 	set_physics_process(true)
-	GameFlow.add_follower(self)
+	if GameFlow.is_player(_target):
+		GameFlow.add_follower(self)
 	state = "CHASE"
 	target = _target
 
 func _on_body_exited_detection_area(body: PhysicsBody2D):
+	if not body in targets:
+		return
+
 	if GameFlow.is_ship(body) and body.faction != faction:
 		targets.erase(body)
 		# could have been dead
@@ -84,20 +90,17 @@ func _on_body_exited_detection_area(body: PhysicsBody2D):
 					target = null
 				else:
 					switch_to_investigate()
-					target = null
 					target_position = body.position
 
 
 func _on_body_entered_notify_area(body: PhysicsBody2D):
 	if GameFlow.is_enemy(body) and body.faction == faction:
 		if not body in notifiers:
-			print("Enemy ship of same faction entered notification area")
 			notifiers.append(body)
 
 
 func _on_body_exited_notify_area(body: PhysicsBody2D):
 	if body in notifiers:
-		print("Enemy ship of same faction exited notification area")
 		notifiers.erase(body)
 
 
@@ -194,7 +197,10 @@ func _physics_process(delta):
 			move_towards_target(delta)
 		investigation_timeout += delta
 		if investigation_timeout > 5:
-			GameFlow.remove_follower(self)
+			# I don't think this will introduce bugs but...
+			if GameFlow.is_player(target):
+				GameFlow.remove_follower(self)
+			target = null
 			state = "IDLE"
 
 	if velocity.length() > max_speed:

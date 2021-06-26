@@ -30,18 +30,21 @@ func _ready():
 	set_physics_process(false)
 
 
+func connect_to_player(player_body):
+	player = player_body
+	player.carrying = self
+	set_physics_process(true)
+	sleeping = false
+	emit_signal("tether", self, player)
+	set_tethered(true)
+
+
 func _on_body_entered_pickup(body):
 	if GameFlow.is_player(body):
 		if tethered:
 			return
 		else:
-			print("Emitting tether with ", self)
-			player = body
-			player.carrying = self
-			set_physics_process(true)
-			sleeping = false
-			emit_signal("tether", self, player)
-			set_tethered(true)
+			connect_to_player(body)
 
 
 func _physics_process(delta):
@@ -65,7 +68,6 @@ func _physics_process(delta):
 	var offset = Vector2.DOWN * 24
 	if delivered:
 		var distance = (delivery_station.cargo_anchor_point.global_position + 2 * offset - position).length()
-		print(distance)
 		if distance < 10:
 			GameFlow.deliver_package()
 			queue_free()
@@ -106,7 +108,6 @@ func _physics_process(delta):
 		linear_damp = 1.0
 		var distance = (delivery_station.cargo_anchor_point.global_position + 2 * offset - position).length()
 		if direct_state.linear_velocity.length() < 60:
-			print("Applyingn impulse")
 			apply_impulse(Vector2(0, 0), (delivery_station.cargo_anchor_point.global_position + 2 * offset - position).normalized() * 4)
 		# if abs(direct_state.linear_velocity.angle_to(delivery_station.delivery_area.global_position - position)) >= PI / 2:
 		# 	apply_impulse(Vector2(0, 0), (delivery_station.delivery_area.global_position - position) / 10)

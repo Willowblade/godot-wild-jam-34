@@ -57,6 +57,7 @@ func set_destination_marker(destination):
 	destination_marker.set_marker("mail_flag")
 	destination_marker.visible = true
 	destination_marker.set_process(true)
+	destination_marker.z_index = 1
 
 
 func clear_destination_marker():
@@ -74,7 +75,6 @@ func _process(delta):
 
 
 func update_visible_destinations(destinations):
-
 	for destination in markers:
 		if destination == GameFlow.sun:
 			continue

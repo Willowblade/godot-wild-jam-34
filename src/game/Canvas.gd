@@ -10,6 +10,7 @@ onready var sun = $Sun
 onready var igps = $IGPS
 
 onready var spring = $Player/DampedSpringJoint2D
+var carried_containers = []
 
 onready var orbitable_nodes = get_tree().get_nodes_in_group("orbitable")
 onready var orbitables = {
@@ -115,6 +116,9 @@ func _ready():
 	if State.player.shell != player.shell_name:
 		swap_player(null, State.player.shell)
 
+	for enemy in get_tree().get_nodes_in_group("enemy"):
+		enemy.connect("died", self, "_on_enemy_died")
+
 	for orbitable in orbitable_nodes:
 		if get_orbitable_type(orbitable) == "ship":
 			orbitables.ships[orbitable] = get_orbitable_data(orbitable)
@@ -135,8 +139,14 @@ func _ready():
 	player.position = igps.position + 256 * Vector2.DOWN
 
 
+func _on_enemy_died(enemy: Enemy):
+	GameFlow.remove_follower(enemy)
+
 func swap_player(shell = null, shell_name = null):
 	var camera = player.get_node("PlayerCamera")
+
+	spring.node_a = ""
+	spring.node_b = ""
 
 	player.remove_child(camera)
 	player.remove_child(spring)
@@ -154,20 +164,33 @@ func swap_player(shell = null, shell_name = null):
 		player = shells[shell.shell_name].instance()
 	else:
 		player = shells[shell_name].instance()
-	add_child(player)
-	if shell != null:
-		shell.get_parent().update_type(old_type)
-	State.player.shell = player.shell_name
-	Flow.save_game()
 
 	player.position = old_position
 	player.rotation = old_rotation
 	player.destinations = old_destinations
 	player.velocity = old_velocity
+	add_child(player)
+
+	if shell != null:
+		shell.get_parent().update_type(old_type)
+	State.player.shell = player.shell_name
+	Flow.save_game()
+
+
 	player.add_child(camera)
 	player.add_child(spring)
+
+	for container in carried_containers:
+		container.player = player
+		call_deferred("connect_spring", player, container)
+#		spring.node_a = player.get_path()
+#		spring.node_b = container.get_path()
+
 	GameFlow.update_player(player)
 
+func connect_spring(player, container):
+	print("Connecting container to player...")
+	container.connect_to_player(player)
 
 func drop_material(enemy, material_type):
 	var material_instance = MaterialScene.instance()
@@ -178,12 +201,12 @@ func drop_material(enemy, material_type):
 
 
 func _on_picked_up(material):
-	if not GameFlow.is_in_battle():
-		State.add_material(material.type, 1)
-		yield(get_tree().create_timer(0.0), "timeout")
-		remove_child(material)
-		material.queue_free()
-		Flow.save_game()
+	# if not GameFlow.is_in_battle():
+	State.add_material(material.type, 1)
+	yield(get_tree().create_timer(0.0), "timeout")
+	remove_child(material)
+	material.queue_free()
+	Flow.save_game()
 
 
 func spawn_container_with_destination(destination):
@@ -198,10 +221,18 @@ func _on_asteroid_died(asteroid: Asteroid):
 
 
 func _on_container_tethered(container: CargoContainer, target):
+	if GameFlow.is_player(target):
+		if not container in carried_containers:
+			carried_containers.append(container)
+	else:
+		if container in carried_containers:
+			carried_containers.erase(container)
+
 	if target == null:
 		spring.node_a = ""
 		spring.node_b = ""
 		return
+
 
 	GameFlow.destination = container.destination
 	GameFlow.objective = make_delivery_message(container.destination)

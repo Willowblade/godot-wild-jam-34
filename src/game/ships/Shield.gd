@@ -25,7 +25,6 @@ func get_hit():
 	set_process(true)
 
 func enable():
-	print("Enabling shield")
 	sprite.visible = true
 
 func break_shield():

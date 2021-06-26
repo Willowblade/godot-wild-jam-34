@@ -48,7 +48,7 @@ radius = 1303.75
 script = ExtResource( 3 )
 
 [node name="Player" parent="." instance=ExtResource( 9 )]
-position = Vector2( -1265.08, 1692.28 )
+position = Vector2( 5608.94, 1153.92 )
 
 [node name="PlayerCamera" type="Camera2D" parent="Player"]
 current = true
