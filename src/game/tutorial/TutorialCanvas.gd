@@ -11,6 +11,8 @@ onready var speed_lines = $SpeedLines
 onready var igps = $IGPS
 onready var enemy = $Enemies/ArmadeAgile
 onready var enemy_text = $Texts/EnemyText
+onready var material_drop = $Material
+
 
 onready var spring = $Player/DampedSpringJoint2D
 
@@ -41,6 +43,8 @@ func _ready():
 	GameFlow.igps = igps
 
 	GameFlow.update_player(player)
+
+	material_drop.connect("picked_up", self, "_on_picked_up")
 
 	enemy.connect("died", self, "_on_enemy_died")
 

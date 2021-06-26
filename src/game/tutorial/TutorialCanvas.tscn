@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://assets/graphics/PB1.png" type="Texture" id=1]
 [ext_resource path="res://assets/graphics/PB3.png" type="Texture" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://assets/graphics/planets/Earthlike.png" type="Texture" id=11]
 [ext_resource path="res://assets/graphics/PB3_2.png" type="Texture" id=12]
 [ext_resource path="res://assets/graphics/NEB1.png" type="Texture" id=13]
+[ext_resource path="res://src/game/Material.tscn" type="PackedScene" id=14]
 [ext_resource path="res://src/game/Station.tscn" type="PackedScene" id=17]
 [ext_resource path="res://src/game/Container.tscn" type="PackedScene" id=19]
 [ext_resource path="res://src/game/ships/armada/ArmadeAgile.tscn" type="PackedScene" id=23]
@@ -126,7 +127,7 @@ length = 1.0
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="ArmadeAgile" parent="Enemies" instance=ExtResource( 23 )]
-position = Vector2( -2511.99, 2923.12 )
+position = Vector2( -2973.92, 3007.25 )
 
 [node name="DetectionArea" parent="Enemies/ArmadeAgile" index="2"]
 visible = true
@@ -328,7 +329,7 @@ position = Vector2( 0.472656, 67.1337 )
 [node name="Planets" type="Node2D" parent="."]
 
 [node name="Earth" parent="Planets" instance=ExtResource( 26 )]
-position = Vector2( -1832.24, 2784.13 )
+position = Vector2( -1260.24, 2080.13 )
 rotation = -2.08819
 planet_name = "earth"
 
@@ -514,10 +515,10 @@ __meta__ = {
 }
 
 [node name="EnemyText" type="Label" parent="Texts"]
-margin_left = -2949.84
-margin_top = 2865.05
-margin_right = -2598.84
-margin_bottom = 3083.05
+margin_left = -3259.38
+margin_top = 2930.13
+margin_right = -2908.38
+margin_bottom = 3148.13
 theme = ExtResource( 9 )
 text = "Here he is!
 Get him!"
@@ -546,6 +547,29 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Label10" type="Label" parent="Texts"]
+margin_left = -2304.26
+margin_top = 2726.9
+margin_right = -1953.26
+margin_bottom = 2944.9
+theme = ExtResource( 9 )
+text = "What luck!
+
+You might have noticed as you wrecked that poor
+Armada officer - Jeremy, can you send some flowers 
+to his mother - but enemies will drop materials
+
+You should pick these up! Gathering enough will 
+unlock ships of that faction.
+
+Here's another one:
+
+Please return it after your orientation."
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Label9" type="Label" parent="Texts"]
 margin_left = -54.838
 margin_top = 1670.2
@@ -562,6 +586,10 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Material" parent="." instance=ExtResource( 14 )]
+position = Vector2( -1994.41, 2906.43 )
+type = "armada"
 
 [editable path="Enemies/ArmadeAgile"]
 [editable path="Stations/Station"]

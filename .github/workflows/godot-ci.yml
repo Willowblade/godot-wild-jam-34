@@ -3,7 +3,7 @@ on: push
 
 env:
   GODOT_VERSION: 3.3.2
-  EXPORT_NAME: SpaceJam
+  EXPORT_NAME: IGPS
 
 jobs:
   export-windows:
@@ -39,7 +39,7 @@ jobs:
         env:
           BUTLER_CREDENTIALS: ${{ secrets.BUTLER_KEY }}
           CHANNEL: windows
-          ITCH_GAME: space-jam
+          ITCH_GAME: igps
           ITCH_USER: willowblade
           PACKAGE: build/windows
 
@@ -75,7 +75,7 @@ jobs:
         env:
           BUTLER_CREDENTIALS: ${{ secrets.BUTLER_KEY }}
           CHANNEL: linux
-          ITCH_GAME: space-jam
+          ITCH_GAME: igps
           ITCH_USER: willowblade
           PACKAGE: build/linux
 
@@ -111,6 +111,6 @@ jobs:
         env:
           BUTLER_CREDENTIALS: ${{ secrets.BUTLER_KEY }}
           CHANNEL: web
-          ITCH_GAME: space-jam
+          ITCH_GAME: igps
           ITCH_USER: willowblade
           PACKAGE: build/web
