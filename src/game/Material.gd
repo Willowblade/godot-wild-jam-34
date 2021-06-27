@@ -18,6 +18,7 @@ const modulates = {
 
 func _ready():
 	connect("body_entered", self, "_on_body_entered")
+	set_type(type)
 
 func _on_body_entered(body):
 	if GameFlow.is_player(body):

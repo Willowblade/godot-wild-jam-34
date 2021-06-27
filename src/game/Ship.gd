@@ -159,6 +159,8 @@ func predeath():
 	pass
 
 func impact_explosion():
+	if faction.to_lower() == "rot":
+		return
 	var impacted_bodies = explosion_area.get_overlapping_bodies()
 	for impacted_body in impacted_bodies:
 		var difference = (impacted_body.global_position - explosion_area.global_position)
@@ -177,9 +179,14 @@ func impact_explosion():
 
 
 func play_explosion():
+
 	AudioEngine.play_effect("explosion_small" + str(1 + (randi() % 4)))
-	$Explosion.set_emitting(true)
-	$Explosion.visible = true
+	if faction.to_lower() == "rot":
+		$Explosion/AsteroidExplosionEmitter.set_emitting(true)
+		$Explosion/AsteroidExplosionEmitter.visible = true
+	else:
+		$Explosion.set_emitting(true)
+		$Explosion.visible = true
 	$Visual.hide()
 	$NormalEmission.emitting = false
 	$BoostEmission.emitting = false

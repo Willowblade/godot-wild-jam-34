@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/game/weapons/Beam.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/game/Thruster.tres" type="Gradient" id=2]
 [ext_resource path="res://src/game/Enemy.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/graphics/ships/rot/midclasse-1.png" type="Texture" id=4]
 [ext_resource path="res://assets/graphics/ships/trail/solreign.png" type="Texture" id=5]
+[ext_resource path="res://src/game/AsteroidExplosionEmitter.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/game/ships/MediumShield.tscn" type="PackedScene" id=7]
 
 [sub_resource type="CircleShape2D" id=1]
@@ -205,6 +206,9 @@ linear_accel = -10.0
 radial_accel = 10.0
 scale_amount = 0.25
 color_ramp = ExtResource( 2 )
+
+[node name="AsteroidExplosionEmitter" parent="Explosion" index="1" instance=ExtResource( 6 )]
+modulate = Color( 0.345098, 0.878431, 0.176471, 1 )
 
 [node name="Beam" parent="Weapons" index="0" instance=ExtResource( 1 )]
 position = Vector2( -14.5165, -34.0029 )
